@@ -1,0 +1,5 @@
+[alias]
+	br = branch
+	sw = switch
+	pushu = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+	brsw = "!f() { git pull && git br $1 && git sw $1; }; f"
