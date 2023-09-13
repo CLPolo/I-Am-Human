@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Examples/Zelda Room Example/Base/Scenes/BaseTopDownScene_Emily 2.unity
+    guid: bb1c03e3cd9d2d845bc2ed1edee4a3fe
+  - enabled: 1
+    path: Assets/Examples/Zelda Room Example/Base/Scenes/BaseTopDownScene_Emily.unity
+    guid: dea747a6bf03ce44bacc08b0aeb37b37
+  - enabled: 1
+    path: Assets/Examples/Zelda Room Example/Base/Scenes/BaseTopDownScene_Emily 3.unity
+    guid: c4c952bcf21aaec42b677c7769bcf2cd
+  - enabled: 1
+    path: Assets/Examples/Zelda Room Example/Base/Scenes/BaseTopDownScene_Megan.unity
+    guid: f484b631c59974148bada8fe3f635531
+  - enabled: 1
+    path: Assets/Labs/2D Level Design/2D-5 PCG/Scenes/Components/TopDownPCGSegment.unity
+    guid: 24e27b3b1a531d94ba6844df2289cae4
+  - enabled: 1
+    path: Assets/Labs/2D Level Design/2D-5 PCG/Scenes/Components/TopDownPCGSegment
+      1.unity
+    guid: 24d9c285e60a2ba4a915cb50352e3f04
+  - enabled: 1
+    path: Assets/Labs/2D Level Design/2D-5 PCG/Scenes/Components/TopDownPCGSegment
+      3.unity
+    guid: 67cf1779d600dd547beddbdfd37faeb1
+  - enabled: 1
+    path: Assets/Labs/2D Level Design/2D-5 PCG/Scenes/Components/TopDownPCGSegment
+      2.unity
+    guid: 166b822fdc9325f4694b0fc31566145a
+  - enabled: 1
+    path: Assets/Labs/2D Level Design/2D-5 PCG/Scenes/Components/TopDownPCGSegment
+      5.unity
+    guid: 5dc31dce7dc1b7742ba83bb5ee82a844
+  - enabled: 1
+    path: Assets/Labs/2D Level Design/2D-5 PCG/Scenes/Components/TopDownPCGSegment
+      4.unity
+    guid: 91c40d0c51d3f40499ab66aae0b6f8bd
+  m_configObjects: {}
