@@ -63,9 +63,7 @@ public class Movement : MonoBehaviour
             else
             {
                 hideable.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f);
-                Debug.Log("transparenttt");
             }
-
         }
     }
 

@@ -3,49 +3,60 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class InteractableObjectScript : MonoBehaviour
 {
 
     public GameObject InteractableScreen;  // this is the screen that displays prompt to interact
     public GameObject InfoScreen;  // this is the screen that displays info about object post interaction
-    public Text FirstText;  // First bit of info text to be displayed 
-    public Text SecondText;  // Second bit of info text to be displayed
+    public List<String> InfoMessages;
+    public String InteractMessage;
     public int InfoTime = 3;  // time in seconds that info will be displayed for
     public KeyCode InteractKey;  // Keycode for the chosen interact key
+    public Boolean ShowPromptOnce;
 
     private bool Inside = false;  // if player is inside hit box for object
-    private bool Not_Interacted = true;  // if player has not yet interacted with object
-    private IEnumerator coroutine;
+    private bool HasInteracted = false;  // if player interacted with object
 
     // Start is called before the first frame update
     void Start()
     {
-        coroutine = wait(InfoTime);  // sets coroutine to wait function
-        SecondText.enabled = false;  // disables second text initially
+        InteractableScreen.SetActive(false);
+        InfoScreen?.SetActive(false);
+        Debug.Log(InteractMessage);
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Inside) // if player is inside the interactable object's box collider
-        {  
-            if (Input.GetKeyDown(InteractKey) && Not_Interacted)  // if they press InteractKey to interact & haven't already interacted with object
+        {
+            // if they press InteractKey to interact & haven't already interacted with object
+            // and we only want the interact prompt to appear once
+            if (Input.GetKeyDown(InteractKey))
             {
                 InteractableScreen.SetActive(false);  // turns off 'interact' prompt
-                Interaction(); // post interaction function
-                Not_Interacted = false;  // Allows player to only interact once
+                Debug.Log(InfoScreen != null && InfoMessages.Count > 0);
+                if (InfoScreen != null && InfoMessages.Count > 0)
+                {
+                    StartCoroutine(InfoInteraction()); // post interaction function
+                }
+                HasInteracted = true;  // Show interact prompt only once
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        // if player is actively inside collider & hasn't already interacted w/ object, turns on interact prompt
+        // if we want prompt to always show or the player has never interacted, then show prompt
         Inside = true;
-        if (Not_Interacted)
+        if (!HasInteracted || !ShowPromptOnce)
         {
-            Interactable(Inside);
+            var interactText = InteractableScreen.GetComponentInChildren<Text>();
+            interactText.text = InteractMessage;
+            Debug.Log(interactText);
+            Interactable();
         }
     }
 
@@ -53,32 +64,27 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // if player is not actively inside collider, turns off interact prompt
         Inside = false;
-        Interactable(Inside);
+        Interactable();
     }
 
-    private void Interactable(bool state)
+    private void Interactable()
     {
         // turns interact prompt on or off depending on state provided
         // bool state - state to determine if interact prompt is on or off
-        InteractableScreen.SetActive(state);
+        InteractableScreen.SetActive(Inside);
     }
 
-    private void Interaction()
+    private IEnumerator InfoInteraction()
     {
-        // Shows object info and runs wait coroutine
+        // Set InfoScreen to active
         InfoScreen.SetActive(true);
-        StartCoroutine(wait(InfoTime));  // will wait InfoTime seconds then remove info text
-
-    }
-
-    IEnumerator wait(int time)
-    {
-        // Shows each set of text for InfoTime seconds before turning it off
-        // int InfoTime - length of time in seconds that info will be displayed
-        yield return new WaitForSeconds(time);
-        FirstText.enabled = false;
-        SecondText.enabled = true;
-        yield return new WaitForSeconds(time);
+        var infoText = InfoScreen.GetComponentInChildren<Text>();
+        // iterate through info messages and show all
+        foreach (var message in InfoMessages)
+        {
+            infoText.text = message;
+            yield return new WaitForSeconds(InfoTime);
+        }
         InfoScreen.SetActive(false);
     }
 }
