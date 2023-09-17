@@ -12,6 +12,7 @@ public class InteractableObjectScript : MonoBehaviour
     public Text FirstText;  // First bit of info text to be displayed 
     public Text SecondText;  // Second bit of info text to be displayed
     public int InfoTime = 3;  // time in seconds that info will be displayed for
+    public KeyCode InteractKey;  // Keycode for the chosen interact key
 
     private bool Inside = false;  // if player is inside hit box for object
     private bool Not_Interacted = true;  // if player has not yet interacted with object
@@ -27,9 +28,9 @@ public class InteractableObjectScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Inside) {  // if player is inside the interactable object's box collider
-
-            if (Input.GetKeyDown(KeyCode.E) && Not_Interacted)  // if they press E to interact & haven't already interacted with object
+        if (Inside) // if player is inside the interactable object's box collider
+        {  
+            if (Input.GetKeyDown(InteractKey) && Not_Interacted)  // if they press InteractKey to interact & haven't already interacted with object
             {
                 InteractableScreen.SetActive(false);  // turns off 'interact' prompt
                 Interaction(); // post interaction function
@@ -70,7 +71,7 @@ public class InteractableObjectScript : MonoBehaviour
 
     }
 
-    IEnumerator wait(int time) 
+    IEnumerator wait(int time)
     {
         // Shows each set of text for InfoTime seconds before turning it off
         // int InfoTime - length of time in seconds that info will be displayed
