@@ -12,6 +12,8 @@ public class Movement : MonoBehaviour
     public Sprite standing;
     public Sprite hiding;
     private Boolean isHidden = false;
+    public bool IsDead = false;
+    public GameObject Logic;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +26,13 @@ public class Movement : MonoBehaviour
     {
 
         // Move left
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && !Logic.GetComponent<LogicScript>().Is_Paused)
         {
             transform.position += Vector3.left * Time.deltaTime * speed;
         }
 
         // Move right
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && !Logic.GetComponent<LogicScript>().Is_Paused)
         {
             transform.position += Vector3.right * Time.deltaTime * speed;
         }
