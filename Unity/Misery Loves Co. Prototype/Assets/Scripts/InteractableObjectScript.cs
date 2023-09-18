@@ -15,6 +15,8 @@ public class InteractableObjectScript : MonoBehaviour
     public int InfoTime = 3;  // time in seconds that info will be displayed for
     public KeyCode InteractKey;  // Keycode for the chosen interact key
     public Boolean ShowPromptOnce;
+    public bool monsterComing = false;  // This is for activating Monster.cs
+    public AudioSource rawr;
 
     private bool Inside = false;  // if player is inside hit box for object
     private bool HasInteracted = false;  // if player interacted with object
@@ -86,5 +88,8 @@ public class InteractableObjectScript : MonoBehaviour
             yield return new WaitForSeconds(InfoTime);
         }
         InfoScreen.SetActive(false);
+        // JON SEPT 17 !!!!!!! After interacting, the monster comes !!!
+        monsterComing = true;
+        rawr.Play();
     }
 }

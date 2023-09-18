@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     public Sprite standing;
     public Sprite hiding;
     private Boolean isHidden = false;
+    public Monster BadGuy;
     public bool IsDead = false;
     public GameObject Logic;
 
@@ -67,6 +68,14 @@ public class Movement : MonoBehaviour
                 hideable.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f);
             }
         }
+        if (collision.gameObject.tag == "Bad" && !isHidden)
+        {
+            // This is when the monster sees you and you are not behind the box
+            // Gameover can go here! For now I just freeze them
+            speed = 0f;
+            BadGuy.speed = 0f;
+            Debug.Log("TOUCHED BADGUY");
+        }
     }
 
     private void unhide(GameObject hideable)
@@ -97,7 +106,6 @@ public class Movement : MonoBehaviour
 
     private void resetPlayer()
     {
-        Debug.Log("RESET");
         speed = defaultSpeed;
         spriteRender.sprite = standing;
     }
