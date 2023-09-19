@@ -38,7 +38,7 @@ public class InteractableObjectScript : MonoBehaviour
         {
             // if they press InteractKey to interact & haven't already interacted with object
             // and we only want the interact prompt to appear once
-            if (Input.GetKeyDown(InteractKey))
+            if (Input.GetKey(InteractKey))
             {
                 InteractableScreen.SetActive(false);  // turns off 'interact' prompt
                 if (InfoScreen != null && InfoMessages.Count > 0)
@@ -53,7 +53,7 @@ public class InteractableObjectScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         // if we want prompt to always show or the player has never interacted, then show prompt
-        Inside = true;
+        Inside = true && !Input.GetKeyDown(InteractKey);
         if (!HasInteracted || !ShowPromptOnce)
         {
             var interactText = InteractableScreen.GetComponentInChildren<Text>();

@@ -10,7 +10,6 @@ public class LogicScript : MonoBehaviour
     public GameObject DeathScreen;
     public GameObject PauseMenu;
     public bool IsPaused = false;  // true if game is paused
-    public bool IsDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +20,6 @@ public class LogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsDead)  // gets IsDead value from player's movement script
-        {
-            Death();
-        }
         if (Input.GetKeyDown(KeyCode.Escape))  // Pauses game when player hits esc
         {
             TogglePause();
@@ -34,9 +29,7 @@ public class LogicScript : MonoBehaviour
     public void Death()
     {   
         // Activates death screen
-
         IsPaused = true;  // will prevent player from moving after death
-        IsDead = false;
         DeathScreen.SetActive(true);
         Debug.Log("did it change in death?");
 

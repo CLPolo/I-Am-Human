@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour
     // This is called every frame that the character is touching "Hideable"
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!logicScript.IsDead)
+        if (!logicScript.IsPaused)
         {
             // This object is hideable... ADD POPUP TEXT HERE "press space to hide !"
             if (collision.gameObject.tag == "Hideable")
@@ -77,7 +77,7 @@ public class Movement : MonoBehaviour
                 // Gameover can go here! For now I just freeze them
                 speed = 0f;
                 BadGuy.speed = 0f;
-                logicScript.IsDead = true;
+                logicScript.Death();
             }
         }
     }
