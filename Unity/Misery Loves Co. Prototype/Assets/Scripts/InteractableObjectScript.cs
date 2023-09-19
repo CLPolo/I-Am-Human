@@ -25,8 +25,10 @@ public class InteractableObjectScript : MonoBehaviour
     void Start()
     {
         InteractableScreen.SetActive(false);
-        InfoScreen?.SetActive(false);
-        Debug.Log(InteractMessage);
+        if (InfoScreen != null)
+        {
+            InfoScreen.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -39,7 +41,6 @@ public class InteractableObjectScript : MonoBehaviour
             if (Input.GetKeyDown(InteractKey))
             {
                 InteractableScreen.SetActive(false);  // turns off 'interact' prompt
-                Debug.Log(InfoScreen != null && InfoMessages.Count > 0);
                 if (InfoScreen != null && InfoMessages.Count > 0)
                 {
                     StartCoroutine(InfoInteraction()); // post interaction function
@@ -57,7 +58,6 @@ public class InteractableObjectScript : MonoBehaviour
         {
             var interactText = InteractableScreen.GetComponentInChildren<Text>();
             interactText.text = InteractMessage;
-            Debug.Log(interactText);
             Interactable();
         }
     }

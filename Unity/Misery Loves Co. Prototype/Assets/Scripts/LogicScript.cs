@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 public class LogicScript : MonoBehaviour
 {
 
-    public GameObject Player;
     public GameObject DeathScreen;
     public GameObject PauseMenu;
-    public bool Is_Paused = false;  // true if game is paused
+    public bool IsPaused = false;  // true if game is paused
+    public bool IsDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +21,13 @@ public class LogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player.GetComponent<Movement>().IsDead)  // gets IsDead value from player's movement script
+        if (IsDead)  // gets IsDead value from player's movement script
         {
             Death();
         }
         if (Input.GetKeyDown(KeyCode.Escape))  // Pauses game when player hits esc
         {
-            Paused();
+            TogglePause();
         }
     }
 
@@ -35,28 +35,30 @@ public class LogicScript : MonoBehaviour
     {   
         // Activates death screen
 
-        Is_Paused = true;  // will prevent player from moving after death
+        IsPaused = true;  // will prevent player from moving after death
+        IsDead = false;
         DeathScreen.SetActive(true);
+        Debug.Log("did it change in death?");
+
+        AudioListener.pause = IsPaused;
     }
-    public void Paused()
+    public void TogglePause()
     {
         // Pauses game
         // Note: When we add enemy script, enemy movement should also be stopped if paused
 
-        Is_Paused = true;  // will prevent player from moving while paused
-        PauseMenu.SetActive(true);
-    }
+        PauseMenu.SetActive(!IsPaused);
+        IsPaused = !IsPaused;  // will prevent player from moving while paused
+        Debug.Log("did it change in toggle pause?");
 
-    public void Continue()
-    {
-        // Unpauses game
-        PauseMenu.SetActive(false);
-        Is_Paused = false;
+        AudioListener.pause = IsPaused;
     }
 
     public void RestartGame()
     {
         // Restarts the game by resetting scene
+        Debug.Log("did it change in restart?");
+        AudioListener.pause = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

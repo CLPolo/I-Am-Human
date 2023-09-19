@@ -11,15 +11,16 @@ public class Movement : MonoBehaviour
     public SpriteRenderer spriteRender;
     public Sprite standing;
     public Sprite hiding;
-    private Boolean isHidden = false;
     public Monster BadGuy;
-    public bool IsDead = false;
     public GameObject Logic;
+
+    public bool isHidden = false;
+    private LogicScript logicScript = null;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        logicScript = Logic.GetComponent<LogicScript>();
     }
 
     // Update is called once per frame
@@ -27,13 +28,13 @@ public class Movement : MonoBehaviour
     {
 
         // Move left
-        if (Input.GetKey(KeyCode.A) && !Logic.GetComponent<LogicScript>().Is_Paused)
+        if (Input.GetKey(KeyCode.A) && !logicScript.IsPaused)
         {
             transform.position += Vector3.left * Time.deltaTime * speed;
         }
 
         // Move right
-        if (Input.GetKey(KeyCode.D) && !Logic.GetComponent<LogicScript>().Is_Paused)
+        if (Input.GetKey(KeyCode.D) && !logicScript.IsPaused)
         {
             transform.position += Vector3.right * Time.deltaTime * speed;
         }
@@ -43,38 +44,41 @@ public class Movement : MonoBehaviour
     // This is called every frame that the character is touching "Hideable"
     private void OnTriggerStay2D(Collider2D collision)
     {
-        // This object is hideable... ADD POPUP TEXT HERE "press space to hide !"
-        if (collision.gameObject.tag == "Hideable")
+        if (!logicScript.IsDead)
         {
-            var hideable = collision.gameObject;
-            if (Input.GetKey(KeyCode.Space))
+            // This object is hideable... ADD POPUP TEXT HERE "press space to hide !"
+            if (collision.gameObject.tag == "Hideable")
             {
-                // Space is held. Set speed to 0.8 (slow moving!) and change graphics
-                var hideablePosition = hideable.transform.position;
-                hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, 1);
-                hideable.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                spriteRender.sprite = hiding;
-                speed = sneakSpeed;
-                transform.position += Vector3.right * 0.0001f;
-                isHidden = true;
-                // add fog here
+                var hideable = collision.gameObject;
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    // Space is held. Set speed to 0.8 (slow moving!) and change graphics
+                    var hideablePosition = hideable.transform.position;
+                    hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, 1);
+                    hideable.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                    spriteRender.sprite = hiding;
+                    speed = sneakSpeed;
+                    transform.position += Vector3.right * 0.0001f;
+                    isHidden = true;
+                    // add fog here
+                }
+                else if (isHidden)
+                {
+                    unhide(hideable);
+                }
+                else
+                {
+                    hideable.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f);
+                }
             }
-            else if (isHidden)
+            if (collision.gameObject.tag == "Bad" && !isHidden)
             {
-                unhide(hideable);
+                // This is when the monster sees you and you are not behind the box
+                // Gameover can go here! For now I just freeze them
+                speed = 0f;
+                BadGuy.speed = 0f;
+                logicScript.IsDead = true;
             }
-            else
-            {
-                hideable.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.2f);
-            }
-        }
-        if (collision.gameObject.tag == "Bad" && !isHidden)
-        {
-            // This is when the monster sees you and you are not behind the box
-            // Gameover can go here! For now I just freeze them
-            speed = 0f;
-            BadGuy.speed = 0f;
-            Debug.Log("TOUCHED BADGUY");
         }
     }
 
