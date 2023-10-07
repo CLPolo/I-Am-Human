@@ -1,0 +1,17 @@
+How to import the character sprites into Unity:
+
+1)	Drag or download the png sprite into the project folder.
+
+2) 	Click on the sprite to edit it's import settings.
+2.1) 	Set these settings Sprite Mode: Multiple, Pixels Per Unit: 12, Filter Mode: Point, Compression: None, click apply.
+
+3) 	Open the Sprite Editor.
+3.1) 	Select the Slice dropdown.
+3.2) 	Type: Grid by Cell Count, 4 columns and 2 rows, select Slice. You should see grid lines along each frame.
+3.3) 	Select Apply.
+
+4.0) 	Each frame is selectable by clicking the arrow on the sprite in the Project Folder.
+4.1) 	Open the Player's inspector from the Heirarchy.
+4.2) 	Find the Sprite Settings under the AnimationPlatformerScript.
+4.3) 	Drag and drop each frame into the corresponding slots. If any are not set the game will not run. Provided walk animations are 4 frames.
+4.4) 	You can edit the framerate of the walk, select an appropriate value according to the character feel you want. Typical values will be between 7.5 and 30 frames per second.
