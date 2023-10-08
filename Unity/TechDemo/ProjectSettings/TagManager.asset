@@ -7,7 +7,6 @@ TagManager:
   - Crate
   - Goal
   - Enemy
-  - Ice
   - PCGController
   - PCGComponent
   - Hideable
@@ -15,6 +14,9 @@ TagManager:
   - Bad
   - Moveable
   - Box
+  - RunableArea
+  - Level Exit
+  - Wall
   layers:
   - Default
   - TransparentFX
