@@ -30,7 +30,7 @@ public class PushLogicScript : MonoBehaviour
         if (grabCheck.collider != null && grabCheck.collider.tag == "Box")  // if there is an object colliding AND that object is a box
         {
             boxRenderer.sprite = Outline;  // if box in range, shows outline
-            if (Input.GetKey(KeyCode.Space))  // if player is pressing space (pushing)
+            if (Input.GetKey(KeyCode.LeftShift))  // if player is pressing space (pushing)
             {
                 GetComponent<Player>().IsPushing = true;
                 grabCheck.collider.gameObject.transform.parent = boxHolder;  // sets parent of box / object being pushed to boxHolder

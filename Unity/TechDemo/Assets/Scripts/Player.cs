@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float sneakSpeed = 0.8f;
     public const float pushSpeed = 2.5f;
     public const float defaultSpeed = 5f;
+    public const float runSpeed = 9f;
 
     [Header("Animation Cycles")]
     public List<Sprite> walkCycle;  
@@ -36,7 +37,8 @@ public class Player : MonoBehaviour
     private bool movingRight = true;
     public bool IsPushing = false;
     private bool isWalking = false;
-    private bool isRunning = false;
+    public bool isRunning = false;
+    public bool isHiding = false;
 
     public LogicScript logicScript;
     public GameObject Logic;
@@ -52,6 +54,7 @@ public class Player : MonoBehaviour
         checkMovement();
         //checkAudio();
         CheckPushing();
+        CheckRunning();
     }
     void checkMovement()
     {   
@@ -62,7 +65,6 @@ public class Player : MonoBehaviour
             isWalking = true;
             movingRight = false;
             CheckFlip();
-            
         }
 
         // Move right
@@ -72,7 +74,6 @@ public class Player : MonoBehaviour
             isWalking = true;
             movingRight = true;
             CheckFlip();
-            
         }
         if((!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) || logicScript.IsPaused)
         {
@@ -101,6 +102,63 @@ public class Player : MonoBehaviour
     //        }
     //}       if(isRunning){}
     //}
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        var Hideable = collision.gameObject;
+        if (collision.gameObject.tag == "Hideable" || collision.gameObject.tag == "Box")
+        {
+            CheckHiding(Hideable);
+        }
+        if (collision.gameObject.tag == "Bad" && !isHiding)
+        {
+            // This is when the monster sees you and you are not behind the box
+            // Gameover can go here! For now I just freeze them
+            speed = 0f;
+            //BadGuy.speed = 0f;
+            logicScript.Death();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Hideable" || collision.gameObject.tag == "Box")
+        {
+            var hideable = collision.gameObject;
+            if (isHiding)
+            {
+                // remove fog
+                Unhide(hideable);
+            }
+        }
+    }
+
+    private void Unhide(GameObject Hideable)
+    {
+        speed = defaultSpeed;
+        var hideablePosition = Hideable.transform.position;
+        Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, -1);
+        isHiding = false;
+        transform.position += Vector3.left * 0.0001f;
+        SpriteRenderer.sprite = DefaultSprite;
+    }
+
+    private void CheckHiding(GameObject Hideable)
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            speed = sneakSpeed;
+            isHiding = true;    
+            var hideablePosition = Hideable.transform.position;
+            Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, 1);
+            AnimationUpdate(hiding);
+            transform.position += Vector3.right * 0.0001f;
+        }
+        else if (isHiding)  // unhides only if you were hiding
+        {
+            Unhide(Hideable);
+        }
+    }
 
     private void CheckFlip()
     {
@@ -135,7 +193,7 @@ public class Player : MonoBehaviour
             speed = pushSpeed;
             AnimationUpdate(PushingCycle);
         }
-        else
+        else if (!isHiding)  // can't push if hiding, but also won't switch speed back to default while player is hiding
         {
             speed = defaultSpeed;
             SpriteRenderer.sprite = DefaultSprite;
@@ -165,4 +223,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void CheckRunning()
+    {
+        // Checks if player is running, and makes them run
+
+        if (!IsPushing && !isHiding)  // First checks if player is pushing an object or hiding, in which case they can't run
+        {
+            if (isRunning && Input.GetKey(KeyCode.LeftControl))  // if they're pressing run button and should be running (isRunning)
+            {
+                speed = runSpeed;  // updates speed to run speed
+            }
+            else
+            {
+                speed = defaultSpeed;  // resets speed to default
+            }
+        }
+    }
 }

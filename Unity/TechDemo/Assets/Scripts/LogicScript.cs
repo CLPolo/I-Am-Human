@@ -31,7 +31,6 @@ public class LogicScript : MonoBehaviour
         // Activates death screen
         IsPaused = true;  // will prevent player from moving after death
         DeathScreen.SetActive(true);
-        Debug.Log("did it change in death?");
 
         AudioListener.pause = IsPaused;
     }
@@ -39,10 +38,8 @@ public class LogicScript : MonoBehaviour
     {
         // Pauses game
         // Note: When we add enemy script, enemy movement should also be stopped if paused
-
         PauseMenu.SetActive(!IsPaused);
         IsPaused = !IsPaused;  // will prevent player from moving while paused
-        Debug.Log("did it change in toggle pause?");
 
         AudioListener.pause = IsPaused;
     }
@@ -50,7 +47,6 @@ public class LogicScript : MonoBehaviour
     public void RestartGame()
     {
         // Restarts the game by resetting scene
-        Debug.Log("did it change in restart?");
         AudioListener.pause = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
