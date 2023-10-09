@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -30,13 +32,18 @@ public class Player : MonoBehaviour
     public List<AudioClip> footstepsWalk;
     public List<AudioClip> footstepsRun;
 
+    [Header("Items")]
+    public GameObject flashlight;
+
 
     //boolean state based variables
     //private bool isHiding = false;
     private bool facingRight = true;
     private bool movingRight = true;
-    public bool IsPushing = false;
     private bool isWalking = false;
+
+    [Header("State")]
+    public bool IsPushing = false;
     public bool isRunning = false;
     public bool isHiding = false;
     public bool hasFlashlight = false;
@@ -244,11 +251,20 @@ public class Player : MonoBehaviour
 
     private void UseFlashlight()
     {
-        if (hasFlashlight)
+        if (hasFlashlight && Input.GetKey(KeyCode.F))
         {
             // The player can use the flashlight if they have picked it up.
-            // The flashlight follows the mouse and can be turned off and on with left click
-            Vector3 mousePos = Input.mousePosition;
+            // The flashlight follows the mouse and can be turned off and on with F
+            Vector3 flashlightRotation = flashlight.transform.localEulerAngles;
+            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
+            float angle = transform.localScale.x < 0 ? Vector2.SignedAngle(direction, Vector2.left) : Vector2.SignedAngle(Vector2.right, direction);
+            if (Math.Abs(angle) < 85)
+            {
+                flashlight.transform.localRotation = Quaternion.Euler(-angle, flashlightRotation.y, flashlightRotation.z);
+            }
+            flashlight.GetComponent<Light>().enabled = true;
+        } else if (flashlight?.GetComponent<Light>() != null) {
+            flashlight.GetComponent<Light>().enabled = false;
         }
     }
 }
