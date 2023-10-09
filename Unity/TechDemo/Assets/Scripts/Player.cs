@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     private bool isWalking = false;
     public bool isRunning = false;
     public bool isHiding = false;
+    public bool hasFlashlight = false;
 
     public LogicScript logicScript;
     public GameObject Logic;
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
         //checkAudio();
         CheckPushing();
         CheckRunning();
+        UseFlashlight();
     }
     void checkMovement()
     {   
@@ -237,6 +239,16 @@ public class Player : MonoBehaviour
             {
                 speed = defaultSpeed;  // resets speed to default
             }
+        }
+    }
+
+    private void UseFlashlight()
+    {
+        if (hasFlashlight)
+        {
+            // The player can use the flashlight if they have picked it up.
+            // The flashlight follows the mouse and can be turned off and on with left click
+            Vector3 mousePos = Input.mousePosition;
         }
     }
 }
