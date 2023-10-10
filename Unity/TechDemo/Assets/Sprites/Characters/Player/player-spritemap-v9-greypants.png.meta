@@ -7,10 +7,10 @@ TextureImporter:
     second: Standing
   - first:
       213: 1432133739345923468
-    second: Crouched
+    second: Crouch_1
   - first:
       213: -247405591547776992
-    second: G_Punch_4
+    second: Crouch_2
   - first:
       213: -4697495719950502320
     second: G_Punch_3
@@ -229,6 +229,48 @@ TextureImporter:
       bones: []
       spriteID: f2253baa721166bc0800000000000000
       internalID: -3790323174320418257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crouch_1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 152
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8dc0945c06ffd310800000000000000
+      internalID: 1432133739345923468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crouch_2
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 52
+        width: 28
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0207950ece9019cf0800000000000000
+      internalID: -247405591547776992
       vertices: []
       indices: 
       edges: []

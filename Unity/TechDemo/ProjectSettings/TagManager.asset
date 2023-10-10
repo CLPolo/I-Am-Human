@@ -17,6 +17,7 @@ TagManager:
   - RunableArea
   - Level Exit
   - Wall
+  - Flashback
   layers:
   - Default
   - TransparentFX
