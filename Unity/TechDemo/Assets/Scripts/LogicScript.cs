@@ -21,9 +21,14 @@ public class LogicScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DeathScreen.SetActive(false);  // Don't want to be dead at the start lol
-        trappedText.SetActive(false);
-
+        if (DeathScreen != null)
+        {
+            DeathScreen?.SetActive(false);  // Don't want to be dead at the start lol
+        }
+        if (trappedText != null)
+        {
+            trappedText?.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -47,7 +52,6 @@ public class LogicScript : MonoBehaviour
     {
         trappedText.SetActive(true);
         mashTimer -= Time.deltaTime;
-        Debug.Log(mashTimer);
         if (mashTimer <= 0)
         {
             // If the player does not mash fast enough they die :(

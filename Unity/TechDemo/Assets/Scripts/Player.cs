@@ -111,7 +111,6 @@ public class Player : AnimatedEntity
         } else {
             transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
             speed = defaultSpeed;  // let the man walk
-            Debug.Log("no longer trapped :)");
         }
     }
 
