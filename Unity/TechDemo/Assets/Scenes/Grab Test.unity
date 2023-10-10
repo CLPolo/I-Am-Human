@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 134918580}
   - component: {fileID: 134918578}
   - component: {fileID: 134918579}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NewBox
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 1356524837}
   - component: {fileID: 1356524836}
   - component: {fileID: 1356524838}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor Box
   m_TagString: Floor
   m_Icon: {fileID: 0}
