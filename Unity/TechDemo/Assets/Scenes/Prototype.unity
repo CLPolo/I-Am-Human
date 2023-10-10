@@ -970,15 +970,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7bdab14bdea5854d99810862b56c0bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultAnimationCycle:
+  - {fileID: -5578546100884088798, guid: e2eaa2af83836454abfa70526d0ba7c6, type: 3}
+  Framerate: 12
+  SpriteRenderer: {fileID: 713074064}
   speed: 5
   sneakSpeed: 0.8
   walkCycle: []
   runCycle: []
-  hiding: []
+  hiding:
+  - {fileID: 5853192741167783688, guid: e2eaa2af83836454abfa70526d0ba7c6, type: 3}
   PushingCycle: []
   DefaultSprite: {fileID: -5578546100884088798, guid: e2eaa2af83836454abfa70526d0ba7c6,
     type: 3}
-  SpriteRenderer: {fileID: 713074064}
   footstepsWalk: []
   footstepsRun: []
   flashlight: {fileID: 1045061756}
