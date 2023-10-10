@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class Player : MonoBehaviour
+public class Player : AnimatedEntity
 {
     [Header("Movement")]
     public float speed = 5f;
@@ -19,32 +21,36 @@ public class Player : MonoBehaviour
 
     [Header("Animation Variables")]
     public Sprite DefaultSprite;
-    public SpriteRenderer SpriteRenderer;
-    // Notably, the three below variables (as well as the corresponding function AnimationUpdate() below) are ripped from lab 4, I was mostly using for testing purposes
-    private float animationTimer;  // current number of seconds since last animation frame update
-    private float animationTimerMax = 1.0f / 12f;  // max number of seconds for each frame, defined by Framerate
-    private int AnimationIndex = 0;  // current index in the DefaultAnimationCycle
 
     [Header("Sound")]
     //public AudioSource AudioSource;
     public List<AudioClip> footstepsWalk;
     public List<AudioClip> footstepsRun;
 
+    [Header("Items")]
+    public GameObject flashlight;
+
 
     //boolean state based variables
     //private bool isHiding = false;
     private bool facingRight = true;
     private bool movingRight = true;
-    public bool IsPushing = false;
     private bool isWalking = false;
+    private string currentAnimation;
+
+    [Header("State")]
+    public bool IsPushing = false;
     public bool isRunning = false;
     public bool isHiding = false;
+    public bool hasFlashlight = false;
 
+    [Header("Other Objects")]
     public LogicScript logicScript;
     public GameObject Logic;
 
     void Start()
     {
+        AnimationSetup();
         logicScript = Logic.GetComponent<LogicScript>();
     }
 
@@ -55,6 +61,8 @@ public class Player : MonoBehaviour
         //checkAudio();
         CheckPushing();
         CheckRunning();
+        UseFlashlight();
+        AnimationUpdate();
     }
     void checkMovement()
     {   
@@ -140,7 +148,7 @@ public class Player : MonoBehaviour
         Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, -1);
         isHiding = false;
         transform.position += Vector3.left * 0.0001f;
-        SpriteRenderer.sprite = DefaultSprite;
+        ResetAnimationCycle();
     }
 
     private void CheckHiding(GameObject Hideable)
@@ -151,12 +159,16 @@ public class Player : MonoBehaviour
             isHiding = true;    
             var hideablePosition = Hideable.transform.position;
             Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, 1);
-            AnimationUpdate(hiding);
+            if (!isHiding)
+            {
+                InterruptAnimation(hiding, true);
+            }
             transform.position += Vector3.right * 0.0001f;
         }
         else if (isHiding)  // unhides only if you were hiding
         {
             Unhide(Hideable);
+            ResetAnimationCycle();
         }
     }
 
@@ -191,35 +203,17 @@ public class Player : MonoBehaviour
         if (IsPushing)
         {
             speed = pushSpeed;
-            AnimationUpdate(PushingCycle);
+            if (currentAnimation != "pushing")
+            {
+                InterruptAnimation(PushingCycle, true);
+            }
+            currentAnimation = "pushing";
         }
         else if (!isHiding)  // can't push if hiding, but also won't switch speed back to default while player is hiding
         {
             speed = defaultSpeed;
-            SpriteRenderer.sprite = DefaultSprite;
-        }
-    }
-
-    protected void AnimationUpdate(List<Sprite> AnimationCycle)
-    {
-        // cycles through / 'plays' given sprites in AnimationCycle
-        // Ripped from lab 4, mostly for testing purposes for a pushing animation
-
-        animationTimer += Time.deltaTime;
-
-        if (animationTimer > animationTimerMax)
-        {
-            animationTimer = 0;
-            AnimationIndex++;
-
-            if (AnimationCycle.Count == 0 || AnimationIndex >= AnimationCycle.Count)
-            {
-                AnimationIndex = 0;
-            }
-            if (AnimationCycle.Count > 0)
-            {
-                SpriteRenderer.sprite = AnimationCycle[AnimationIndex];
-            }
+            ResetAnimationCycle();
+            currentAnimation = "default";
         }
     }
 
@@ -237,6 +231,25 @@ public class Player : MonoBehaviour
             {
                 speed = defaultSpeed;  // resets speed to default
             }
+        }
+    }
+
+    private void UseFlashlight()
+    {
+        if (hasFlashlight && Input.GetKey(KeyCode.F))
+        {
+            // The player can use the flashlight if they have picked it up.
+            // The flashlight follows the mouse and can be turned off and on with F
+            Vector3 flashlightRotation = flashlight.transform.localEulerAngles;
+            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
+            float angle = transform.localScale.x < 0 ? Vector2.SignedAngle(direction, Vector2.left) : Vector2.SignedAngle(Vector2.right, direction);
+            if (Math.Abs(angle) < 85)
+            {
+                flashlight.transform.localRotation = Quaternion.Euler(-angle, flashlightRotation.y, flashlightRotation.z);
+            }
+            flashlight.GetComponent<Light>().enabled = true;
+        } else if (flashlight?.GetComponent<Light>() != null) {
+            flashlight.GetComponent<Light>().enabled = false;
         }
     }
 }

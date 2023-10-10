@@ -29,6 +29,7 @@ public class InteractableObjectScript : MonoBehaviour
     private bool Inside = false;  // if player is inside hit box for object
     private bool HasInteracted = false;  // if player interacted with object
     private bool IsFlashback = false;  // if the post interaction display is a flashback sequence
+    private bool CurrentlyPlaying = false;  // if flashback is currently playing through
 
 
     // Below Should be removed and placed into monster script
@@ -90,7 +91,7 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void DisplayInteractPrompt()
     {
-        if (!HasInteracted || !ShowPromptOnce)  // if they haven't already interacted and they aren't limited to interacting once only
+        if (!CurrentlyPlaying && (!HasInteracted || !ShowPromptOnce))  // if they haven't already interacted and they aren't limited to interacting once only, and not currently playing
         {
             // displays interact text
             var interactText = InteractableScreen.GetComponentInChildren<Text>();
@@ -112,8 +113,9 @@ public class InteractableObjectScript : MonoBehaviour
     private void CheckAndDisplayFlashback()
     {
         // if there's a flashback to display it will display it
-        if (FlashbackScreen != null && FlashbackImages.Count > 0)
+        if (FlashbackScreen != null && FlashbackImages.Count > 0 && !CurrentlyPlaying)  // won't allow you to play the flashback sequence if already playing
         {
+            CurrentlyPlaying = true;
             StartCoroutine(DisplayFlashback()); // post interaction function
         }
         HasInteracted = true;  // Show interact prompt only once
@@ -153,5 +155,6 @@ public class InteractableObjectScript : MonoBehaviour
             yield return new WaitForSeconds(FlashbackTime);
         }
         FlashbackScreen.SetActive(false);  // turns screen off when done
+        CurrentlyPlaying = false;  // sequence is finished
     }
 }
