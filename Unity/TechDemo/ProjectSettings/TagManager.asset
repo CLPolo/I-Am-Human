@@ -18,6 +18,8 @@ TagManager:
   - Level Exit
   - Wall
   - Flashlight
+  - TrapArmed
+  - TrapDisarmed
   layers:
   - Default
   - TransparentFX
@@ -27,9 +29,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Floor
+  - Entity
+  - Interactable
   - 
   - 
   - 

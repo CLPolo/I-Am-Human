@@ -34,7 +34,7 @@ public class Flashlight : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             gameObject.SetActive(false);  // Make it disappear
             // Play pickup sound here if we have one
