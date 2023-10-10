@@ -277,10 +277,18 @@ public class Player : MonoBehaviour
             else{lightCone.range = 50;}
 
         }
+        float angle;
         //update rotation of flashlight
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dir = mousePos - lightSource.transform.position;
-        float angle = transform.localScale.x < 0 ? Vector2.SignedAngle(dir, Vector2.left) : Vector2.SignedAngle(dir, Vector2.right);
-        lightSource.transform.eulerAngles = new Vector3(angle, 90, 0);
+        
+        if(facingRight)
+        {
+            angle = Vector2.SignedAngle(dir, Vector2.right);
+            lightSource.transform.eulerAngles = new Vector3(angle, 90, 0);
+        } else {
+            angle = Vector2.SignedAngle(Vector2.left, dir);
+            lightSource.transform.eulerAngles = new Vector3(angle, -90, 0);
+        }
     }
 }
