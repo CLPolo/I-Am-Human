@@ -17,6 +17,8 @@ TagManager:
   - RunableArea
   - Level Exit
   - Wall
+  - TrapArmed
+  - TrapDisarmed
   layers:
   - Default
   - TransparentFX

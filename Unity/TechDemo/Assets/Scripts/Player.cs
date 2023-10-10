@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     private bool isWalking = false;
     public bool isRunning = false;
     public bool isHiding = false;
+    public bool isTrapped = false;
+    private bool wiggleRight = true;
 
     public LogicScript logicScript;
     public GameObject Logic;
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour
         //checkAudio();
         CheckPushing();
         CheckRunning();
+        CheckTrapped();
     }
     void checkMovement()
     {   
@@ -81,6 +84,35 @@ public class Player : MonoBehaviour
         }
     }
 
+    void CheckTrapped()
+    {
+        if (isTrapped)
+        {
+            speed = 0;  // Player cannot move while trapped
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                wiggleRight = !wiggleRight;
+                if (wiggleRight)
+                {
+                    transform.eulerAngles = new Vector3(0, -45, 0);
+                    Debug.Log("wiggle right");
+                }
+                else
+                {
+                    transform.eulerAngles = new Vector3(0, -135, 0);
+                    Debug.Log("wiggle left");
+                }
+            }
+            if (logicScript.trapped == false)
+            {
+                isTrapped = false;
+                transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
+                speed = defaultSpeed;  // let the man walk
+                Debug.Log("no longer trapped :)");
+            }
+        }
+    }
+
     //void checkAudio()
     //{
     //    if(!logicScript.IsPaused)
@@ -102,6 +134,16 @@ public class Player : MonoBehaviour
     //        }
     //}       if(isRunning){}
     //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "TrapArmed")
+        {
+            logicScript.trapped = true;
+            isTrapped = true;
+            collision.gameObject.tag = "TrapDisarmed";  // This makes it so the trap is disarmed when player stops moving
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
