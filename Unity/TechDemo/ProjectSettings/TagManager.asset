@@ -18,6 +18,7 @@ TagManager:
   - Level Exit
   - Wall
   - Flashlight
+  - Flashback
   layers:
   - Default
   - TransparentFX
