@@ -24,7 +24,6 @@ public class AnimatedEntity : MonoBehaviour
     protected void AnimationSetup()
     {
         animationTimerMax = 2f/(float)Framerate;
-        Debug.Log("animation timer max: " + animationTimerMax);
         index = 0;
     }
 

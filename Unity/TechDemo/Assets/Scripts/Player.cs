@@ -42,6 +42,7 @@ public class Player : AnimatedEntity
     public bool IsPushing = false;
     public bool isRunning = false;
     public bool isHiding = false;
+    private bool wiggleRight = true;
     public bool hasFlashlight = false;
 
     [Header("Other Objects")]
@@ -61,6 +62,7 @@ public class Player : AnimatedEntity
         //checkAudio();
         CheckPushing();
         CheckRunning();
+        CheckTrapped();
         UseFlashlight();
         AnimationUpdate();
     }
@@ -89,6 +91,30 @@ public class Player : AnimatedEntity
         }
     }
 
+    void CheckTrapped()
+    {
+        if (logicScript.isTrapped)
+        {
+            speed = 0;  // Player cannot move while trapped
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                wiggleRight = !wiggleRight;
+                if (wiggleRight)
+                {
+                    transform.eulerAngles = new Vector3(0, -45, 0);
+                }
+                else
+                {
+                    transform.eulerAngles = new Vector3(0, -135, 0);
+                }
+            }
+        } else {
+            transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
+            speed = defaultSpeed;  // let the man walk
+            Debug.Log("no longer trapped :)");
+        }
+    }
+
     //void checkAudio()
     //{
     //    if(!logicScript.IsPaused)
@@ -110,6 +136,15 @@ public class Player : AnimatedEntity
     //        }
     //}       if(isRunning){}
     //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "TrapArmed")
+        {
+            logicScript.isTrapped = true;
+            collision.gameObject.tag = "TrapDisarmed";  // This makes it so the trap is disarmed when player stops moving
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
