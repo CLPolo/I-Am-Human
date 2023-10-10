@@ -42,7 +42,6 @@ public class Player : AnimatedEntity
     public bool IsPushing = false;
     public bool isRunning = false;
     public bool isHiding = false;
-    public bool isTrapped = false;
     private bool wiggleRight = true;
     public bool hasFlashlight = false;
 
@@ -94,7 +93,7 @@ public class Player : AnimatedEntity
 
     void CheckTrapped()
     {
-        if (isTrapped)
+        if (logicScript.isTrapped)
         {
             speed = 0;  // Player cannot move while trapped
             if (Input.GetKeyDown(KeyCode.Space))
@@ -103,21 +102,16 @@ public class Player : AnimatedEntity
                 if (wiggleRight)
                 {
                     transform.eulerAngles = new Vector3(0, -45, 0);
-                    Debug.Log("wiggle right");
                 }
                 else
                 {
                     transform.eulerAngles = new Vector3(0, -135, 0);
-                    Debug.Log("wiggle left");
                 }
             }
-            if (logicScript.trapped == false)
-            {
-                isTrapped = false;
-                transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
-                speed = defaultSpeed;  // let the man walk
-                Debug.Log("no longer trapped :)");
-            }
+        } else {
+            transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
+            speed = defaultSpeed;  // let the man walk
+            Debug.Log("no longer trapped :)");
         }
     }
 
@@ -147,8 +141,7 @@ public class Player : AnimatedEntity
     {
         if (collision.gameObject.tag == "TrapArmed")
         {
-            logicScript.trapped = true;
-            isTrapped = true;
+            logicScript.isTrapped = true;
             collision.gameObject.tag = "TrapDisarmed";  // This makes it so the trap is disarmed when player stops moving
         }
     }

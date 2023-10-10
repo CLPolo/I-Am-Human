@@ -14,7 +14,7 @@ public class LogicScript : MonoBehaviour
 
     // TRAP
     public GameObject trappedText;
-    public bool trapped = false;
+    public bool isTrapped = false;
     public float mashTimer = 1f;  // If you don't mash for 1 seconds you die
 
 
@@ -32,7 +32,7 @@ public class LogicScript : MonoBehaviour
         if (!IsPaused)
         {
             // PUT ALL LOGIC HERE
-            if (trapped)
+            if (isTrapped)
             {
                 MashTrap();
             }
@@ -47,6 +47,7 @@ public class LogicScript : MonoBehaviour
     {
         trappedText.SetActive(true);
         mashTimer -= Time.deltaTime;
+        Debug.Log(mashTimer);
         if (mashTimer <= 0)
         {
             // If the player does not mash fast enough they die :(
@@ -55,14 +56,14 @@ public class LogicScript : MonoBehaviour
         else if (mashTimer >= 3)
         {
             // The player escapes!
-            trapped = false;
+            isTrapped = false;
             trappedText.SetActive(false);
         }
         else
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                mashTimer += 0.2f;  // Add 0.2 seconds to the timer
+                mashTimer += 0.3f;  // Add 0.2 seconds to the timer
             }
         }
     }
