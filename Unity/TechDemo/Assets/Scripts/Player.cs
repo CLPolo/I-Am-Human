@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public const float pushSpeed = 2.5f;
     public const float defaultSpeed = 5f;
     public const float runSpeed = 9f;
+    private Rigidbody2D rb; // ------------------> RigidBody2D. Will be used to access it's velocity property to check for movement.
 
     [Header("Animation Cycles")]
     public List<Sprite> walkCycle;  
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
     private int AnimationIndex = 0;  // current index in the DefaultAnimationCycle
 
     [Header("Sound")]
-    //public AudioSource AudioSource;
+    public AudioSource AudioSource;
     public List<AudioClip> footstepsWalk;
     public List<AudioClip> footstepsRun;
 
@@ -48,29 +49,42 @@ public class Player : MonoBehaviour
     public bool isHiding = false;
     public bool hasFlashlight = false;
 
-    public LogicScript logicScript;
-    public GameObject Logic;
+    private GameObject Logic;
+    private LogicScript logicScript;
+    private GameObject self;
+    private GameObject lightSource;
+    private Light lightCone;
 
     void Start()
-    {
+    {   
+        self = GameObject.Find("Player");
+        Logic = GameObject.Find("Logic Manager");
         logicScript = Logic.GetComponent<LogicScript>();
+        rb = self.GetComponent<Rigidbody2D>();
+        
+        flashlight = GameObject.Find("Flash Light");
+        lightCone = self.GetComponentInChildren<Light>();
+        lightSource = GameObject.Find("Flashlight Light");
     }
 
     // Update is called once per frame
     void Update()
     {
+
         checkMovement();
-        //checkAudio();
+        checkAudio();
         CheckPushing();
         CheckRunning();
-        UseFlashlight();
+        checkFlashlight();
+        //print(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
+
     void checkMovement()
     {   
         // Move left
         if (Input.GetKey(KeyCode.A) && !logicScript.IsPaused)
         {
-            transform.position += Vector3.left * Time.deltaTime * speed;
+            rb.velocity = Vector2.left * speed;
             isWalking = true;
             movingRight = false;
             CheckFlip();
@@ -79,7 +93,7 @@ public class Player : MonoBehaviour
         // Move right
         if (Input.GetKey(KeyCode.D) && !logicScript.IsPaused)
         {
-            transform.position += Vector3.right * Time.deltaTime * speed;
+            rb.velocity = Vector2.right * speed;
             isWalking = true;
             movingRight = true;
             CheckFlip();
@@ -87,30 +101,33 @@ public class Player : MonoBehaviour
         if((!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) || logicScript.IsPaused)
         {
             isWalking = false;
+            rb.velocity *= Vector2.zero;
         }
     }
 
-    //void checkAudio()
-    //{
-    //    if(!logicScript.IsPaused)
-    //    {
-    //        playFootfall();
-    //    } else 
-    //    {
-    //        AudioSource.Stop();
-    //    }
-    //}   
+    void checkAudio()
+    {
+        if(!logicScript.IsPaused)
+        {
+            playFootfall();
+        } else 
+        {
+            AudioSource.Stop();
+        }
+    }   
 
-    //void playFootfall()
-    //{
-    //    if(!AudioSource.isPlaying)
-    //    {
-    //        if(isWalking) 
-    //        {
-    //            AudioSource.PlayOneShot(footstepsWalk[Random.Range(0, footstepsWalk.Capacity)]);
-    //        }
-    //}       if(isRunning){}
-    //}
+    void playFootfall()
+    {
+        if(!AudioSource.isPlaying)
+        {
+            if(isWalking) 
+            {
+            AudioSource.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)]);
+            }
+                   
+            if(isRunning){}
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -249,22 +266,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void UseFlashlight()
+    private void checkFlashlight()
     {
-        if (hasFlashlight && Input.GetKey(KeyCode.F))
+
+        //turn light on and off
+        if (hasFlashlight && Input.GetKeyDown(KeyCode.F))
         {
-            // The player can use the flashlight if they have picked it up.
-            // The flashlight follows the mouse and can be turned off and on with F
-            Vector3 flashlightRotation = flashlight.transform.localEulerAngles;
-            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
-            float angle = transform.localScale.x < 0 ? Vector2.SignedAngle(direction, Vector2.left) : Vector2.SignedAngle(Vector2.right, direction);
-            if (Math.Abs(angle) < 85)
-            {
-                flashlight.transform.localRotation = Quaternion.Euler(-angle, flashlightRotation.y, flashlightRotation.z);
-            }
-            flashlight.GetComponent<Light>().enabled = true;
-        } else if (flashlight?.GetComponent<Light>() != null) {
-            flashlight.GetComponent<Light>().enabled = false;
+
+            if(lightCone.range > 0) lightCone.range = 0;
+            else{lightCone.range = 50;}
+
         }
+        //update rotation of flashlight
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 dir = mousePos - lightSource.transform.position;
+        float angle = transform.localScale.x < 0 ? Vector2.SignedAngle(dir, Vector2.left) : Vector2.SignedAngle(dir, Vector2.right);
+        lightSource.transform.eulerAngles = new Vector3(angle, 90, 0);
     }
 }

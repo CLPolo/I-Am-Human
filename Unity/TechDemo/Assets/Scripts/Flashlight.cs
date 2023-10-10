@@ -11,12 +11,19 @@ public class Flashlight : MonoBehaviour
     private float animationTimer;  //current number of seconds since last animation frame update
     private float animationTimerMax;  //max number of seconds for each frame, defined by Framerate
 
+    //private state bools
+    private bool isOn = false;
+
+    private GameObject lightCone;
+
     // Start is called before the first frame update
     void Start()
     {
         // Setup animation stuff ( A LOT OF THIS SCRIPT IS FROM LAB 4)
         animationTimer = 0f;
         animationTimerMax = 1.0f / ((float)(Framerate));
+
+        //lightCone = GameObject.Find("Player").GetComponent<Light>();
     }
 
     // Update is called once per frame
