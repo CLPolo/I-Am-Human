@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2428121062732635484}
   - component: {fileID: 2428121062732635483}
   - component: {fileID: 2428121062732635482}
-  m_Layer: 0
-  m_Name: NewBox
+  m_Layer: 10
+  m_Name: MoveableBox
   m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,9 +12,10 @@ public class PushLogicScript : MonoBehaviour
     private Vector3 forward;
 
     [Header("Outline Display")]
-    public SpriteRenderer boxRenderer;
     public Sprite Outline;
     public Sprite Default;
+
+    private List<GameObject> spritesToReset = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -26,27 +27,32 @@ public class PushLogicScript : MonoBehaviour
     void Update()
     {
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);  // uses raycast starting at GrabDetect to get object info
-
+        
         if (grabCheck.collider != null && grabCheck.collider.tag == "Box")  // if there is an object colliding AND that object is a box
         {
-            boxRenderer.sprite = Outline;  // if box in range, shows outline
+            GameObject box = grabCheck.collider.gameObject;
+            spritesToReset.Add(box);
+            box.GetComponent<SpriteRenderer>().sprite = Outline;  // if box in range, shows outline
             if (Input.GetKey(KeyCode.LeftShift))  // if player is pressing space (pushing)
             {
                 GetComponent<Player>().IsPushing = true;
-                grabCheck.collider.gameObject.transform.parent = boxHolder;  // sets parent of box / object being pushed to boxHolder
-                grabCheck.collider.gameObject.transform.position = boxHolder.position;  // moves object being pushed to boxHolder (by center)
-                grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;  // allows it to staticly move with the player based on that boxHolder position
+                box.transform.parent = boxHolder;  // sets parent of box / object being pushed to boxHolder
+                box.transform.position = boxHolder.position;  // moves object being pushed to boxHolder (by center)
+                box.GetComponent<Rigidbody2D>().isKinematic = true;  // allows it to staticly move with the player based on that boxHolder position
             }
             else
             {
                 GetComponent<Player>().IsPushing = false;
-                grabCheck.collider.gameObject.transform.parent = null;  // removes boxHolder as parent
-                grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;  // sets it back to being immovable
+                box.transform.parent = null;  // removes boxHolder as parent
+                box.GetComponent<Rigidbody2D>().isKinematic = false;  // sets it back to being immovable
             }
         }
         else
         {
-            boxRenderer.sprite = Default;  // if box out of range, does not show outline
+            foreach (GameObject obj in spritesToReset) {
+                obj.GetComponent<SpriteRenderer>().sprite = Default;  // if box out of range, does not show outline
+            }
+            spritesToReset.Clear();
         }
     }
 }

@@ -88,7 +88,6 @@ public class InteractableObjectScript : MonoBehaviour
             yield return new WaitForSeconds(InfoTime);
         }
         InfoScreen.SetActive(false);
-        // JON SEPT 17 !!!!!!! After interacting, the monster comes !!!
         monsterComing = true;
         rawr.Play();
     }

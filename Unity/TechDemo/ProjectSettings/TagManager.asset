@@ -19,6 +19,7 @@ TagManager:
   - Wall
   - TrapArmed
   - TrapDisarmed
+  - Flashlight
   layers:
   - Default
   - TransparentFX
@@ -28,9 +29,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Floor
+  - Entity
+  - Interactable
   - 
   - 
   - 
