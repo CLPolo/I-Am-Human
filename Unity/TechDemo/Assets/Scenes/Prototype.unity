@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 397838874}
   - component: {fileID: 397838876}
   - component: {fileID: 397838877}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hide Box
   m_TagString: Hideable
   m_Icon: {fileID: 0}
@@ -646,7 +646,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &713074067
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1261,7 +1261,7 @@ GameObject:
   - component: {fileID: 1356524837}
   - component: {fileID: 1356524836}
   - component: {fileID: 1356524838}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor Box
   m_TagString: Floor
   m_Icon: {fileID: 0}

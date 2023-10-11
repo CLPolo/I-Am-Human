@@ -289,7 +289,7 @@ public class Player : AnimatedEntity
         //turn light on and off
         if (hasFlashlight && Input.GetKeyDown(KeyCode.F))
         {
-            if (lightCone.range > 0) {
+            if (lightCone.range == 50) {
                 lightCone.range = 0;
             } else {
                 lightCone.range = 50;

@@ -43,6 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29fbd7c88a7de044aa2bba344edde50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathScreen: {fileID: 0}
-  PauseMenu: {fileID: 0}
+  DeathScreen: {fileID: 4184315028008764179, guid: 6e256a3b997dc2c44b60aafa9ee53082,
+    type: 3}
+  PauseMenu: {fileID: 1591859652562367722, guid: ac2b64de6caf0b54ab00c476c64724bc,
+    type: 3}
   IsPaused: 0
+  trappedText: {fileID: 0}
+  isTrapped: 0
+  mashTimer: 1

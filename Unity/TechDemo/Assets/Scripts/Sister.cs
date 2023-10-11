@@ -8,9 +8,7 @@ public class Sister : AnimatedEntity
     public GameObject player;
 
     [Header("Movement")]
-    public float speed = 2f;
-    public const float defaultSpeed = 5f;
-    public const float runSpeed = 9f;
+    public float speed = 1f;
 
     [Header("Animation Cycles")]
     public List<Sprite> walkCycle;
@@ -28,10 +26,12 @@ public class Sister : AnimatedEntity
     [Header("Barks")]
     private float barkTimer;
     private float barkLimit;
-    public float maxTimeBetweenBarks = 30f;
-    public float minTimeBetweenBarks = 10f;
+    public float maxTimeBetweenBarks = 10;
+    public float minTimeBetweenBarks = 50;
     public List<AudioClip> barks;
     private AudioSource sisterAudio;
+
+    private bool following = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,12 +53,19 @@ public class Sister : AnimatedEntity
     {
         Vector3 playerPosition = player.transform.position;
         float distance = Vector2.Distance(transform.position, playerPosition);
-        if (distance > 2)
+        if (following ? distance > 1 : distance > 3)
         {
+            following = true;
             Vector3 direction = playerPosition - transform.position;
+            direction.y = 0;
             direction.z = 0;
+            direction = direction.normalized;
             transform.position += direction * Time.deltaTime * speed;
             Flip(direction.x);
+        }
+        else
+        {
+            following = false;
         }
     }
 
