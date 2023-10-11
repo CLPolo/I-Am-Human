@@ -108,8 +108,8 @@ GameObject:
   - component: {fileID: 7522277464662625292}
   - component: {fileID: 7522277464662625293}
   - component: {fileID: 4434998664173807893}
-  m_Layer: 0
-  m_Name: player
+  m_Layer: 9
+  m_Name: player w audio
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,15 +224,28 @@ MonoBehaviour:
   - {fileID: -4697495719950502320, guid: db2dffa55fef88b48b6ede6e1ab13ed7, type: 3}
   DefaultSprite: {fileID: 540009516403537375, guid: db2dffa55fef88b48b6ede6e1ab13ed7,
     type: 3}
-  AudioSource: {fileID: 0}
-  footstepsWalk: []
-  footstepsRun: []
+  AudioSource: {fileID: 4434998664173807893}
+  footstepsWalk:
+  - {fileID: 8300000, guid: 597723eb95e87cb419a6ad5d2b03d8f1, type: 3}
+  - {fileID: 8300000, guid: 3eefb18a716d9e8469742389d0f8d567, type: 3}
+  - {fileID: 8300000, guid: b2c2e73425522654d811a1e3439e1e97, type: 3}
+  - {fileID: 8300000, guid: e5df9574e9faedc4ab110e2ef5710c54, type: 3}
+  - {fileID: 8300000, guid: 5afc7b729a1cf034a8918b0cdb17c828, type: 3}
+  footstepsRun:
+  - {fileID: 8300000, guid: 4c2ecff679eed1e6aae06e09c4872b7c, type: 3}
+  - {fileID: 8300000, guid: cb840df478e783ec4bcad0e61e9c92a3, type: 3}
+  - {fileID: 8300000, guid: 0b3f177ff9760baf1ba1dd9faa2afcd8, type: 3}
+  - {fileID: 8300000, guid: 0dc2b55fb712eac8d8aa7bd93219d9d6, type: 3}
+  - {fileID: 8300000, guid: ced0c814f5954dcba8d651c92e3e08d1, type: 3}
+  - {fileID: 8300000, guid: 3de624c35a6d2422a949e051aaafb8f0, type: 3}
+  - {fileID: 8300000, guid: e7930902734335413acdc95705622952, type: 3}
+  - {fileID: 8300000, guid: 550b864836ed71906a06ffa9fc57bee2, type: 3}
   flashlight: {fileID: 3206768847118457720}
   IsPushing: 0
   isRunning: 0
   isHiding: 0
   hasFlashlight: 0
-  Logic: {fileID: 0}
+  Logic: {fileID: 2565132903095338983, guid: af38ee2e4ec348c719f8875bbbbc0cc3, type: 3}
 --- !u!61 &7522277464662625290
 BoxCollider2D:
   m_ObjectHideFlags: 0

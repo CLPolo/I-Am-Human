@@ -623,7 +623,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &604598977
 GameObject:
@@ -812,7 +812,7 @@ Transform:
   m_LocalScale: {x: 4.2959, y: 4.2959, z: 4.2959}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &792291024
 GameObject:
@@ -1178,7 +1178,7 @@ PrefabInstance:
     - target: {fileID: 7522277464662625303, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: m_Name
-      value: player w audio
+      value: player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58a2ae1401824a637aece98bdc2381cd, type: 3}

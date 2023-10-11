@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 7522277464662625303, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: m_Name
-      value: player w audio
+      value: player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58a2ae1401824a637aece98bdc2381cd, type: 3}

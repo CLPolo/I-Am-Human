@@ -375,7 +375,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2565132903095338982, guid: af38ee2e4ec348c719f8875bbbbc0cc3,
+          type: 3}
         m_MethodName: TogglePause
         m_Mode: 1
         m_Arguments:
