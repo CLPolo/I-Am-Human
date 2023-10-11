@@ -31,12 +31,12 @@ public class Sister : AnimatedEntity
     public float maxTimeBetweenBarks = 30f;
     public float minTimeBetweenBarks = 10f;
     public List<AudioClip> barks;
-    public AudioSource nextBark;
+    private AudioSource sisterAudio;
 
     // Start is called before the first frame update
     void Start()
     {
-        nextBark = GetComponent<AudioSource>();
+        sisterAudio = GetComponent<AudioSource>();
         BarkReset();  // Bark will happen randomly every 10-30 seconds
         AnimationSetup();
     }
@@ -70,9 +70,9 @@ public class Sister : AnimatedEntity
     private void Bark()
     {
         barkTimer += Time.deltaTime;
-        if (barkTimer > barkLimit)
+        if (barkTimer > barkLimit && sisterAudio != null)
         {
-            nextBark.PlayOneShot(nextBark.clip);
+            sisterAudio.PlayOneShot(sisterAudio.clip);
             BarkReset();
         }
     }
@@ -81,7 +81,9 @@ public class Sister : AnimatedEntity
     {
         barkTimer = 0f;
         barkLimit = Random.Range(minTimeBetweenBarks, maxTimeBetweenBarks);  // This can be adjusted if it's too often/not enough
-        nextBark.clip = barks[(int)Random.Range(0, barks.Count-0.1f)];
-        Debug.Log("Next sound effect: " + nextBark.clip.ToString());
+        if (barks.Count > 0 && sisterAudio != null)
+        {
+            sisterAudio.clip = barks[(int)Random.Range(0, barks.Count - 0.1f)];
+        }
     }
 }
