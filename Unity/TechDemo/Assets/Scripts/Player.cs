@@ -193,16 +193,18 @@ public class Player : AnimatedEntity
             isHiding = true;    
             var hideablePosition = Hideable.transform.position;
             Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, 1);
-            if (!isHiding)
+            if (currentAnimation != "hiding")
             {
                 InterruptAnimation(hiding, true);
             }
             transform.position += Vector3.right * 0.0001f;
+            currentAnimation = "hiding";
         }
         else if (isHiding)  // unhides only if you were hiding
         {
             Unhide(Hideable);
             ResetAnimationCycle();
+            currentAnimation = "default";
         }
     }
 

@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 134918580}
   - component: {fileID: 134918578}
   - component: {fileID: 134918579}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: NewBox
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -2.51}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -197,7 +197,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 0.01, y: 0.01}
   m_EdgeRadius: 0
 --- !u!212 &134918580
 SpriteRenderer:
@@ -468,14 +468,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractableScreen: {fileID: 486998721}
-  InfoScreen: {fileID: 0}
-  InfoMessages: []
   InteractMessage: Press and Hold 'Left Ctrl' to Run!
-  InfoTime: 3
   InteractKey: 0
   ShowPromptOnce: 0
+  InfoScreen: {fileID: 0}
+  InfoMessages: []
+  InfoTime: 3
+  FlashbackImages: []
+  FlashbackScreen: {fileID: 0}
+  FlashbackTime: 4
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,6 +1037,9 @@ MonoBehaviour:
   DeathScreen: {fileID: 0}
   PauseMenu: {fileID: 0}
   IsPaused: 0
+  trappedText: {fileID: 0}
+  isTrapped: 0
+  mashTimer: 1
 --- !u!4 &1884996862
 Transform:
   m_ObjectHideFlags: 0
@@ -1110,6 +1115,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625290, guid: 49828bfe6858f634bb74b7f8468d901c,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.44342917
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625290, guid: 49828bfe6858f634bb74b7f8468d901c,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0068427995
       objectReference: {fileID: 0}
     - target: {fileID: 7522277464662625292, guid: 49828bfe6858f634bb74b7f8468d901c,
         type: 3}
