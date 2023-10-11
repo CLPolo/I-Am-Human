@@ -205,7 +205,7 @@ public class Player : AnimatedEntity
             speed = sneakSpeed;
             isHiding = true;    
             var hideablePosition = Hideable.transform.position;
-            Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, 1);
+            Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y - 0.02f, 1);
             if (currentAnimation != "hiding")
             {
                 InterruptAnimation(hiding, true);
