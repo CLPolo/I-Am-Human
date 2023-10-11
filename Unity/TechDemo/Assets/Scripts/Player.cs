@@ -12,6 +12,7 @@ public class Player : AnimatedEntity
     public const float pushSpeed = 2.5f;
     public const float defaultSpeed = 5f;
     public const float runSpeed = 9f;
+    private Rigidbody2D rb; // ------------------> RigidBody2D. Will be used to access it's velocity property to check for movement.
 
     [Header("Animation Cycles")]
     public List<Sprite> walkCycle;  
@@ -23,7 +24,7 @@ public class Player : AnimatedEntity
     public Sprite DefaultSprite;
 
     [Header("Sound")]
-    //public AudioSource AudioSource;
+    public AudioSource AudioSource;
     public List<AudioClip> footstepsWalk;
     public List<AudioClip> footstepsRun;
 
@@ -46,32 +47,37 @@ public class Player : AnimatedEntity
     public bool hasFlashlight = false;
 
     [Header("Other Objects")]
-    public LogicScript logicScript;
     public GameObject Logic;
+    private LogicScript logicScript;
+    private Light lightCone;
 
     void Start()
     {
-        AnimationSetup();
         logicScript = Logic.GetComponent<LogicScript>();
+        rb = GetComponent<Rigidbody2D>();
+        lightCone = flashlight.GetComponent<Light>();
+        AnimationSetup();
     }
 
     // Update is called once per frame
     void Update()
     {
         checkMovement();
-        //checkAudio();
+        checkAudio();
         CheckPushing();
         CheckRunning();
         CheckTrapped();
-        UseFlashlight();
+        checkFlashlight();
         AnimationUpdate();
+        //print(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
+
     void checkMovement()
     {   
         // Move left
         if (Input.GetKey(KeyCode.A) && !logicScript.IsPaused)
         {
-            transform.position += Vector3.left * Time.deltaTime * speed;
+            rb.velocity = Vector2.left * speed;
             isWalking = true;
             movingRight = false;
             CheckFlip();
@@ -80,7 +86,7 @@ public class Player : AnimatedEntity
         // Move right
         if (Input.GetKey(KeyCode.D) && !logicScript.IsPaused)
         {
-            transform.position += Vector3.right * Time.deltaTime * speed;
+            rb.velocity = Vector2.right * speed;
             isWalking = true;
             movingRight = true;
             CheckFlip();
@@ -88,6 +94,7 @@ public class Player : AnimatedEntity
         if((!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) || logicScript.IsPaused)
         {
             isWalking = false;
+            rb.velocity *= Vector2.zero;
         }
     }
 
@@ -108,40 +115,54 @@ public class Player : AnimatedEntity
                     transform.eulerAngles = new Vector3(0, -135, 0);
                 }
             }
-        } else {
+        } else if (!(isRunning || isWalking || isHiding)) {
             transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
             speed = defaultSpeed;  // let the man walk
         }
     }
 
-    //void checkAudio()
-    //{
-    //    if(!logicScript.IsPaused)
-    //    {
-    //        playFootfall();
-    //    } else 
-    //    {
-    //        AudioSource.Stop();
-    //    }
-    //}   
+    void checkAudio()
+    {
+        if (AudioSource != null)
+        {
+            if (!logicScript.IsPaused)
+            {
+                playFootfall();
+            }
+            else
+            {
+                AudioSource?.Stop();
+            }
+        }
+    }   
 
-    //void playFootfall()
-    //{
-    //    if(!AudioSource.isPlaying)
-    //    {
-    //        if(isWalking) 
-    //        {
-    //            AudioSource.PlayOneShot(footstepsWalk[Random.Range(0, footstepsWalk.Capacity)]);
-    //        }
-    //}       if(isRunning){}
-    //}
+    void playFootfall()
+    {
+        if(AudioSource != null && !AudioSource.isPlaying)
+        {
+            if(isWalking) 
+            {
+            AudioSource.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)]);
+            }
+                   
+            if(isRunning){}
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "TrapArmed")
+        if (collision.gameObject.tag == "Bad" && !isHiding)
+        {
+            // This is when the monster sees you and you are not behind the box
+            // Gameover can go here! For now I just freeze them
+            speed = 0f;
+            //BadGuy.speed = 0f;
+            logicScript.Death();
+        }
+        else if (collision.gameObject.tag == "TrapArmed")
         {
             logicScript.isTrapped = true;
-            collision.gameObject.tag = "TrapDisarmed";  // This makes it so the trap is disarmed when player stops moving
+            collision.gameObject.tag = "TrapDisarmed";
         }
     }
 
@@ -151,14 +172,6 @@ public class Player : AnimatedEntity
         if (collision.gameObject.tag == "Hideable" || collision.gameObject.tag == "Box")
         {
             CheckHiding(Hideable);
-        }
-        if (collision.gameObject.tag == "Bad" && !isHiding)
-        {
-            // This is when the monster sees you and you are not behind the box
-            // Gameover can go here! For now I just freeze them
-            speed = 0f;
-            //BadGuy.speed = 0f;
-            logicScript.Death();
         }
     }
 
@@ -270,22 +283,30 @@ public class Player : AnimatedEntity
         }
     }
 
-    private void UseFlashlight()
+    private void checkFlashlight()
     {
-        if (hasFlashlight && Input.GetKey(KeyCode.F))
+
+        //turn light on and off
+        if (hasFlashlight && Input.GetKeyDown(KeyCode.F))
         {
-            // The player can use the flashlight if they have picked it up.
-            // The flashlight follows the mouse and can be turned off and on with F
-            Vector3 flashlightRotation = flashlight.transform.localEulerAngles;
-            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.localPosition;
-            float angle = transform.localScale.x < 0 ? Vector2.SignedAngle(direction, Vector2.left) : Vector2.SignedAngle(Vector2.right, direction);
-            if (Math.Abs(angle) < 85)
-            {
-                flashlight.transform.localRotation = Quaternion.Euler(-angle, flashlightRotation.y, flashlightRotation.z);
+            if (lightCone.range > 0) {
+                lightCone.range = 0;
+            } else {
+                lightCone.range = 50;
             }
-            flashlight.GetComponent<Light>().enabled = true;
-        } else if (flashlight?.GetComponent<Light>() != null) {
-            flashlight.GetComponent<Light>().enabled = false;
+        }
+        float angle;
+        //update rotation of flashlight
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 dir = mousePos - flashlight.transform.position;
+        
+        if(facingRight)
+        {
+            angle = Vector2.SignedAngle(dir, Vector2.right);
+            flashlight.transform.eulerAngles = new Vector3(angle, 90, 0);
+        } else {
+            angle = Vector2.SignedAngle(Vector2.left, dir);
+            flashlight.transform.eulerAngles = new Vector3(angle, -90, 0);
         }
     }
 }

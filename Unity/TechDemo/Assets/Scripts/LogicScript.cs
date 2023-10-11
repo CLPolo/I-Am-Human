@@ -15,7 +15,7 @@ public class LogicScript : MonoBehaviour
     // TRAP
     public GameObject trappedText;
     public bool isTrapped = false;
-    public float mashTimer = 1f;  // If you don't mash for 1 seconds you die
+    public float mashTimer = 1.5f;  // If you don't mash for 1 seconds you die
 
 
     // Start is called before the first frame update
