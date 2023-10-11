@@ -49,19 +49,13 @@ public class Player : AnimatedEntity
     [Header("Other Objects")]
     public GameObject Logic;
     private LogicScript logicScript;
-    private GameObject self;
-    private GameObject lightSource;
     private Light lightCone;
 
     void Start()
-    {   
-        self = GameObject.Find("Player");
+    {
         logicScript = Logic.GetComponent<LogicScript>();
-        rb = self.GetComponent<Rigidbody2D>();
-        
-        flashlight = GameObject.Find("Flash Light");
-        lightCone = self.GetComponentInChildren<Light>();
-        lightSource = GameObject.Find("Flashlight Light");
+        rb = GetComponent<Rigidbody2D>();
+        lightCone = flashlight.GetComponent<Light>();
         AnimationSetup();
     }
 
@@ -134,13 +128,13 @@ public class Player : AnimatedEntity
             playFootfall();
         } else 
         {
-            AudioSource.Stop();
+            AudioSource?.Stop();
         }
     }   
 
     void playFootfall()
     {
-        if(!AudioSource.isPlaying)
+        if(AudioSource != null && !AudioSource.isPlaying)
         {
             if(isWalking) 
             {
@@ -280,23 +274,25 @@ public class Player : AnimatedEntity
         //turn light on and off
         if (hasFlashlight && Input.GetKeyDown(KeyCode.F))
         {
-
-            if(lightCone.range > 0) lightCone.range = 0;
-            else{lightCone.range = 50;}
-
+            Debug.Log(lightCone.range);
+            if (lightCone.range > 0) {
+                lightCone.range = 0;
+            } else {
+                lightCone.range = 50;
+            }
         }
         float angle;
         //update rotation of flashlight
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 dir = mousePos - lightSource.transform.position;
+        Vector2 dir = mousePos - flashlight.transform.position;
         
         if(facingRight)
         {
             angle = Vector2.SignedAngle(dir, Vector2.right);
-            lightSource.transform.eulerAngles = new Vector3(angle, 90, 0);
+            flashlight.transform.eulerAngles = new Vector3(angle, 90, 0);
         } else {
             angle = Vector2.SignedAngle(Vector2.left, dir);
-            lightSource.transform.eulerAngles = new Vector3(angle, -90, 0);
+            flashlight.transform.eulerAngles = new Vector3(angle, -90, 0);
         }
     }
 }
