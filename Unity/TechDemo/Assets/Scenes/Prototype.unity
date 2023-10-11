@@ -208,7 +208,7 @@ Transform:
   m_LocalScale: {x: 0.79628336, y: 0.8023509, z: 0.5050349}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &397838876
 BoxCollider2D:
@@ -249,14 +249,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractableScreen: {fileID: 1546193542}
-  InfoScreen: {fileID: 0}
-  InfoMessages: []
   InteractMessage: Press Spacebar to Hide
-  InfoTime: 3
   InteractKey: 32
   ShowPromptOnce: 0
+  InfoScreen: {fileID: 0}
+  InfoMessages: []
+  InfoTime: 3
+  FlashbackImages: []
+  FlashbackScreen: {fileID: 0}
+  FlashbackTime: 4
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!1 &486998721
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +350,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -502,7 +504,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &713074062
 GameObject:
@@ -549,6 +551,7 @@ MonoBehaviour:
   PushingCycle: []
   DefaultSprite: {fileID: -5578546100884088798, guid: e2eaa2af83836454abfa70526d0ba7c6,
     type: 3}
+  AudioSource: {fileID: 0}
   footstepsWalk: []
   footstepsRun: []
   flashlight: {fileID: 1045061756}
@@ -556,7 +559,6 @@ MonoBehaviour:
   isRunning: 0
   isHiding: 0
   hasFlashlight: 0
-  logicScript: {fileID: 1884996861}
   Logic: {fileID: 1884996860}
 --- !u!212 &713074064
 SpriteRenderer:
@@ -622,7 +624,7 @@ Transform:
   m_Children:
   - {fileID: 1045061758}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &713074066
 Rigidbody2D:
@@ -704,16 +706,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractableScreen: {fileID: 1546193542}
+  InteractMessage: Press 'E' to Interact
+  InteractKey: 101
+  ShowPromptOnce: 1
   InfoScreen: {fileID: 1181378945}
   InfoMessages:
   - This is my sister's teddy bear...
   - She must be around here somewhere, maybe I should call out to her...
-  InteractMessage: Press 'E' to Interact
   InfoTime: 2
-  InteractKey: 101
-  ShowPromptOnce: 1
+  FlashbackImages: []
+  FlashbackScreen: {fileID: 0}
+  FlashbackTime: 4
   monsterComing: 0
-  rawr: {fileID: 800236676}
 --- !u!61 &800236673
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -802,7 +806,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &800236676
 AudioSource:
@@ -979,7 +983,7 @@ Transform:
   m_LocalScale: {x: 3.7076313, y: 2.1941574, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &955395077
 GameObject:
@@ -1010,8 +1014,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 130379264}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1165,7 +1169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1181378946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1239,7 +1243,7 @@ RectTransform:
   m_Children:
   - {fileID: 1402706379}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1326,7 +1330,7 @@ Transform:
   m_LocalScale: {x: 7.6625, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1356524838
 BoxCollider2D:
@@ -1388,8 +1392,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 600, y: 100}
+  m_AnchoredPosition: {x: 19.4, y: -25.7}
+  m_SizeDelta: {x: 308.0274, y: 24.573746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1402706380
 MonoBehaviour:
@@ -1412,11 +1416,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 50
+    m_MinSize: 0
+    m_MaxSize: 187
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1466,8 +1470,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 99, y: -21}
-  m_SizeDelta: {x: 280, y: 35}
+  m_AnchoredPosition: {x: 80.8, y: 2}
+  m_SizeDelta: {x: 243.50348, y: 32.566895}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1405960491
 MonoBehaviour:
@@ -1490,12 +1494,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 16
     m_FontStyle: 3
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 50
-    m_Alignment: 0
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -1528,7 +1532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1546193543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1602,7 +1606,7 @@ RectTransform:
   m_Children:
   - {fileID: 1405960490}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1641,6 +1645,9 @@ MonoBehaviour:
   DeathScreen: {fileID: 130379260}
   PauseMenu: {fileID: 2077950729}
   IsPaused: 0
+  trappedText: {fileID: 0}
+  isTrapped: 0
+  mashTimer: 1.5
 --- !u!4 &1884996862
 Transform:
   m_ObjectHideFlags: 0
@@ -1653,7 +1660,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2077950729 stripped
 GameObject:
@@ -1792,7 +1799,7 @@ RectTransform:
   m_LocalScale: {x: 4.6492395, y: 6.9307303, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1824,7 +1831,7 @@ PrefabInstance:
     - target: {fileID: 1591859652562367726, guid: ac2b64de6caf0b54ab00c476c64724bc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1591859652562367726, guid: ac2b64de6caf0b54ab00c476c64724bc,
         type: 3}
@@ -1948,7 +1955,7 @@ PrefabInstance:
     - target: {fileID: 4184315028008763631, guid: 6e256a3b997dc2c44b60aafa9ee53082,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4184315028008763631, guid: 6e256a3b997dc2c44b60aafa9ee53082,
         type: 3}
@@ -2044,6 +2051,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Death Screen
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184315028008764179, guid: 6e256a3b997dc2c44b60aafa9ee53082,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e256a3b997dc2c44b60aafa9ee53082, type: 3}

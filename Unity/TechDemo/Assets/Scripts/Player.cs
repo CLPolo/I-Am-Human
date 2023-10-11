@@ -115,7 +115,7 @@ public class Player : AnimatedEntity
                     transform.eulerAngles = new Vector3(0, -135, 0);
                 }
             }
-        } else {
+        } else if (!(isRunning || isWalking || isHiding)) {
             transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
             speed = defaultSpeed;  // let the man walk
         }
@@ -123,12 +123,16 @@ public class Player : AnimatedEntity
 
     void checkAudio()
     {
-        if(!logicScript.IsPaused)
+        if (AudioSource != null)
         {
-            playFootfall();
-        } else 
-        {
-            AudioSource?.Stop();
+            if (!logicScript.IsPaused)
+            {
+                playFootfall();
+            }
+            else
+            {
+                AudioSource?.Stop();
+            }
         }
     }   
 
@@ -145,13 +149,8 @@ public class Player : AnimatedEntity
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        var Hideable = collision.gameObject;
-        if (collision.gameObject.tag == "Hideable" || collision.gameObject.tag == "Box")
-        {
-            CheckHiding(Hideable);
-        }
         if (collision.gameObject.tag == "Bad" && !isHiding)
         {
             // This is when the monster sees you and you are not behind the box
@@ -159,6 +158,20 @@ public class Player : AnimatedEntity
             speed = 0f;
             //BadGuy.speed = 0f;
             logicScript.Death();
+        }
+        else if (collision.gameObject.tag == "TrapArmed")
+        {
+            logicScript.isTrapped = true;
+            collision.gameObject.tag = "TrapDisarmed";
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        var Hideable = collision.gameObject;
+        if (collision.gameObject.tag == "Hideable" || collision.gameObject.tag == "Box")
+        {
+            CheckHiding(Hideable);
         }
     }
 
@@ -274,7 +287,6 @@ public class Player : AnimatedEntity
         //turn light on and off
         if (hasFlashlight && Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log(lightCone.range);
             if (lightCone.range > 0) {
                 lightCone.range = 0;
             } else {
