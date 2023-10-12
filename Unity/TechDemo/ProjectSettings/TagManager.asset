@@ -20,6 +20,7 @@ TagManager:
   - Flashlight
   - TrapArmed
   - TrapDisarmed
+  - Door
   layers:
   - Default
   - TransparentFX

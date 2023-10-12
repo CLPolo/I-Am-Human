@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,18 +27,20 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
+    // temporary linear scene progression
+    private Dictionary<string, string> nextScene = new Dictionary<string, string>()
+    {
+        { "Grab Test", "Running Area" },
+        { "Running Area", "Button Mash" },
+        { "Button Mash", "Flashlight Test" },
+        { "Flashlight Test", "Grab Test" }
+    };
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Level Exit")
+        if (other.tag == "Door")
         {
-            if (getSceneName() == "Running Area")
-            {
-                SceneManager.LoadScene("Grab Test");
-            }
-            else
-            {   
-                SceneManager.LoadScene("Running Area");
-            }    
+            SceneManager.LoadScene(nextScene[getSceneName()]);
         }
     }
 

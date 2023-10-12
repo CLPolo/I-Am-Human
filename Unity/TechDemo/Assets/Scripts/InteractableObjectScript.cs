@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System;
-using UnityEditor.U2D;
 
 public class InteractableObjectScript : MonoBehaviour
 {

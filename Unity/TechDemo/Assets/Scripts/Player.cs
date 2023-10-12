@@ -285,7 +285,6 @@ public class Player : AnimatedEntity
 
     private void checkFlashlight()
     {
-
         //turn light on and off
         if (hasFlashlight && Input.GetKeyDown(KeyCode.F))
         {
