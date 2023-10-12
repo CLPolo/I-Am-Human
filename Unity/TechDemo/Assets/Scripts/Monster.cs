@@ -25,10 +25,9 @@ public class Monster : MonoBehaviour
             // The teddy has been interacted with, start walking to the left slowly
             transform.position += Vector3.left * Time.deltaTime * speed;
         }
-        if (transform.position.x < -10)
+        if (transform.position.x < -15)
         {
-            teddy.monsterComing = false;
-            transform.position = originalPosition;
+            Destroy(gameObject);
         }
     }
 }

@@ -30,15 +30,16 @@ public class LevelLoader : MonoBehaviour
     // temporary linear scene progression
     private Dictionary<string, string> nextScene = new Dictionary<string, string>()
     {
+        { "Prototype", "Grab Test" },
         { "Grab Test", "Running Area" },
         { "Running Area", "Button Mash" },
         { "Button Mash", "Flashlight Test" },
-        { "Flashlight Test", "Grab Test" }
+        { "Flashlight Test", "Prototype" }
     };
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Door")
+        if (other.tag == "Door" && !other.GetComponent<Door>().isLocked)
         {
             SceneManager.LoadScene(nextScene[getSceneName()]);
         }

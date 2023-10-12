@@ -51,6 +51,8 @@ public class Player : AnimatedEntity
     private LogicScript logicScript;
     private Light lightCone;
 
+    private int keyCount = 0;
+
     void Start()
     {
         logicScript = Logic.GetComponent<LogicScript>();
@@ -163,6 +165,20 @@ public class Player : AnimatedEntity
         {
             logicScript.isTrapped = true;
             collision.gameObject.tag = "TrapDisarmed";
+        }
+        else if (collision.gameObject.tag == "Key")
+        {
+            Destroy(collision.gameObject);
+            keyCount++;
+        }
+        else if (collision.gameObject.tag == "Door")
+        {
+            Door door = collision.gameObject.GetComponent<Door>();
+            if (door.isLocked && keyCount > 0)
+            {
+                door.isLocked = false;
+                keyCount--;
+            }
         }
     }
 
