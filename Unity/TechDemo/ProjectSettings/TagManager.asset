@@ -20,6 +20,8 @@ TagManager:
   - Flashlight
   - TrapArmed
   - TrapDisarmed
+  - Flashback
+  - Target
   layers:
   - Default
   - TransparentFX
