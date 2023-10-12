@@ -6,15 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Title Screen.unity
+    guid: 550578b48eb8d15419d92ef369fc4394
+  - enabled: 1
+    path: Assets/Scenes/Grab Test.unity
+    guid: 8644de6b31fa42847b2c6d01702f0e1e
+  - enabled: 1
     path: Assets/Scenes/Flashlight Test.unity
     guid: 7412ee7457c810d498125afdd14a2f30
   - enabled: 1
     path: Assets/Scenes/Button Mash.unity
     guid: 6d47783a8e51a954888ee1d8270f7328
   - enabled: 1
-    path: Assets/Scenes/Grab Test with door.unity
-    guid: f0ae84852b2810449b4349a6c9b5d19b
-  - enabled: 1
     path: Assets/Scenes/Running Area.unity
     guid: 13cffeafbca2a204699e81c0ea80d6ed
+  - enabled: 1
+    path: Assets/Scenes/Prototype.unity
+    guid: 2a37a4c046a90194e92ecec47caac2c5
   m_configObjects: {}

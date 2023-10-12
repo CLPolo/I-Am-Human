@@ -23,6 +23,7 @@ TagManager:
   - Door
   - Flashback
   - Target
+  - Key
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PushLogicScript : MonoBehaviour
 {
@@ -10,7 +12,6 @@ public class PushLogicScript : MonoBehaviour
     public Transform boxHolder;
     public float rayDist;  // distance of raycast (distance between player and obejct where push action is possible)
     private Vector3 forward;
-
     [Header("Outline Display")]
     public Sprite Outline;
     public Sprite Default;
@@ -20,18 +21,16 @@ public class PushLogicScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
     }
 
     // Update is called once per frame
     void Update()
     {
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);  // uses raycast starting at GrabDetect to get object info
-        
+
         if (grabCheck.collider != null && grabCheck.collider.tag == "Box")  // if there is an object colliding AND that object is a box
         {
             GameObject box = grabCheck.collider.gameObject;
-            Debug.Log(box.name);
             spritesToReset.Add(box);
             box.GetComponent<SpriteRenderer>().sprite = Outline;  // if box in range, shows outline
             if (Input.GetKey(KeyCode.LeftShift))  // if player is pressing space (pushing)

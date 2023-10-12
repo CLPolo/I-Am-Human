@@ -32,7 +32,7 @@ public class InteractableObjectScript : MonoBehaviour
 
     // Below Should be removed and placed into monster script
     public bool monsterComing = false;  // This is for activating Monster.cs
-    //public AudioSource rawr;
+    public AudioSource rawr;
 
 
     // Start is called before the first frame update
@@ -139,8 +139,8 @@ public class InteractableObjectScript : MonoBehaviour
         InfoScreen.SetActive(false);
 
         // Below Should be removed and placed somewhere in monster script
-        //monsterComing = true;
-        //rawr.Play();
+        monsterComing = true;
+        rawr.Play();
     }
 
     private IEnumerator DisplayFlashback()
