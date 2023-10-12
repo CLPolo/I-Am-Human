@@ -84,7 +84,7 @@ public class LogicScript : MonoBehaviour
     {
         // Pauses game
         // Note: When we add enemy script, enemy movement should also be stopped if paused
-        PauseMenu.SetActive(!IsPaused);
+        PauseMenu.SetActive(IsPaused);
         IsPaused = !IsPaused;  // will prevent player from moving while paused
 
         AudioListener.pause = IsPaused;
