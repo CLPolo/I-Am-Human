@@ -21,6 +21,8 @@ TagManager:
   - TrapArmed
   - TrapDisarmed
   - Door
+  - Flashback
+  - Target
   layers:
   - Default
   - TransparentFX
