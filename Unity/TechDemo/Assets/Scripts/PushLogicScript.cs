@@ -31,6 +31,7 @@ public class PushLogicScript : MonoBehaviour
         if (grabCheck.collider != null && grabCheck.collider.tag == "Box")  // if there is an object colliding AND that object is a box
         {
             GameObject box = grabCheck.collider.gameObject;
+            Debug.Log(box.name);
             spritesToReset.Add(box);
             box.GetComponent<SpriteRenderer>().sprite = Outline;  // if box in range, shows outline
             if (Input.GetKey(KeyCode.LeftShift))  // if player is pressing space (pushing)
