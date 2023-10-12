@@ -5,43 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Grab Test.unity
-    guid: f0ae84852b2810449b4349a6c9b5d19b
-  - enabled: 0
-    path: Assets/Scenes/Prototype.unity
-    guid: 2a37a4c046a90194e92ecec47caac2c5
-  - enabled: 0
-    path: Assets/Scenes/Grab Test.unity
+    path: Assets/Scenes/Flashlight Test.unity
+    guid: 7412ee7457c810d498125afdd14a2f30
+  - enabled: 1
+    path: Assets/Scenes/Button Mash.unity
+    guid: 6d47783a8e51a954888ee1d8270f7328
+  - enabled: 1
+    path: Assets/Scenes/Grab Test with door.unity
     guid: f0ae84852b2810449b4349a6c9b5d19b
   - enabled: 1
     path: Assets/Scenes/Running Area.unity
-    guid: cf00e547b19e3d149be84184efa89f37
+    guid: 13cffeafbca2a204699e81c0ea80d6ed
   m_configObjects: {}
