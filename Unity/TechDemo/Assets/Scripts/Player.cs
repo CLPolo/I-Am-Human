@@ -144,7 +144,7 @@ public class Player : AnimatedEntity
         {
             if(isWalking) 
             {
-                if (Input.GetKey(KeyCode.LeftControl))
+                 if (Input.GetKey(KeyCode.LeftControl) && isRunning)
                 {
                     AudioSource.PlayOneShot(footstepsRun[UnityEngine.Random.Range(0, footstepsWalk.Capacity)]);
                 } else {
