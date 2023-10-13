@@ -7,12 +7,11 @@ public class Flashlight : MonoBehaviour
     public float Framerate = 5f; //frames per second
     public float movespeed = 1f;
 
+    public GameObject canvas;
+
     //private animation stuff
     private float animationTimer;  //current number of seconds since last animation frame update
     private float animationTimerMax;  //max number of seconds for each frame, defined by Framerate
-
-    //private state bools
-    private bool isOn = false;
 
     private GameObject lightCone;
 
@@ -40,6 +39,10 @@ public class Flashlight : MonoBehaviour
             // Play pickup sound here if we have one
             Player player = collision.gameObject.GetComponent<Player>();
             player.hasFlashlight = true;  // The player should now have the flashlight
+            if (canvas != null)
+            {
+                canvas.SetActive(true);
+            }
         }
     }
 

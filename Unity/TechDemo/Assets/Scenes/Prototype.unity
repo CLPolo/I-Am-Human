@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractableScreen: {fileID: 1546193542}
-  InteractMessage: Press Spacebar to Hide
+  InteractMessage: Hold Spacebar to Hide
   InteractKey: 32
   ShowPromptOnce: 0
   InfoScreen: {fileID: 0}

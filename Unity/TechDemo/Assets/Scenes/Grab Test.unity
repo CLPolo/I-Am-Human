@@ -827,7 +827,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press SHIFT To Push
+  m_Text: Hold SHIFT To Push / Pull
 --- !u!222 &788043300
 CanvasRenderer:
   m_ObjectHideFlags: 0
