@@ -144,10 +144,15 @@ public class Player : AnimatedEntity
         {
             if(isWalking) 
             {
-            AudioSource.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)]);
-            }
-                   
-            if(isRunning){}
+                 if (Input.GetKey(KeyCode.LeftControl) && isRunning)
+                {
+                    AudioSource.PlayOneShot(footstepsRun[UnityEngine.Random.Range(0, footstepsWalk.Capacity)]);
+                } else {
+                    AudioSource.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)]);
+
+                }
+
+           }
         }
     }
 
