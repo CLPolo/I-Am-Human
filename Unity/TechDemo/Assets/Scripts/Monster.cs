@@ -23,7 +23,6 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        Debug.Log(teddy.monsterComing);
         if (teddy.monsterComing && !logicScript.IsPaused)
         {
             if(!audioSource.isPlaying){ audioSource.Play(); }
