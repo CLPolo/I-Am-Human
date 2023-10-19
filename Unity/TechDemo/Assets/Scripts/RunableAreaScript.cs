@@ -21,12 +21,12 @@ public class RunableAreaScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Player.GetComponent<Player>().isRunning = true;
+        Player.GetComponent<Player>().state = PlayerState.Running;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Player.GetComponent<Player>().isRunning = false;
+        Player.GetComponent<Player>().state = PlayerState.Walking;
     }
 
 }

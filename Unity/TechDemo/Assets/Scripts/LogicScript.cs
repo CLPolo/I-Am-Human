@@ -6,10 +6,24 @@ using UnityEngine.SceneManagement;
 
 public class LogicScript : MonoBehaviour
 {
-
     public GameObject DeathScreen;
     public GameObject PauseMenu;
-    
+
+    private static LogicScript _instance;
+    public static LogicScript Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject LM = Instantiate(Resources.Load("LogicManager", typeof(GameObject))) as GameObject;
+                DontDestroyOnLoad(LM);
+                _instance = LM.GetComponent<LogicScript>();
+            }
+            return _instance;
+        }
+    }
+
     public bool IsPaused = false;  // true if game is paused
 
     // TRAP
@@ -21,14 +35,16 @@ public class LogicScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (DeathScreen != null)
+        if (Instance != null && Instance != this)
         {
-            DeathScreen?.SetActive(false);  // Don't want to be dead at the start lol
+            Debug.Log(1);
+            Destroy(gameObject);
         }
-        if (trappedText != null)
-        {
-            trappedText?.SetActive(false);
-        }
+
+        Debug.Log(2);
+        Debug.Log(DeathScreen.name);
+        DeathScreen.SetActive(false);  // Don't want to be dead at the start lol
+        PauseMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,7 +66,7 @@ public class LogicScript : MonoBehaviour
 
     public void MashTrap()
     {
-        trappedText.SetActive(true);
+        //trappedText.SetActive(true);
         mashTimer -= Time.deltaTime;
         if (mashTimer <= 0)
         {
@@ -72,12 +88,11 @@ public class LogicScript : MonoBehaviour
         }
     }
 
-    public void Death()
+    public void Death(bool val = true)
     {   
         // Activates death screen
-        IsPaused = true;  // will prevent player from moving after death
-        DeathScreen.SetActive(true);
-
+        IsPaused = val;  // will prevent player from moving after death
+        DeathScreen.SetActive(val);
         AudioListener.pause = IsPaused;
     }
     public void TogglePause()
@@ -93,8 +108,17 @@ public class LogicScript : MonoBehaviour
     public void RestartGame()
     {
         // Restarts the game by resetting scene
-        AudioListener.pause = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        isTrapped = false;
+        mashTimer = 1.5f;
+        System.Threading.Thread.Sleep(100);
+        Death(false);
     }
 
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+        System.Threading.Thread.Sleep(100);
+        TogglePause();
+    }
 }

@@ -6,17 +6,16 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     public InteractableObjectScript teddy;
-    public GameObject Logic;
     public float speed = 1.5f;
 
     private Vector3 originalPosition = new Vector3(10, 0, 3);
-    private LogicScript logicScript = null;
+    private LogicScript logic;
     private AudioSource audioSource;
     private Door door;
     // Start is called before the first frame update
     void Start()
     {
-        logicScript = Logic.GetComponent<LogicScript>();
+        logic = LogicScript.Instance;
         audioSource = GetComponent<AudioSource>();
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
@@ -30,7 +29,7 @@ public class Monster : MonoBehaviour
     void Update()
     {   
 
-        if (teddy.monsterComing && !logicScript.IsPaused)
+        if (teddy.monsterComing && !logic.IsPaused)
         {
             //kind of jank; only reveal the monster and the door after the teddy has been interacted with
             GetComponent<BoxCollider2D>().enabled = true;

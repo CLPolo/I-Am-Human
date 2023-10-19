@@ -4,8 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+public enum PlayerState
+{
+    Idle = 0,
+    Walking = 1,
+    Running = 2,
+    Hiding = 3,
+    Trapped = 4,
+    Pushing = 5,
+}
+
 public class Player : AnimatedEntity
 {
+    private static Player _instance;
+    public static Player Instance { get { return _instance; } }
+
     [Header("Movement")]
     public float speed = 5f;
     public float sneakSpeed = 0.8f;
@@ -31,31 +44,34 @@ public class Player : AnimatedEntity
     [Header("Items")]
     public GameObject flashlight;
 
-
     //boolean state based variables
     //private bool isHiding = false;
     private bool facingRight = true;
     private bool movingRight = true;
-    private bool isWalking = false;
     private string currentAnimation;
 
     [Header("State")]
-    public bool IsPushing = false;
-    public bool isRunning = false;
-    public bool isHiding = false;
+    public PlayerState state;
     private bool wiggleRight = true;
     public bool hasFlashlight = false;
 
     [Header("Other Objects")]
-    public GameObject Logic;
-    private LogicScript logicScript;
+    private LogicScript logic;
     private Light lightCone;
 
     private int keyCount = 0;
 
     void Start()
     {
-        logicScript = Logic.GetComponent<LogicScript>();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        } else {
+            _instance = this;
+        }
+
+        logic = LogicScript.Instance;
+
         rb = GetComponent<Rigidbody2D>();
         lightCone = flashlight.GetComponent<Light>();
         AnimationSetup();
@@ -64,11 +80,11 @@ public class Player : AnimatedEntity
     // Update is called once per frame
     void Update()
     {
+        CheckTrapped();
         checkMovement();
         checkAudio();
         CheckPushing();
         CheckRunning();
-        CheckTrapped();
         checkFlashlight();
         AnimationUpdate();
         //print(Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -77,32 +93,40 @@ public class Player : AnimatedEntity
     void checkMovement()
     {   
         // Move left
-        if (Input.GetKey(KeyCode.A) && !logicScript.IsPaused)
+        if (Input.GetKey(KeyCode.A) && !logic.IsPaused)
         {
             rb.velocity = Vector2.left * speed;
-            isWalking = true;
+            if (state != PlayerState.Hiding) {
+                state = PlayerState.Walking;
+            }
             movingRight = false;
             CheckFlip();
         }
 
         // Move right
-        if (Input.GetKey(KeyCode.D) && !logicScript.IsPaused)
+        if (Input.GetKey(KeyCode.D) && !logic.IsPaused)
         {
             rb.velocity = Vector2.right * speed;
-            isWalking = true;
+            if (state != PlayerState.Hiding)
+            {
+                state = PlayerState.Walking;
+            }
             movingRight = true;
             CheckFlip();
         }
-        if((!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) || logicScript.IsPaused)
+        if((!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) || logic.IsPaused)
         {
-            isWalking = false;
+            if (state != PlayerState.Hiding)
+            {
+                state = PlayerState.Walking;
+            }
             rb.velocity *= Vector2.zero;
         }
     }
 
     void CheckTrapped()
     {
-        if (logicScript.isTrapped)
+        if (logic.isTrapped)
         {
             speed = 0;  // Player cannot move while trapped
             if (Input.GetKeyDown(KeyCode.Space))
@@ -117,7 +141,7 @@ public class Player : AnimatedEntity
                     transform.eulerAngles = new Vector3(0, -135, 0);
                 }
             }
-        } else if (!(isRunning || isWalking || isHiding)) {
+        } else if (state != PlayerState.Running && state != PlayerState.Walking && state != PlayerState.Hiding) {
             transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
             speed = defaultSpeed;  // let the man walk
         }
@@ -127,7 +151,7 @@ public class Player : AnimatedEntity
     {
         if (AudioSource != null)
         {
-            if (!logicScript.IsPaused)
+            if (!logic.IsPaused)
             {
                 playFootfall();
             }
@@ -142,9 +166,9 @@ public class Player : AnimatedEntity
     {
         if(AudioSource != null && !AudioSource.isPlaying)
         {
-            if(isWalking) 
+            if(state == PlayerState.Walking) 
             {
-                 if (Input.GetKey(KeyCode.LeftControl) && isRunning)
+                 if (Input.GetKey(KeyCode.LeftControl) && state == PlayerState.Running)
                 {
                     AudioSource.PlayOneShot(footstepsRun[UnityEngine.Random.Range(0, footstepsWalk.Capacity)]);
                 } else {
@@ -158,17 +182,18 @@ public class Player : AnimatedEntity
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Bad" && !isHiding)
+        if (collision.gameObject.tag == "Bad" && state != PlayerState.Hiding)
         {
             // This is when the monster sees you and you are not behind the box
             // Gameover can go here! For now I just freeze them
             speed = 0f;
             //BadGuy.speed = 0f;
-            logicScript.Death();
+            logic.Death();
         }
         else if (collision.gameObject.tag == "TrapArmed")
         {
-            logicScript.isTrapped = true;
+            logic.isTrapped = true;
+            state = PlayerState.Trapped;
             collision.gameObject.tag = "TrapDisarmed";
         }
         else if (collision.gameObject.tag == "Key")
@@ -201,7 +226,7 @@ public class Player : AnimatedEntity
         if (collision.gameObject.tag == "Hideable" || collision.gameObject.tag == "Box")
         {
             var hideable = collision.gameObject;
-            if (isHiding)
+            if (state == PlayerState.Hiding)
             {
                 // remove fog
                 Unhide(hideable);
@@ -214,7 +239,7 @@ public class Player : AnimatedEntity
         speed = defaultSpeed;
         var hideablePosition = Hideable.transform.position;
         Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, -1);
-        isHiding = false;
+        state = PlayerState.Idle;
         transform.position += Vector3.left * 0.0001f;
         ResetAnimationCycle();
     }
@@ -224,7 +249,7 @@ public class Player : AnimatedEntity
         if (Input.GetKey(KeyCode.Space))
         {
             speed = sneakSpeed;
-            isHiding = true;    
+            state = PlayerState.Hiding;    
             var hideablePosition = Hideable.transform.position;
             Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, 1);
             if (currentAnimation != "hiding")
@@ -234,7 +259,7 @@ public class Player : AnimatedEntity
             transform.position += Vector3.right * 0.0001f;
             currentAnimation = "hiding";
         }
-        else if (isHiding)  // unhides only if you were hiding
+        else if (state == PlayerState.Hiding)  // unhides only if you were hiding
         {
             Unhide(Hideable);
             ResetAnimationCycle();
@@ -246,7 +271,7 @@ public class Player : AnimatedEntity
     {
         // Checks if player needs to be flipped (i.e. if the player is not facing the direction they are moving)
 
-        if (!IsPushing) // if not pushing and facing right, flips
+        if (state != PlayerState.Pushing) // if not pushing and facing right, flips
         {
             if (facingRight != movingRight) // if facing right and moving left OR facing left and moving right, flips
             {
@@ -270,7 +295,7 @@ public class Player : AnimatedEntity
     {
         // Checks if player is pushing objects and adjusts speed and animations / sprites
 
-        if (IsPushing)
+        if (state == PlayerState.Pushing)
         {
             speed = pushSpeed;
             if (currentAnimation != "pushing")
@@ -279,7 +304,7 @@ public class Player : AnimatedEntity
             }
             currentAnimation = "pushing";
         }
-        else if (!isHiding)  // can't push if hiding, but also won't switch speed back to default while player is hiding
+        else if (state != PlayerState.Hiding && state != PlayerState.Walking && state != PlayerState.Idle)  // can't push if hiding, but also won't switch speed back to default while player is hiding
         {
             speed = defaultSpeed;
             ResetAnimationCycle();
@@ -291,9 +316,9 @@ public class Player : AnimatedEntity
     {
         // Checks if player is running, and makes them run
 
-        if (!IsPushing && !isHiding)  // First checks if player is pushing an object or hiding, in which case they can't run
+        if (state != PlayerState.Pushing && state != PlayerState.Hiding)  // First checks if player is pushing an object or hiding, in which case they can't run
         {
-            if (isRunning && Input.GetKey(KeyCode.LeftControl))  // if they're pressing run button and should be running (isRunning)
+            if (state == PlayerState.Running && Input.GetKey(KeyCode.LeftControl))  // if they're pressing run button and should be running (isRunning)
             {
                 speed = runSpeed;  // updates speed to run speed
             }

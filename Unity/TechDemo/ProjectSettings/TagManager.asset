@@ -4,8 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Crate
-  - Goal
   - Enemy
   - PCGController
   - PCGComponent
@@ -24,6 +22,8 @@ TagManager:
   - Flashback
   - Target
   - Key
+  - Pause
+  - Death
   layers:
   - Default
   - TransparentFX
