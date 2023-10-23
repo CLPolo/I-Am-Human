@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - PCGController
+  - PCGComponent
+  - Hideable
+  - Floor
+  - Bad
+  - Moveable
+  - Box
+  - RunableArea
+  - Level Exit
+  - Wall
+  - Flashlight
+  - TrapArmed
+  - TrapDisarmed
+  - Door
+  - Flashback
+  - Target
+  - Key
+  - Pause
+  - Death
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Floor
+  - Entity
+  - Interactable
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
