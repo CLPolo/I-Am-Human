@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LogicScript : MonoBehaviour
 {
@@ -121,4 +122,5 @@ public class LogicScript : MonoBehaviour
         System.Threading.Thread.Sleep(100);
         TogglePause();
     }
+
 }

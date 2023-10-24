@@ -23,7 +23,10 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       transform.position = player.position + offset;
+        if (player.transform.position.x > leftBound && player.transform.position.x < rightBound)
+        {
+            transform.position = player.position + offset;  // Only change position if within bounds
+        }
 
     }
 }
