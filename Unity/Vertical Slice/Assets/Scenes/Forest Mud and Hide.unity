@@ -195,12 +195,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af38ee2e4ec348c719f8875bbbbc0cc3, type: 3}
---- !u!20 &786191277 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 3152692204756831778, guid: 7fa3c384785e55a4e89cdabe549750e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3152692203853594255}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &853453497
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +392,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1219160083
 GameObject:
@@ -468,7 +462,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 786191277}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -885,6 +879,40 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: hideCycle.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: walkCycle.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: hideCycle.Array.data[0]
+      value: 
+      objectReference: {fileID: 1432133739345923468, guid: db2dffa55fef88b48b6ede6e1ab13ed7,
+        type: 3}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: hideCycle.Array.data[1]
+      value: 
+      objectReference: {fileID: -247405591547776992, guid: db2dffa55fef88b48b6ede6e1ab13ed7,
+        type: 3}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: walkCycle.Array.data[0]
+      value: 
+      objectReference: {fileID: -3790323174320418257, guid: db2dffa55fef88b48b6ede6e1ab13ed7,
+        type: 3}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: walkCycle.Array.data[1]
+      value: 
+      objectReference: {fileID: 540009516403537375, guid: db2dffa55fef88b48b6ede6e1ab13ed7,
+        type: 3}
     - target: {fileID: 7522277464662625303, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: m_Name
