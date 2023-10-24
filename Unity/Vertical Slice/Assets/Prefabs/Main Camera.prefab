@@ -98,5 +98,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
-  leftBound: 0
-  rightBound: 0
+  leftBound: -100
+  rightBound: 100
