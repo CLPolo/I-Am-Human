@@ -96,7 +96,7 @@ public class Player : AnimatedEntity
         if (Input.GetKey(KeyCode.A) && !logic.IsPaused)
         {
             rb.velocity = Vector2.left * speed;
-            if (state != PlayerState.Hiding) {
+            if (state != PlayerState.Hiding && state != PlayerState.Pushing && state != PlayerState.Running) {
                 state = PlayerState.Walking;
             }
             movingRight = false;
@@ -107,7 +107,7 @@ public class Player : AnimatedEntity
         if (Input.GetKey(KeyCode.D) && !logic.IsPaused)
         {
             rb.velocity = Vector2.right * speed;
-            if (state != PlayerState.Hiding)
+            if (state != PlayerState.Hiding && state != PlayerState.Pushing && state != PlayerState.Running)
             {
                 state = PlayerState.Walking;
             }
@@ -116,7 +116,7 @@ public class Player : AnimatedEntity
         }
         if((!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) || logic.IsPaused)
         {
-            if (state != PlayerState.Hiding)
+            if (state != PlayerState.Hiding && state != PlayerState.Running && state != PlayerState.Walking && state != PlayerState.Pushing)
             {
                 state = PlayerState.Idle;
             }
@@ -141,7 +141,9 @@ public class Player : AnimatedEntity
                     transform.eulerAngles = new Vector3(0, -135, 0);
                 }
             }
-        } else if (state != PlayerState.Running && state != PlayerState.Walking && state != PlayerState.Hiding) {
+        } 
+        else if (state != PlayerState.Running && state != PlayerState.Walking && state != PlayerState.Hiding && state != PlayerState.Pushing)
+        {
             transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
             speed = defaultSpeed;  // let the man walk
         }
@@ -249,7 +251,7 @@ public class Player : AnimatedEntity
         if (Input.GetKey(KeyCode.Space))
         {
             speed = sneakSpeed;
-            state = PlayerState.Hiding;    
+            state = PlayerState.Hiding;
             var hideablePosition = Hideable.transform.position;
             Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, 1);
             if (currentAnimation != "hiding")
@@ -270,7 +272,6 @@ public class Player : AnimatedEntity
     private void CheckFlip()
     {
         // Checks if player needs to be flipped (i.e. if the player is not facing the direction they are moving)
-
         if (state != PlayerState.Pushing) // if not pushing and facing right, flips
         {
             if (facingRight != movingRight) // if facing right and moving left OR facing left and moving right, flips
@@ -304,7 +305,7 @@ public class Player : AnimatedEntity
             }
             currentAnimation = "pushing";
         }
-        else if (state != PlayerState.Hiding && state != PlayerState.Walking && state != PlayerState.Idle)  // can't push if hiding, but also won't switch speed back to default while player is hiding
+        else if (state != PlayerState.Pushing && state != PlayerState.Hiding && state != PlayerState.Running)  // if was pushing, resets once done
         {
             speed = defaultSpeed;
             ResetAnimationCycle();
