@@ -15,12 +15,14 @@ public class PushLogicScript : MonoBehaviour
     [Header("Outline Display")]
     public Sprite Outline;
     public Sprite Default;
+    public Player player;
 
     private List<GameObject> spritesToReset = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
+        player = Player.Instance;
     }
 
     // Update is called once per frame
@@ -35,14 +37,15 @@ public class PushLogicScript : MonoBehaviour
             box.GetComponent<SpriteRenderer>().sprite = Outline;  // if box in range, shows outline
             if (Input.GetKey(KeyCode.LeftShift))  // if player is pressing space (pushing)
             {
-                GetComponent<Player>().state = PlayerState.Pushing;
+                player.SetState(PlayerState.Pushing);
                 box.transform.parent = boxHolder;  // sets parent of box / object being pushed to boxHolder
                 box.transform.position = boxHolder.position;  // moves object being pushed to boxHolder (by center)
                 box.GetComponent<Rigidbody2D>().isKinematic = true;  // allows it to staticly move with the player based on that boxHolder position
             }
-            else
+            // if push key is not being held down and the player was pushing last frame, now they are not pushing
+            else if (player.GetState() == PlayerState.Pushing)
             {
-                GetComponent<Player>().state = PlayerState.Walking;
+                player.SetState(PlayerState.Idle);
                 box.transform.parent = null;  // removes boxHolder as parent
                 box.GetComponent<Rigidbody2D>().isKinematic = false;  // sets it back to being immovable
             }

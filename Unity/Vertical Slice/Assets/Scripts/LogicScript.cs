@@ -27,9 +27,10 @@ public class LogicScript : MonoBehaviour
 
     public bool IsPaused = false;  // true if game is paused
 
+    public Player player;
+
     // TRAP
     public GameObject trappedText;
-    public bool isTrapped = false;
     public float mashTimer = 1.5f;  // If you don't mash for 1 seconds you die
 
 
@@ -53,8 +54,12 @@ public class LogicScript : MonoBehaviour
     {
         if (!IsPaused)
         {
+            if (player == null)
+            {
+                player = Player.Instance;
+            }
             // PUT ALL LOGIC HERE
-            if (isTrapped)
+            if (player.GetState() == PlayerState.Trapped)
             {
                 MashTrap();
             }
@@ -77,7 +82,7 @@ public class LogicScript : MonoBehaviour
         else if (mashTimer >= 3)
         {
             // The player escapes!
-            isTrapped = false;
+            player.SetState(PlayerState.Idle);
             trappedText.SetActive(false);
         }
         else
@@ -110,7 +115,6 @@ public class LogicScript : MonoBehaviour
     {
         // Restarts the game by resetting scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        isTrapped = false;
         mashTimer = 1.5f;
         System.Threading.Thread.Sleep(100);
         Death(false);
