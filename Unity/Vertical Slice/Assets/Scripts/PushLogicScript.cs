@@ -42,9 +42,10 @@ public class PushLogicScript : MonoBehaviour
                 box.transform.position = boxHolder.position;  // moves object being pushed to boxHolder (by center)
                 box.GetComponent<Rigidbody2D>().isKinematic = true;  // allows it to staticly move with the player based on that boxHolder position
             }
-            else
+            // if push key is not being held down and the player was pushing last frame, now they are not pushing
+            else if (player.GetState() == PlayerState.Pushing)
             {
-                player.SetState(PlayerState.Pushing);
+                player.SetState(PlayerState.Idle);
                 box.transform.parent = null;  // removes boxHolder as parent
                 box.GetComponent<Rigidbody2D>().isKinematic = false;  // sets it back to being immovable
             }
