@@ -42,7 +42,7 @@ public class PushLogicScript : MonoBehaviour
             }
             else
             {
-                GetComponent<Player>().state = PlayerState.Pushing;
+                GetComponent<Player>().state = PlayerState.Walking;
                 box.transform.parent = null;  // removes boxHolder as parent
                 box.GetComponent<Rigidbody2D>().isKinematic = false;  // sets it back to being immovable
             }

@@ -17,6 +17,7 @@ public class InteractableObjectScript : MonoBehaviour
     public GameObject InfoScreen;  // this is the screen that displays info about object post interaction
     public List<String> InfoMessages;
     public int InfoTime = 3;  // time in seconds that info will be displayed for
+    public int DelayBySeconds = 0;  // will delay text showing up (i.e. if want text post flashback)
 
     [Header("Flashback Sequences")]
     public List<Sprite> FlashbackImages;  // all images for the flashback sequence
@@ -32,7 +33,7 @@ public class InteractableObjectScript : MonoBehaviour
 
     // Below Should be removed and placed into monster script
     public bool monsterComing = false;  // This is for activating Monster.cs
-    public AudioSource rawr;
+    public AudioSource rawr = null;
 
 
     // Start is called before the first frame update
@@ -92,8 +93,16 @@ public class InteractableObjectScript : MonoBehaviour
         if (!CurrentlyPlaying && (!HasInteracted || !ShowPromptOnce))  // if they haven't already interacted and they aren't limited to interacting once only, and not currently playing
         {
             // displays interact text
-            var interactText = InteractableScreen.GetComponentInChildren<Text>();
-            interactText.text = InteractMessage;
+            if (InteractableScreen.GetComponentInChildren<Text>() != null)
+            {
+                var interactText = InteractableScreen.GetComponentInChildren<Text>();
+                interactText.text = InteractMessage;
+            }
+            else if (InteractableScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>() != null) // allows us to use text mesh pro aswell, which looks much nicer and scales better IMO
+            {
+                var interactText = InteractableScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+                interactText.text = InteractMessage;
+            }
             Interactable();  // turns on the interact screen
         }
     }
@@ -127,20 +136,44 @@ public class InteractableObjectScript : MonoBehaviour
 
     private IEnumerator DisplayInfo()
     {
+        if (DelayBySeconds > 0)
+        {
+            yield return new WaitForSeconds(DelayBySeconds);
+        }
+        
         // Set InfoScreen to active
         InfoScreen.SetActive(true);
-        var infoText = InfoScreen.GetComponentInChildren<Text>();
-        // iterate through info messages and show all
-        foreach (var message in InfoMessages)
+
+        // I know this is bulky, will reduce it later
+        if (InfoScreen.GetComponentInChildren<Text>() != null)
         {
-            infoText.text = message;
-            yield return new WaitForSeconds(InfoTime);
+            var InfoText = InfoScreen.GetComponentInChildren<Text>();
+            // iterate through info messages and show all
+            foreach (var message in InfoMessages)
+            {
+                InfoText.text = message;
+                yield return new WaitForSeconds(InfoTime);
+            }
+        }
+        else if (InfoScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>() != null) // allows us to use text mesh pro aswell, which looks much nicer and scales better IMO
+        {
+            var InfoText = InfoScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            // iterate through info messages and show all
+            foreach (var message in InfoMessages)
+            {
+                InfoText.text = message;
+                yield return new WaitForSeconds(InfoTime);
+            }
         }
         InfoScreen.SetActive(false);
 
         // Below Should be removed and placed somewhere in monster script
         monsterComing = true;
-        rawr.Play();
+        if (rawr != null)
+        {
+            rawr.Play();
+        }
+        
     }
 
     private IEnumerator DisplayFlashback()
