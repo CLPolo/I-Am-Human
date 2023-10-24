@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LogicScript : MonoBehaviour
 {
@@ -38,12 +39,12 @@ public class LogicScript : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Debug.Log(1);
+            //Debug.Log(1);
             Destroy(gameObject);
         }
 
-        Debug.Log(2);
-        Debug.Log(DeathScreen.name);
+        //Debug.Log(2);
+        //Debug.Log(DeathScreen.name);
         DeathScreen.SetActive(false);  // Don't want to be dead at the start lol
         PauseMenu.SetActive(false);
     }
@@ -125,4 +126,5 @@ public class LogicScript : MonoBehaviour
         System.Threading.Thread.Sleep(100);
         TogglePause();
     }
+
 }
