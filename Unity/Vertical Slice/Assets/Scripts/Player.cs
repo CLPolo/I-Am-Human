@@ -14,6 +14,7 @@ public enum PlayerState
     Pushing = 5,
 }
 
+
 public class Player : AnimatedEntity
 {
     private static Player _instance;
@@ -21,16 +22,16 @@ public class Player : AnimatedEntity
 
     [Header("Movement")]
     public float speed = 5f;
-    public float sneakSpeed = 0.8f;
+    public const float sneakSpeed = 0.8f;
     public const float pushSpeed = 2.5f;
-    public const float defaultSpeed = 5f;
+    public const float walkSpeed = 5f;
     public const float runSpeed = 9f;
     private Rigidbody2D rb; // ------------------> RigidBody2D. Will be used to access it's velocity property to check for movement.
 
     [Header("Animation Cycles")]
     public List<Sprite> walkCycle;  
     public List<Sprite> runCycle;
-    public List<Sprite> hiding;
+    public List<Sprite> hideCycle;
     public List<Sprite> PushingCycle;
 
     [Header("Animation Variables")]
@@ -51,7 +52,7 @@ public class Player : AnimatedEntity
     private string currentAnimation;
 
     [Header("State")]
-    public PlayerState state;
+    private PlayerState state;
     private bool wiggleRight = true;
     public bool hasFlashlight = false;
 
@@ -80,20 +81,74 @@ public class Player : AnimatedEntity
     // Update is called once per frame
     void Update()
     {
-        CheckTrapped();
-        checkMovement();
-        checkAudio();
-        CheckPushing();
-        CheckRunning();
-        checkFlashlight();
-        AnimationUpdate();
+        if (!logic.IsPaused)
+        {
+            CheckTrapped();
+            checkMovement();
+            checkAudio();
+            CheckPushing();
+            CheckRunning();
+            checkFlashlight();
+            AnimationUpdate();
+        }
         //print(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+    }
+
+    public PlayerState GetState()
+    {
+        return state;
+    }
+
+    public void SetState(PlayerState _state)
+    {
+        if (_state == state)
+        {
+            return;
+        }
+
+        bool allowStateChange = true;
+
+        // reset state specific changes
+        transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
+        transform.position += Vector3.left * 0.0001f;
+        speed = walkSpeed;
+        currentAnimation = "default";
+        ResetAnimationCycle();
+
+        switch (_state)
+        {
+            case PlayerState.Idle:
+                // set animation
+                break;
+            case PlayerState.Walking:
+                break;
+            case PlayerState.Hiding:
+                speed = sneakSpeed;
+                if (currentAnimation != "hiding")
+                {
+                    InterruptAnimation(hideCycle, true);
+                }
+                transform.position += Vector3.right * 0.0001f;
+                currentAnimation = "hiding";
+                break;
+            case PlayerState.Running:
+                break;
+            case PlayerState.Pushing:
+                break;
+            case PlayerState.Trapped:
+                break;
+        }
+
+        if (allowStateChange)
+        {
+            state = _state;
+        }
     }
 
     void checkMovement()
     {   
         // Move left
-        if (Input.GetKey(KeyCode.A) && !logic.IsPaused)
+        if (Input.GetKey(KeyCode.A))
         {
             rb.velocity = Vector2.left * speed;
             if (state != PlayerState.Hiding) {
@@ -142,8 +197,7 @@ public class Player : AnimatedEntity
                 }
             }
         } else if (state != PlayerState.Running && state != PlayerState.Walking && state != PlayerState.Hiding) {
-            transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
-            speed = defaultSpeed;  // let the man walk
+            speed = walkSpeed;  // let the man walk
         }
     }
 
@@ -193,7 +247,7 @@ public class Player : AnimatedEntity
         else if (collision.gameObject.tag == "TrapArmed")
         {
             logic.isTrapped = true;
-            state = PlayerState.Trapped;
+            SetState(PlayerState.Trapped);
             collision.gameObject.tag = "TrapDisarmed";
         }
         else if (collision.gameObject.tag == "Key")
@@ -236,34 +290,23 @@ public class Player : AnimatedEntity
 
     private void Unhide(GameObject Hideable)
     {
-        speed = defaultSpeed;
         var hideablePosition = Hideable.transform.position;
         Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, -1);
-        state = PlayerState.Idle;
-        transform.position += Vector3.left * 0.0001f;
-        ResetAnimationCycle();
+        SetState(PlayerState.Idle);
     }
 
     private void CheckHiding(GameObject Hideable)
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            speed = sneakSpeed;
-            state = PlayerState.Hiding;    
+            SetState(PlayerState.Hiding);    
             var hideablePosition = Hideable.transform.position;
             Hideable.transform.position = new Vector3(hideablePosition.x, hideablePosition.y, 1);
-            if (currentAnimation != "hiding")
-            {
-                InterruptAnimation(hiding, true);
-            }
-            transform.position += Vector3.right * 0.0001f;
-            currentAnimation = "hiding";
         }
         else if (state == PlayerState.Hiding)  // unhides only if you were hiding
         {
             Unhide(Hideable);
             ResetAnimationCycle();
-            currentAnimation = "default";
         }
     }
 
@@ -306,7 +349,7 @@ public class Player : AnimatedEntity
         }
         else if (state != PlayerState.Hiding && state != PlayerState.Walking && state != PlayerState.Idle)  // can't push if hiding, but also won't switch speed back to default while player is hiding
         {
-            speed = defaultSpeed;
+            speed = walkSpeed;
             ResetAnimationCycle();
             currentAnimation = "default";
         }
@@ -324,7 +367,7 @@ public class Player : AnimatedEntity
             }
             else
             {
-                speed = defaultSpeed;  // resets speed to default
+                speed = walkSpeed;  // resets speed to default
             }
         }
     }

@@ -5,12 +5,12 @@ using UnityEngine;
 public class RunableAreaScript : MonoBehaviour
 {
 
-    public GameObject Player;
+    public Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = Player.Instance;
     }
 
     // Update is called once per frame
@@ -21,12 +21,12 @@ public class RunableAreaScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Player.GetComponent<Player>().state = PlayerState.Running;
+        player.SetState(PlayerState.Running);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Player.GetComponent<Player>().state = PlayerState.Walking;
+        player.SetState(PlayerState.Walking);
     }
 
 }
