@@ -1,72 +1,143 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using System.Threading;
+using System.Transactions;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PuzzleTargetScript : MonoBehaviour
 {
-    public GameObject AffectedObject = null;
+    public GameObject AffectedObject = null;  // object to be affected by trigger actions (if desired)
 
     [Header("Target Affect Type")]
     // these allow us to define what the target will do
-    public bool LayerSwitch;
-    public bool DeleteObject;
-    public bool SpawnMonster;
-    public bool NoiseTrigger;
-    public bool TextTrigger;
+    public bool LayerSwitch;  // will switch layer of object
+    public bool DeleteObject;  // will delete object
+    public bool SpawnObject;  // will spawn object
+    public bool TurnOffObject; // will set object to off instead of destroying it
+    public bool NoiseTrigger;  // will trigger a noise
+    public bool TextTrigger;  // will trigger text to display
+    public bool HideTimed;  // will take a given action after player has been hidden for certain amount of time
+    public bool FreezePlayer;  // freeze the player after activating object
 
     [Header("Affect Specifications")]
-    public string LayerToSwitchTo = null;
-    public AudioClip NoiseToBePlayed = null;
-    public string TextToDisplay = null;
-    public GameObject TextDisplay = null;
-    public int DisplayTime = 3;
+    public string LayerToSwitchTo = null;  // what layer the object will be switched to
+    public AudioClip NoiseToBePlayed = null;  // what noise will be played
+    public string TextToDisplay = null;  // what text string will be displayed
+    public GameObject TextDisplay = null;  // canvas for text to be displayed on
+    public int DisplayTimeText = 0;  // time for text to be displayed for
+    public int DisplayTimeObject = 0;  // time for object to be displayed for
+    public int DelayTime = 0; // time to delay given action by
+    public float HideTime = 0;  // time player must hide for before action activates
+    public float FreezeTime = 0;  // time player is frozen for
 
-    private bool CurrentlyRunning = false;
+    // bools
+    private bool TextDisplaying = false;  // whether given text is currently being displayed
+    private bool ObjectDisplaying = false;  // whether object has already been spawned 
+    private bool TimerComplete = false;  // whether hide timer has completed or not
+    private bool InteractionOver = false;
+    private float TimerCount = 0;  // hide timer counter
+
+    // misc
+    public Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = Player.Instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (HideTimed)  // if hide timed, allows timer to function and handles any actions after
+        {
+            HideTimer();
+            if (TimerComplete && !InteractionOver)
+            {
+                HandleHideTimed();
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Box" ||  other.gameObject.tag == "Moveable")  // if box passes collides with target
         {
-            if (DeleteObject && AffectedObject != null)  // if object should be deleted
-            {
-                Destroy(AffectedObject);
-            }
-            if (LayerSwitch && AffectedObject != null && LayerToSwitchTo != null)  // if object layer should be changed
-            {
-                UpdateObjectLayer(LayerToSwitchTo);
-            }
+            HandleBox();
         }
 
         if (other.gameObject.tag == "Player")  // if player collides with target
         {
-            if (SpawnMonster)
+            HandlePlayer();
+        }
+    }
+
+    private void HandleBox()
+    {
+        // handles any actions post box interaction
+
+        if (DeleteObject && AffectedObject != null)  // if object should be deleted
+        {
+            Destroy(AffectedObject);
+        }
+        if (LayerSwitch && AffectedObject != null && LayerToSwitchTo != null)  // if object layer should be changed
+        {
+            UpdateObjectLayer(LayerToSwitchTo);
+        }
+    }
+
+    private void HandlePlayer()
+    {
+        // handles any actions post player interaction
+
+        if (SpawnObject && AffectedObject != null)  // if we want to spawn / activate an object
+        {
+            if (!ObjectDisplaying && !HideTimed)
             {
-                // spawn monster
+                StartCoroutine(ActivateObject());
+                ObjectDisplaying = true;
             }
-            if (NoiseTrigger)
+        }
+        if (NoiseTrigger)  // if we want to play a noise
+        {
+            PlayNoise(NoiseToBePlayed);
+        }
+        if (TextTrigger)  // if we want to spawn text
+        {
+            if (!TextDisplaying)
             {
-                PlayNoise(NoiseToBePlayed);
+                TextDisplaying = true;
+                StartCoroutine(DisplayText());
             }
-            if (TextTrigger)
-            {
-                if (!CurrentlyRunning)
-                {
-                    CurrentlyRunning = true;
-                    StartCoroutine(DisplayText());
-                }
-            }
+        }
+    }
+
+    private void HandleHideTimed()
+    {
+        // handles actions post hide time and resets timer completion (if want to repeat action)
+
+        if (SpawnObject)
+        {
+            HideTimedActivation();
+            TimerComplete = false;
+            InteractionOver = true;
+        }
+    }
+    private void HideTimer()
+    {
+        // Runs the hide timer which counts how many seconds a player has been hiding for (non-consecutively)
+
+        if (player.GetState() == PlayerState.Hiding && TimerCount <= HideTime)
+        {
+            Debug.Log(TimerCount);
+            TimerCount += 1 * Time.deltaTime;
+        }
+        else if (TimerCount >= HideTime)
+        {
+            TimerComplete = true;
+            TimerCount = 0;
         }
     }
 
@@ -81,18 +152,76 @@ public class PuzzleTargetScript : MonoBehaviour
 
     private void PlayNoise(AudioClip Noise)
     {
+        // plays noise on trigger (HOPEFULLY, HAVEN'T TESTED)
+
         AudioSource audio = GetComponent<AudioSource>();
         audio.clip = Noise;
         audio.Play();
     }
+    private void HideTimedActivation()
+    {
+        // activates an object post hide time
+
+        if (!ObjectDisplaying)
+        {
+            StartCoroutine(ActivateObject());
+            ObjectDisplaying = true;
+        }
+    }
 
     private IEnumerator DisplayText()
     {
+        // displays text for display time
+
         TextDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = TextToDisplay;
         TextDisplay.SetActive(true);
-        yield return new WaitForSeconds(DisplayTime);
+        yield return new WaitForSeconds(DisplayTimeText);
         TextDisplay.SetActive(false);
-        CurrentlyRunning = false;
+        TextDisplaying = false;
     }
 
+    private IEnumerator ActivateObject()
+    {
+        // activates an object after DelatTime, then either deletes or turns it off based on specification
+
+        yield return new WaitForSeconds(DelayTime);
+        AffectedObject.SetActive(true);
+        if (FreezePlayer)
+        {
+            //StartCoroutine(Freeze());
+        }
+        if (DeleteObject)
+        {
+            StartCoroutine(DestroyObject());
+        }
+        else if (TurnOffObject)
+        {
+            StartCoroutine(DeactivateObject());
+        }
+        ObjectDisplaying = false;
+    }
+
+    private IEnumerator DestroyObject()
+    {
+        // destroys object after display time
+
+        yield return new WaitForSeconds(DisplayTimeObject);
+        Destroy(AffectedObject);
+    }
+
+    private IEnumerator DeactivateObject()
+    {
+        // deavtivates object after display time
+
+        yield return new WaitForSeconds(DisplayTimeObject);
+        AffectedObject.SetActive(false);
+    }
+
+    private IEnumerator Freeze()
+    {
+        // supposed to freeze the player for freeze time seconds, doesn't yet.
+
+        yield return new WaitForSeconds(FreezeTime);
+        
+    }
 }
