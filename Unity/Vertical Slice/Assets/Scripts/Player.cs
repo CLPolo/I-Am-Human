@@ -154,7 +154,6 @@ public class Player : AnimatedEntity
         {
             state = _state;
         }
-        Debug.Log(state);
     }
 
     void checkMovement()
