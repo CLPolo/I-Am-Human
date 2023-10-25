@@ -41,6 +41,7 @@ public class Player : AnimatedEntity
     public AudioSource AudioSource;
     public List<AudioClip> footstepsWalk;
     public List<AudioClip> footstepsRun;
+    private bool touchingWall = false;
 
     [Header("Items")]
     public GameObject flashlight;
@@ -225,7 +226,7 @@ public class Player : AnimatedEntity
 
     void playFootfall()
     {
-        if(AudioSource != null && !AudioSource.isPlaying)
+        if(AudioSource != null && !AudioSource.isPlaying && !touchingWall)
         {
             if (state == PlayerState.Walking) 
             {
@@ -295,6 +296,22 @@ public class Player : AnimatedEntity
                 // remove fog
                 Unhide(hideable);
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            touchingWall = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            touchingWall = false;
         }
     }
 

@@ -18,6 +18,14 @@ public class CameraMovement : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").transform;
         offset.Set(0f, 2f, -10f);
+        if (player.transform.position.x <= leftBound)
+        {
+            transform.position = new Vector3(leftBound, player.position.y, player.position.z) + offset;
+        }
+        else if (player.transform.position.x >= rightBound)
+        {
+            transform.position = new Vector3(rightBound, player.position.y, player.position.z) + offset;
+        }
     }
 
     // Update is called once per frame
