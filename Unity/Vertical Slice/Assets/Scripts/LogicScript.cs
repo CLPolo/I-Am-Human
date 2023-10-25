@@ -31,12 +31,15 @@ public class LogicScript : MonoBehaviour
 
     // TRAP
     public GameObject trappedText;
-    public float mashTimer = 1.5f;  // If you don't mash for 1 seconds you die
+    public float defaultMashTimer = 1.5f;  // If you don't mash for 1 seconds you die
+    private float mashTimer;
+    public bool trapKills;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        mashTimer = defaultMashTimer;
         if (Instance != null && Instance != this)
         {
             //Debug.Log(1);
@@ -72,18 +75,30 @@ public class LogicScript : MonoBehaviour
 
     public void MashTrap()
     {
-        //trappedText.SetActive(true);
+        if(trappedText != null)
+        {
+            trappedText.SetActive(true);
+        }
         mashTimer -= Time.deltaTime;
-        if (mashTimer <= 0)
+        if (mashTimer <= 0 && trapKills)
         {
             // If the player does not mash fast enough they die :(
             Death();
         }
+        else if (mashTimer <= 0 && !trapKills)
+        {
+            // This is for less punishing traps, the trap doesn't kill
+            mashTimer = 1;
+        }
         else if (mashTimer >= 3)
         {
             // The player escapes!
+            mashTimer = defaultMashTimer;
             player.SetState(PlayerState.Idle);
-            trappedText.SetActive(false);
+            if (trappedText != null)
+            {
+                trappedText.SetActive(false);
+            }
         }
         else
         {
@@ -126,5 +141,4 @@ public class LogicScript : MonoBehaviour
         System.Threading.Thread.Sleep(100);
         TogglePause();
     }
-
 }
