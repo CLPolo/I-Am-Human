@@ -23,6 +23,8 @@ public class InteractableObjectScript : MonoBehaviour
     public List<Sprite> FlashbackImages;  // all images for the flashback sequence
     public GameObject FlashbackScreen;  // screen that displays the flashback images
     public int FlashbackTime = 4;  // time between images in sequence (in seconds)
+    public LogicScript logic;
+
 
     // Booleans
     private bool Inside = false;  // if player is inside hit box for object
@@ -39,6 +41,9 @@ public class InteractableObjectScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        logic = LogicScript.Instance;
+
         // turns off all screens
         InteractableScreen.SetActive(false);
         if (InfoScreen != null)
@@ -180,11 +185,13 @@ public class InteractableObjectScript : MonoBehaviour
     {
         FlashbackScreen.SetActive(true);  // activates flashback screen 
         var ImageDisplay = FlashbackScreen.GetComponentInChildren<Image>();  // gets the empty image area where flashback stills will be placed
+
         foreach (var Still in FlashbackImages)  // iterates through all images and displays them in turn
         {
-            ImageDisplay.sprite = Still;
-            yield return new WaitForSeconds(FlashbackTime);
+                ImageDisplay.sprite = Still;
+                yield return new WaitForSeconds(FlashbackTime);
         }
+
         FlashbackScreen.SetActive(false);  // turns screen off when done
         CurrentlyPlaying = false;  // sequence is finished
     }

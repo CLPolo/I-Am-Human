@@ -29,7 +29,7 @@ public class Monster : MonoBehaviour
     void Update()
     {   
 
-        if (teddy.monsterComing && !logic.IsPaused)
+        if (teddy.monsterComing)
         {
             //kind of jank; only reveal the monster and the door after the teddy has been interacted with
             GetComponent<BoxCollider2D>().enabled = true;

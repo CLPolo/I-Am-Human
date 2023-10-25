@@ -82,17 +82,11 @@ public class Player : AnimatedEntity
     // Update is called once per frame
     void Update()
     {
-        if (!logic.IsPaused)
-        {
             CheckTrapped();
             checkMovement();
             playFootfall();
             checkFlashlight();
             AnimationUpdate();
-        } else {
-            AudioSource?.Stop();
-
-        }
         //print(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
@@ -340,7 +334,7 @@ public class Player : AnimatedEntity
     private void CheckFlip()
     {
         // Checks if player needs to be flipped (i.e. if the player is not facing the direction they are moving)
-        if (state != PlayerState.Pushing) // if not pushing and facing right, flips
+        if (state != PlayerState.Pushing && !logic.IsPaused) // if not pushing and facing right, flips
         {
             if (facingRight != movingRight) // if facing right and moving left OR facing left and moving right, flips
             {

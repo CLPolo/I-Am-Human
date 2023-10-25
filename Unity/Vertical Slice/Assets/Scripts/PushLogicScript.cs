@@ -28,6 +28,11 @@ public class PushLogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = Player.Instance;
+        }
+
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);  // uses raycast starting at GrabDetect to get object info
 
         if (grabCheck.collider != null && grabCheck.collider.tag == "Box")  // if there is an object colliding AND that object is a box
