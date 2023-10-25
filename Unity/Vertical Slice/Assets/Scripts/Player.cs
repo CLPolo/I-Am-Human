@@ -239,7 +239,7 @@ public class Player : AnimatedEntity
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Bad" && state != PlayerState.Hiding)
+        if (collision.gameObject.CompareTag("Bad") && state != PlayerState.Hiding)
         {
             // This is when the monster sees you and you are not behind the box
             // Gameover can go here! For now I just freeze them
@@ -261,12 +261,12 @@ public class Player : AnimatedEntity
             collision.gameObject.tag = "TrapDisarmed";
             StartCoroutine(ResetTrap(collision));
         }
-        else if (collision.gameObject.tag == "Key")
+        else if (collision.gameObject.CompareTag("Key"))
         {
             Destroy(collision.gameObject);
             keyCount++;
         }
-        else if (collision.gameObject.tag == "Door")
+        else if (collision.gameObject.CompareTag("Door"))
         {
             Door door = collision.gameObject.GetComponent<Door>();
             if (door.isLocked && keyCount > 0)
@@ -280,7 +280,7 @@ public class Player : AnimatedEntity
     private void OnTriggerStay2D(Collider2D collision)
     {
         var Hideable = collision.gameObject;
-        if (collision.gameObject.tag == "Hideable" || collision.gameObject.tag == "Box")
+        if (collision.gameObject.CompareTag("Hideable") || collision.gameObject.CompareTag("Box"))
         {
             CheckHiding(Hideable);
         }
@@ -288,7 +288,7 @@ public class Player : AnimatedEntity
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Hideable" || collision.gameObject.tag == "Box")
+        if (collision.gameObject.CompareTag("Hideable") || collision.gameObject.CompareTag("Box"))
         {
             var hideable = collision.gameObject;
             if (state == PlayerState.Hiding)
@@ -301,7 +301,7 @@ public class Player : AnimatedEntity
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.CompareTag("Wall"))
         {
             touchingWall = true;
         }
@@ -309,7 +309,7 @@ public class Player : AnimatedEntity
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (collision.gameObject.CompareTag("Wall"))
         {
             touchingWall = false;
         }
