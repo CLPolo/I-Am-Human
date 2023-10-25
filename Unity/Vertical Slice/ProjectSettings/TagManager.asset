@@ -24,6 +24,7 @@ TagManager:
   - Key
   - Pause
   - Death
+  - TrapArmedNoKill
   layers:
   - Default
   - TransparentFX

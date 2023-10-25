@@ -47,14 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeathScreen: {fileID: 3877231965720837825}
   PauseMenu: {fileID: 9014127412898119150}
-  Fader: {fileID: 2784496406196072676, guid: 6de231b0bf1f2e94b88e58082a4d6d9f, type: 3}
-  fadeIn: 0
-  fadeOut: 0
-  timeToFade: 1
   IsPaused: 0
+  player: {fileID: 0}
   trappedText: {fileID: 0}
-  isTrapped: 0
   mashTimer: 1
+  trapKills: 1
 --- !u!1001 &1143665502533385682
 PrefabInstance:
   m_ObjectHideFlags: 0

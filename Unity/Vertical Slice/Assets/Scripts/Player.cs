@@ -246,10 +246,19 @@ public class Player : AnimatedEntity
             //BadGuy.speed = 0f;
             logic.Death();
         }
-        else if (collision.gameObject.tag == "TrapArmed")
+        else if (collision.gameObject.CompareTag("TrapArmed"))
         {
+            logic.trapKills = true;
             SetState(PlayerState.Trapped);
             collision.gameObject.tag = "TrapDisarmed";
+            StartCoroutine(ResetTrap(collision));
+        }
+        else if (collision.gameObject.CompareTag("TrapArmedNoKill"))
+        {
+            logic.trapKills = false;
+            SetState(PlayerState.Trapped);
+            collision.gameObject.tag = "TrapDisarmed";
+            StartCoroutine(ResetTrap(collision));
         }
         else if (collision.gameObject.tag == "Key")
         {
@@ -357,6 +366,21 @@ public class Player : AnimatedEntity
         } else {
             angle = Vector2.SignedAngle(Vector2.left, dir);
             flashlight.transform.eulerAngles = new Vector3(angle, -90, 0);
+        }
+    }
+
+    IEnumerator ResetTrap(Collider2D collision)
+    {
+        // After 5 seconds the trap resets (i.e. player can fall back into mud)
+        yield return new WaitUntil(() => state == PlayerState.Idle);
+        yield return new WaitForSeconds(5);
+        if (logic.trapKills)
+        {
+            collision.gameObject.tag = "TrapArmed";
+        }
+        else
+        {
+            collision.gameObject.tag = "TrapArmedNoKill";
         }
     }
 }
