@@ -131,9 +131,10 @@ GameObject:
   m_Component:
   - component: {fileID: 58939379}
   - component: {fileID: 58939378}
-  m_Layer: 0
+  - component: {fileID: 58939380}
+  m_Layer: 8
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,12 +197,38 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58939377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.6, y: 1.7, z: 0}
+  m_LocalPosition: {x: 23.6, y: 1.7, z: 1}
   m_LocalScale: {x: 0.21947698, y: 3.466454, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &58939380
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58939377}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5, y: 5}
+    newSize: {x: 5, y: 5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5}
+  m_EdgeRadius: 0
 --- !u!1001 &266669934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -359,6 +386,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2356562125316671545, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_RootOrder
@@ -763,6 +795,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5913482508594190128, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7522277464662625288, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: m_RootOrder

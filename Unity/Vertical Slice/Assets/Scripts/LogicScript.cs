@@ -55,8 +55,7 @@ public class LogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!IsPaused)
-        {
+
             if (player == null)
             {
                 player = Player.Instance;
@@ -66,7 +65,7 @@ public class LogicScript : MonoBehaviour
             {
                 MashTrap();
             }
-        }
+
         if (Input.GetKeyDown(KeyCode.Escape))  // Pauses game when player hits esc
         {
             TogglePause();
@@ -122,6 +121,7 @@ public class LogicScript : MonoBehaviour
         // Note: When we add enemy script, enemy movement should also be stopped if paused
         PauseMenu.SetActive(!IsPaused);
         IsPaused = !IsPaused;  // will prevent player from moving while paused
+        Time.timeScale = IsPaused?0:1F;
 
         AudioListener.pause = IsPaused;
     }
