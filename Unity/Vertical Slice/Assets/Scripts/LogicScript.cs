@@ -129,7 +129,7 @@ public class LogicScript : MonoBehaviour
     public void RestartGame()
     {
         // Restarts the game by resetting scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LevelLoader.Instance.loadScene(SceneManager.GetActiveScene().name);
         mashTimer = 1.5f;
         System.Threading.Thread.Sleep(100);
         Death(false);
@@ -137,8 +137,7 @@ public class LogicScript : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        SceneManager.LoadScene(0);
-        System.Threading.Thread.Sleep(100);
+        LevelLoader.Instance.loadScene(0);
         TogglePause();
     }
 }
