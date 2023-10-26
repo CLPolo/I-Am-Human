@@ -66,7 +66,7 @@ public class LogicScript : MonoBehaviour
                 MashTrap();
             }
 
-        if (Input.GetKeyDown(KeyCode.Escape))  // Pauses game when player hits esc
+        if (Input.GetKeyDown(Controls.Pause))  // Pauses game when player hits esc
         {
             TogglePause();
         }
@@ -101,7 +101,7 @@ public class LogicScript : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(Controls.Mash))
             {
                 mashTimer += 0.3f;  // Add 0.2 seconds to the timer
             }
