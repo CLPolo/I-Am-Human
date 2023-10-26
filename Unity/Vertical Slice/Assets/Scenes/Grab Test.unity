@@ -196,6 +196,11 @@ PrefabInstance:
       objectReference: {fileID: 1458152425}
     - target: {fileID: 7522277464662625292, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
+      propertyPath: rayDist
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625292, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
       propertyPath: boxChild
       value: 
       objectReference: {fileID: 691864742}

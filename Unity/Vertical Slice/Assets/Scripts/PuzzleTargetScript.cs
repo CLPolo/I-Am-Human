@@ -5,6 +5,8 @@ using System.Threading;
 using System.Transactions;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
+using UnityEngine.UIElements;
 
 public class PuzzleTargetScript : MonoBehaviour
 {
@@ -101,22 +103,22 @@ public class PuzzleTargetScript : MonoBehaviour
 
         if (SpawnObject && AffectedObject != null)  // if we want to spawn / activate an object
         {
-            if (!ObjectDisplaying && !HideTimed)
+            if (!ObjectDisplaying && !HideTimed)  // if not already there and not a hidetimed event
             {
-                StartCoroutine(ActivateObject());
+                StartCoroutine(ActivateObject());  // activates object
                 ObjectDisplaying = true;
             }
         }
-        if (NoiseTrigger)  // if we want to play a noise
+        if (NoiseTrigger && !NoiseTriggered)  // if we want to play a noise
         {
             PlayNoise(NoiseToBePlayed);
         }
-        if (TextTrigger)  // if we want to spawn text
+        if (TextTrigger && !InteractionOver)  // if we want to spawn text
         {
             if (!TextDisplaying && (TextDisplayOnce ? (!TextPlayed) : true))
             {
                 TextDisplaying = true;
-                StartCoroutine(DisplayText());
+                StartCoroutine(DisplayText());  // displays text
             }
         }
     }
@@ -125,20 +127,20 @@ public class PuzzleTargetScript : MonoBehaviour
     {
         // handles actions post hide time and resets timer completion (if want to repeat action)
 
-        if (SpawnObject)
+        if (SpawnObject)  // if want to spawn object
         {
-            HideTimedActivation();
-            TimerComplete = false;
-            InteractionOver = true;
+            HideTimedActivation();  // hide timed activation
+            TimerComplete = false;  // resets timer if want to re-use
+            InteractionOver = true; // interaction is now 'over'
         }
     }
     private void HideTimer()
     {
         // Runs the hide timer which counts how many seconds a player has been hiding for (non-consecutively)
 
-        if (player.GetState() == PlayerState.Hiding && TimerCount <= HideTime)
+        if (player.GetState() == PlayerState.Hiding && TimerCount <= HideTime)  // if the player is hiding, and the timer still hasn't hit hidetime
         {
-            Debug.Log(TimerCount);
+            //Debug.Log(TimerCount);
             TimerCount += 1 * Time.deltaTime;
         }
         else if (TimerCount >= HideTime)
@@ -159,11 +161,11 @@ public class PuzzleTargetScript : MonoBehaviour
 
     private void PlayNoise(AudioClip Noise)
     {
-        // plays noise on trigger (HOPEFULLY, HAVEN'T TESTED)
+        // plays noise once on trigger, then won't play again if re-pass over trigger
 
         AudioSource audio = GetComponent<AudioSource>();
-        audio.clip = Noise;
-        audio.Play();
+        audio.PlayOneShot(Noise);
+        NoiseTriggered = true;
     }
     private void HideTimedActivation()
     {
@@ -204,7 +206,7 @@ public class PuzzleTargetScript : MonoBehaviour
         AffectedObject.SetActive(true);
         if (FreezePlayer)
         {
-            //StartCoroutine(Freeze());
+            StartCoroutine(Freeze());
         }
         if (DeleteObject)
         {
@@ -221,7 +223,7 @@ public class PuzzleTargetScript : MonoBehaviour
     {
         // destroys object after display time
 
-        yield return new WaitForSeconds(DisplayTimeObject);
+        yield return new WaitForSeconds(DisplayTimeObject * Time.timeScale);
         Destroy(AffectedObject);
     }
 
@@ -229,15 +231,17 @@ public class PuzzleTargetScript : MonoBehaviour
     {
         // deavtivates object after display time
 
-        yield return new WaitForSeconds(DisplayTimeObject);
+        yield return new WaitForSeconds(DisplayTimeObject * Time.timeScale);
         AffectedObject.SetActive(false);
     }
 
     private IEnumerator Freeze()
     {
-        // supposed to freeze the player for freeze time seconds, doesn't yet.
+        // 'freezes' the player for freeze time seconds.
 
-        yield return new WaitForSeconds(FreezeTime);
-        
+        Time.timeScale = .0000001f;
+        yield return new WaitForSeconds(FreezeTime * Time.timeScale);
+        Time.timeScale = 1.0f;
+
     }
 }

@@ -11,7 +11,7 @@ public class PushLogicScript : MonoBehaviour
     public Transform grabDetect;
     public Transform boxHolder;
     public float rayDist;  // distance of raycast (distance between player and obejct where push action is possible)
-    private Vector3 forward;
+
     [Header("Outline Display")]
     public Sprite Outline;
     public Sprite Default;
@@ -35,6 +35,8 @@ public class PushLogicScript : MonoBehaviour
 
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);  // uses raycast starting at GrabDetect to get object info
 
+        Debug.DrawRay(transform.position + new Vector3(0.2f, 0, 0), Vector3.right * rayDist, Color.green);
+
         if (grabCheck.collider != null && grabCheck.collider.tag == "Box")  // if there is an object colliding AND that object is a box
         {
             GameObject box = grabCheck.collider.gameObject;
@@ -45,7 +47,7 @@ public class PushLogicScript : MonoBehaviour
                 player.SetState(PlayerState.Pushing);
                 box.transform.parent = boxHolder;  // sets parent of box / object being pushed to boxHolder
                 box.transform.position = boxHolder.position;  // moves object being pushed to boxHolder (by center)
-                box.GetComponent<Rigidbody2D>().isKinematic = true;  // allows it to staticly move with the player based on that boxHolder position
+                box.GetComponent<Rigidbody2D>().isKinematic = true;  // allows it to staticly move with the player based on that boxHolder position     
             }
             // if push key is not being held down and the player was pushing last frame, now they are not pushing
             else if (player.GetState() == PlayerState.Pushing)
