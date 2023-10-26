@@ -53,12 +53,13 @@ public class PushLogicScript : MonoBehaviour
                 player.SetState(PlayerState.Pushing);
                 if (!PlayerPrefs.HasKey("boxlayer"))
                 {
+                    // ALL CODE IN HERE WILL ONLY RUN AT START OF PUSH/PULL INSTEAD OF EVERY FRAME
                     box.transform.position = boxHolder.position;  // moves object being pushed to boxHolder (by center)
+                    rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                    PlayerPrefs.SetString("boxlayer", LayerMask.LayerToName(box.layer));
+                    box.layer = LayerMask.NameToLayer("Default");
                 }
                 rb.velocity = player.GetComponent<Rigidbody2D>().velocity;
-                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-                PlayerPrefs.SetString("boxlayer", LayerMask.LayerToName(box.layer));
-                box.layer = LayerMask.NameToLayer("Default");
             }
             // if push key is not being held down and the player was pushing last frame, now they are not pushing
             else if (player.GetState() == PlayerState.Pushing)
