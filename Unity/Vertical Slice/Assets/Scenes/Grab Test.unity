@@ -341,7 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6572469609c132408801ec3e63bbed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1264375479}
 --- !u!61 &509818451
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -401,9 +400,11 @@ MonoBehaviour:
   InfoScreen: {fileID: 0}
   InfoMessages: []
   InfoTime: 3
+  DelayBySeconds: 0
   FlashbackImages: []
   FlashbackScreen: {fileID: 0}
   FlashbackTime: 4
+  logic: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!1 &519420028
@@ -838,12 +839,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56d2b2fd228544d4399b1a74609b1b80, type: 3}
---- !u!1 &1264375479 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7522277464662625303, guid: 58a2ae1401824a637aece98bdc2381cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 58747511}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1356524835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,6 +1445,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AffectedObject: {fileID: 791217933}
+  LayerSwitch: 0
+  DeleteObject: 1
+  SpawnObject: 0
+  TurnOffObject: 0
+  NoiseTrigger: 0
+  TextTrigger: 0
+  HideTimed: 0
+  FreezePlayer: 0
+  LayerToSwitchTo: 
+  NoiseToBePlayed: {fileID: 0}
+  TextToDisplay: 
+  TextDisplay: {fileID: 0}
+  DisplayTimeText: 0
+  DisplayTimeObject: 0
+  DelayTime: 0
+  HideTime: 0
+  FreezeTime: 0
+  player: {fileID: 0}
 --- !u!212 &2006001167
 SpriteRenderer:
   m_ObjectHideFlags: 0

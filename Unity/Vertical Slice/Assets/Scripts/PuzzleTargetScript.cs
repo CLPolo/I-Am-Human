@@ -20,12 +20,14 @@ public class PuzzleTargetScript : MonoBehaviour
     public bool TextTrigger;  // will trigger text to display
     public bool HideTimed;  // will take a given action after player has been hidden for certain amount of time
     public bool FreezePlayer;  // freeze the player after activating object
+    public bool UnlockDoor;  // unlocks a door when collide w/ box
 
     [Header("Affect Specifications")]
     public string LayerToSwitchTo = null;  // what layer the object will be switched to
     public AudioClip NoiseToBePlayed = null;  // what noise will be played
     public string TextToDisplay = null;  // what text string will be displayed
     public GameObject TextDisplay = null;  // canvas for text to be displayed on
+    public bool TextDisplayOnce = false;
     public int DisplayTimeText = 0;  // time for text to be displayed for
     public int DisplayTimeObject = 0;  // time for object to be displayed for
     public int DelayTime = 0; // time to delay given action by
@@ -37,6 +39,7 @@ public class PuzzleTargetScript : MonoBehaviour
     private bool ObjectDisplaying = false;  // whether object has already been spawned 
     private bool TimerComplete = false;  // whether hide timer has completed or not
     private bool InteractionOver = false;
+    private bool TextPlayed = false;
     private float TimerCount = 0;  // hide timer counter
 
     // misc
@@ -86,6 +89,10 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             UpdateObjectLayer(LayerToSwitchTo);
         }
+        if (UnlockDoor)
+        {
+            Unlock();
+        }
     }
 
     private void HandlePlayer()
@@ -106,7 +113,7 @@ public class PuzzleTargetScript : MonoBehaviour
         }
         if (TextTrigger)  // if we want to spawn text
         {
-            if (!TextDisplaying)
+            if (!TextDisplaying && (TextDisplayOnce ? (!TextPlayed) : true))
             {
                 TextDisplaying = true;
                 StartCoroutine(DisplayText());
@@ -169,6 +176,11 @@ public class PuzzleTargetScript : MonoBehaviour
         }
     }
 
+    private void Unlock()
+    {
+        AffectedObject.GetComponent<Door>().isLocked = false;
+    }
+
     private IEnumerator DisplayText()
     {
         // displays text for display time
@@ -178,6 +190,10 @@ public class PuzzleTargetScript : MonoBehaviour
         yield return new WaitForSeconds(DisplayTimeText);
         TextDisplay.SetActive(false);
         TextDisplaying = false;
+        if (TextDisplayOnce)
+        {
+            TextPlayed = true;
+        }
     }
 
     private IEnumerator ActivateObject()
