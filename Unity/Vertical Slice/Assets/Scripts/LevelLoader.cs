@@ -43,8 +43,7 @@ public class LevelLoader : MonoBehaviour
     // temporary linear scene progression
     private Dictionary<string, string> nextScene = new Dictionary<string, string>()
     {
-        { "FOREST FIRST COMMIT", "FOREST FIRST COMMIT" },
-        { "Cabin Exterior + Door", "End of Vertical Slice" }
+        { "FOREST FIRST COMMIT", "FOREST FIRST COMMIT" }
     };
 
     private void OnTriggerEnter2D(Collider2D other)

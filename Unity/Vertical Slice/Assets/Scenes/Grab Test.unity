@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AffectedObject: {fileID: 791217933}
   LayerSwitch: 0
-  DeleteObject: 1
+  DeleteObject: 0
   SpawnObject: 0
   TurnOffObject: 0
   NoiseTrigger: 0
