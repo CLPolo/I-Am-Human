@@ -10,7 +10,6 @@ public class InteractableObjectScript : MonoBehaviour
     [Header("Interaction")]
     public GameObject InteractableScreen;  // this is the screen that displays prompt to interact
     public String InteractMessage;
-    public KeyCode InteractKey;  // Keycode for the chosen interact key
     public Boolean ShowPromptOnce;
 
     [Header("Info Display")]
@@ -59,7 +58,7 @@ public class InteractableObjectScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Inside && Input.GetKey(InteractKey)) // if player is inside the interactable object's box collider
+        if (Inside && Input.GetKey(Controls.Interact)) // if player is inside the interactable object's box collider
         {
             InteractableScreen.SetActive(false);  // turns off 'interact' prompt
             CheckAndDisplayInfo();  // checks if there's info to display, if so does that
@@ -79,7 +78,7 @@ public class InteractableObjectScript : MonoBehaviour
         {
             IsFlashback = true;
         }
-        if (Inside = true && !Input.GetKeyDown(InteractKey))  // if player in collider and has NOT pressed interact key yet
+        if (Inside = true && !Input.GetKeyDown(Controls.Interact))  // if player in collider and has NOT pressed interact key yet
         {
             DisplayInteractPrompt();  // shows the interact prompt
         }

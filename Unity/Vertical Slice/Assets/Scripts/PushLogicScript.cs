@@ -17,12 +17,16 @@ public class PushLogicScript : MonoBehaviour
     public Sprite Default;
     public Player player;
 
+    public LogicScript logic;
+
     private List<GameObject> spritesToReset = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
         player = Player.Instance;
+        logic = LogicScript.Instance;
+        Debug.Log(player);
     }
 
     // Update is called once per frame
@@ -40,21 +44,31 @@ public class PushLogicScript : MonoBehaviour
         if (grabCheck.collider != null && grabCheck.collider.tag == "Box")  // if there is an object colliding AND that object is a box
         {
             GameObject box = grabCheck.collider.gameObject;
+            Rigidbody2D rb = box.GetComponent<Rigidbody2D>();
+
             spritesToReset.Add(box);
             box.GetComponent<SpriteRenderer>().sprite = Outline;  // if box in range, shows outline
-            if (Input.GetKey(KeyCode.LeftShift))  // if player is pressing space (pushing)
+            if (Input.GetKey(Controls.Push))  // if player is pressing space (pushing)
             {
                 player.SetState(PlayerState.Pushing);
-                box.transform.parent = boxHolder;  // sets parent of box / object being pushed to boxHolder
-                box.transform.position = boxHolder.position;  // moves object being pushed to boxHolder (by center)
-                box.GetComponent<Rigidbody2D>().isKinematic = true;  // allows it to staticly move with the player based on that boxHolder position     
+                if (!PlayerPrefs.HasKey("boxlayer"))
+                {
+                    box.transform.position = boxHolder.position;  // moves object being pushed to boxHolder (by center)
+                }
+                rb.velocity = player.GetComponent<Rigidbody2D>().velocity;
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                PlayerPrefs.SetString("boxlayer", LayerMask.LayerToName(box.layer));
+                box.layer = LayerMask.NameToLayer("Default");
             }
             // if push key is not being held down and the player was pushing last frame, now they are not pushing
             else if (player.GetState() == PlayerState.Pushing)
             {
                 player.SetState(PlayerState.Idle);
                 box.transform.parent = null;  // removes boxHolder as parent
-                box.GetComponent<Rigidbody2D>().isKinematic = false;  // sets it back to being immovable
+                box.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                box.layer = LayerMask.NameToLayer(PlayerPrefs.GetString("boxlayer"));
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+                PlayerPrefs.DeleteKey("boxlayer");
             }
         }
         else

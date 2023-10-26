@@ -4,6 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+public static class Controls
+{
+    // movement
+    public static readonly KeyCode Left = KeyCode.A;
+    public static readonly KeyCode Right = KeyCode.D;
+    // actions
+    public static readonly KeyCode Interact = KeyCode.E; // hiding is also interacting
+    public static readonly KeyCode Push = KeyCode.Space;
+    public static readonly KeyCode Mash = KeyCode.Space;
+    public static readonly KeyCode Run = KeyCode.LeftShift;
+    // ui
+    public static readonly KeyCode Pause = KeyCode.Escape;
+}
+
 public enum PlayerState
 {
     Idle = 0,
@@ -67,8 +81,10 @@ public class Player : AnimatedEntity
     {
         if (Instance != null && Instance != this)
         {
+            Debug.Log("donyt set player");
             Destroy(gameObject);
         } else {
+            Debug.Log("do set player");
             _instance = this;
         }
 
@@ -82,11 +98,11 @@ public class Player : AnimatedEntity
     // Update is called once per frame
     void Update()
     {
-            CheckTrapped();
-            checkMovement();
-            playFootfall();
-            checkFlashlight();
-            AnimationUpdate();
+        CheckTrapped();
+        checkMovement();
+        playFootfall();
+        checkFlashlight();
+        AnimationUpdate();
         //print(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
@@ -108,6 +124,7 @@ public class Player : AnimatedEntity
         transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
         transform.position += Vector3.left * 0.0001f;
         speed = walkSpeed;
+        GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
         currentAnimation = "default";
         ResetAnimationCycle();
 
@@ -160,10 +177,10 @@ public class Player : AnimatedEntity
     void checkMovement()
     {   
         // Move left
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(Controls.Left))
         {
             if (!state.isOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Trapped)) {
-                if (Input.GetKey(KeyCode.LeftControl))
+                if (Input.GetKey(Controls.Run))
                 {
                     SetState(PlayerState.Running);
                 }
@@ -178,11 +195,11 @@ public class Player : AnimatedEntity
         }
 
         // Move right
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(Controls.Right))
         {
             if (!state.isOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Trapped))
             {
-                if (Input.GetKey(KeyCode.LeftControl))
+                if (Input.GetKey(Controls.Run))
                 {
                     SetState(PlayerState.Running);
                 } else {
@@ -194,7 +211,7 @@ public class Player : AnimatedEntity
             CheckFlip();
         }
 
-        if(!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        if(!Input.GetKey(Controls.Right) && !Input.GetKey(Controls.Left))
         {
             if (state.isOneOf(PlayerState.Walking, PlayerState.Running))
             {
@@ -208,7 +225,7 @@ public class Player : AnimatedEntity
     {
         if (state == PlayerState.Trapped)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(Controls.Mash))
             {
                 wiggleRight = !wiggleRight;
                 if (wiggleRight)
@@ -323,7 +340,7 @@ public class Player : AnimatedEntity
 
     private void CheckHiding(GameObject Hideable)
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(Controls.Interact))
         {
             SetState(PlayerState.Hiding);    
             var hideablePosition = Hideable.transform.position;
@@ -362,7 +379,7 @@ public class Player : AnimatedEntity
     private void checkFlashlight()
     {
         //turn light on and off
-        if (hasFlashlight && Input.GetKeyDown(KeyCode.F))
+        if (hasFlashlight && Input.GetMouseButtonDown(0))
         {
             if (lightCone.range == 50) {
                 lightCone.range = 0;

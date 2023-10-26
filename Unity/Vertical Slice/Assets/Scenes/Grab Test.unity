@@ -189,6 +189,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625290, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625290, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7522277464662625292, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: canvas
@@ -197,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 7522277464662625292, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: rayDist
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7522277464662625292, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
@@ -400,7 +410,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractableScreen: {fileID: 486998721}
   InteractMessage: Press and Hold 'Left Ctrl' to Run!
-  InteractKey: 0
   ShowPromptOnce: 0
   InfoScreen: {fileID: 0}
   InfoMessages: []
@@ -1305,7 +1314,7 @@ GameObject:
   - component: {fileID: 1964222594}
   - component: {fileID: 1964222593}
   - component: {fileID: 1964222592}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1458,10 +1467,12 @@ MonoBehaviour:
   TextTrigger: 0
   HideTimed: 0
   FreezePlayer: 0
+  UnlockDoor: 0
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay: 
   TextDisplay: {fileID: 0}
+  TextDisplayOnce: 0
   DisplayTimeText: 0
   DisplayTimeObject: 0
   DelayTime: 0
@@ -1539,6 +1550,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2356562124795575594, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671545, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_RootOrder
@@ -1598,6 +1619,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NewBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671549, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671549, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1ff3be1279bc554d95bd8ddbd7c10fa, type: 3}
