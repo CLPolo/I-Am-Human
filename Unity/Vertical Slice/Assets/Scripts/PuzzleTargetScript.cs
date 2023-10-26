@@ -41,6 +41,7 @@ public class PuzzleTargetScript : MonoBehaviour
     private bool ObjectDisplaying = false;  // whether object has already been spawned 
     private bool TimerComplete = false;  // whether hide timer has completed or not
     private bool InteractionOver = false;
+    private bool NoiseTriggered = false;        // whether the noise has already been triggered
     private bool TextPlayed = false;
     private float TimerCount = 0;  // hide timer counter
 
