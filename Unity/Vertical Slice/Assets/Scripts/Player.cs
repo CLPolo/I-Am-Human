@@ -333,7 +333,7 @@ public class Player : AnimatedEntity
     private void CheckFlip()
     {
         // Checks if player needs to be flipped (i.e. if the player is not facing the direction they are moving)
-        if (state != PlayerState.Pushing && !logic.IsPaused) // if not pushing and facing right, flips
+        if (state != PlayerState.Pushing && !logic.IsPaused && Time.timeScale == 1) // if not pushing and facing right and not paused or frozen (timeScale is 1), flips
         {
             if (facingRight != movingRight) // if facing right and moving left OR facing left and moving right, flips
             {
