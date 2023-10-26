@@ -531,6 +531,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522277464662625288, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625288, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625288, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.83
       objectReference: {fileID: 0}
@@ -579,6 +589,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625289, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5840108822926873604, guid: c0ab95059499e5c4d944d6bc4d81da73,
+        type: 3}
     - target: {fileID: 7522277464662625291, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: m_Mass
@@ -594,6 +610,17 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: SpriteRenderer
+      value: 
+      objectReference: {fileID: 2125106274}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: DefaultAnimationCycle.Array.data[0]
+      value: 
+      objectReference: {fileID: 5840108822926873604, guid: c0ab95059499e5c4d944d6bc4d81da73,
+        type: 3}
     - target: {fileID: 7522277464662625303, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: m_Name
@@ -601,6 +628,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58a2ae1401824a637aece98bdc2381cd, type: 3}
+--- !u!212 &2125106274 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7522277464662625289, guid: 58a2ae1401824a637aece98bdc2381cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2022239715}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3072271084513616566
 PrefabInstance:
   m_ObjectHideFlags: 0

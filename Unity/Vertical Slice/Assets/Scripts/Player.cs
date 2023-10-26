@@ -114,9 +114,15 @@ public class Player : AnimatedEntity
         switch (_state)
         {
             case PlayerState.Idle:
-                // set animation
+                SpriteRenderer.sprite = DefaultSprite;
+                currentAnimation = "default";
                 break;
             case PlayerState.Walking:
+                if (currentAnimation != "walking")
+                {
+                    InterruptAnimation(walkCycle, true);
+                }
+                currentAnimation = "walking";
                 break;
             case PlayerState.Hiding:
                 speed = sneakSpeed;
