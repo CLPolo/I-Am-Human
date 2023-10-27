@@ -46,10 +46,12 @@ public class Player : AnimatedEntity
     public List<Sprite> walkCycle;  
     public List<Sprite> runCycle;
     public List<Sprite> hideCycle;
-    public List<Sprite> PushingCycle;
-
-    [Header("Animation Variables")]
-    public Sprite DefaultSprite;
+    public List<Sprite> pushCycle;
+    public List<Sprite> pullCycle;
+    [Header("Idle Sprites")]
+    public Sprite idleWalk;
+    public Sprite idlePush;
+    public Sprite idleHide;
 
     [Header("Sound")]
     public AudioSource AudioSource;
@@ -64,7 +66,6 @@ public class Player : AnimatedEntity
     //private bool isHiding = false;
     private bool facingRight = true;
     private bool movingRight = true;
-    private string currentAnimation;
 
     [Header("State")]
     private PlayerState state;
@@ -81,10 +82,8 @@ public class Player : AnimatedEntity
     {
         if (Instance != null && Instance != this)
         {
-            Debug.Log("donyt set player");
             Destroy(gameObject);
         } else {
-            Debug.Log("do set player");
             _instance = this;
         }
 
@@ -125,41 +124,30 @@ public class Player : AnimatedEntity
         transform.position += Vector3.left * 0.0001f;
         speed = walkSpeed;
         GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
-        currentAnimation = "default";
         ResetAnimationCycle();
 
         switch (_state)
         {
             case PlayerState.Idle:
-                SpriteRenderer.sprite = DefaultSprite;
-                currentAnimation = "default";
                 break;
             case PlayerState.Walking:
-                if (currentAnimation != "walking")
-                {
-                    InterruptAnimation(walkCycle, true);
-                }
-                currentAnimation = "walking";
+                DefaultAnimationCycle[0] = idleWalk;
+                InterruptAnimation(walkCycle, true);
                 break;
             case PlayerState.Hiding:
                 speed = sneakSpeed;
-                if (currentAnimation != "hiding")
-                {
-                    InterruptAnimation(hideCycle, true);
-                }
+                DefaultAnimationCycle[0] = idleHide;
+                InterruptAnimation(hideCycle, true);
                 transform.position += Vector3.right * 0.0001f;
-                currentAnimation = "hiding";
                 break;
             case PlayerState.Running:
                 speed = runSpeed;
                 break;
             case PlayerState.Pushing:
                 speed = pushSpeed;
-                if (currentAnimation != "pushing")
-                {
-                    InterruptAnimation(PushingCycle, true);
-                }
-                currentAnimation = "pushing";
+                DefaultAnimationCycle[0] = idlePush;
+                InterruptAnimation(pushCycle, true);
+                break;
                 break;
             case PlayerState.Trapped:
                 speed = 0;  // Player cannot move while trapped

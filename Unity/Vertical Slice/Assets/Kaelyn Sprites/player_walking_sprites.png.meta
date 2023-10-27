@@ -156,7 +156,7 @@ TextureImporter:
         x: 0
         y: 49
         width: 16
-        height: 48
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,8 +176,8 @@ TextureImporter:
         serializedVersion: 2
         x: 16
         y: 49
-        width: 16
-        height: 48
+        width: 15
+        height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: player_walk_step3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 33
         y: 49
-        width: 16
-        height: 48
+        width: 14
+        height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +216,10 @@ TextureImporter:
       name: player_walk_step4
       rect:
         serializedVersion: 2
-        x: 48
+        x: 51
         y: 49
-        width: 16
-        height: 48
+        width: 11
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,10 +237,10 @@ TextureImporter:
       name: player_walk_step5
       rect:
         serializedVersion: 2
-        x: 64
+        x: 67
         y: 49
-        width: 16
-        height: 48
+        width: 10
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,10 +258,10 @@ TextureImporter:
       name: player_walk_step6
       rect:
         serializedVersion: 2
-        x: 80
+        x: 83
         y: 49
-        width: 16
-        height: 48
+        width: 9
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,10 +279,10 @@ TextureImporter:
       name: player_walk_step7
       rect:
         serializedVersion: 2
-        x: 96
+        x: 99
         y: 49
-        width: 16
-        height: 48
+        width: 10
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,10 +300,10 @@ TextureImporter:
       name: player_walk_step8
       rect:
         serializedVersion: 2
-        x: 112
+        x: 115
         y: 49
-        width: 16
-        height: 48
+        width: 12
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,10 +321,10 @@ TextureImporter:
       name: player_walk_step9
       rect:
         serializedVersion: 2
-        x: 128
+        x: 130
         y: 49
-        width: 16
-        height: 48
+        width: 13
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,10 +342,10 @@ TextureImporter:
       name: player_walk_step10
       rect:
         serializedVersion: 2
-        x: 144
+        x: 146
         y: 49
-        width: 16
-        height: 48
+        width: 14
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -363,10 +363,10 @@ TextureImporter:
       name: player_walking_sprites_10
       rect:
         serializedVersion: 2
-        x: 176
+        x: 178
         y: 49
-        width: 16
-        height: 48
+        width: 12
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,7 +387,7 @@ TextureImporter:
         x: 0
         y: 1
         width: 16
-        height: 48
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -405,10 +405,10 @@ TextureImporter:
       name: player_walk_step12
       rect:
         serializedVersion: 2
-        x: 16
+        x: 18
         y: 1
-        width: 16
-        height: 48
+        width: 14
+        height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -426,10 +426,10 @@ TextureImporter:
       name: player_walk_step13
       rect:
         serializedVersion: 2
-        x: 32
+        x: 34
         y: 1
-        width: 16
-        height: 48
+        width: 13
+        height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,10 +447,10 @@ TextureImporter:
       name: player_walk_step14
       rect:
         serializedVersion: 2
-        x: 48
+        x: 50
         y: 1
-        width: 16
-        height: 48
+        width: 12
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,10 +468,10 @@ TextureImporter:
       name: player_walk_step15
       rect:
         serializedVersion: 2
-        x: 64
+        x: 67
         y: 1
-        width: 16
-        height: 48
+        width: 9
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,10 +489,10 @@ TextureImporter:
       name: player_walk_step16
       rect:
         serializedVersion: 2
-        x: 80
+        x: 83
         y: 1
-        width: 16
-        height: 48
+        width: 9
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -510,10 +510,10 @@ TextureImporter:
       name: player_walk_step17
       rect:
         serializedVersion: 2
-        x: 96
+        x: 99
         y: 1
-        width: 16
-        height: 48
+        width: 10
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -531,10 +531,10 @@ TextureImporter:
       name: player_walk_step18
       rect:
         serializedVersion: 2
-        x: 112
+        x: 115
         y: 1
-        width: 16
-        height: 48
+        width: 12
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -552,10 +552,10 @@ TextureImporter:
       name: player_walk_step19
       rect:
         serializedVersion: 2
-        x: 128
+        x: 131
         y: 1
-        width: 16
-        height: 48
+        width: 12
+        height: 41
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -573,10 +573,10 @@ TextureImporter:
       name: player_walk_step20
       rect:
         serializedVersion: 2
-        x: 144
+        x: 147
         y: 1
-        width: 16
-        height: 48
+        width: 11
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

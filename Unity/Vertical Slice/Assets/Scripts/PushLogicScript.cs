@@ -26,7 +26,6 @@ public class PushLogicScript : MonoBehaviour
     {
         player = Player.Instance;
         logic = LogicScript.Instance;
-        Debug.Log(player);
     }
 
     // Update is called once per frame
@@ -54,7 +53,7 @@ public class PushLogicScript : MonoBehaviour
                 if (!PlayerPrefs.HasKey("boxlayer"))
                 {
                     // ALL CODE IN HERE WILL ONLY RUN AT START OF PUSH/PULL INSTEAD OF EVERY FRAME
-                    box.transform.position = boxHolder.position;  // moves object being pushed to boxHolder (by center)
+                    box.transform.position = new Vector3(boxHolder.position.x, box.transform.position.y, box.transform.position.z);  // moves object being pushed to boxHolder (by center)
                     rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                     PlayerPrefs.SetString("boxlayer", LayerMask.LayerToName(box.layer));
                     box.layer = LayerMask.NameToLayer("Default");
