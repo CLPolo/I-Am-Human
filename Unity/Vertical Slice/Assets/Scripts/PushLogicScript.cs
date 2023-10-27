@@ -61,9 +61,9 @@ public class PushLogicScript : MonoBehaviour
                 rb.velocity = player.GetComponent<Rigidbody2D>().velocity;
             }
             // if push key is not being held down and the player was pushing last frame, now they are not pushing
-            else if (player.GetState() == PlayerState.Pushing)
+            else if (player.GetState().isOneOf(PlayerState.Pulling, PlayerState.Pushing))
             {
-                player.SetState(PlayerState.Idle);
+                player.SetState(PlayerState.Walking);
                 box.transform.parent = null;  // removes boxHolder as parent
                 box.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 box.layer = LayerMask.NameToLayer(PlayerPrefs.GetString("boxlayer"));
