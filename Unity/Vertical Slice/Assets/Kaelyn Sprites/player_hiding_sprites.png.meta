@@ -4,37 +4,37 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -8177352195525627109
-    second: player_hide_move1
+    second: player_hiding_1
   - first:
       213: 5843125846357428686
-    second: player_hide_move2
+    second: player_hiding_2
   - first:
       213: 1135232522936296641
-    second: player_hide_move3
+    second: player_hiding_3
   - first:
       213: -6681203977647852649
-    second: player_hide_move4
+    second: player_hiding_4
   - first:
       213: 4236240629825589810
-    second: player_hide_move5
+    second: player_hiding_5
   - first:
       213: 1213842746850433577
-    second: player_hiding_idle
+    second: player_hiding_IDLE
   - first:
       213: 4492889960555551271
-    second: player_hide_move6
+    second: player_hiding_6
   - first:
       213: 5847848822816997773
-    second: player_hide_move7
+    second: player_hiding_7
   - first:
       213: 4009471783808308171
-    second: player_hide_move8
+    second: player_hiding_sprites_8
   - first:
       213: -6491340112772229002
-    second: player_hide_move9
+    second: player_hiding_sprites_9
   - first:
       213: 5851754552752308921
-    second: player_hide_move10
+    second: player_hiding_sprites_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -104,29 +104,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_hide_move1
+      name: player_hiding_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
+        x: 4
+        y: 48
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,13 +129,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hide_move2
+      name: player_hiding_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
+        x: 36
+        y: 48
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,13 +150,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hide_move3
+      name: player_hiding_3
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
+        x: 68
+        y: 48
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,13 +171,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hide_move4
+      name: player_hiding_4
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
+        x: 100
+        y: 48
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,13 +192,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hide_move5
+      name: player_hiding_5
       rect:
         serializedVersion: 2
-        x: 128
-        y: 32
-        width: 32
-        height: 32
+        x: 132
+        y: 48
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,13 +213,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_idle
+      name: player_hiding_IDLE
       rect:
         serializedVersion: 2
-        x: 160
-        y: 32
-        width: 32
-        height: 32
+        x: 164
+        y: 48
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,13 +234,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hide_move6
+      name: player_hiding_6
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 0
-        width: 32
-        height: 32
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,13 +255,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hide_move7
+      name: player_hiding_7
       rect:
         serializedVersion: 2
-        x: 32
+        x: 36
         y: 0
-        width: 32
-        height: 32
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,13 +276,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hide_move8
+      name: player_hiding_sprites_8
       rect:
         serializedVersion: 2
-        x: 64
+        x: 68
         y: 0
-        width: 32
-        height: 32
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,13 +297,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hide_move9
+      name: player_hiding_sprites_9
       rect:
         serializedVersion: 2
-        x: 96
+        x: 100
         y: 0
-        width: 32
-        height: 32
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -330,13 +318,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hide_move10
+      name: player_hiding_sprites_10
       rect:
         serializedVersion: 2
-        x: 128
+        x: 132
         y: 0
-        width: 32
-        height: 32
+        width: 21
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

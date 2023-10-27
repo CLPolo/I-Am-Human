@@ -4,67 +4,67 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -960091435165185242
-    second: player_push_step1
+    second: player_pushing_sprites_0
   - first:
       213: 4111810353288161032
-    second: player_push_step2
+    second: player_pushing_sprites_1
   - first:
       213: -5528354854825093501
-    second: player_push_step3
+    second: player_pushing_sprites_2
   - first:
       213: 2073382252953394915
-    second: player_push_step4
+    second: player_pushing_sprites_3
   - first:
       213: 2321080040750384458
-    second: player_push_step5
+    second: player_pushing_sprites_4
   - first:
       213: -4552677407636317010
-    second: player_pushing_sprites_5
+    second: player_pushing_IDLE
   - first:
       213: 6136215742976970241
-    second: player_push_step6
+    second: player_pushing_sprites_6
   - first:
       213: -5750456479270641701
-    second: player_push_step7
+    second: player_pushing_sprites_7
   - first:
       213: -1850604412541260414
-    second: player_push_step
+    second: player_pushing_sprites_8
   - first:
       213: 6492321342149634645
-    second: player_push_step9
+    second: player_pushing_sprites_9
   - first:
       213: 7540724837415144746
-    second: player_push_step10
+    second: player_pushing_sprites_10
   - first:
       213: -1736082405904083260
-    second: player_push_step11
+    second: player_pushing_sprites_11
   - first:
       213: 1930043785434349095
-    second: player_push_step12
+    second: player_pushing_sprites_12
   - first:
       213: 4991370875735860972
-    second: player_push_step13
+    second: player_pushing_sprites_13
   - first:
       213: 8921689724850598011
-    second: player_push_step14
+    second: player_pushing_sprites_14
   - first:
       213: -4810810094272565212
-    second: player_push_step15
+    second: player_pushing_sprites_15
   - first:
       213: 6891208869528788503
-    second: player_push_step16
+    second: player_pushing_sprites_16
   - first:
       213: -4986714012068064788
-    second: player_push_step17
+    second: player_pushing_sprites_17
   - first:
       213: 6829763036983020387
-    second: player_push_step18
+    second: player_pushing_sprites_18
   - first:
       213: -3662102261086470150
-    second: player_push_step19
+    second: player_pushing_sprites_19
   - first:
       213: -1697304245103996319
-    second: player_push_step20
+    second: player_pushing_sprites_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -150,13 +150,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_push_step1
+      name: player_pushing_sprites_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 7
         y: 144
-        width: 17
-        height: 40
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,13 +171,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step2
+      name: player_pushing_sprites_1
       rect:
         serializedVersion: 2
         x: 39
         y: 144
         width: 18
-        height: 40
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,13 +192,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step3
+      name: player_pushing_sprites_2
       rect:
         serializedVersion: 2
-        x: 72
+        x: 71
         y: 144
-        width: 17
-        height: 40
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,13 +213,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step4
+      name: player_pushing_sprites_3
       rect:
         serializedVersion: 2
-        x: 106
+        x: 103
         y: 144
-        width: 15
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,13 +234,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step5
+      name: player_pushing_sprites_4
       rect:
         serializedVersion: 2
-        x: 139
+        x: 135
         y: 144
-        width: 14
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,13 +255,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pushing_sprites_5
+      name: player_pushing_IDLE
       rect:
         serializedVersion: 2
-        x: 171
+        x: 167
         y: 144
-        width: 14
-        height: 40
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,13 +276,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step6
+      name: player_pushing_sprites_6
       rect:
         serializedVersion: 2
-        x: 12
+        x: 7
         y: 96
-        width: 13
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,13 +297,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step7
+      name: player_pushing_sprites_7
       rect:
         serializedVersion: 2
-        x: 44
+        x: 39
         y: 96
-        width: 13
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,13 +318,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step
+      name: player_pushing_sprites_8
       rect:
         serializedVersion: 2
-        x: 76
+        x: 71
         y: 96
-        width: 13
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -339,13 +339,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step9
+      name: player_pushing_sprites_9
       rect:
         serializedVersion: 2
-        x: 107
+        x: 103
         y: 96
-        width: 14
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -360,13 +360,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step10
+      name: player_pushing_sprites_10
       rect:
         serializedVersion: 2
-        x: 137
+        x: 135
         y: 96
-        width: 16
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,13 +381,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step11
+      name: player_pushing_sprites_11
       rect:
         serializedVersion: 2
         x: 7
         y: 48
         width: 18
-        height: 38
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -402,13 +402,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step12
+      name: player_pushing_sprites_12
       rect:
         serializedVersion: 2
-        x: 41
+        x: 39
         y: 48
-        width: 16
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -423,13 +423,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step13
+      name: player_pushing_sprites_13
       rect:
         serializedVersion: 2
-        x: 73
+        x: 71
         y: 48
-        width: 16
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -444,13 +444,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step14
+      name: player_pushing_sprites_14
       rect:
         serializedVersion: 2
-        x: 105
+        x: 103
         y: 48
-        width: 16
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -465,13 +465,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step15
+      name: player_pushing_sprites_15
       rect:
         serializedVersion: 2
-        x: 139
+        x: 135
         y: 48
-        width: 14
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -486,13 +486,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step16
+      name: player_pushing_sprites_16
       rect:
         serializedVersion: 2
-        x: 12
+        x: 7
         y: 0
-        width: 13
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -507,13 +507,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step17
+      name: player_pushing_sprites_17
       rect:
         serializedVersion: 2
-        x: 44
+        x: 39
         y: 0
-        width: 13
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -528,13 +528,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step18
+      name: player_pushing_sprites_18
       rect:
         serializedVersion: 2
-        x: 74
+        x: 71
         y: 0
-        width: 15
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -549,13 +549,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step19
+      name: player_pushing_sprites_19
       rect:
         serializedVersion: 2
-        x: 106
+        x: 103
         y: 0
-        width: 15
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -570,13 +570,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_push_step20
+      name: player_pushing_sprites_20
       rect:
         serializedVersion: 2
-        x: 136
+        x: 135
         y: 0
-        width: 17
-        height: 38
+        width: 18
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
