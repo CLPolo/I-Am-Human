@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -81,7 +81,7 @@ public class Player : AnimatedEntity
     {
         if (Instance != null && Instance != this)
         {
-            Debug.Log("donyt set player");
+            Debug.Log("don't set player");
             Destroy(gameObject);
         } else {
             Debug.Log("do set player");
@@ -103,7 +103,6 @@ public class Player : AnimatedEntity
         playFootfall();
         checkFlashlight();
         AnimationUpdate();
-        //print(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     public PlayerState GetState()
@@ -244,11 +243,11 @@ public class Player : AnimatedEntity
     {
         if(AudioSource != null && !AudioSource.isPlaying && !touchingWall)
         {
-            if (state == PlayerState.Walking) 
+            if (state == PlayerState.Running) 
             {
-                AudioSource.PlayOneShot(footstepsRun[UnityEngine.Random.Range(0, footstepsWalk.Capacity)]);
-            } else if (state == PlayerState.Running) {
-                AudioSource.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)]);
+                AudioSource.PlayOneShot(footstepsRun[UnityEngine.Random.Range(0, footstepsRun.Capacity)]);
+            } else if (state == PlayerState.Walking && GetAnimationIndex().isOneOf(2, 11)) {
+                AudioSource.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)], 0.25f);
             }
         }
     }

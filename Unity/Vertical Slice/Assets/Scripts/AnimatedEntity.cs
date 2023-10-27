@@ -91,4 +91,7 @@ public class AnimatedEntity : MonoBehaviour
         interruptAnimation = null;
         SpriteRenderer.sprite = DefaultAnimationCycle[index];
     }
+    public int GetAnimationIndex(){
+        return index;
+    }
 }
