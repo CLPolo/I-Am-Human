@@ -4,67 +4,67 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -1609057068260125381
-    second: player_walk_step1
+    second: player_walking_sprites_0
   - first:
       213: -7620782262344925339
-    second: player_walk_step2
+    second: player_walking_sprites_1
   - first:
       213: 1177426419161946385
-    second: player_walk_step3
+    second: player_walking_sprites_2
   - first:
       213: 7624916519962866343
-    second: player_walk_step4
+    second: player_walking_sprites_3
   - first:
       213: -41286339536750346
-    second: player_walk_step5
+    second: player_walking_sprites_4
   - first:
       213: -4416202387409345278
-    second: player_walk_step6
+    second: player_walking_sprites_5
   - first:
       213: -6028754670125335548
-    second: player_walk_step7
+    second: player_walking_sprites_6
   - first:
       213: -4149423985949440573
-    second: player_walk_step8
+    second: player_walking_sprites_7
   - first:
       213: 6856036987776613752
-    second: player_walk_step9
+    second: player_walking_sprites_8
   - first:
       213: -6310191737360849560
-    second: player_walk_step10
+    second: player_walking_sprites_9
   - first:
       213: 5840108822926873604
-    second: player_walking_sprites_10
+    second: player_walking_IDLE
   - first:
       213: 3149202094454565627
-    second: player_walk_step11
+    second: player_walking_sprites_11
   - first:
       213: 6642784185639180343
-    second: player_walk_step12
+    second: player_walking_sprites_12
   - first:
       213: 3943172364869206220
-    second: player_walk_step13
+    second: player_walking_sprites_13
   - first:
       213: -1149426706753600152
-    second: player_walk_step14
+    second: player_walking_sprites_14
   - first:
       213: 3344756825226048874
-    second: player_walk_step15
+    second: player_walking_sprites_15
   - first:
       213: 4194136375214526899
-    second: player_walk_step16
+    second: player_walking_sprites_16
   - first:
       213: -2578633782013608255
-    second: player_walk_step17
+    second: player_walking_sprites_17
   - first:
       213: 6900453818420878840
-    second: player_walk_step18
+    second: player_walking_sprites_18
   - first:
       213: 8383762486803346301
-    second: player_walk_step19
+    second: player_walking_sprites_19
   - first:
       213: 7713360860285283311
-    second: player_walk_step20
+    second: player_walking_sprites_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -150,13 +150,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_walk_step1
+      name: player_walking_sprites_0
       rect:
         serializedVersion: 2
         x: 0
         y: 49
         width: 16
-        height: 40
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,13 +171,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step2
+      name: player_walking_sprites_1
       rect:
         serializedVersion: 2
         x: 16
         y: 49
-        width: 15
-        height: 39
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,13 +192,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step3
+      name: player_walking_sprites_2
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 49
-        width: 14
-        height: 39
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,13 +213,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step4
+      name: player_walking_sprites_3
       rect:
         serializedVersion: 2
-        x: 51
+        x: 48
         y: 49
-        width: 11
-        height: 40
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,13 +234,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step5
+      name: player_walking_sprites_4
       rect:
         serializedVersion: 2
-        x: 67
+        x: 64
         y: 49
-        width: 10
-        height: 40
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,13 +255,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step6
+      name: player_walking_sprites_5
       rect:
         serializedVersion: 2
-        x: 83
+        x: 80
         y: 49
-        width: 9
-        height: 41
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,13 +276,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step7
+      name: player_walking_sprites_6
       rect:
         serializedVersion: 2
-        x: 99
+        x: 96
         y: 49
-        width: 10
-        height: 41
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,12 +297,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step8
+      name: player_walking_sprites_7
       rect:
         serializedVersion: 2
-        x: 115
+        x: 112
         y: 49
-        width: 12
+        width: 16
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -318,12 +318,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step9
+      name: player_walking_sprites_8
       rect:
         serializedVersion: 2
-        x: 130
+        x: 128
         y: 49
-        width: 13
+        width: 16
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -339,13 +339,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step10
+      name: player_walking_sprites_9
       rect:
         serializedVersion: 2
-        x: 146
+        x: 144
         y: 49
-        width: 14
-        height: 41
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -360,13 +360,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walking_sprites_10
+      name: player_walking_IDLE
       rect:
         serializedVersion: 2
-        x: 178
+        x: 176
         y: 49
-        width: 12
-        height: 40
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,13 +381,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step11
+      name: player_walking_sprites_11
       rect:
         serializedVersion: 2
         x: 0
         y: 1
         width: 16
-        height: 40
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -402,13 +402,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step12
+      name: player_walking_sprites_12
       rect:
         serializedVersion: 2
-        x: 18
+        x: 16
         y: 1
-        width: 14
-        height: 39
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -423,13 +423,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step13
+      name: player_walking_sprites_13
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 1
-        width: 13
-        height: 39
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -444,13 +444,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step14
+      name: player_walking_sprites_14
       rect:
         serializedVersion: 2
-        x: 50
+        x: 48
         y: 1
-        width: 12
-        height: 40
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -465,13 +465,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step15
+      name: player_walking_sprites_15
       rect:
         serializedVersion: 2
-        x: 67
+        x: 64
         y: 1
-        width: 9
-        height: 40
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -486,13 +486,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step16
+      name: player_walking_sprites_16
       rect:
         serializedVersion: 2
-        x: 83
+        x: 80
         y: 1
-        width: 9
-        height: 41
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -507,13 +507,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step17
+      name: player_walking_sprites_17
       rect:
         serializedVersion: 2
-        x: 99
+        x: 96
         y: 1
-        width: 10
-        height: 41
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -528,13 +528,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step18
+      name: player_walking_sprites_18
       rect:
         serializedVersion: 2
-        x: 115
+        x: 112
         y: 1
-        width: 12
-        height: 41
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -549,13 +549,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step19
+      name: player_walking_sprites_19
       rect:
         serializedVersion: 2
-        x: 131
+        x: 128
         y: 1
-        width: 12
-        height: 41
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -570,13 +570,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_walk_step20
+      name: player_walking_sprites_20
       rect:
         serializedVersion: 2
-        x: 147
+        x: 144
         y: 1
-        width: 11
-        height: 40
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
