@@ -26,6 +26,7 @@ public enum PlayerState
     Hiding = 3,
     Trapped = 4,
     Pushing = 5,
+    Pulling = 6,
 }
 
 
@@ -43,6 +44,7 @@ public class Player : AnimatedEntity
     private Rigidbody2D rb; // ------------------> RigidBody2D. Will be used to access it's velocity property to check for movement.
 
     [Header("Animation Cycles")]
+    private List<Sprite> currentCycle;
     public List<Sprite> walkCycle;  
     public List<Sprite> runCycle;
     public List<Sprite> hideCycle;
@@ -64,6 +66,7 @@ public class Player : AnimatedEntity
 
     //boolean state based variables
     //private bool isHiding = false;
+    private bool moving = false;
     private bool facingRight = true;
     private bool movingRight = true;
 
@@ -88,7 +91,7 @@ public class Player : AnimatedEntity
         }
 
         logic = LogicScript.Instance;
-
+        currentCycle = walkCycle;
         rb = GetComponent<Rigidbody2D>();
         lightCone = flashlight.GetComponent<Light>();
         AnimationSetup();
@@ -112,11 +115,21 @@ public class Player : AnimatedEntity
 
     public void SetState(PlayerState _state)
     {
+        if (_state == PlayerState.Pushing && movingRight != facingRight)
+        {
+            _state = PlayerState.Pulling;
+        }
+        if (moving && !interruptFlag)
+        {
+            InterruptAnimation(currentCycle, true);
+        } else if (!moving && interruptFlag) {
+            ResetAnimationCycle();
+        }
         if (_state == state)
         {
             return;
         }
-
+        
         bool allowStateChange = true;
 
         // reset state specific changes
@@ -129,15 +142,16 @@ public class Player : AnimatedEntity
         switch (_state)
         {
             case PlayerState.Idle:
+                DefaultAnimationCycle[0] = idleWalk;
                 break;
             case PlayerState.Walking:
                 DefaultAnimationCycle[0] = idleWalk;
-                InterruptAnimation(walkCycle, true);
+                currentCycle = walkCycle;
                 break;
             case PlayerState.Hiding:
                 speed = sneakSpeed;
                 DefaultAnimationCycle[0] = idleHide;
-                InterruptAnimation(hideCycle, true);
+                currentCycle = hideCycle;
                 transform.position += Vector3.right * 0.0001f;
                 break;
             case PlayerState.Running:
@@ -146,8 +160,12 @@ public class Player : AnimatedEntity
             case PlayerState.Pushing:
                 speed = pushSpeed;
                 DefaultAnimationCycle[0] = idlePush;
-                InterruptAnimation(pushCycle, true);
+                currentCycle = pushCycle;
                 break;
+            case PlayerState.Pulling:
+                speed = pushSpeed;
+                DefaultAnimationCycle[0] = idlePush;
+                currentCycle = pullCycle;
                 break;
             case PlayerState.Trapped:
                 speed = 0;  // Player cannot move while trapped
@@ -167,7 +185,8 @@ public class Player : AnimatedEntity
         // Move left
         if (Input.GetKey(Controls.Left))
         {
-            if (!state.isOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Trapped)) {
+            if (state != PlayerState.Trapped) { moving = true; }
+            if (!state.isOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped)) {
                 if (Input.GetKey(Controls.Run))
                 {
                     SetState(PlayerState.Running);
@@ -185,7 +204,8 @@ public class Player : AnimatedEntity
         // Move right
         if (Input.GetKey(Controls.Right))
         {
-            if (!state.isOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Trapped))
+            if (state != PlayerState.Trapped) { moving = true; }
+            if (!state.isOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped))
             {
                 if (Input.GetKey(Controls.Run))
                 {
@@ -206,6 +226,7 @@ public class Player : AnimatedEntity
                 SetState(PlayerState.Idle);
             }
             rb.velocity = Vector2.zero;
+            moving = false;
         }
     }
 
@@ -232,10 +253,10 @@ public class Player : AnimatedEntity
     {
         if(AudioSource != null && !AudioSource.isPlaying && !touchingWall)
         {
-            if (state == PlayerState.Walking) 
+            if (state == PlayerState.Running) 
             {
-                AudioSource.PlayOneShot(footstepsRun[UnityEngine.Random.Range(0, footstepsWalk.Capacity)]);
-            } else if (state == PlayerState.Running) {
+                AudioSource.PlayOneShot(footstepsRun[UnityEngine.Random.Range(0, footstepsRun.Capacity)]);
+            } else if (state == PlayerState.Walking) {
                 AudioSource.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)]);
             }
         }
@@ -336,15 +357,16 @@ public class Player : AnimatedEntity
         }
         else if (state == PlayerState.Hiding)  // unhides only if you were hiding
         {
+            Debug.Log("test");
             Unhide(Hideable);
-            ResetAnimationCycle();
+            // ResetAnimationCycle();
         }
     }
 
     private void CheckFlip()
     {
         // Checks if player needs to be flipped (i.e. if the player is not facing the direction they are moving)
-        if (state != PlayerState.Pushing && !logic.IsPaused && Time.timeScale == 1) // if not pushing and facing right and not paused or frozen (timeScale is 1), flips
+        if (!state.isOneOf(PlayerState.Pushing, PlayerState.Pulling) && !logic.IsPaused && Time.timeScale == 1) // if not pushing and facing right and not paused or frozen (timeScale is 1), flips
         {
             if (facingRight != movingRight) // if facing right and moving left OR facing left and moving right, flips
             {
