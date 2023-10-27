@@ -44,7 +44,8 @@ public class LevelLoader : MonoBehaviour
     private Dictionary<string, string> nextScene = new Dictionary<string, string>()
     {
         { "FOREST FIRST COMMIT", "FOREST FIRST COMMIT" },
-        { "Cabin Exterior + Door", "End of Vertical Slice" }
+        { "Cabin Exterior + Door", "End of Vertical Slice" },
+        { "Vertical Slice", "End of Vertical Slice" }
     };
 
     private void OnTriggerEnter2D(Collider2D other)

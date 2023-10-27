@@ -157,6 +157,7 @@ public class PuzzleTargetScript : MonoBehaviour
         // Allows to switch from box preventing player passing by / through to allowing player to pass through.
 
         AffectedObject.layer = LayerMask.NameToLayer(Layer);
+        PlayerPrefs.SetString("boxlayer", Layer);
     }
 
     private void PlayNoise(AudioClip Noise)
