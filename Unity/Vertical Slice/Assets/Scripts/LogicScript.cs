@@ -42,12 +42,9 @@ public class LogicScript : MonoBehaviour
         mashTimer = defaultMashTimer;
         if (Instance != null && Instance != this)
         {
-            //Debug.Log(1);
             Destroy(gameObject);
         }
 
-        //Debug.Log(2);
-        //Debug.Log(DeathScreen.name);
         DeathScreen.SetActive(false);  // Don't want to be dead at the start lol
         PauseMenu.SetActive(false);
     }

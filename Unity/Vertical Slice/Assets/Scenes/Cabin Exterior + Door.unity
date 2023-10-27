@@ -597,7 +597,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671549, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671549, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -1259,6 +1259,38 @@ RectTransform:
   m_AnchoredPosition: {x: 476.5, y: 202}
   m_SizeDelta: {x: 952.9999, y: 404}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1918616257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7522277464662625303, guid: 58a2ae1401824a637aece98bdc2381cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2022239715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1918616262
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918616257}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.96}
+    newSize: {x: 0.29007083, y: 0.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.96}
+  m_EdgeRadius: 0
 --- !u!1 &1936355881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,12 +1468,12 @@ PrefabInstance:
     - target: {fileID: 7522277464662625288, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.67
+      value: 7.35
       objectReference: {fileID: 0}
     - target: {fileID: 7522277464662625288, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.87
+      value: -4.31
       objectReference: {fileID: 0}
     - target: {fileID: 7522277464662625288, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
@@ -1503,7 +1535,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7522277464662625290, guid: 58a2ae1401824a637aece98bdc2381cd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 58a2ae1401824a637aece98bdc2381cd, type: 3}
 --- !u!1 &2078082020
 GameObject:

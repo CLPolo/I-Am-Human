@@ -15,7 +15,7 @@ public class AnimatedEntity : MonoBehaviour
 
 
     //interrupt animation info
-    private bool interruptFlag;
+    protected bool interruptFlag;
     private bool persistFlag;
     private List<Sprite> interruptAnimation;
 

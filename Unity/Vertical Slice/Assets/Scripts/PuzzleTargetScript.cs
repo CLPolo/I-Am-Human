@@ -141,7 +141,6 @@ public class PuzzleTargetScript : MonoBehaviour
 
         if (player.GetState() == PlayerState.Hiding && TimerCount <= HideTime)  // if the player is hiding, and the timer still hasn't hit hidetime
         {
-            //Debug.Log(TimerCount);
             TimerCount += 1 * Time.deltaTime;
         }
         else if (TimerCount >= HideTime)
