@@ -102,8 +102,8 @@ public class LogicScript : MonoBehaviour
             if (Input.GetKeyDown(Controls.Mash))
             {
                 if (!audioSource.isPlaying){
-                    audioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString());
-                    audioSource.PlayOneShot(audioSource.clip, 0.5f);
+                    //audioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString());
+                    audioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString()), 0.5f);
                 }
                 mashTimer += 0.3f;  // Add 0.2 seconds to the timer
             }
@@ -115,6 +115,7 @@ public class LogicScript : MonoBehaviour
         // Activates death screen
         IsPaused = val;  // will prevent player from moving after death
         DeathScreen.SetActive(val);
+        //audioSource.PlayOneShot(audioSource.clip, 0.5f)
         //AudioListener.pause = IsPaused;
     }
     public void TogglePause()

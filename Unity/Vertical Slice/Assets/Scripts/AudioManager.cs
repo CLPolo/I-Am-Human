@@ -137,7 +137,14 @@ public class AudioManager : MonoBehaviour
                     if (name == "AmbArea") s.clip = (AudioClip)Resources.Load(pathAmb + "Forest/forest_ambience");
                     if (name == "AmbMisc" )s.clip = (AudioClip)Resources.Load(pathAmb + "creepyambience");
                     break;
-            }
+                case "End of Vertical Slice":
+                    if (name == "Cutscene") s.PlayOneShot(Resources.Load<AudioClip>(pathCutscene + "death-temp"), 0.8f);
+                    if (name == "AmbMisc") {
+                        s.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");
+                        RestartSource(s, true, 0.02f, 20f);
+                    }
+                    break;
+            }       
         }
     }
 

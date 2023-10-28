@@ -168,8 +168,8 @@ public class Player : AnimatedEntity
                 break;
             case PlayerState.Trapped:
                 speed = 0;  // Player cannot move while trapped
-                //AudioSource.clip = ;
-                AudioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trapped-entered"), 0.5f);
+                AudioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-entered-0");
+                AudioSource.PlayOneShot(AudioSource.clip, 0.5f);
                 rb.velocity = Vector2.zero;
                 transform.eulerAngles = new Vector3(0, -135, 0); // indicate player is trapped somehow
                 break;
