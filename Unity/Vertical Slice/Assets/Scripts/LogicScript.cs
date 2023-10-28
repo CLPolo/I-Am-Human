@@ -45,7 +45,7 @@ public class LogicScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        audioSource = GetComponent<AudioSource>();
         DeathScreen.SetActive(false);  // Don't want to be dead at the start lol
         PauseMenu.SetActive(false);
     }
@@ -102,8 +102,8 @@ public class LogicScript : MonoBehaviour
             if (Input.GetKeyDown(Controls.Mash))
             {
                 if (!audioSource.isPlaying){
-                    audioSource.clip = Resources.Load("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + ToString(UnityEngine.Random.Range(0,5)));
-                    audioSource.Play();
+                    audioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString());
+                    audioSource.PlayOneShot(0.5f);
                     mashTimer += 0.3f;  // Add 0.2 seconds to the timer
                 }
             }
