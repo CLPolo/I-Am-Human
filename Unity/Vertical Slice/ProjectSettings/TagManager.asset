@@ -25,6 +25,7 @@ TagManager:
   - Pause
   - Death
   - TrapArmedNoKill
+  - AudioManager
   layers:
   - Default
   - TransparentFX

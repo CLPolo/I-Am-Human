@@ -13,7 +13,7 @@ public class LevelLoader : MonoBehaviour
 {
     private static LevelLoader _instance;
     public static LevelLoader Instance { get { return _instance; } }
-
+    
     // fading stuff
     // NOTE: EVEN I DONT KNOW HOW THIS CODE IS WORKING SO PROBABLY DONT TOUCH IT
     private bool fadeOut;
@@ -43,7 +43,6 @@ public class LevelLoader : MonoBehaviour
     // temporary linear scene progression
     private Dictionary<string, string> nextScene = new Dictionary<string, string>()
     {
-        { "FOREST FIRST COMMIT", "FOREST FIRST COMMIT" },
         { "Cabin Exterior + Door", "End of Vertical Slice" },
         { "Vertical Slice", "End of Vertical Slice" }
     };
