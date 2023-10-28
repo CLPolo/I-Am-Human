@@ -11,6 +11,8 @@ using UnityEngine.UIElements;
 public class PuzzleTargetScript : MonoBehaviour
 {
     public GameObject AffectedObject = null;  // object to be affected by trigger actions (if desired)
+    public GameObject ActivateTriggerObject = null;  // trigger to be deleted / deactivated if player performs this action
+    public GameObject DeactivateTriggerObject = null;
 
     [Header("Target Affect Type")]
     // these allow us to define what the target will do
@@ -21,7 +23,9 @@ public class PuzzleTargetScript : MonoBehaviour
     public bool NoiseTrigger;  // will trigger a noise
     public bool TextTrigger;  // will trigger text to display
     public bool HideTimed;  // will take a given action after player has been hidden for certain amount of time
-    public bool FreezePlayer;  // freeze the player after activating object
+    public bool FreezePlayerObject;  // freeze the player after activating object
+    public bool FreezePlayerText;  // freeze player after activating text
+    public bool FreezePlayerOnly; // freezes player once when collide, doesn't trigger anything else tho
     public bool UnlockDoor;  // unlocks a door when collide w/ box
 
     [Header("Affect Specifications")]
@@ -44,6 +48,7 @@ public class PuzzleTargetScript : MonoBehaviour
     private bool NoiseTriggered = false;        // whether the noise has already been triggered
     private bool TextPlayed = false;
     private float TimerCount = 0;  // hide timer counter
+    private bool FrozenOnce = false;
 
     // misc
     public Player player;
@@ -101,7 +106,11 @@ public class PuzzleTargetScript : MonoBehaviour
     private void HandlePlayer()
     {
         // handles any actions post player interaction
-
+        if (FreezePlayerOnly && !FrozenOnce)
+        {
+            StartCoroutine(Freeze());
+            FrozenOnce = true;
+        }
         if (SpawnObject && AffectedObject != null)  // if we want to spawn / activate an object
         {
             if (!ObjectDisplaying && !HideTimed)  // if not already there and not a hidetimed event
@@ -187,9 +196,12 @@ public class PuzzleTargetScript : MonoBehaviour
     private IEnumerator DisplayText()
     {
         // displays text for display time
-
         TextDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = TextToDisplay;
         TextDisplay.SetActive(true);
+        if (FreezePlayerText)
+        {
+            StartCoroutine(Freeze());
+        }
         yield return new WaitForSeconds(DisplayTimeText);
         TextDisplay.SetActive(false);
         TextDisplaying = false;
@@ -205,7 +217,7 @@ public class PuzzleTargetScript : MonoBehaviour
 
         yield return new WaitForSeconds(DelayTime);
         AffectedObject.SetActive(true);
-        if (FreezePlayer)
+        if (FreezePlayerObject)
         {
             StartCoroutine(Freeze());
         }
@@ -217,7 +229,20 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             StartCoroutine(DeactivateObject());
         }
+        if (DeactivateTriggerObject != null)
+        {
+            ActivateTarget(DeactivateTriggerObject, false);
+        }
+        if (ActivateTriggerObject != null)
+        {
+            ActivateTarget(ActivateTriggerObject, true);
+        }
         ObjectDisplaying = false;
+    }
+
+    private void ActivateTarget(GameObject trigger, bool val)
+    {
+        trigger.SetActive(val);
     }
 
     private IEnumerator DestroyObject()
