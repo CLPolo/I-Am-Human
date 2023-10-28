@@ -17,12 +17,7 @@ public class AudioManager : MonoBehaviour
     {
         get
         {
-            if (_instance == null)
-            {
-                //GameObject AM = Instantiate(Resources.Load("AudioManager", typeof(GameObject))) as GameObject;
-                DontDestroyOnLoad(gameObject);
-                _instance =.GetComponent<AudioManager>();
-            }
+            
             return _instance;
         }
     }
@@ -32,8 +27,14 @@ public class AudioManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
-        if (Instance != null && Instance != this) Destroy(gameObject);        
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        } else if (Instance == null) {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         
         if (srcs == null || srcs.Count == 0){  
             //populate AudioSource dict
@@ -56,26 +57,32 @@ public class AudioManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         //check if player exists
-        if (p == null)  p = Player.Instance;
-        if (pA == null) pA = p.AudioSource;
+        if (p == null && Player.Instance != null)
+        {
+            p = Player.Instance;
+            pA = p.AudioSource;
+        }
 
         //check for scene change
         if (scene != SceneManager.GetActiveScene().name){
             scene = SceneManager.GetActiveScene().name;
             ChangeScene(scene);
         }
+        if (p != null)
+        {
+            CheckPlayer(p.GetState());
+        }
         // PUT ALL LOGIC HERE
-        CheckPlayer(p.GetState());
         CheckScenewide(scene);
     }
 
     void ChangeScene(string scene)
     {   
         string pathBGM = "Sounds/Music/";
-        string pathAmb = "/SoundEffects/Environment/";
-        string pathCutscene = "/SoundEffects/Misc/";
+        string pathAmb = "Sounds/SoundEffects/Environment/";
+        string pathCutscene = "Sounds/SoundEffects/Misc/";
 
         StopAll(false);
 
@@ -88,11 +95,11 @@ public class AudioManager : MonoBehaviour
                     if (name == "BGM") src.Value.clip = null;
                     if (name == "Cutscene")
                     {
-                        src.Value.clip = (AudioClip)Resources.Load(pathCutscene + "car-crash-comp.ogg");
+                        src.Value.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-comp");
                         src.Value.Play();
                     } 
-                    if (name == "AmbArea") src.Value.clip = (AudioClip)Resources.Load(pathAmb + "Forest/forest_ambience.ogg");
-                    if (name == "AmbMisc") src.Value.clip = (AudioClip)Resources.Load(pathAmb + "creepyambience.ogg");                         
+                    if (name == "AmbArea") src.Value.clip = Resources.Load<AudioClip>(pathAmb + "Forest/forest_ambience");
+                    if (name == "AmbMisc") src.Value.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");                         
                 }  
                 break;
             case "Title Screen":
@@ -100,14 +107,14 @@ public class AudioManager : MonoBehaviour
                 {
                     string name = src.Key;
 
-                    if (name == "BGM") src.Value.clip = (AudioClip)Resources.Load(pathBGM + "title-theme.ogg");
+                    if (name == "BGM") src.Value.clip = (AudioClip)Resources.Load(pathBGM + "title-theme");
                     if (name == "Cutscene")
                     {
-                        src.Value.clip = (AudioClip)Resources.Load(pathCutscene + "car-crash-comp.ogg");
+                        src.Value.clip = (AudioClip)Resources.Load(pathCutscene + "car-crash-comp");
                         src.Value.Play();
                     } 
-                    if (name == "AmbArea") src.Value.clip = (AudioClip)Resources.Load(pathAmb + "Forest/forest_ambience.ogg");
-                    if (name == "AmbMisc" )src.Value.clip = (AudioClip)Resources.Load(pathAmb + "creepyambience.ogg");
+                    if (name == "AmbArea") src.Value.clip = (AudioClip)Resources.Load(pathAmb + "Forest/forest_ambience");
+                    if (name == "AmbMisc" )src.Value.clip = (AudioClip)Resources.Load(pathAmb + "creepyambience");
                 }
                 break;
         }
@@ -135,13 +142,13 @@ public class AudioManager : MonoBehaviour
     {   
         if (scene != "Title Screen"){
             //Check for cutscene audio before playing everything else
-            if (srcs.TryGetValue("Cutscene", out AudioSource cutscene) && !cutscene.isPlaying){
+            if (srcs.TryGetValue("Cutscene", out AudioSource cutscene) && !cutscene.isPlaying) {
                 //play background music
-                if(srcs.TryGetValue("BGM", out AudioSource bgm) && !bgm.isPlaying) bgm.PlayOneShot(bgm.clip, 1f);
+                if(srcs.TryGetValue("BGM", out AudioSource bgm) && !bgm.isPlaying && bgm.clip != null) bgm.PlayOneShot(bgm.clip, 1f);
                 //play area ambience
-                if(srcs.TryGetValue("AmbArea", out AudioSource ambA) && !ambA.isPlaying) ambA.PlayOneShot(ambA.clip, 1f);
+                if (srcs.TryGetValue("AmbArea", out AudioSource ambA) && !ambA.isPlaying && ambA.clip != null) ambA.PlayOneShot(ambA.clip, 1f);
                 //play general ambience
-                if(srcs.TryGetValue("AmbMisc", out AudioSource ambM) && !ambM.isPlaying) ambM.PlayOneShot(ambM.clip, 1f);
+                if(srcs.TryGetValue("AmbMisc", out AudioSource ambM) && !ambM.isPlaying && ambA.clip != null) ambM.PlayOneShot(ambM.clip, 1f);
             }
         }
     }   
