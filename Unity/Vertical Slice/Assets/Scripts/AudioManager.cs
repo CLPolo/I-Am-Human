@@ -128,7 +128,7 @@ public class AudioManager : MonoBehaviour
 
                 case "Title Screen":
 
-                    if (name == "BGM") s.clip = (AudioClip)Resources.Load(pathBGM + "title-theme");
+                    if (name == "BGM") s.clip = (AudioClip)Resources.Load(pathBGM + "title-theme-lofx");
                     if (name == "Cutscene")
                     {
                         // s.clip = (AudioClip)Resources.Load(pathCutscene + "car-crash-comp");
@@ -139,6 +139,13 @@ public class AudioManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    void RestartSource(AudioSource s, bool fade = false, float targetVolume = 0.5f, float duration = 0f){
+            s.volume = 0.01f;
+            if (s.isPlaying) s.Stop();
+            s.Play();
+            if (fade) StartCoroutine(Fade.Start(s, targetVolume, duration));
     }
 
     void StopAll(bool fade = true)
@@ -189,11 +196,5 @@ public class AudioManager : MonoBehaviour
 
             pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.25f);
         }   
-    }
-    void RestartSource(AudioSource s, bool fade = false, float targetVolume = 0.5f, float duration = 0f){
-            s.volume = 0.01f;
-            if (s.isPlaying) s.Stop();
-            s.Play();
-            if (fade) StartCoroutine(Fade.Start(s, targetVolume, duration));
     }
 }

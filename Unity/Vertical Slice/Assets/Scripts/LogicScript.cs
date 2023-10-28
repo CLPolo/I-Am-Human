@@ -28,6 +28,7 @@ public class LogicScript : MonoBehaviour
     public bool IsPaused = false;  // true if game is paused
 
     public Player player;
+    private AudioSource audioSource;
 
     // TRAP
     public GameObject trappedText;
@@ -59,7 +60,7 @@ public class LogicScript : MonoBehaviour
             }
             // PUT ALL LOGIC HERE
             if (player.GetState() == PlayerState.Trapped)
-            {
+            {   
                 MashTrap();
             }
 
@@ -100,7 +101,11 @@ public class LogicScript : MonoBehaviour
         {
             if (Input.GetKeyDown(Controls.Mash))
             {
-                mashTimer += 0.3f;  // Add 0.2 seconds to the timer
+                if (!audioSource.isPlaying){
+                    audioSource.clip = Resources.Load("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + ToString(UnityEngine.Random.Range(0,5)));
+                    audioSource.Play();
+                    mashTimer += 0.3f;  // Add 0.2 seconds to the timer
+                }
             }
         }
     }
@@ -110,7 +115,7 @@ public class LogicScript : MonoBehaviour
         // Activates death screen
         IsPaused = val;  // will prevent player from moving after death
         DeathScreen.SetActive(val);
-        AudioListener.pause = IsPaused;
+        //AudioListener.pause = IsPaused;
     }
     public void TogglePause()
     {
