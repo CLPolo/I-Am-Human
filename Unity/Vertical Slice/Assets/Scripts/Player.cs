@@ -59,7 +59,7 @@ public class Player : AnimatedEntity
     public AudioSource AudioSource;
     public List<AudioClip> footstepsWalk;
     public List<AudioClip> footstepsRun;
-    private bool touchingWall = false;
+    protected internal bool touchingWall = false;
 
     [Header("Items")]
     public GameObject flashlight;
@@ -102,7 +102,7 @@ public class Player : AnimatedEntity
     {
         CheckTrapped();
         checkMovement();
-        playFootfall();
+        //playFootfall();
         checkFlashlight();
         AnimationUpdate();
     }
@@ -248,18 +248,18 @@ public class Player : AnimatedEntity
         }
     }
 
-    void playFootfall()
-    {
-        if(AudioSource != null && !AudioSource.isPlaying && !touchingWall)
-        {
-            if (state == PlayerState.Running) 
-            {
-                AudioSource.PlayOneShot(footstepsRun[UnityEngine.Random.Range(0, footstepsRun.Capacity)]);
-            } else if (state == PlayerState.Walking && GetAnimationIndex().isOneOf(2, 11)) {
-                AudioSource.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)], 0.25f);
-            }
-        }
-    }
+    // void playFootfall()
+    // {
+    //     if(AudioSource != null && !AudioSource.isPlaying && !touchingWall)
+    //     {
+    //         if (state == PlayerState.Running) 
+    //         {
+    //             AudioSource.PlayOneShot(footstepsRun[UnityEngine.Random.Range(0, footstepsRun.Capacity)]);
+    //         } else if (state == PlayerState.Walking && GetAnimationIndex().isOneOf(2, 11)) {
+    //             AudioSource.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)], 0.25f);
+    //         }
+    //     }
+    // }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
