@@ -118,10 +118,11 @@ public class Player : AnimatedEntity
         {
             _state = PlayerState.Pulling;
         }
-        if (moving && !interruptFlag)
+
+        if (moving && !touchingWall && !interruptFlag)
         {
             InterruptAnimation(currentCycle, true);
-        } else if (!moving && interruptFlag) {
+        } else if ((!moving || touchingWall) && interruptFlag) {
             ResetAnimationCycle();
         }
         if (_state == state)
