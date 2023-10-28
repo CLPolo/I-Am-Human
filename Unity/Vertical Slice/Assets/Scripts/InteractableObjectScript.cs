@@ -24,6 +24,10 @@ public class InteractableObjectScript : MonoBehaviour
     public int FlashbackTime = 4;  // time between images in sequence (in seconds)
     public LogicScript logic;
 
+    [Header("Freeze Player")]
+    public bool FreezePlayer = false;
+    public float FreezeTime = 0;
+
 
     // Booleans
     private bool Inside = false;  // if player is inside hit box for object
@@ -61,6 +65,10 @@ public class InteractableObjectScript : MonoBehaviour
         if (Inside && Input.GetKey(Controls.Interact)) // if player is inside the interactable object's box collider
         {
             InteractableScreen.SetActive(false);  // turns off 'interact' prompt
+            if (FreezePlayer && !CurrentlyPlaying)
+            {
+                StartCoroutine(Freeze());
+            }
             CheckAndDisplayInfo();  // checks if there's info to display, if so does that
             if (IsFlashback)  // If post interaction display is a flashback sequence
             {
@@ -142,7 +150,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         if (DelayBySeconds > 0)
         {
-            yield return new WaitForSeconds(DelayBySeconds);
+            yield return new WaitForSeconds(DelayBySeconds * Time.timeScale);
         }
         
         // Set InfoScreen to active
@@ -156,7 +164,7 @@ public class InteractableObjectScript : MonoBehaviour
             foreach (var message in InfoMessages)
             {
                 InfoText.text = message;
-                yield return new WaitForSeconds(InfoTime);
+                yield return new WaitForSeconds(InfoTime * Time.timeScale);
             }
         }
         else if (InfoScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>() != null) // allows us to use text mesh pro aswell, which looks much nicer and scales better IMO
@@ -166,7 +174,7 @@ public class InteractableObjectScript : MonoBehaviour
             foreach (var message in InfoMessages)
             {
                 InfoText.text = message;
-                yield return new WaitForSeconds(InfoTime);
+                yield return new WaitForSeconds(InfoTime * Time.timeScale);
             }
         }
         InfoScreen.SetActive(false);
@@ -188,10 +196,20 @@ public class InteractableObjectScript : MonoBehaviour
         foreach (var Still in FlashbackImages)  // iterates through all images and displays them in turn
         {
                 ImageDisplay.sprite = Still;
-                yield return new WaitForSeconds(FlashbackTime);
+                yield return new WaitForSeconds(FlashbackTime *Time.timeScale);
         }
 
         FlashbackScreen.SetActive(false);  // turns screen off when done
         CurrentlyPlaying = false;  // sequence is finished
+    }
+
+    private IEnumerator Freeze()
+    {
+        // 'freezes' the player for freeze time seconds.
+
+        Time.timeScale = .0000001f;
+        yield return new WaitForSeconds(FreezeTime * Time.timeScale);
+        Time.timeScale = 1.0f;
+
     }
 }
