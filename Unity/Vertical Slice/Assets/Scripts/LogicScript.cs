@@ -103,9 +103,9 @@ public class LogicScript : MonoBehaviour
             {
                 if (!audioSource.isPlaying){
                     audioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString());
-                    audioSource.PlayOneShot(0.5f);
-                    mashTimer += 0.3f;  // Add 0.2 seconds to the timer
+                    audioSource.PlayOneShot(audioSource.clip, 0.5f);
                 }
+                mashTimer += 0.3f;  // Add 0.2 seconds to the timer
             }
         }
     }
