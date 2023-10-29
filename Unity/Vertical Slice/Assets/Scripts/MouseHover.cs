@@ -8,26 +8,62 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     public Sprite unselected;
     public Sprite selected;
+    public bool disableParentOnClick = false;
+    private AudioClip hoverSound;
+    private AudioClip selectSound;
+    private AudioSource audioSource;
+    private const string path = "Sounds/SoundEffects/Entity/Interactable/Flashlight/";
     private Button button;
     // Start is called before the first frame update
     void Start()
     {
         button = GetComponent<Button>();
-        button.image.sprite = unselected;
+        if (unselected != null)
+        {
+            button.image.sprite = unselected;
+        }
+        hoverSound = Resources.Load<AudioClip>(path + "switch-flick-0");
+        selectSound = Resources.Load<AudioClip>(path + "switch-flick-1");
+        if ((audioSource = GetComponent<AudioSource>()) == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        button.onClick.AddListener(delegate {
+            audioSource.PlayOneShot(selectSound, 0.5f);
+            if (unselected != null)
+            {
+                button.image.sprite = unselected;
+            }
+            StartCoroutine(FinishClick());
+        });
+    }
+
+    private IEnumerator FinishClick()
+    {
+        yield return new WaitUntil(() => !audioSource.isPlaying);
+        if (disableParentOnClick)
+        {
+            transform.parent.gameObject.SetActive(false);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        button.image.sprite = selected;
+        if (selected != null)
+        {
+            button.image.sprite = selected;
+        }
+        if (hoverSound != null)
+        {
+            audioSource.PlayOneShot(hoverSound, 0.5f);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        button.image.sprite = unselected;
-    }
-
-    public void ResetSprite()
-    {
-        button.image.sprite = unselected;
+        if (unselected != null)
+        {
+            button.image.sprite = unselected;
+        }
     }
 }
