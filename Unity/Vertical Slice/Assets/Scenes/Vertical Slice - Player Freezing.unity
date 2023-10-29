@@ -782,7 +782,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156285963}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
   m_Name: 
@@ -4228,7 +4228,7 @@ MonoBehaviour:
   TextToDisplay: "Lily isn\u2019t here, but this is her teddy bear."
   TextDisplay: {fileID: 683492317}
   TextDisplayOnce: 1
-  DisplayTimeText: 2
+  DisplayTimeText: 3
   DisplayTimeObject: 0
   DelayTime: 0
   HideTime: 0
@@ -14886,7 +14886,6 @@ MonoBehaviour:
   InfoMessages:
   - We must've crashed...
   - I didn't want to hit whatever that was that popped up on the road!
-  - Seriously, where is that kid?
   - Maybe she got scared and wandered into the woods. I should go find her.
   InfoTime: 4
   DelayBySeconds: 0
@@ -14898,7 +14897,7 @@ MonoBehaviour:
   FlashbackTime: 4
   logic: {fileID: 0}
   FreezePlayer: 1
-  FreezeTime: 16
+  FreezeTime: 12
   PlaySound: 0
   Sounds: []
   monsterComing: 0
@@ -15170,7 +15169,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: fbdcb1ef879bd1a47a6d15fd6a429ad7, type: 3}
-  m_Color: {r: 0.7830189, g: 0.77193844, b: 0.77193844, a: 1}
+  m_Color: {r: 0.9245283, g: 0.8678355, b: 0.8678355, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

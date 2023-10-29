@@ -123,7 +123,7 @@ public class PuzzleTargetScript : MonoBehaviour
         // handles any actions post player interaction
         if (FreezePlayerOnly && !FrozenOnce)
         {
-            StartCoroutine(Freeze());
+            StartCoroutine(FreezeONLY());
             FrozenOnce = true;
         }
         if (SpawnObject && AffectedObject != null)  // if we want to spawn / activate an object
@@ -284,6 +284,14 @@ public class PuzzleTargetScript : MonoBehaviour
         }
     }
 
+    private IEnumerator FreezeONLY()
+    {
+        // 'freezes' the player for freeze time seconds.
+        Time.timeScale = 0.000001f;
+        yield return new WaitForSeconds(FreezeTime * Time.timeScale);
+        Time.timeScale = 1f;
+
+    }
     private IEnumerator Freeze()
     {
         // 'freezes' the player for freeze time seconds.
