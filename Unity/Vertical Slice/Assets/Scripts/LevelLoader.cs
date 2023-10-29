@@ -44,7 +44,7 @@ public class LevelLoader : MonoBehaviour
     private Dictionary<string, string> nextScene = new Dictionary<string, string>()
     {
         { "Cabin Exterior + Door", "End of Vertical Slice" },
-        { "Vertical Slice", "End of Vertical Slice" }
+        { "Vertical Slice - Player Freezing", "End of Vertical Slice" }
     };
 
     private void OnTriggerEnter2D(Collider2D other)

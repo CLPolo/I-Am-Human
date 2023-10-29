@@ -25,8 +25,9 @@ public class PuzzleTargetScript : MonoBehaviour
     public bool HideTimed;  // will take a given action after player has been hidden for certain amount of time
     public bool FreezePlayerObject;  // freeze the player after activating object
     public bool FreezePlayerText;  // freeze player after activating text
-    public bool FreezePlayerOnly; // freezes player once when collide, doesn't trigger anything else tho
+    public bool FreezePlayerOnly; // freezes player once when collide, doesn't trigger anything else tho (does it only once)
     public bool UnlockDoor;  // unlocks a door when collide w/ box
+    public bool FreezeContinuously; // for impassable target where it still triggers text (messy i know, i'll refactor after)
 
     [Header("Affect Specifications")]
     public string LayerToSwitchTo = null;  // what layer the object will be switched to
@@ -68,6 +69,13 @@ public class PuzzleTargetScript : MonoBehaviour
             if (TimerComplete && !InteractionOver)
             {
                 HandleHideTimed();
+            }
+        }
+        if (FreezeContinuously)
+        {
+            if (this.isActiveAndEnabled == false)
+            {
+                ActivateTarget(DeactivateTriggerObject, false);
             }
         }
     }
@@ -202,7 +210,7 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             StartCoroutine(Freeze());
         }
-        yield return new WaitForSeconds(DisplayTimeText);
+        yield return new WaitForSeconds(DisplayTimeText * Time.timeScale);
         TextDisplay.SetActive(false);
         TextDisplaying = false;
         if (TextDisplayOnce)
@@ -215,7 +223,7 @@ public class PuzzleTargetScript : MonoBehaviour
     {
         // activates an object after DelatTime, then either deletes or turns it off based on specification
 
-        yield return new WaitForSeconds(DelayTime);
+        yield return new WaitForSeconds(DelayTime * Time.timeScale);
         AffectedObject.SetActive(true);
         if (FreezePlayerObject)
         {

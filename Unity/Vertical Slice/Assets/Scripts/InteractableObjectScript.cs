@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Unity.Mathematics;
+using System.Linq;
 
 public class InteractableObjectScript : MonoBehaviour
 {
@@ -28,12 +30,18 @@ public class InteractableObjectScript : MonoBehaviour
     public bool FreezePlayer = false;
     public float FreezeTime = 0;
 
+    [Header("Play Sound")]
+    public bool PlaySound = false;
+    public List<AudioClip> Sounds;
+
 
     // Booleans
     private bool Inside = false;  // if player is inside hit box for object
     private bool HasInteracted = false;  // if player interacted with object
     private bool IsFlashback = false;  // if the post interaction display is a flashback sequence
     private bool CurrentlyPlaying = false;  // if flashback is currently playing through
+    private bool NoisePlayed = false;
+    private bool TextHasPlayed = false;  // makes it so that text doesn't play if press E again while still in collider
 
 
     // Below Should be removed and placed into monster script
@@ -74,6 +82,11 @@ public class InteractableObjectScript : MonoBehaviour
             {
                 CheckAndDisplayFlashback();  // checks and displays flashback sequence
             }
+            if (PlaySound && !NoisePlayed)
+            {
+                PlayNoise();
+                NoisePlayed = true;
+            }
         }
     }
 
@@ -98,6 +111,17 @@ public class InteractableObjectScript : MonoBehaviour
         // if player is not actively inside collider, turns off interact prompt
         Inside = false;
         Interactable();
+        NoisePlayed = false;
+        TextHasPlayed = false;
+    }
+
+    private void PlayNoise()
+    {
+        // plays a random sound from the sound list each time
+
+        AudioSource audio = GetComponent<AudioSource>();
+        int randomNumber = UnityEngine.Random.Range(0, Sounds.Count + 1);
+        audio.PlayOneShot(Sounds.ElementAt(randomNumber));
     }
 
     private void DisplayInteractPrompt()
@@ -122,7 +146,7 @@ public class InteractableObjectScript : MonoBehaviour
     private void CheckAndDisplayInfo()
     {
         // if there's info to display it will display it
-        if (InfoScreen != null && InfoMessages.Count > 0)
+        if (InfoScreen != null && InfoMessages.Count > 0 && !TextHasPlayed)
         {
             StartCoroutine(DisplayInfo()); // post interaction function
         }
@@ -185,7 +209,9 @@ public class InteractableObjectScript : MonoBehaviour
         {
             rawr.Play();
         }
-        
+
+        TextHasPlayed = true;
+
     }
 
     private IEnumerator DisplayFlashback()
