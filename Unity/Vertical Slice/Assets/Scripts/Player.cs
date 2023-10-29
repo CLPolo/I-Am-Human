@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -89,6 +90,11 @@ public class Player : AnimatedEntity
             Destroy(gameObject);
         } else {
             _instance = this;
+        }
+
+        for (int i = hideCycle.Count; i > 0; i--)
+        {
+            hideCycle.Insert(i, hideCycle.ElementAt(i-1));
         }
 
         logic = LogicScript.Instance;
