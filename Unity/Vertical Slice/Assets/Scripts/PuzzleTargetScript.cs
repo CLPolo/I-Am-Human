@@ -278,6 +278,10 @@ public class PuzzleTargetScript : MonoBehaviour
 
         yield return new WaitForSeconds(DisplayTimeObject);
         AffectedObject.SetActive(false);
+        if (NoisePlayOnSpawn)
+        {
+            PlayNoise(NoiseToBePlayed);
+        }
     }
 
     private IEnumerator Freeze()
