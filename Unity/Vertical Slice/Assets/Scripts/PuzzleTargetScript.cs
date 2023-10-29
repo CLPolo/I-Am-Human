@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Threading;
 using System.Transactions;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
@@ -66,6 +65,10 @@ public class PuzzleTargetScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = Player.Instance;
+        }
         if (HideTimed)  // if hide timed, allows timer to function and handles any actions after
         {
             HideTimer();

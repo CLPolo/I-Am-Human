@@ -599,6 +599,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2416170443488346129, guid: 5061bfcf95272e8d1828858371c6eb98,
+        type: 3}
+      propertyPath: carCrash
+      value: 
+      objectReference: {fileID: 8300000, guid: 89fdbfa7191179fcdbbc6beda84b49c0, type: 3}
+    - target: {fileID: -2416170443488346129, guid: 5061bfcf95272e8d1828858371c6eb98,
+        type: 3}
+      propertyPath: deathTemp
+      value: 
+      objectReference: {fileID: 8300000, guid: a48abf2a73393ec63a72f3f8a35be2f1, type: 3}
+    - target: {fileID: -2416170443488346129, guid: 5061bfcf95272e8d1828858371c6eb98,
+        type: 3}
+      propertyPath: titleTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: f9c650fd369a749e4b8b3aafcf79041c, type: 3}
+    - target: {fileID: -2416170443488346129, guid: 5061bfcf95272e8d1828858371c6eb98,
+        type: 3}
+      propertyPath: forestTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: c1f41c3f53fd7424cbee8f3d482d1d3b, type: 3}
+    - target: {fileID: -2416170443488346129, guid: 5061bfcf95272e8d1828858371c6eb98,
+        type: 3}
+      propertyPath: creepyAmbiance
+      value: 
+      objectReference: {fileID: 8300000, guid: b7a500f687b04f5ffbe6661e7f1bc0e4, type: 3}
+    - target: {fileID: -2416170443488346129, guid: 5061bfcf95272e8d1828858371c6eb98,
+        type: 3}
+      propertyPath: forestAmbiance
+      value: 
+      objectReference: {fileID: 8300000, guid: fe706053d8551606b847bfac0fc9f16f, type: 3}
     - target: {fileID: 173753914286843704, guid: 5061bfcf95272e8d1828858371c6eb98,
         type: 3}
       propertyPath: m_Name
@@ -676,6 +706,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24300002, guid: dddc32f5fe8c3054281c30a262542c79,
         type: 2}
+    - target: {fileID: 7620583976525697109, guid: 5061bfcf95272e8d1828858371c6eb98,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f9c650fd369a749e4b8b3aafcf79041c, type: 3}
     - target: {fileID: 7620583976525697109, guid: 5061bfcf95272e8d1828858371c6eb98,
         type: 3}
       propertyPath: OutputAudioMixerGroup
