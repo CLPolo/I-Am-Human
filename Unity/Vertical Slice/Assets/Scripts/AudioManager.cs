@@ -65,7 +65,6 @@ public class AudioManager : MonoBehaviour
             {
                 bgm.Play();
                 StartCoroutine(Fade.Start(bgm, 0.25f, 1f));
-
             }
         }
     }
@@ -81,7 +80,8 @@ public class AudioManager : MonoBehaviour
         }
 
         //check for scene change
-        if (scene != SceneManager.GetActiveScene().name){
+        if (scene != SceneManager.GetActiveScene().name)
+        {
             scene = SceneManager.GetActiveScene().name;
             ChangeScene(scene);
         }
@@ -107,9 +107,8 @@ public class AudioManager : MonoBehaviour
 
             switch (scene){
  
-                case "Vertical Slice":
-                    
-                    if (name == "BGM") s.clip = null;
+                case "Vertical Slice - Player Freezing":
+                    if (name == "BGM") s.clip = Resources.Load<AudioClip>(pathBGM + "forest-theme");
                     if (name == "Cutscene")
                     {   
                         s.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-comp");
@@ -148,7 +147,7 @@ public class AudioManager : MonoBehaviour
     }
 
     void RestartSource(AudioSource s, bool fade = false, float targetVolume = 0.5f, float duration = 0f){
-            s.volume = 0.01f;
+            s.volume = fade ? 0.01f : 0.8f;
             if (s.isPlaying) s.Stop();
             s.Play();
             if (fade) StartCoroutine(Fade.Start(s, targetVolume, duration));
@@ -169,9 +168,13 @@ public class AudioManager : MonoBehaviour
     {   
         if (scene != "Title Screen"){
             //Check for cutscene audio before playing everything else
-            if (srcs.TryGetValue("Cutscene", out AudioSource cutscene) && !cutscene.isPlaying) {
+            if (!srcs.TryGetValue("Cutscene", out AudioSource cutscene) || !cutscene.isPlaying) {
                 //play background music
-                if(srcs.TryGetValue("BGM", out AudioSource bgm) && !bgm.isPlaying && bgm.clip != null) RestartSource(bgm);
+                if (srcs.TryGetValue("BGM", out AudioSource bgm) && !bgm.isPlaying && bgm.clip != null)
+                {
+                    Debug.Log(bgm.clip);
+                    RestartSource(bgm);
+                }
                 //play area ambience
                 if (srcs.TryGetValue("AmbArea", out AudioSource ambA) && !ambA.isPlaying && ambA.clip != null) RestartSource(ambA);
                 //play general ambience

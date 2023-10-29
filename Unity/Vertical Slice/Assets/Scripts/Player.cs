@@ -209,7 +209,7 @@ public class Player : AnimatedEntity
             }
             if (!state.isOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped, PlayerState.Frozen))
             {
-                if (Input.GetKey(Controls.Run))
+                if (false) // temporarily disabling running like this xd // Input.GetKey(Controls.Run))
                 {
                     SetState(PlayerState.Running);
                 }
