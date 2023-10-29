@@ -174,7 +174,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         if (DelayBySeconds > 0)
         {
-            yield return new WaitForSeconds(DelayBySeconds * Time.timeScale);
+            yield return new WaitForSeconds(DelayBySeconds);
         }
         
         // Set InfoScreen to active
@@ -188,7 +188,7 @@ public class InteractableObjectScript : MonoBehaviour
             foreach (var message in InfoMessages)
             {
                 InfoText.text = message;
-                yield return new WaitForSeconds(InfoTime * Time.timeScale);
+                yield return new WaitForSeconds(InfoTime);
             }
         }
         else if (InfoScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>() != null) // allows us to use text mesh pro aswell, which looks much nicer and scales better IMO
@@ -198,7 +198,7 @@ public class InteractableObjectScript : MonoBehaviour
             foreach (var message in InfoMessages)
             {
                 InfoText.text = message;
-                yield return new WaitForSeconds(InfoTime * Time.timeScale);
+                yield return new WaitForSeconds(InfoTime);
             }
         }
         InfoScreen.SetActive(false);
@@ -222,7 +222,7 @@ public class InteractableObjectScript : MonoBehaviour
         foreach (var Still in FlashbackImages)  // iterates through all images and displays them in turn
         {
                 ImageDisplay.sprite = Still;
-                yield return new WaitForSeconds(FlashbackTime *Time.timeScale);
+                yield return new WaitForSeconds(FlashbackTime);
         }
 
         FlashbackScreen.SetActive(false);  // turns screen off when done
@@ -232,10 +232,8 @@ public class InteractableObjectScript : MonoBehaviour
     private IEnumerator Freeze()
     {
         // 'freezes' the player for freeze time seconds.
-
-        Time.timeScale = .0000001f;
-        yield return new WaitForSeconds(FreezeTime * Time.timeScale);
-        Time.timeScale = 1.0f;
-
+        Player.Instance.SetState(PlayerState.Frozen);
+        yield return new WaitForSeconds(FreezeTime);
+        Player.Instance.SetState(PlayerState.Idle);
     }
 }

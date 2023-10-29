@@ -257,7 +257,7 @@ public class PuzzleTargetScript : MonoBehaviour
     {
         // destroys object after display time
 
-        yield return new WaitForSeconds(DisplayTimeObject * Time.timeScale);
+        yield return new WaitForSeconds(DisplayTimeObject);
         Destroy(AffectedObject);
     }
 
@@ -265,17 +265,16 @@ public class PuzzleTargetScript : MonoBehaviour
     {
         // deavtivates object after display time
 
-        yield return new WaitForSeconds(DisplayTimeObject * Time.timeScale);
+        yield return new WaitForSeconds(DisplayTimeObject);
         AffectedObject.SetActive(false);
     }
 
     private IEnumerator Freeze()
     {
         // 'freezes' the player for freeze time seconds.
-
-        Time.timeScale = .0000001f;
-        yield return new WaitForSeconds(FreezeTime * Time.timeScale);
-        Time.timeScale = 1.0f;
+        player.SetState(PlayerState.Frozen);
+        yield return new WaitForSeconds(FreezeTime);
+        player.SetState(PlayerState.Idle);
 
     }
 }
