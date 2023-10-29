@@ -2366,6 +2366,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24300002, guid: dddc32f5fe8c3054281c30a262542c79,
         type: 2}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: footstepsWalk.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a98f14ed4efbe11f7ac5dbe43c1bc880, type: 3}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 06d18d9d0287d3dd48f51c9761bfea41, type: 3}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ac3300065004994194b06139c469e38, type: 3}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: a3eb61a9e9b89637e997d9748c29a9f8, type: 3}
     - target: {fileID: 7082313449261153253, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_Name
