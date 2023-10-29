@@ -18,6 +18,7 @@ public class PushLogicScript : MonoBehaviour
     public Player player;
 
     public LogicScript logic;
+    private int gracePeriod = 0; // temporary for box push/pull audio
 
     private List<GameObject> spritesToReset = new List<GameObject>();
 
@@ -59,6 +60,24 @@ public class PushLogicScript : MonoBehaviour
                     box.layer = LayerMask.NameToLayer("Default");
                 }
                 rb.velocity = player.GetComponent<Rigidbody2D>().velocity;
+                AudioSource aSource = box.GetComponent<AudioSource>();
+                if (rb.velocity.magnitude > 0.5 )
+                {
+                    gracePeriod = 0;
+                    if (!aSource.isPlaying)
+                    {
+                        box.GetComponent<AudioSource>().Play();
+                    }
+                } else if (aSource.isPlaying) {
+                    // ok so this kept replaying and pausing almost every frame so i need a
+                    // "grace period" of sorts to not immediately pause the first time velocity = 0
+                    if (gracePeriod > 2)
+                    {
+                        box.GetComponent<AudioSource>().Pause();
+                    } else {
+                        gracePeriod++;
+                    }
+                }
             }
             // if push key is not being held down and the player was pushing last frame, now they are not pushing
             else if (player.GetState().isOneOf(PlayerState.Pulling, PlayerState.Pushing))
@@ -68,6 +87,7 @@ public class PushLogicScript : MonoBehaviour
                 box.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 box.layer = LayerMask.NameToLayer(PlayerPrefs.GetString("boxlayer"));
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+                box.GetComponent<AudioSource>().Pause();
                 PlayerPrefs.DeleteKey("boxlayer");
             }
         }
@@ -75,6 +95,7 @@ public class PushLogicScript : MonoBehaviour
         {
             foreach (GameObject obj in spritesToReset) {
                 obj.GetComponent<SpriteRenderer>().sprite = Default;  // if box out of range, does not show outline
+                obj.GetComponent<AudioSource>().Pause();
             }
             spritesToReset.Clear();
         }

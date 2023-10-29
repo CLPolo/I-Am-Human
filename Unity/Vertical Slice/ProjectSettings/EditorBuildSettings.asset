@@ -8,16 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Title Screen.unity
     guid: 550578b48eb8d15419d92ef369fc4394
-  - enabled: 0
-    path: Assets/Scenes/FOREST FIRST COMMIT.unity
-    guid: 62e54190ba281a8428f61917d4238df7
+  - enabled: 1
+    path: Assets/Scenes/Vertical Slice - Player Freezing.unity
+    guid: c993f8bc856e2ce4a8ef94e1032d9d19
   - enabled: 1
     path: Assets/Scenes/End of Vertical Slice.unity
     guid: c5ce8c58e53fede4aae69621e238910b
-  - enabled: 1
-    path: Assets/Scenes/Cabin Exterior + Door.unity
-    guid: 36af6c876c194da4fbd6d11143b70d50
-  - enabled: 1
-    path: Assets/Scenes/Vertical Slice.unity
-    guid: 350ec96ebef26604bac0121385750ca4
   m_configObjects: {}
