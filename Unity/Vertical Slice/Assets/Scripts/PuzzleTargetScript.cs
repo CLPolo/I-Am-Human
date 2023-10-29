@@ -13,6 +13,7 @@ public class PuzzleTargetScript : MonoBehaviour
     public GameObject AffectedObject = null;  // object to be affected by trigger actions (if desired)
     public GameObject ActivateTriggerObject = null;  // trigger to be deleted / deactivated if player performs this action
     public GameObject DeactivateTriggerObject = null;
+    public GameObject DoorToBeOpened = null;
 
     [Header("Target Affect Type")]
     // these allow us to define what the target will do
@@ -28,6 +29,8 @@ public class PuzzleTargetScript : MonoBehaviour
     public bool FreezePlayerOnly; // freezes player once when collide, doesn't trigger anything else tho (does it only once)
     public bool UnlockDoor;  // unlocks a door when collide w/ box
     public bool FreezeContinuously; // for impassable target where it still triggers text (messy i know, i'll refactor after)
+    public bool NoisePlayOnSpawn;  // again messy i know, just panic
+    public bool SpawnDoor;
 
     [Header("Affect Specifications")]
     public string LayerToSwitchTo = null;  // what layer the object will be switched to
@@ -108,6 +111,10 @@ public class PuzzleTargetScript : MonoBehaviour
         if (UnlockDoor)
         {
             Unlock();
+        }
+        if (SpawnDoor)
+        {
+            DoorToBeOpened.SetActive(true);
         }
     }
 
@@ -198,7 +205,7 @@ public class PuzzleTargetScript : MonoBehaviour
 
     private void Unlock()
     {
-        AffectedObject.GetComponent<Door>().isLocked = false;
+        AffectedObject.GetComponent<Door>().IsInteractable = true;
     }
 
     private IEnumerator DisplayText()
@@ -225,6 +232,10 @@ public class PuzzleTargetScript : MonoBehaviour
 
         yield return new WaitForSeconds(DelayTime * Time.timeScale);
         AffectedObject.SetActive(true);
+        if (NoisePlayOnSpawn)
+        {
+            PlayNoise(NoiseToBePlayed);
+        }
         if (FreezePlayerObject)
         {
             StartCoroutine(Freeze());

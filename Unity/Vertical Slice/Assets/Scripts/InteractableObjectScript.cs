@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using Unity.Mathematics;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class InteractableObjectScript : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class InteractableObjectScript : MonoBehaviour
     public GameObject InteractableScreen;  // this is the screen that displays prompt to interact
     public String InteractMessage;
     public Boolean ShowPromptOnce;
+    public bool Unlock;
 
     [Header("Info Display")]
     public GameObject InfoScreen;  // this is the screen that displays info about object post interaction
@@ -87,6 +89,10 @@ public class InteractableObjectScript : MonoBehaviour
                 PlayNoise();
                 NoisePlayed = true;
             }
+            if(Unlock)
+            {
+                UnlockDoor();
+            }
         }
     }
 
@@ -101,7 +107,14 @@ public class InteractableObjectScript : MonoBehaviour
         }
         if (Inside = true && !Input.GetKeyDown(Controls.Interact))  // if player in collider and has NOT pressed interact key yet
         {
-            DisplayInteractPrompt();  // shows the interact prompt
+            if (Unlock && this.GetComponent<Door>().IsInteractable == true)
+            {
+                DisplayInteractPrompt();  // shows the interact prompt
+            }
+            else if (!Unlock)
+            {
+                DisplayInteractPrompt();
+            }
         }
         
     }
@@ -237,5 +250,14 @@ public class InteractableObjectScript : MonoBehaviour
         yield return new WaitForSeconds(FreezeTime * Time.timeScale);
         Time.timeScale = 1.0f;
 
+    }
+
+    private void UnlockDoor()
+    {
+        if (this.GetComponent<Door>().IsInteractable == true)
+        {
+            LevelLoader.Instance.loadScene("End of Vertical Slice");
+        }
+        //THIS WILL BE CHANGED, AGAIN PANIC 
     }
 }

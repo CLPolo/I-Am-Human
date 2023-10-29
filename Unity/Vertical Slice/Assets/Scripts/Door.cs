@@ -6,6 +6,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public Boolean isLocked = true;
+    public bool IsInteractable = false;
     // Start is called before the first frame update
     void Start()
     {
