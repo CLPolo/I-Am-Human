@@ -13,7 +13,6 @@ public class Fade {
         {
             currentTime += Time.deltaTime;
             audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
-            Debug.Log(audioSource.volume + " " + audioSource.clip.name);
             yield return null;
         }
         yield break;
@@ -187,20 +186,19 @@ public class AudioManager : MonoBehaviour
             if(state.isOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
             
             //TODO
-            if(state == PlayerState.Hiding);// Do hiding sound things
-            if(state.isOneOf(PlayerState.Pushing, PlayerState.Pulling));//todo
-            if(state == PlayerState.Trapped);
+            //if(state == PlayerState.Hiding);// Do hiding sound things
+            //if(state.isOneOf(PlayerState.Pushing, PlayerState.Pulling));//todo
+            //if(state == PlayerState.Trapped);
         }
     }
 
     void PlayerFootfall(PlayerState state)
-    {   
+    {
         if (state == PlayerState.Running) 
         {
             pA.PlayOneShot(p.footstepsRun[UnityEngine.Random.Range(0, p.footstepsRun.Capacity)]);
 
         } else if (state == PlayerState.Walking && p.GetAnimationIndex().isOneOf(2, 11)) {
-
             pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.25f);
         }   
     }

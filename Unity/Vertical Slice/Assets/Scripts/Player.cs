@@ -27,6 +27,7 @@ public enum PlayerState
     Trapped = 4,
     Pushing = 5,
     Pulling = 6,
+    Frozen = 7,
 }
 
 
@@ -125,7 +126,7 @@ public class Player : AnimatedEntity
         } else if ((!moving || touchingWall) && interruptFlag) {
             ResetAnimationCycle();
         }
-        if (_state == state)
+        if (_state == state || (state == PlayerState.Frozen && _state != PlayerState.Idle))
         {
             return;
         }
@@ -174,6 +175,9 @@ public class Player : AnimatedEntity
                 rb.velocity = Vector2.zero;
                 transform.eulerAngles = new Vector3(0, -135, 0); // indicate player is trapped somehow
                 break;
+            case PlayerState.Frozen:
+                speed = 0;
+                break;
         }
 
         if (allowStateChange)
@@ -183,12 +187,28 @@ public class Player : AnimatedEntity
     }
 
     void checkMovement()
-    {   
-        // Move left
-        if (Input.GetKey(Controls.Left))
+    {
+        if (!Input.GetKey(Controls.Right) && !Input.GetKey(Controls.Left))
         {
-            if (state != PlayerState.Trapped) { moving = true; }
-            if (!state.isOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped)) {
+            if (state.isOneOf(PlayerState.Walking, PlayerState.Running))
+            {
+                SetState(PlayerState.Idle);
+            }
+            rb.velocity = Vector2.zero;
+            moving = false;
+        } else {
+            if (Input.GetKey(Controls.Left))
+            {
+                rb.velocity = Vector2.left * speed;
+                movingRight = false;
+            }
+            else if (Input.GetKey(Controls.Right))
+            {
+                rb.velocity = Vector2.right * speed;
+                movingRight = true;
+            }
+            if (!state.isOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped, PlayerState.Frozen))
+            {
                 if (Input.GetKey(Controls.Run))
                 {
                     SetState(PlayerState.Running);
@@ -198,37 +218,8 @@ public class Player : AnimatedEntity
                     SetState(PlayerState.Walking);
                 }
             }
-            rb.velocity = Vector2.left * speed;
-            movingRight = false;
+            moving = !state.isOneOf(PlayerState.Trapped, PlayerState.Frozen);
             CheckFlip();
-        }
-
-        // Move right
-        if (Input.GetKey(Controls.Right))
-        {
-            if (state != PlayerState.Trapped) { moving = true; }
-            if (!state.isOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped))
-            {
-                if (Input.GetKey(Controls.Run))
-                {
-                    SetState(PlayerState.Running);
-                } else {
-                    SetState(PlayerState.Walking);
-                }
-            }
-            rb.velocity = Vector2.right * speed;
-            movingRight = true;
-            CheckFlip();
-        }
-
-        if(!Input.GetKey(Controls.Right) && !Input.GetKey(Controls.Left))
-        {
-            if (state.isOneOf(PlayerState.Walking, PlayerState.Running))
-            {
-                SetState(PlayerState.Idle);
-            }
-            rb.velocity = Vector2.zero;
-            moving = false;
         }
     }
 
@@ -328,7 +319,8 @@ public class Player : AnimatedEntity
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (!LayerMask.LayerToName(collision.gameObject.layer).isOneOf("Entity", "Interactable", "Floor")
+            && !collision.gameObject.CompareTag("Box"))
         {
             touchingWall = true;
         }
@@ -336,7 +328,8 @@ public class Player : AnimatedEntity
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (!LayerMask.LayerToName(collision.gameObject.layer).isOneOf("Entity", "Interactable", "Floor")
+            && !collision.gameObject.CompareTag("Box"))
         {
             touchingWall = false;
         }
@@ -359,7 +352,6 @@ public class Player : AnimatedEntity
         }
         else if (state == PlayerState.Hiding)  // unhides only if you were hiding
         {
-            Debug.Log("test");
             Unhide(Hideable);
             // ResetAnimationCycle();
         }
@@ -368,7 +360,7 @@ public class Player : AnimatedEntity
     private void CheckFlip()
     {
         // Checks if player needs to be flipped (i.e. if the player is not facing the direction they are moving)
-        if (!state.isOneOf(PlayerState.Pushing, PlayerState.Pulling) && !logic.IsPaused && Time.timeScale == 1) // if not pushing and facing right and not paused or frozen (timeScale is 1), flips
+        if (!state.isOneOf(PlayerState.Pushing, PlayerState.Pulling, PlayerState.Frozen) && !logic.IsPaused) // if not pushing and facing right and not paused or frozen (timeScale is 1), flips
         {
             if (facingRight != movingRight) // if facing right and moving left OR facing left and moving right, flips
             {
