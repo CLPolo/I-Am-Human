@@ -6,6 +6,7 @@ using System;
 using Unity.Mathematics;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class InteractableObjectScript : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class InteractableObjectScript : MonoBehaviour
     public List<String> InfoMessages;
     public int InfoTime = 3;  // time in seconds that info will be displayed for
     public int DelayBySeconds = 0;  // will delay text showing up (i.e. if want text post flashback)
+    public GameObject TextCanvas = null;
+    //public List<string> textList = null;
 
     [Header("Flashback Sequences")]
     public List<Sprite> FlashbackImages;  // all images for the flashback sequence
@@ -38,6 +41,7 @@ public class InteractableObjectScript : MonoBehaviour
 
 
     // Booleans
+    private int textIndex = 0;
     private bool Inside = false;  // if player is inside hit box for object
     private bool HasInteracted = false;  // if player interacted with object
     private bool IsFlashback = false;  // if the post interaction display is a flashback sequence
@@ -101,10 +105,10 @@ public class InteractableObjectScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         // if we want prompt to always show or the player has never interacted, then show prompt
-        if (tag == "Flashback")  // NOTE: object that triggers flashback sequence shouldbe tagged as 'Flashback'
-        {
-            IsFlashback = true;
-        }
+        //if (tag == "Flashback")  // NOTE: object that triggers flashback sequence shouldbe tagged as 'Flashback'
+        //{
+        //    IsFlashback = true;
+        //}
         if (Inside = true && !Input.GetKeyDown(Controls.Interact))  // if player in collider and has NOT pressed interact key yet
         {
             if (Unlock && this.GetComponent<Door>().IsInteractable == true)
@@ -161,7 +165,8 @@ public class InteractableObjectScript : MonoBehaviour
         // if there's info to display it will display it
         if (InfoScreen != null && InfoMessages.Count > 0 && !TextHasPlayed)
         {
-            StartCoroutine(DisplayInfo()); // post interaction function
+            //StartCoroutine(DisplayInfo()); // post interaction function
+            ClickText();
         }
         HasInteracted = true;  // Show interact prompt only once
     }
@@ -181,6 +186,35 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // turns interact prompt on or off depending on whether player is inside
         InteractableScreen.SetActive(Inside);
+    }
+
+    private void ClickText()
+    {
+        // click through version for text interaction. Will remove auto timed version from script & clean it up after
+        // we've confirmed it's not being used and that click thru will be default. I also will rename the variables.
+    
+        if (InfoMessages != null)  // if there is a list of text
+        {
+            TextCanvas.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.E))  // when interact key is pressed
+            {
+                Debug.Log("Index: " + textIndex + "|| Count: " + InfoMessages.Count);
+                if (textIndex < InfoMessages.Count)  // if more text to go through
+                {
+                    // change the text & increase index
+                    TextCanvas.GetComponent<TextMeshProUGUI>().text = InfoMessages[textIndex]; 
+                    textIndex++;
+                }
+                else if (textIndex >= InfoMessages.Count && TextCanvas != null)  // if no more messages
+                {
+                    TextHasPlayed = true;
+                    TextCanvas.SetActive(false);  // turn of canvas (might switch to indiv text on / off w/ one canvas that's always on)
+                    textIndex = 0;  // reset to start for re-interactable text prompts
+                    TextCanvas.GetComponent<TextMeshProUGUI>().text = InfoMessages[0];  // same as above
+                }
+            }
+        }
     }
 
     private IEnumerator DisplayInfo()

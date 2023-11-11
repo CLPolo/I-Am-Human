@@ -88,7 +88,7 @@ public class PuzzleTargetScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Box" ||  other.gameObject.tag == "Moveable")  // if box passes collides with target
+        if (other.gameObject.tag == "Box")  // if box passes collides with target
         {
             HandleBox();
         }
