@@ -1539,6 +1539,7 @@ MonoBehaviour:
   InfoMessages: []
   InfoTime: 3
   DelayBySeconds: 0
+  TextCanvas: {fileID: 0}
   FlashbackImages: []
   FlashbackScreen: {fileID: 0}
   FlashbackTime: 4
@@ -2988,6 +2989,7 @@ MonoBehaviour:
   - "Hm... It won't budge. I\u2019ll have to find another way in."
   InfoTime: 8
   DelayBySeconds: 0
+  TextCanvas: {fileID: 0}
   FlashbackImages: []
   FlashbackScreen: {fileID: 0}
   FlashbackTime: 4
@@ -3298,6 +3300,7 @@ MonoBehaviour:
   - She must have gotten stuck in that mud too.
   InfoTime: 3
   DelayBySeconds: 0
+  TextCanvas: {fileID: 0}
   FlashbackImages: []
   FlashbackScreen: {fileID: 0}
   FlashbackTime: 4
@@ -4469,6 +4472,46 @@ PrefabInstance:
         type: 3}
       propertyPath: rightBound
       value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
+        type: 3}
+      propertyPath: playerAccess
+      value: 
+      objectReference: {fileID: 1768147620}
+    - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[1].time
+      value: 1.0010986
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[1].value
+      value: 0.054244995
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
+        type: 3}
+      propertyPath: curve.m_Curve.Array.data[1].outSlope
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057685, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -13888,7 +13931,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1649731625
@@ -14518,6 +14561,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1768147620 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+    type: 3}
+  m_PrefabInstance: {fileID: 584839880}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7bdab14bdea5854d99810862b56c0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1769056289
 GameObject:
   m_ObjectHideFlags: 0
@@ -14823,6 +14878,7 @@ MonoBehaviour:
   - Maybe she got scared and wandered into the woods. I should go find her.
   InfoTime: 4
   DelayBySeconds: 0
+  TextCanvas: {fileID: 0}
   FlashbackImages:
   - {fileID: 21300000, guid: 0b3c883091f331f4886a4e0a0cc18d74, type: 3}
   - {fileID: 21300000, guid: b66afec3ea19b684c979f20d2b3bb3b1, type: 3}
@@ -15147,6 +15203,7 @@ MonoBehaviour:
   InfoMessages: []
   InfoTime: 3
   DelayBySeconds: 0
+  TextCanvas: {fileID: 0}
   FlashbackImages: []
   FlashbackScreen: {fileID: 0}
   FlashbackTime: 4

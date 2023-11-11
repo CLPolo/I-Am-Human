@@ -263,7 +263,7 @@ public class Player : AnimatedEntity
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bad") && state != PlayerState.Hiding)
+        if (collision.gameObject.CompareTag("Enemy") && state != PlayerState.Hiding)
         {
             // This is when the monster sees you and you are not behind the box
             // Gameover can go here! For now I just freeze them
