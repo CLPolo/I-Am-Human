@@ -69,6 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
       propertyPath: runCycle.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -121,7 +126,7 @@ PrefabInstance:
     - target: {fileID: 7522277464662625303, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: m_Name
-      value: player
+      value: player Variant
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5913482508594190128, guid: 58a2ae1401824a637aece98bdc2381cd, type: 3}
