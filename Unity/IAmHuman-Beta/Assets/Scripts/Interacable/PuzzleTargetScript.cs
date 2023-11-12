@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Threading;
 using System.Transactions;
+using TMPro;
+using System;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
@@ -16,42 +18,45 @@ public class PuzzleTargetScript : MonoBehaviour
 
     [Header("Target Affect Type")]
     // these allow us to define what the target will do
-    public bool LayerSwitch;  // will switch layer of object
-    public bool DeleteObject;  // will delete object
-    public bool SpawnObject;  // will spawn object
-    public bool TurnOffObject; // will set object to off instead of destroying it
-    public bool NoiseTrigger;  // will trigger a noise
-    public bool TextTrigger;  // will trigger text to display
-    public bool HideTimed;  // will take a given action after player has been hidden for certain amount of time
-    public bool FreezePlayerObject;  // freeze the player after activating object
-    public bool FreezePlayerText;  // freeze player after activating text
-    public bool FreezePlayerOnly; // freezes player once when collide, doesn't trigger anything else tho (does it only once)
-    public bool UnlockDoor;  // unlocks a door when collide w/ box
-    public bool FreezeContinuously; // for impassable target where it still triggers text (messy i know, i'll refactor after)
-    public bool NoisePlayOnSpawn;  // again messy i know, just panic
+    public bool LayerSwitch;                    // will switch layer of object
+    public bool DeleteObject;                   // will delete object
+    public bool SpawnObject;                    // will spawn object
+    public bool TurnOffObject;                  // will set object to off instead of destroying it
+    public bool NoiseTrigger;                   // will trigger a noise
+    public bool TextTrigger;                    // will trigger text to display
+    public bool HideTimed;                      // will take a given action after player has been hidden for certain amount of time
+    public bool FreezePlayerObject;             // freeze the player after activating object
+    public bool FreezePlayerText;               // freeze player after activating text
+    public bool FreezePlayerOnly;               // freezes player once when collide, doesn't trigger anything else tho (does it only once)
+    public bool UnlockDoor;                     // unlocks a door when collide w/ box
+    public bool FreezeContinuously;             // for impassable target where it still triggers text (messy i know, i'll refactor after)
+    public bool NoisePlayOnSpawn;               // again messy i know, just panic
     public bool SpawnDoor;
 
     [Header("Affect Specifications")]
-    public string LayerToSwitchTo = null;  // what layer the object will be switched to
-    public AudioClip NoiseToBePlayed = null;  // what noise will be played
-    public string TextToDisplay = null;  // what text string will be displayed
-    public GameObject TextDisplay = null;  // canvas for text to be displayed on
+    public string LayerToSwitchTo = null;       // what layer the object will be switched to
+    public AudioClip NoiseToBePlayed = null;    // what noise will be played
+    public List<String> TextToDisplay = null;          // what text string will be displayed
+    public GameObject TextObject = null;       // canvas for text to be displayed on
+    public GameObject TextCanvas = null;
     public bool TextDisplayOnce = false;
-    public int DisplayTimeText = 0;  // time for text to be displayed for
-    public int DisplayTimeObject = 0;  // time for object to be displayed for
-    public int DelayTime = 0; // time to delay given action by
-    public float HideTime = 0;  // time player must hide for before action activates
-    public float FreezeTime = 0;  // time player is frozen for
+    public int DisplayTimeText = 0;             // time for text to be displayed for
+    public int DisplayTimeObject = 0;           // time for object to be displayed for
+    public int DelayTime = 0;                   // time to delay given action by
+    public float HideTime = 0;                  // time player must hide for before action activates
+    public float FreezeTime = 0;                // time player is frozen for
 
     // bools
-    private bool TextDisplaying = false;  // whether given text is currently being displayed
-    private bool ObjectDisplaying = false;  // whether object has already been spawned 
-    private bool TimerComplete = false;  // whether hide timer has completed or not
+    private bool TextDisplaying = false;        // whether given text is currently being displayed
+    private bool ObjectDisplaying = false;      // whether object has already been spawned 
+    private bool TimerComplete = false;         // whether hide timer has completed or not
     private bool InteractionOver = false;
     private bool NoiseTriggered = false;        // whether the noise has already been triggered
     private bool TextPlayed = false;
-    private float TimerCount = 0;  // hide timer counter
+    private float TimerCount = 0;               // hide timer counter
     private bool FrozenOnce = false;
+    private int textIndex = 0;
+    private bool PlayerTriggered = false;
 
     // misc
     public Player player;
@@ -84,6 +89,10 @@ public class PuzzleTargetScript : MonoBehaviour
                 ActivateTarget(DeactivateTriggerObject, false);
             }
         }
+        if (PlayerTriggered && TextTrigger && (TextDisplayOnce ? (!TextPlayed) : true))
+        {
+            DisplayText();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -92,10 +101,10 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             HandleBox();
         }
-
         if (other.gameObject.tag == "Player")  // if player collides with target
         {
             HandlePlayer();
+            PlayerTriggered = true;
         }
     }
 
@@ -141,13 +150,9 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             PlayNoise(NoiseToBePlayed);
         }
-        if (TextTrigger && !InteractionOver)  // if we want to spawn text
+        if (TextTrigger && !TextPlayed) // if we want to spawn text
         {
-            if (!TextDisplaying && (TextDisplayOnce ? (!TextPlayed) : true))
-            {
-                TextDisplaying = true;
-                StartCoroutine(DisplayText());  // displays text
-            }
+            DisplayText();
         }
     }
 
@@ -211,28 +216,45 @@ public class PuzzleTargetScript : MonoBehaviour
         AffectedObject.GetComponent<Door>().IsInteractable = true;
     }
 
-    private IEnumerator DisplayText()
+    private void DisplayText()
     {
-        // displays text for display time
-        TextDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = TextToDisplay;
-        TextDisplay.SetActive(true);
+        // click through version for text interaction. Will remove auto timed version from script & clean it up after
+        // we've confirmed it's not being used and that click thru will be default. I also will rename the variables.
+
         if (FreezePlayerText)
         {
-            StartCoroutine(Freeze());
+            player.SetState(PlayerState.Frozen);
         }
-        yield return new WaitForSeconds(DisplayTimeText * Time.timeScale);
-        TextDisplay.SetActive(false);
-        TextDisplaying = false;
-        if (TextDisplayOnce)
+
+        TextCanvas.SetActive(true);
+        TextObject.SetActive(true);
+
+        if (textIndex == 0)  // sets first message up for when dialogue pops up initially
         {
-            TextPlayed = true;
+            TextObject.GetComponent<TextMeshProUGUI>().text = TextToDisplay[textIndex];
+            textIndex++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))  // then, if more messages, when interact key is pressed
+        {
+            if (textIndex < TextToDisplay.Count)  // if more text to go through
+            {
+                // change the text & increase index
+                TextObject.GetComponent<TextMeshProUGUI>().text = TextToDisplay[textIndex];
+                textIndex++;
+            }
+            else if (textIndex >= TextToDisplay.Count && TextObject != null)  // if no more messages
+            {
+                if (FreezePlayerText) { player.SetState(PlayerState.Idle); }
+                TextPlayed = true;
+                TextCanvas.SetActive(false);  // turn of canvas (might switch to indiv text on / off w/ one canvas that's always on)
+            }
         }
     }
 
     private IEnumerator ActivateObject()
     {
         // activates an object after DelatTime, then either deletes or turns it off based on specification
-
         yield return new WaitForSeconds(DelayTime * Time.timeScale);
         AffectedObject.SetActive(true);
         if (NoisePlayOnSpawn)
