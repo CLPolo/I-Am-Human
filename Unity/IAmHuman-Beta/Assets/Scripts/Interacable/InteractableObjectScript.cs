@@ -11,34 +11,33 @@ using TMPro;
 public class InteractableObjectScript : MonoBehaviour
 {
 
+    public LogicScript logic;
+    public Player player;
+
+    [Header("Sprites")]
+    public Sprite Default = null;
+    public Sprite Outline = null;
+
     [Header("Interaction")]
-    public GameObject InteractableScreen;  // this is the screen that displays prompt to interact
+    public GameObject PromptTextObject = null;  // this is the screen that displays prompt to interact
+    public GameObject PromptCanvas = null;  // NOTE: need to seperate text object and entire canvas as there are two text object on the canvas
     public String InteractMessage;
     public Boolean ShowPromptOnce;
-    public bool Unlock;
 
     [Header("Info Display")]
-    public GameObject InfoScreen;  // this is the screen that displays info about object post interaction
-    public List<String> InfoMessages;
-    public int InfoTime = 3;  // time in seconds that info will be displayed for
-    public int DelayBySeconds = 0;  // will delay text showing up (i.e. if want text post flashback)
-    public GameObject TextCanvas = null;
-    //public List<string> textList = null;
-
-    [Header("Flashback Sequences")]
-    public List<Sprite> FlashbackImages;  // all images for the flashback sequence
-    public GameObject FlashbackScreen;  // screen that displays the flashback images
-    public int FlashbackTime = 4;  // time between images in sequence (in seconds)
-    public LogicScript logic;
+    public GameObject DialogueTextObject = null;  // this is the screen that displays info about object post interaction
+    public GameObject DialogueCanvas = null;  // NOTE: need to seperate text object and entire canvas as there are two text object on the canvas
+    public List<String> TextList;
 
     [Header("Freeze Player")]
     public bool FreezePlayer = false;
-    public float FreezeTime = 0;
 
     [Header("Play Sound")]
     public bool PlaySound = false;
     public List<AudioClip> Sounds;
 
+    [Header("Unlock Door")]
+    public bool Unlock;
 
     // Booleans
     private int textIndex = 0;
@@ -60,16 +59,16 @@ public class InteractableObjectScript : MonoBehaviour
     {
 
         logic = LogicScript.Instance;
+        player = Player.Instance;
 
         // turns off all screens
-        InteractableScreen.SetActive(false);
-        if (InfoScreen != null)
+        if (PromptCanvas != null)
         {
-            InfoScreen.SetActive(false);
+            PromptCanvas.SetActive(false);
         }
-        if (FlashbackScreen != null)
+        if (DialogueCanvas != null)
         {
-            FlashbackScreen.SetActive(false);
+            DialogueCanvas.SetActive(false);
         }
     }
 
@@ -78,25 +77,18 @@ public class InteractableObjectScript : MonoBehaviour
     {
         if (Inside && Input.GetKey(Controls.Interact)) // if player is inside the interactable object's box collider
         {
-            InteractableScreen.SetActive(false);  // turns off 'interact' prompt
-            if (FreezePlayer && !CurrentlyPlaying)
-            {
-                StartCoroutine(Freeze());
-            }
+            PromptCanvas.SetActive(false);  // turns off 'interact' prompt
             CheckAndDisplayInfo();  // checks if there's info to display, if so does that
-            if (IsFlashback)  // If post interaction display is a flashback sequence
-            {
-                CheckAndDisplayFlashback();  // checks and displays flashback sequence
-            }
             if (PlaySound && !NoisePlayed)
             {
                 PlayNoise();
                 NoisePlayed = true;
             }
-            if(Unlock)
+            if (Unlock)
             {
                 UnlockDoor();
             }
+            RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
         }
     }
 
@@ -104,11 +96,6 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        // if we want prompt to always show or the player has never interacted, then show prompt
-        //if (tag == "Flashback")  // NOTE: object that triggers flashback sequence shouldbe tagged as 'Flashback'
-        //{
-        //    IsFlashback = true;
-        //}
         if (Inside = true && !Input.GetKeyDown(Controls.Interact))  // if player in collider and has NOT pressed interact key yet
         {
             if (Unlock && this.GetComponent<Door>().IsInteractable == true)
@@ -120,16 +107,19 @@ public class InteractableObjectScript : MonoBehaviour
                 DisplayInteractPrompt();
             }
         }
-        
+        DisplayOutline();  // when in collider, displays outline on obj
+
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
         // if player is not actively inside collider, turns off interact prompt
+
         Inside = false;
         Interactable();
         NoisePlayed = false;
         TextHasPlayed = false;
+        RemoveOutline();  // removes outline of sprite once no longer in range (collider)
     }
 
     private void PlayNoise()
@@ -146,15 +136,10 @@ public class InteractableObjectScript : MonoBehaviour
         if (!CurrentlyPlaying && (!HasInteracted || !ShowPromptOnce))  // if they haven't already interacted and they aren't limited to interacting once only, and not currently playing
         {
             // displays interact text
-            if (InteractableScreen.GetComponentInChildren<Text>() != null)
+            if (PromptTextObject != null)
             {
-                var interactText = InteractableScreen.GetComponentInChildren<Text>();
-                interactText.text = InteractMessage;
-            }
-            else if (InteractableScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>() != null) // allows us to use text mesh pro aswell, which looks much nicer and scales better IMO
-            {
-                var interactText = InteractableScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-                interactText.text = InteractMessage;
+                PromptTextObject.SetActive(true);
+                PromptTextObject.GetComponent<TextMeshProUGUI>().text = InteractMessage;
             }
             Interactable();  // turns on the interact screen
         }
@@ -163,21 +148,9 @@ public class InteractableObjectScript : MonoBehaviour
     private void CheckAndDisplayInfo()
     {
         // if there's info to display it will display it
-        if (InfoScreen != null && InfoMessages.Count > 0 && !TextHasPlayed)
+        if (DialogueCanvas != null && TextList.Count > 0 && !TextHasPlayed)
         {
-            //StartCoroutine(DisplayInfo()); // post interaction function
-            ClickText();
-        }
-        HasInteracted = true;  // Show interact prompt only once
-    }
-
-    private void CheckAndDisplayFlashback()
-    {
-        // if there's a flashback to display it will display it
-        if (FlashbackScreen != null && FlashbackImages.Count > 0 && !CurrentlyPlaying)  // won't allow you to play the flashback sequence if already playing
-        {
-            CurrentlyPlaying = true;
-            StartCoroutine(DisplayFlashback()); // post interaction function
+            DisplayText();
         }
         HasInteracted = true;  // Show interact prompt only once
     }
@@ -185,103 +158,40 @@ public class InteractableObjectScript : MonoBehaviour
     private void Interactable()
     {
         // turns interact prompt on or off depending on whether player is inside
-        InteractableScreen.SetActive(Inside);
+        PromptCanvas.SetActive(Inside);
     }
 
-    private void ClickText()
+    private void DisplayText()
     {
         // click through version for text interaction. Will remove auto timed version from script & clean it up after
         // we've confirmed it's not being used and that click thru will be default. I also will rename the variables.
     
-        if (InfoMessages != null)  // if there is a list of text
+        if (TextList != null)  // if there is a list of text
         {
-            TextCanvas.SetActive(true);
+            if (FreezePlayer) { player.SetState(PlayerState.Frozen); }  // freezes player until they've worked thru dialogue
+
+            DialogueCanvas.SetActive(true);
+            DialogueTextObject.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.E))  // when interact key is pressed
             {
-                Debug.Log("Index: " + textIndex + "|| Count: " + InfoMessages.Count);
-                if (textIndex < InfoMessages.Count)  // if more text to go through
+                Debug.Log("Index: " + textIndex + "|| Count: " + TextList.Count);
+                if (textIndex < TextList.Count)  // if more text to go through
                 {
                     // change the text & increase index
-                    TextCanvas.GetComponent<TextMeshProUGUI>().text = InfoMessages[textIndex]; 
+                    DialogueTextObject.GetComponent<TextMeshProUGUI>().text = TextList[textIndex]; 
                     textIndex++;
                 }
-                else if (textIndex >= InfoMessages.Count && TextCanvas != null)  // if no more messages
+                else if (textIndex >= TextList.Count && DialogueTextObject != null)  // if no more messages
                 {
                     TextHasPlayed = true;
-                    TextCanvas.SetActive(false);  // turn of canvas (might switch to indiv text on / off w/ one canvas that's always on)
+                    DialogueCanvas.SetActive(false);  // turn of canvas (might switch to indiv text on / off w/ one canvas that's always on)
                     textIndex = 0;  // reset to start for re-interactable text prompts
-                    TextCanvas.GetComponent<TextMeshProUGUI>().text = InfoMessages[0];  // same as above
+                    DialogueTextObject.GetComponent<TextMeshProUGUI>().text = TextList[0];  // same as above
+                    if (FreezePlayer) { player.SetState(PlayerState.Idle); }  // unfreezes player if they were frozen
                 }
             }
         }
-    }
-
-    private IEnumerator DisplayInfo()
-    {
-        if (DelayBySeconds > 0)
-        {
-            yield return new WaitForSeconds(DelayBySeconds);
-        }
-        
-        // Set InfoScreen to active
-        InfoScreen.SetActive(true);
-
-        // I know this is bulky, will reduce it later
-        if (InfoScreen.GetComponentInChildren<Text>() != null)
-        {
-            var InfoText = InfoScreen.GetComponentInChildren<Text>();
-            // iterate through info messages and show all
-            foreach (var message in InfoMessages)
-            {
-                InfoText.text = message;
-                yield return new WaitForSeconds(InfoTime);
-            }
-        }
-        else if (InfoScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>() != null) // allows us to use text mesh pro aswell, which looks much nicer and scales better IMO
-        {
-            var InfoText = InfoScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-            // iterate through info messages and show all
-            foreach (var message in InfoMessages)
-            {
-                InfoText.text = message;
-                yield return new WaitForSeconds(InfoTime);
-            }
-        }
-        InfoScreen.SetActive(false);
-
-        // Below Should be removed and placed somewhere in monster script
-        monsterComing = true;
-        if (rawr != null)
-        {
-            rawr.Play();
-        }
-
-        TextHasPlayed = true;
-
-    }
-
-    private IEnumerator DisplayFlashback()
-    {
-        FlashbackScreen.SetActive(true);  // activates flashback screen 
-        var ImageDisplay = FlashbackScreen.GetComponentInChildren<Image>();  // gets the empty image area where flashback stills will be placed
-
-        foreach (var Still in FlashbackImages)  // iterates through all images and displays them in turn
-        {
-                ImageDisplay.sprite = Still;
-                yield return new WaitForSeconds(FlashbackTime);
-        }
-
-        FlashbackScreen.SetActive(false);  // turns screen off when done
-        CurrentlyPlaying = false;  // sequence is finished
-    }
-
-    private IEnumerator Freeze()
-    {
-        // 'freezes' the player for freeze time seconds.
-        Player.Instance.SetState(PlayerState.Frozen);
-        yield return new WaitForSeconds(FreezeTime);
-        Player.Instance.SetState(PlayerState.Idle);
     }
 
     private void UnlockDoor()
@@ -291,5 +201,24 @@ public class InteractableObjectScript : MonoBehaviour
             LevelLoader.Instance.loadScene("End of Vertical Slice");
         }
         //THIS WILL BE CHANGED, AGAIN PANIC 
+    }
+    private void DisplayOutline()
+    {
+        // sets sprite of object to sprite with outline
+
+        if (Outline != null && Default != null)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = Outline;
+        }
+    }
+
+    private void RemoveOutline()
+    {
+        // resets sprite of object to default sprite
+
+        if (Default != null && Outline != null)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = Default;
+        }
     }
 }
