@@ -14,6 +14,10 @@ public class InteractableObjectScript : MonoBehaviour
     public LogicScript logic;
     public Player player;
 
+    [Header("Sprites")]
+    public Sprite Default = null;
+    public Sprite Outline = null;
+
     [Header("Interaction")]
     public GameObject PromptTextObject = null;  // this is the screen that displays prompt to interact
     public GameObject PromptCanvas = null;  // NOTE: need to seperate text object and entire canvas as there are two text object on the canvas
@@ -84,6 +88,7 @@ public class InteractableObjectScript : MonoBehaviour
             {
                 UnlockDoor();
             }
+            RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
         }
     }
 
@@ -102,7 +107,8 @@ public class InteractableObjectScript : MonoBehaviour
                 DisplayInteractPrompt();
             }
         }
-        
+        DisplayOutline();  // when in collider, displays outline on obj
+
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -113,6 +119,7 @@ public class InteractableObjectScript : MonoBehaviour
         Interactable();
         NoisePlayed = false;
         TextHasPlayed = false;
+        RemoveOutline();  // removes outline of sprite once no longer in range (collider)
     }
 
     private void PlayNoise()
@@ -194,5 +201,24 @@ public class InteractableObjectScript : MonoBehaviour
             LevelLoader.Instance.loadScene("End of Vertical Slice");
         }
         //THIS WILL BE CHANGED, AGAIN PANIC 
+    }
+    private void DisplayOutline()
+    {
+        // sets sprite of object to sprite with outline
+
+        if (Outline != null && Default != null)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = Outline;
+        }
+    }
+
+    private void RemoveOutline()
+    {
+        // resets sprite of object to default sprite
+
+        if (Default != null && Outline != null)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = Default;
+        }
     }
 }

@@ -1331,6 +1331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
   player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: Press E to interact
@@ -2829,6 +2831,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
   player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: Press 'E' to interact
@@ -3095,6 +3099,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
   player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: Press E to interact
@@ -3345,6 +3351,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
   player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: Mash 'SPACE' to pull your foot out of the mud!
@@ -14395,6 +14403,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
   player: {fileID: 0}
+  Default: {fileID: -5088337885355641681, guid: 1ade3915d1f455e48909ad079c66672b,
+    type: 3}
+  Outline: {fileID: -7568201677410657936, guid: 1a8d2bec2e3e32c48a913a5b4e54ff3e,
+    type: 3}
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: Press 'E' to Interact
@@ -14717,6 +14729,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
   player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: Press and hold E to hide!
