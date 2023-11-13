@@ -140,6 +140,7 @@ public class Player : AnimatedEntity
         bool allowStateChange = true;
 
         // reset state specific changes
+        transform.localScale = new Vector3(3, 3, 1);  // Reset scale
         transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
         transform.position += Vector3.left * 0.0001f;
         speed = walkSpeed;
@@ -179,7 +180,8 @@ public class Player : AnimatedEntity
                 AudioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-entered-0");
                 AudioSource.PlayOneShot(AudioSource.clip, 0.5f);
                 rb.velocity = Vector2.zero;
-                transform.eulerAngles = new Vector3(0, -135, 0); // indicate player is trapped somehow
+                // indicate player is trapped somehow:
+                transform.localScale = new Vector3(transform.localScale.x + 1f, transform.localScale.y - 0.3f, transform.localScale.z);
                 break;
             case PlayerState.Frozen:
                 speed = 0;
@@ -238,11 +240,22 @@ public class Player : AnimatedEntity
                 wiggleRight = !wiggleRight;
                 if (wiggleRight)
                 {
-                    transform.eulerAngles = new Vector3(0, -45, 0);
+                    transform.eulerAngles = new Vector3(0, -25, 0);
                 }
                 else
                 {
-                    transform.eulerAngles = new Vector3(0, -135, 0);
+                    transform.eulerAngles = new Vector3(0, 150, 0);
+                }
+            }
+            if (Input.GetKeyUp(Controls.Mash))
+            {
+                if (wiggleRight)
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                }
+                else
+                {
+                    transform.eulerAngles = new Vector3(0, 180, 0);
                 }
             }
         }
@@ -416,7 +429,7 @@ public class Player : AnimatedEntity
     {
         // After 5 seconds the trap resets (i.e. player can fall back into mud)
         yield return new WaitUntil(() => state == PlayerState.Idle);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         if (logic.trapKills)
         {
             collision.gameObject.tag = "TrapArmed";
