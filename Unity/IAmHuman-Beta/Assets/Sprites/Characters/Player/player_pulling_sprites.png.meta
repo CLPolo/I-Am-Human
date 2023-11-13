@@ -4,67 +4,67 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -1385713440246216596
-    second: player_pulling_sprites_0
+    second: player_pulling_0
   - first:
       213: -5583242809511262267
-    second: player_pulling_sprites_1
+    second: player_pulling_1
   - first:
       213: -6766745447688038961
-    second: player_pulling_sprites_2
+    second: player_pulling_2
   - first:
       213: 7391017917386909008
-    second: player_pulling_sprites_3
+    second: player_pulling_3
   - first:
       213: -5119187351482977978
-    second: player_pulling_sprites_4
+    second: player_pulling_4
   - first:
       213: 1852957545381633880
-    second: player_pulling_sprites_IDLE
+    second: player_pulling_iDLE
   - first:
       213: -5099234276861787049
-    second: player_pulling_sprites_6
+    second: player_pulling_5
   - first:
       213: 9064031556375310755
-    second: player_pulling_sprites_7
+    second: player_pulling_6
   - first:
       213: 41005340495736144
-    second: player_pulling_sprites_8
+    second: player_pulling_7
   - first:
       213: -3964699476553284103
-    second: player_pulling_sprites_9
+    second: player_pulling_8
   - first:
       213: 5336035404467460559
-    second: player_pulling_sprites_10
+    second: player_pulling_9
   - first:
       213: 671863504887259084
-    second: player_pulling_sprites_11
+    second: player_pulling_10
   - first:
       213: 2371060977581801746
-    second: player_pulling_sprites_12
+    second: player_pulling_11
   - first:
       213: 8314971734275673600
-    second: player_pulling_sprites_13
+    second: player_pulling_12
   - first:
       213: -7678922121569962679
-    second: player_pulling_sprites_14
+    second: player_pulling_13
   - first:
       213: -6259104285266392554
-    second: player_pulling_sprites_15
+    second: player_pulling_14
   - first:
       213: 243113982240922580
-    second: player_pulling_sprites_16
+    second: player_pulling_15
   - first:
       213: 4296323070480412193
-    second: player_pulling_sprites_17
+    second: player_pulling_16
   - first:
       213: -8854299386139842953
-    second: player_pulling_sprites_18
+    second: player_pulling_17
   - first:
       213: 8787753801954849760
-    second: player_pulling_sprites_19
+    second: player_pulling_18
   - first:
       213: -3534932412291937791
-    second: player_pulling_sprites_20
+    second: player_pulling_19
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -150,12 +150,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_pulling_sprites_0
+      name: player_pulling_0
       rect:
         serializedVersion: 2
-        x: 6
+        x: 0
         y: 144
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -171,12 +171,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_1
+      name: player_pulling_1
       rect:
         serializedVersion: 2
-        x: 38
+        x: 32
         y: 144
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -192,12 +192,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_2
+      name: player_pulling_2
       rect:
         serializedVersion: 2
-        x: 70
+        x: 64
         y: 144
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -213,12 +213,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_3
+      name: player_pulling_3
       rect:
         serializedVersion: 2
-        x: 102
+        x: 96
         y: 144
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -234,12 +234,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_4
+      name: player_pulling_4
       rect:
         serializedVersion: 2
-        x: 134
+        x: 128
         y: 144
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -255,12 +255,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_IDLE
+      name: player_pulling_iDLE
       rect:
         serializedVersion: 2
-        x: 166
+        x: 160
         y: 144
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -276,12 +276,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_6
+      name: player_pulling_5
       rect:
         serializedVersion: 2
-        x: 6
+        x: 0
         y: 96
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -297,12 +297,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_7
+      name: player_pulling_6
       rect:
         serializedVersion: 2
-        x: 38
+        x: 32
         y: 96
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -318,12 +318,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_8
+      name: player_pulling_7
       rect:
         serializedVersion: 2
-        x: 70
+        x: 64
         y: 96
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -339,12 +339,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_9
+      name: player_pulling_8
       rect:
         serializedVersion: 2
-        x: 102
+        x: 96
         y: 96
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -360,12 +360,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_10
+      name: player_pulling_9
       rect:
         serializedVersion: 2
-        x: 134
+        x: 128
         y: 96
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -381,12 +381,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_11
+      name: player_pulling_10
       rect:
         serializedVersion: 2
-        x: 6
+        x: 0
         y: 48
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -402,12 +402,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_12
+      name: player_pulling_11
       rect:
         serializedVersion: 2
-        x: 38
+        x: 32
         y: 48
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -423,12 +423,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_13
+      name: player_pulling_12
       rect:
         serializedVersion: 2
-        x: 70
+        x: 64
         y: 48
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -444,12 +444,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_14
+      name: player_pulling_13
       rect:
         serializedVersion: 2
-        x: 102
+        x: 96
         y: 48
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -465,12 +465,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_15
+      name: player_pulling_14
       rect:
         serializedVersion: 2
-        x: 134
+        x: 128
         y: 48
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -486,12 +486,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_16
+      name: player_pulling_15
       rect:
         serializedVersion: 2
-        x: 6
+        x: 0
         y: 0
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -507,12 +507,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_17
+      name: player_pulling_16
       rect:
         serializedVersion: 2
-        x: 38
+        x: 32
         y: 0
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -528,12 +528,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_18
+      name: player_pulling_17
       rect:
         serializedVersion: 2
-        x: 70
+        x: 64
         y: 0
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -549,12 +549,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_19
+      name: player_pulling_18
       rect:
         serializedVersion: 2
-        x: 102
+        x: 96
         y: 0
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -570,12 +570,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_pulling_sprites_20
+      name: player_pulling_19
       rect:
         serializedVersion: 2
-        x: 134
+        x: 128
         y: 0
-        width: 18
+        width: 32
         height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

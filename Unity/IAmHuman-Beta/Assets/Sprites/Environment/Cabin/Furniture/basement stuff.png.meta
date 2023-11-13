@@ -1,40 +1,31 @@
 fileFormatVersion: 2
-guid: 4c48d99e689a822458a0078a9e6ee4a6
+guid: ed83356179f3041489b1b3dbdd48339b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8177352195525627109
-    second: player_hiding_0
+      213: 642822953838445728
+    second: basement_wall_left
   - first:
-      213: 5843125846357428686
-    second: player_hiding_1
+      213: -8331230838356770852
+    second: basement_wall_right
   - first:
-      213: 1135232522936296641
-    second: player_hiding_2
+      213: -6455981534079650739
+    second: flashlight
   - first:
-      213: -6681203977647852649
-    second: player_hiding_3
+      213: 7716043580317340856
+    second: basement_board
   - first:
-      213: 4236240629825589810
-    second: player_hiding_4
+      213: 9132965570561667338
+    second: flashlight_interact
   - first:
-      213: 1213842746850433577
-    second: player_hiding_IDLE
+      213: 4063785080871689824
+    second: basement_drain
   - first:
-      213: 4492889960555551271
-    second: player_hiding_5
+      213: -9031860772554589512
+    second: basement_shelves
   - first:
-      213: 5847848822816997773
-    second: player_hiding_6
-  - first:
-      213: 4009471783808308171
-    second: player_hiding_7
-  - first:
-      213: -6491340112772229002
-    second: player_hiding_8
-  - first:
-      213: 5851754552752308921
-    second: player_hiding_9
+      213: 7353455192910715932
+    second: basement_stairs
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,232 +111,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_hiding_0
+      name: basement_wall_left
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
-        width: 32
-        height: 42
+        x: 16
+        y: 108
+        width: 16
+        height: 68
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b133f6ee085348e80800000000000000
-      internalID: -8177352195525627109
+      spriteID: 0a402091214cbe800800000000000000
+      internalID: 642822953838445728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_1
+      name: basement_wall_right
       rect:
         serializedVersion: 2
-        x: 32
-        y: 48
-        width: 32
-        height: 42
+        x: 48
+        y: 108
+        width: 16
+        height: 68
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec9c902cff3f61150800000000000000
-      internalID: 5843125846357428686
+      spriteID: cdff6f971b5816c80800000000000000
+      internalID: -8331230838356770852
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_2
+      name: flashlight
       rect:
         serializedVersion: 2
-        x: 64
-        y: 48
-        width: 32
-        height: 42
+        x: 105
+        y: 161
+        width: 6
+        height: 4
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c4a61307f721cf00800000000000000
-      internalID: 1135232522936296641
+      spriteID: d4473b0000fb766a0800000000000000
+      internalID: -6455981534079650739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_3
+      name: basement_board
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
-        width: 32
-        height: 42
+        x: 132
+        y: 146
+        width: 41
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7937f5081689743a0800000000000000
-      internalID: -6681203977647852649
+      spriteID: 8b49f3441c4e41b60800000000000000
+      internalID: 7716043580317340856
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_4
+      name: flashlight_interact
       rect:
         serializedVersion: 2
-        x: 128
-        y: 48
-        width: 32
-        height: 42
+        x: 104
+        y: 144
+        width: 8
+        height: 6
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 232d4d388662aca30800000000000000
-      internalID: 4236240629825589810
+      spriteID: a0173334ccfcebe70800000000000000
+      internalID: 9132965570561667338
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_IDLE
+      name: basement_drain
       rect:
         serializedVersion: 2
-        x: 160
-        y: 48
-        width: 32
-        height: 42
+        x: 82
+        y: 113
+        width: 13
+        height: 25
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92a543b0c8f68d010800000000000000
-      internalID: 1213842746850433577
+      spriteID: 06e93ec0007756830800000000000000
+      internalID: 4063785080871689824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_5
+      name: basement_shelves
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 42
+        x: 129
+        y: 111
+        width: 47
+        height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72a15d16d93f95e30800000000000000
-      internalID: 4492889960555551271
+      spriteID: 8ba391fea7268a280800000000000000
+      internalID: -9031860772554589512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_6
+      name: basement_stairs
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 42
+        x: 90
+        y: 16
+        width: 86
+        height: 63
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d818138658bb72150800000000000000
-      internalID: 5847848822816997773
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_7
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc398d2285184a730800000000000000
-      internalID: 4009471783808308171
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_8
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67897fd5f802ae5a0800000000000000
-      internalID: -6491340112772229002
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_9
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9b2839503cb953150800000000000000
-      internalID: 5851754552752308921
+      spriteID: c1cd135a988bc0660800000000000000
+      internalID: 7353455192910715932
       vertices: []
       indices: 
       edges: []

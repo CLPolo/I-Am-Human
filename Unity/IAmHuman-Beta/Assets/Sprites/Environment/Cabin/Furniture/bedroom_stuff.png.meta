@@ -1,40 +1,7 @@
 fileFormatVersion: 2
-guid: 4c48d99e689a822458a0078a9e6ee4a6
+guid: 86c6adbf31208ed43a7a55c4f9814c59
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -8177352195525627109
-    second: player_hiding_0
-  - first:
-      213: 5843125846357428686
-    second: player_hiding_1
-  - first:
-      213: 1135232522936296641
-    second: player_hiding_2
-  - first:
-      213: -6681203977647852649
-    second: player_hiding_3
-  - first:
-      213: 4236240629825589810
-    second: player_hiding_4
-  - first:
-      213: 1213842746850433577
-    second: player_hiding_IDLE
-  - first:
-      213: 4492889960555551271
-    second: player_hiding_5
-  - first:
-      213: 5847848822816997773
-    second: player_hiding_6
-  - first:
-      213: 4009471783808308171
-    second: player_hiding_7
-  - first:
-      213: -6491340112772229002
-    second: player_hiding_8
-  - first:
-      213: 5851754552752308921
-    second: player_hiding_9
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,232 +87,274 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_hiding_0
+      name: bedroom_wall_LEFT
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
-        width: 32
-        height: 42
+        x: 16
+        y: 107
+        width: 16
+        height: 69
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b133f6ee085348e80800000000000000
-      internalID: -8177352195525627109
+      spriteID: 3356a5e32ad619030800000000000000
+      internalID: 3499698929041827123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_1
+      name: bedroom_wall_RIGHT
       rect:
         serializedVersion: 2
-        x: 32
-        y: 48
-        width: 32
-        height: 42
+        x: 48
+        y: 107
+        width: 16
+        height: 69
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec9c902cff3f61150800000000000000
-      internalID: 5843125846357428686
+      spriteID: 4d72695d57b9f5740800000000000000
+      internalID: 5143000229877262292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_2
+      name: bedroom_nightstand_0
       rect:
         serializedVersion: 2
-        x: 64
-        y: 48
-        width: 32
-        height: 42
+        x: 84
+        y: 114
+        width: 13
+        height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c4a61307f721cf00800000000000000
-      internalID: 1135232522936296641
+      spriteID: 689d3c808fa4f0b90800000000000000
+      internalID: -7273512444020663930
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_3
+      name: bedroom_bed
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
-        width: 32
-        height: 42
+        x: 98
+        y: 112
+        width: 45
+        height: 25
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7937f5081689743a0800000000000000
-      internalID: -6681203977647852649
+      spriteID: ab1195a9910f6ea40800000000000000
+      internalID: 5397265196204495290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_4
+      name: bedroom_nightstand_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 48
-        width: 32
-        height: 42
+        x: 144
+        y: 114
+        width: 13
+        height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 232d4d388662aca30800000000000000
-      internalID: 4236240629825589810
+      spriteID: cf0f886ad1db937d0800000000000000
+      internalID: -2938109346836844292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_IDLE
+      name: bedroom_clock
       rect:
         serializedVersion: 2
-        x: 160
-        y: 48
-        width: 32
-        height: 42
+        x: 20
+        y: 52
+        width: 9
+        height: 9
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92a543b0c8f68d010800000000000000
-      internalID: 1213842746850433577
+      spriteID: 95e04058ce6e856c0800000000000000
+      internalID: -4154316752730976679
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_5
+      name: crowbar
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 42
+        x: 57
+        y: 33
+        width: 6
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72a15d16d93f95e30800000000000000
-      internalID: 4492889960555551271
+      spriteID: e2a281e212daf9b00800000000000000
+      internalID: 837578413733063214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_6
+      name: crwobar_interact
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 42
+        x: 72
+        y: 32
+        width: 8
+        height: 26
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d818138658bb72150800000000000000
-      internalID: 5847848822816997773
+      spriteID: 25cf883a9de25a830800000000000000
+      internalID: 4081720149567667282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_7
+      name: bedroom_door
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 42
+        x: 98
+        y: 16
+        width: 29
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc398d2285184a730800000000000000
-      internalID: 4009471783808308171
+      spriteID: d752f52662a2ccdb0800000000000000
+      internalID: -4770391560944671363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_8
+      name: bedroom_door_interact
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 42
+        x: 145
+        y: 16
+        width: 31
+        height: 58
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67897fd5f802ae5a0800000000000000
-      internalID: -6491340112772229002
+      spriteID: 10fffd31e9a3319b0800000000000000
+      internalID: -5110676701522690303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_9
+      name: bedroom_vent
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 42
+        x: 17
+        y: 20
+        width: 15
+        height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b2839503cb953150800000000000000
-      internalID: 5851754552752308921
+      spriteID: 802fef75372ccedc0800000000000000
+      internalID: -3608295400777256440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bedroom_lamp_interact
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 16
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e346dfde9f504640800000000000000
+      internalID: 5062151117129270244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bedroom_lamp
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 17
+        width: 5
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b353e287f8d52bf0800000000000000
+      internalID: -349634838486887500
       vertices: []
       indices: 
       edges: []
