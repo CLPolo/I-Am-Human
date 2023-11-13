@@ -1,40 +1,37 @@
 fileFormatVersion: 2
-guid: 4c48d99e689a822458a0078a9e6ee4a6
+guid: 7db36e24ff2ce5e418e68af9d70bef59
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8177352195525627109
-    second: player_hiding_0
+      213: 8212295408639370039
+    second: kitchen_drawer
   - first:
-      213: 5843125846357428686
-    second: player_hiding_1
+      213: -7159508859131236110
+    second: kitchen_overhead_cabinet
   - first:
-      213: 1135232522936296641
-    second: player_hiding_2
+      213: 4455061112307439929
+    second: kitchen_drawer_interact
   - first:
-      213: -6681203977647852649
-    second: player_hiding_3
+      213: -8613576182931230694
+    second: kitchen_lamp
   - first:
-      213: 4236240629825589810
-    second: player_hiding_4
+      213: -3380554736810255674
+    second: kitchen_door
   - first:
-      213: 1213842746850433577
-    second: player_hiding_IDLE
+      213: -102163584654400482
+    second: kitchen_blood_splat
   - first:
-      213: 4492889960555551271
-    second: player_hiding_5
+      213: 7958361717902241626
+    second: kitchen_counter
   - first:
-      213: 5847848822816997773
-    second: player_hiding_6
+      213: -3897862059077438994
+    second: kitchen_gore_pile
   - first:
-      213: 4009471783808308171
-    second: player_hiding_7
+      213: 8426796914713946112
+    second: kitchen_door_interact
   - first:
-      213: -6491340112772229002
-    second: player_hiding_8
-  - first:
-      213: 5851754552752308921
-    second: player_hiding_9
+      213: -4578376867270928684
+    second: kitchen_underfloor_blood
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,13 +117,202 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_hiding_0
+      name: kitchen_drawer
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 177
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 733658ed92fe7f170800000000000000
+      internalID: 8212295408639370039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kitchen_overhead_cabinet
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 148
+        width: 45
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f0783510a054ac90800000000000000
+      internalID: -7159508859131236110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kitchen_drawer_interact
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 160
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 939ddbb4a7e83dd30800000000000000
+      internalID: 4455061112307439929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kitchen_lamp
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 148
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a107e9a291e667880800000000000000
+      internalID: -8613576182931230694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kitchen_door
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 96
+        width: 29
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca19a8b06bd511d0800000000000000
+      internalID: -3380554736810255674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kitchen_blood_splat
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 109
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e14a1b3d2ca059ef0800000000000000
+      internalID: -102163584654400482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kitchen_counter
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 112
+        width: 78
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5f61a531d7c17e60800000000000000
+      internalID: 7958361717902241626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kitchen_gore_pile
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 80
+        width: 115
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee17739eb1308e9c0800000000000000
+      internalID: -3897862059077438994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kitchen_door_interact
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 32
+        width: 29
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 008e1e7952ff1f470800000000000000
+      internalID: 8426796914713946112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kitchen_underfloor_blood
       rect:
         serializedVersion: 2
         x: 0
         y: 48
-        width: 32
-        height: 42
+        width: 144
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,218 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b133f6ee085348e80800000000000000
-      internalID: -8177352195525627109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 48
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec9c902cff3f61150800000000000000
-      internalID: 5843125846357428686
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 48
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c4a61307f721cf00800000000000000
-      internalID: 1135232522936296641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 48
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7937f5081689743a0800000000000000
-      internalID: -6681203977647852649
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 48
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 232d4d388662aca30800000000000000
-      internalID: 4236240629825589810
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_IDLE
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 48
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92a543b0c8f68d010800000000000000
-      internalID: 1213842746850433577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72a15d16d93f95e30800000000000000
-      internalID: 4492889960555551271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_6
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d818138658bb72150800000000000000
-      internalID: 5847848822816997773
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_7
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc398d2285184a730800000000000000
-      internalID: 4009471783808308171
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_8
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67897fd5f802ae5a0800000000000000
-      internalID: -6491340112772229002
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_9
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9b2839503cb953150800000000000000
-      internalID: 5851754552752308921
+      spriteID: 4d6537a1f765670c0800000000000000
+      internalID: -4578376867270928684
       vertices: []
       indices: 
       edges: []

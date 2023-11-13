@@ -1,40 +1,37 @@
 fileFormatVersion: 2
-guid: 4c48d99e689a822458a0078a9e6ee4a6
+guid: 6e9a4c5169d86fc459afbcdf25c8caf2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8177352195525627109
-    second: player_hiding_0
+      213: 3369559701356660780
+    second: study_bookshelf
   - first:
-      213: 5843125846357428686
-    second: player_hiding_1
+      213: -8246565244877492145
+    second: study_vent
   - first:
-      213: 1135232522936296641
-    second: player_hiding_2
+      213: 7321950870207722796
+    second: study_door
   - first:
-      213: -6681203977647852649
-    second: player_hiding_3
+      213: 8942417543056275258
+    second: study_door_interact
   - first:
-      213: 4236240629825589810
-    second: player_hiding_4
+      213: 2524838898622914909
+    second: study_wall_left
   - first:
-      213: 1213842746850433577
-    second: player_hiding_IDLE
+      213: -2685972703711886696
+    second: study_wall_right
   - first:
-      213: 4492889960555551271
-    second: player_hiding_5
+      213: 7058051356984371939
+    second: study_shelves
   - first:
-      213: 5847848822816997773
-    second: player_hiding_6
+      213: 4579213629283508523
+    second: study_diary_interact
   - first:
-      213: 4009471783808308171
-    second: player_hiding_7
+      213: 289259406132984910
+    second: study_desk
   - first:
-      213: -6491340112772229002
-    second: player_hiding_8
-  - first:
-      213: 5851754552752308921
-    second: player_hiding_9
+      213: 5864651397218608464
+    second: study_diary
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,232 +117,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_hiding_0
+      name: study_bookshelf
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
-        width: 32
-        height: 42
+        x: 16
+        y: 128
+        width: 29
+        height: 53
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b133f6ee085348e80800000000000000
-      internalID: -8177352195525627109
+      spriteID: c28c5d812b413ce20800000000000000
+      internalID: 3369559701356660780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 48
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec9c902cff3f61150800000000000000
-      internalID: 5843125846357428686
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_2
+      name: study_vent
       rect:
         serializedVersion: 2
         x: 64
-        y: 48
-        width: 32
-        height: 42
+        y: 135
+        width: 15
+        height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c4a61307f721cf00800000000000000
-      internalID: 1135232522936296641
+      spriteID: f40bef91a905e8d80800000000000000
+      internalID: -8246565244877492145
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_3
+      name: study_door
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
-        width: 32
-        height: 42
+        x: 113
+        y: 128
+        width: 29
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7937f5081689743a0800000000000000
-      internalID: -6681203977647852649
+      spriteID: c25f799e58bcc9560800000000000000
+      internalID: 7321950870207722796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 48
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 232d4d388662aca30800000000000000
-      internalID: 4236240629825589810
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_IDLE
+      name: study_door_interact
       rect:
         serializedVersion: 2
         x: 160
-        y: 48
-        width: 32
-        height: 42
+        y: 128
+        width: 31
+        height: 58
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92a543b0c8f68d010800000000000000
-      internalID: 1213842746850433577
+      spriteID: a37371f5069d91c70800000000000000
+      internalID: 8942417543056275258
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_5
+      name: study_wall_left
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 42
+        x: 16
+        y: 43
+        width: 16
+        height: 69
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72a15d16d93f95e30800000000000000
-      internalID: 4492889960555551271
+      spriteID: d51e183e9970a0320800000000000000
+      internalID: 2524838898622914909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_6
+      name: study_wall_right
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 42
+        x: 48
+        y: 43
+        width: 16
+        height: 69
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d818138658bb72150800000000000000
-      internalID: 5847848822816997773
+      spriteID: 8928bde8e0289bad0800000000000000
+      internalID: -2685972703711886696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_hiding_7
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc398d2285184a730800000000000000
-      internalID: 4009471783808308171
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_8
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67897fd5f802ae5a0800000000000000
-      internalID: -6491340112772229002
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player_hiding_9
+      name: study_shelves
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
-        width: 32
-        height: 42
+        y: 97
+        width: 29
+        height: 15
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b2839503cb953150800000000000000
-      internalID: 5851754552752308921
+      spriteID: 3ea6483605c33f160800000000000000
+      internalID: 7058051356984371939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: study_diary_interact
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 96
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b21221cb882ac8f30800000000000000
+      internalID: 4579213629283508523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: study_desk
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 48
+        width: 45
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c3f76b5e7a30400800000000000000
+      internalID: 289259406132984910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: study_diary
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 81
+        width: 12
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 055a6be9f5d636150800000000000000
+      internalID: 5864651397218608464
       vertices: []
       indices: 
       edges: []
