@@ -74,7 +74,6 @@ public class Player : AnimatedEntity
 
     [Header("State")]
     private PlayerState state;
-    private bool wiggleRight = true;
     public bool hasFlashlight = false;
 
     [Header("Other Objects")]
@@ -107,7 +106,6 @@ public class Player : AnimatedEntity
     // Update is called once per frame
     void Update()
     {
-        CheckTrapped();
         checkMovement();
         //playFootfall();
         checkFlashlight();
@@ -140,8 +138,6 @@ public class Player : AnimatedEntity
         bool allowStateChange = true;
 
         // reset state specific changes
-        transform.localScale = new Vector3(3, 3, 1);  // Reset scale
-        transform.eulerAngles = new Vector3(0, 0, 0);  // Reset rotation
         transform.position += Vector3.left * 0.0001f;
         speed = walkSpeed;
         GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
@@ -228,36 +224,6 @@ public class Player : AnimatedEntity
             }
             moving = !state.isOneOf(PlayerState.Trapped, PlayerState.Frozen);
             CheckFlip();
-        }
-    }
-
-    void CheckTrapped()
-    {
-        if (state == PlayerState.Trapped)
-        {
-            if (Input.GetKeyDown(Controls.Mash))
-            {
-                wiggleRight = !wiggleRight;
-                if (wiggleRight)
-                {
-                    transform.eulerAngles = new Vector3(0, -25, 0);
-                }
-                else
-                {
-                    transform.eulerAngles = new Vector3(0, 150, 0);
-                }
-            }
-            if (Input.GetKeyUp(Controls.Mash))
-            {
-                if (wiggleRight)
-                {
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                }
-                else
-                {
-                    transform.eulerAngles = new Vector3(0, 180, 0);
-                }
-            }
         }
     }
 
