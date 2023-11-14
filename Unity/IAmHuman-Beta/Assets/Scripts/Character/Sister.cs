@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sister : AnimatedEntity
+public class Sister : NPC
 {
-    [Header("Objects")]
-    public GameObject player;
-
     [Header("Movement")]
-    public float speed = 1f;
+    public float speed = 3f;
 
     [Header("Animation Cycles")]
     public List<Sprite> walkCycle;
-    public List<Sprite> runCycle;
 
     [Header("Animation Variables")]
     public Sprite DefaultSprite;
@@ -31,47 +27,26 @@ public class Sister : AnimatedEntity
     public List<AudioClip> barks;
     private AudioSource sisterAudio;
 
-    private bool following = false;
 
     // Start is called before the first frame update
     void Start()
     {
         sisterAudio = GetComponent<AudioSource>();
-        BarkReset();  // Bark will happen randomly every 10-30 seconds
         AnimationSetup();
+        BarkReset();  // Bark will happen randomly every 10-30 seconds
+        SetupNPC(speed, 3f, 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        FollowPlayer();
+        if (player ==  null)
+        {
+            player = Player.Instance;
+        }
         AnimationUpdate();
+        FollowPlayer();
         Bark();
-    }
-
-    private void FollowPlayer()
-    {
-        Vector3 playerPosition = player.transform.position;
-        float distance = Vector2.Distance(transform.position, playerPosition);
-        if (following ? distance > 1 : distance > 3)
-        {
-            following = true;
-            Vector3 direction = playerPosition - transform.position;
-            direction.y = 0;
-            direction.z = 0;
-            direction = direction.normalized;
-            transform.position += direction * Time.deltaTime * speed;
-            Flip(direction.x);
-        }
-        else
-        {
-            following = false;
-        }
-    }
-
-    private void Flip(float x)
-    {
-        GetComponent<SpriteRenderer>().flipX = (x < 0);
     }
 
     private void Bark()

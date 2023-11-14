@@ -245,13 +245,8 @@ public class Player : AnimatedEntity
         if (collision.gameObject.CompareTag("Enemy") && state != PlayerState.Hiding)
         {
             // This is when the monster sees you and you are not behind the box
-            // Gameover can go here! For now I just freeze them
-            speed = 0f;
-            //BadGuy.speed = 0f;
             logic.Death();
-        }
-        else if (collision.gameObject.CompareTag("TrapArmed"))
-        {
+        } else if (collision.gameObject.CompareTag("TrapArmed")) {
             logic.trapKills = true;
             SetState(PlayerState.Trapped);
             collision.gameObject.tag = "TrapDisarmed";
