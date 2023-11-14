@@ -47,6 +47,7 @@ public class InteractableObjectScript : MonoBehaviour
     private bool CurrentlyPlaying = false;  // if flashback is currently playing through
     private bool NoisePlayed = false;
     private bool TextHasPlayed = false;  // makes it so that text doesn't play if press E again while still in collider
+    private bool PressedInteract = false;
 
 
     // Below Should be removed and placed into monster script
@@ -77,6 +78,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         if (Inside && Input.GetKey(Controls.Interact)) // if player is inside the interactable object's box collider
         {
+            PressedInteract = true;
             PromptCanvas.SetActive(false);  // turns off 'interact' prompt
             CheckAndDisplayInfo();  // checks if there's info to display, if so does that
             if (PlaySound && !NoisePlayed)
@@ -90,6 +92,7 @@ public class InteractableObjectScript : MonoBehaviour
             }
             RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
         }
+        if (PressedInteract) { CheckAndDisplayInfo(); }
     }
 
     // if they press InteractKey to interact & haven't already interacted with object and we only want the interact prompt to appear once
@@ -120,6 +123,7 @@ public class InteractableObjectScript : MonoBehaviour
         NoisePlayed = false;
         TextHasPlayed = false;
         RemoveOutline();  // removes outline of sprite once no longer in range (collider)
+        PressedInteract = false;
     }
 
     private void PlayNoise()
@@ -173,7 +177,7 @@ public class InteractableObjectScript : MonoBehaviour
             DialogueCanvas.SetActive(true);
             DialogueTextObject.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.E))  // when interact key is pressed
+            if (Input.GetKeyDown(KeyCode.Return))  // when interact key (enter) is pressed
             {
                 Debug.Log("Index: " + textIndex + "|| Count: " + TextList.Count);
                 if (textIndex < TextList.Count)  // if more text to go through
