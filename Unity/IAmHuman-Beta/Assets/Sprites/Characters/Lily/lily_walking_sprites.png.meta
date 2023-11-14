@@ -4,67 +4,67 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 1839722279949751616
-    second: lily_walking_IDLE
+    second: lily_idle
   - first:
       213: 2366196539303066041
-    second: lily_walking_0
+    second: lily_walking_sprites_1
   - first:
       213: -1285610294072581339
-    second: lily_walking_1
+    second: lily_walking_sprites_2
   - first:
       213: -8510423838208034518
-    second: lily_walking_2
+    second: lily_walking_sprites_3
   - first:
       213: 3169272326964111174
-    second: lily_walking_3
+    second: lily_walking_sprites_4
   - first:
       213: 5510970932724893404
-    second: lily_walking_4
+    second: lily_walking_sprites_5
   - first:
       213: 2314524072760324151
-    second: lily_walking_5
+    second: lily_walking_sprites_6
   - first:
       213: -3880358036958492580
-    second: lily_walking_6
+    second: lily_walking_sprites_7
   - first:
       213: -8247921477489617718
-    second: lily_walking_7
+    second: lily_walking_sprites_8
   - first:
       213: 2335890290695762615
-    second: lily_walking_8
+    second: lily_walking_sprites_9
   - first:
       213: 7654949334285065764
-    second: lily_walking_9
+    second: lily_walking_sprites_10
   - first:
       213: 7681078935051941080
-    second: lily_walking_10
+    second: lily_walking_sprites_11
   - first:
       213: -5208338495101516875
-    second: lily_walking_11
+    second: lily_walking_sprites_12
   - first:
       213: -8934502477255080552
-    second: lily_walking_12
+    second: lily_walking_sprites_13
   - first:
       213: 5644897366836688156
-    second: lily_walking_13
+    second: lily_walking_sprites_14
   - first:
       213: -3074915707575501308
-    second: lily_walking_14
+    second: lily_walking_sprites_15
   - first:
       213: 5785032090117764367
-    second: lily_walking_15
+    second: lily_walking_sprites_16
   - first:
       213: 1848629016090078480
-    second: lily_walking_16
+    second: lily_walking_sprites_17
   - first:
       213: -5438415820590521320
-    second: lily_walking_17
+    second: lily_walking_sprites_18
   - first:
       213: 8663453876194831811
-    second: lily_walking_18
+    second: lily_walking_sprites_19
   - first:
       213: 5779285700705985889
-    second: lily_walking_19
+    second: lily_walking_sprites_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -108,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -150,13 +150,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lily_walking_IDLE
+      name: lily_idle
       rect:
         serializedVersion: 2
-        x: 0
+        x: 3
         y: 32
-        width: 16
-        height: 32
+        width: 7
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,13 +171,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_0
+      name: lily_walking_sprites_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 35
         y: 32
-        width: 16
-        height: 32
+        width: 10
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,13 +192,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_1
+      name: lily_walking_sprites_2
       rect:
         serializedVersion: 2
-        x: 48
+        x: 52
         y: 32
-        width: 16
-        height: 32
+        width: 9
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,13 +213,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_2
+      name: lily_walking_sprites_3
       rect:
         serializedVersion: 2
-        x: 64
+        x: 66
         y: 32
-        width: 16
-        height: 32
+        width: 10
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,13 +234,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_3
+      name: lily_walking_sprites_4
       rect:
         serializedVersion: 2
-        x: 80
+        x: 84
         y: 32
-        width: 16
-        height: 32
+        width: 7
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,13 +255,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_4
+      name: lily_walking_sprites_5
       rect:
         serializedVersion: 2
-        x: 96
+        x: 100
         y: 32
-        width: 16
-        height: 32
+        width: 7
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,13 +276,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_5
+      name: lily_walking_sprites_6
       rect:
         serializedVersion: 2
-        x: 112
+        x: 116
         y: 32
-        width: 16
-        height: 32
+        width: 7
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,13 +297,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_6
+      name: lily_walking_sprites_7
       rect:
         serializedVersion: 2
-        x: 128
+        x: 131
         y: 32
-        width: 16
-        height: 32
+        width: 9
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,13 +318,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_7
+      name: lily_walking_sprites_8
       rect:
         serializedVersion: 2
-        x: 144
+        x: 146
         y: 32
-        width: 16
-        height: 32
+        width: 11
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -339,13 +339,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_8
+      name: lily_walking_sprites_9
       rect:
         serializedVersion: 2
-        x: 160
+        x: 162
         y: 32
-        width: 16
-        height: 32
+        width: 12
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -360,13 +360,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_9
+      name: lily_walking_sprites_10
       rect:
         serializedVersion: 2
-        x: 176
+        x: 177
         y: 32
-        width: 16
-        height: 32
+        width: 13
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,13 +381,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_10
+      name: lily_walking_sprites_11
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 16
-        height: 32
+        width: 15
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -402,13 +402,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_11
+      name: lily_walking_sprites_12
       rect:
         serializedVersion: 2
-        x: 48
+        x: 49
         y: 0
-        width: 16
-        height: 32
+        width: 13
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -423,13 +423,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_12
+      name: lily_walking_sprites_13
       rect:
         serializedVersion: 2
-        x: 64
+        x: 66
         y: 0
-        width: 16
-        height: 32
+        width: 12
+        height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -444,13 +444,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_13
+      name: lily_walking_sprites_14
       rect:
         serializedVersion: 2
-        x: 80
+        x: 82
         y: 0
-        width: 16
-        height: 32
+        width: 11
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -465,13 +465,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_14
+      name: lily_walking_sprites_15
       rect:
         serializedVersion: 2
-        x: 96
+        x: 99
         y: 0
-        width: 16
-        height: 32
+        width: 9
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -486,13 +486,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_15
+      name: lily_walking_sprites_16
       rect:
         serializedVersion: 2
-        x: 112
+        x: 116
         y: 0
-        width: 16
-        height: 32
+        width: 7
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -507,13 +507,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_16
+      name: lily_walking_sprites_17
       rect:
         serializedVersion: 2
-        x: 128
+        x: 132
         y: 0
-        width: 16
-        height: 32
+        width: 7
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -528,13 +528,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_17
+      name: lily_walking_sprites_18
       rect:
         serializedVersion: 2
-        x: 144
+        x: 148
         y: 0
-        width: 16
-        height: 32
+        width: 7
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -549,13 +549,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_18
+      name: lily_walking_sprites_19
       rect:
         serializedVersion: 2
-        x: 160
+        x: 164
         y: 0
-        width: 16
-        height: 32
+        width: 8
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -570,13 +570,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_walking_19
+      name: lily_walking_sprites_20
       rect:
         serializedVersion: 2
-        x: 176
+        x: 180
         y: 0
-        width: 16
-        height: 32
+        width: 9
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
