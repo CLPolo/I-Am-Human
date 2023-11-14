@@ -176,10 +176,14 @@ public class InteractableObjectScript : MonoBehaviour
 
             DialogueCanvas.SetActive(true);
             DialogueTextObject.SetActive(true);
+            if (textIndex == 0)
+            {
+                DialogueTextObject.GetComponent<TextMeshProUGUI>().text = TextList[0];
+                textIndex++;
+            }
 
             if (Input.GetKeyDown(KeyCode.Return))  // when interact key (enter) is pressed
             {
-                Debug.Log("Index: " + textIndex + "|| Count: " + TextList.Count);
                 if (textIndex < TextList.Count)  // if more text to go through
                 {
                     // change the text & increase index
