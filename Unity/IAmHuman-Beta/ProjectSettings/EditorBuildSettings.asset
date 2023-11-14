@@ -17,4 +17,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Forest Copy (screen fade test).unity
     guid: 266ec7e7291fe5048bb1dfd2e7bdcbb5
+  - enabled: 1
+    path: Assets/Scenes/Basement.unity
+    guid: ef727930d876a284cae974d6da4928ae
+  - enabled: 1
+    path: Assets/Scenes/Hallway Hub.unity
+    guid: c0abec16f51711840b51a803c3f71245
+  - enabled: 1
+    path: Assets/Scenes/Kitchen.unity
+    guid: 483d22ca705d6d14cba8436471281199
+  - enabled: 1
+    path: Assets/Scenes/Study.unity
+    guid: b28046a05fd4967499f04a23fd790a7a
+  - enabled: 1
+    path: Assets/Scenes/Bed room.unity
+    guid: 35f21cf66a0f3c842910b1a65e4cc915
+  - enabled: 1
+    path: Assets/Scenes/Attic.unity
+    guid: 5f1cd506b808df6488591a1cc3145ea1
   m_configObjects: {}

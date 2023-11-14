@@ -47,7 +47,6 @@ public class PuzzleTargetScript : MonoBehaviour
     public float FreezeTime = 0;                // time player is frozen for
 
     // bools
-    private bool TextDisplaying = false;        // whether given text is currently being displayed
     private bool ObjectDisplaying = false;      // whether object has already been spawned 
     private bool TimerComplete = false;         // whether hide timer has completed or not
     private bool InteractionOver = false;

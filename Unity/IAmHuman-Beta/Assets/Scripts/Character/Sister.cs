@@ -26,13 +26,16 @@ public class Sister : NPC
     public float minTimeBetweenBarks = 50;
     public List<AudioClip> barks;
     private AudioSource sisterAudio;
+    private Animator sisterAnimator;
+    private float untilDist = 3f;
 
 
     // Start is called before the first frame update
     void Start()
     {
         sisterAudio = GetComponent<AudioSource>();
-        AnimationSetup();
+        sisterAnimator = GetComponent<Animator>();
+        //AnimationSetup();  (ONLY NEEDED IF DECIDE NOT TO USE ANIMATOR)
         BarkReset();  // Bark will happen randomly every 10-30 seconds
         SetupNPC(speed, 3f, 1f);
     }
@@ -44,9 +47,17 @@ public class Sister : NPC
         {
             player = Player.Instance;
         }
-        AnimationUpdate();
+        //AnimationUpdate();  (ONLY NEEDED IF DECIDE NOT TO USE ANIMATOR)
         FollowPlayer();
         Bark();
+        if (GetFollowing())
+        {
+            sisterAnimator.SetInteger("State", 1);
+        }
+        else if (Vector2.Distance(transform.position, player.transform.position) < untilDist && !(player.GetState() == PlayerState.Walking))  // fix for state constantly fluctuating (potentially due to NPC following setting)
+        {
+            sisterAnimator.SetInteger("State", 0);
+        }
     }
 
     private void Bark()

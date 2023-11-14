@@ -7,7 +7,7 @@ public class CameraMovement : MonoBehaviour
 
     public Transform player;
     public Vector3 offset;
-    public Player playerAccess;
+    public Player playerAccess = null;
 
     [Header("Screen Shake")]
     public float shakeDuration = 1f;
@@ -23,7 +23,11 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerAccess = Player.Instance;
+        if (playerAccess == null)
+        {
+            playerAccess = Player.Instance;
+        }
+       
         player = GameObject.FindWithTag("Player").transform;
      
         offset.Set(0f, cameraYOffset, -10f);
@@ -44,7 +48,11 @@ public class CameraMovement : MonoBehaviour
         {
             transform.position = player.position + offset;  // Only change position if within bounds
         }
-        //if (playerAccess.GetState() == PlayerState.Hiding && !shaking)  // ?? for some reason the player.instance isn't working ??
+        //if (playerAccess != null && playerAccess.GetState() == PlayerState.Hiding && !shaking)
+        //{
+        //    shaking = true;
+        //    StartCoroutine(Shaking());
+        //}  ?? for some reason the player.instance isn't working ??
         if (Input.GetKeyDown(KeyCode.K))  // just for test purposes until the above is figured out
         {
             shaking = true;
