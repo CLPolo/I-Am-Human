@@ -181,7 +181,7 @@ public class Player : AnimatedEntity
                 AudioSource.PlayOneShot(AudioSource.clip, 0.5f);
                 rb.velocity = Vector2.zero;
                 // indicate player is trapped somehow:
-                transform.localScale = new Vector3(transform.localScale.x + 1f, transform.localScale.y - 0.3f, transform.localScale.z);
+                //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y - 0.3f, transform.localScale.z);
                 break;
             case PlayerState.Frozen:
                 speed = 0;
