@@ -38,12 +38,12 @@ public class InteractableObjectScript : MonoBehaviour
 
     [Header("Unlock Door")]
     public bool Unlock;
+    public string NextScene = null;
 
     // Booleans
     private int textIndex = 0;
     private bool Inside = false;  // if player is inside hit box for object
     private bool HasInteracted = false;  // if player interacted with object
-    private bool IsFlashback = false;  // if the post interaction display is a flashback sequence
     private bool CurrentlyPlaying = false;  // if flashback is currently playing through
     private bool NoisePlayed = false;
     private bool TextHasPlayed = false;  // makes it so that text doesn't play if press E again while still in collider
@@ -88,7 +88,7 @@ public class InteractableObjectScript : MonoBehaviour
             }
             if (Unlock)
             {
-                UnlockDoor();
+                UnlockDoor(NextScene);
             }
             RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
         }
@@ -131,7 +131,7 @@ public class InteractableObjectScript : MonoBehaviour
         // plays a random sound from the sound list each time
 
         AudioSource audio = GetComponent<AudioSource>();
-        int randomNumber = UnityEngine.Random.Range(0, Sounds.Count + 1);
+        int randomNumber = UnityEngine.Random.Range(0, Sounds.Count);
         audio.PlayOneShot(Sounds.ElementAt(randomNumber));
     }
 
@@ -202,11 +202,11 @@ public class InteractableObjectScript : MonoBehaviour
         }
     }
 
-    private void UnlockDoor()
+    private void UnlockDoor(string NextScene)
     {
-        if (this.GetComponent<Door>().IsInteractable == true)
+        if (NextScene != null && this.GetComponent<Door>().IsInteractable == true)
         {
-            LevelLoader.Instance.loadScene("End of Vertical Slice");
+            LevelLoader.Instance.loadScene(NextScene);
         }
         //THIS WILL BE CHANGED, AGAIN PANIC 
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -57,5 +58,10 @@ public class NPC : AnimatedEntity
         this.untilDistance = untilDistance;
         this.proximity = proximity;
         this.detectionRange = detectionRange;
+    }
+
+    public bool GetFollowing()
+    {
+        return following;
     }
 }
