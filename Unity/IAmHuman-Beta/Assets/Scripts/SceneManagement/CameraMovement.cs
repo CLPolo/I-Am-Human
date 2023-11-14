@@ -18,6 +18,7 @@ public class CameraMovement : MonoBehaviour
     // These are the edges of the level where the camera should stop following the player
     public float leftBound = -100;
     public float rightBound = 100;
+    public float cameraYOffset = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class CameraMovement : MonoBehaviour
         playerAccess = Player.Instance;
         player = GameObject.FindWithTag("Player").transform;
      
-        offset.Set(0f, 2f, -10f);
+        offset.Set(0f, cameraYOffset, -10f);
         if (player.transform.position.x <= leftBound)
         {
             transform.position = new Vector3(leftBound, player.position.y, player.position.z) + offset;
