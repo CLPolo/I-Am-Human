@@ -1938,6 +1938,7 @@ MonoBehaviour:
   Default: {fileID: -6365268522444001063, guid: 86c6adbf31208ed43a7a55c4f9814c59,
     type: 3}
   Outline: {fileID: 7915642271378980114, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
+  removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
   InteractMessage: Press 'E' to Interact
@@ -2252,6 +2253,7 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 258260131048083505, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
   Outline: {fileID: 928198207591277937, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
+  removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
   InteractMessage: Press 'E' to Interact
@@ -2474,6 +2476,7 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 7115196702410045057, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
   Outline: {fileID: 9100872387468827304, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
+  removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
   InteractMessage: Press 'E' to pick up
