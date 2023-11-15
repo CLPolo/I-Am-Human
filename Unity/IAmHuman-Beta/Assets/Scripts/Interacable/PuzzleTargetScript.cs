@@ -32,6 +32,8 @@ public class PuzzleTargetScript : MonoBehaviour
     public bool FreezeContinuously;             // for impassable target where it still triggers text (messy i know, i'll refactor after)
     public bool NoisePlayOnSpawn;               // again messy i know, just panic
     public bool SpawnDoor;
+    public bool TrappedText;
+    public bool PushPullText;
 
     [Header("Affect Specifications")]
     public string LayerToSwitchTo = null;       // what layer the object will be switched to
@@ -92,6 +94,18 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             DisplayText();
         }
+        if (TrappedText && PlayerTriggered)
+        {
+            DisplayTrappedText();
+        }
+        if (PushPullText && PlayerTriggered)
+        {
+            DisplayPushText();
+        }
+        if (PlayerTriggered)
+        {
+            HandlePlayer();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -105,6 +119,11 @@ public class PuzzleTargetScript : MonoBehaviour
             HandlePlayer();
             PlayerTriggered = true;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        PlayerTriggered = false;
     }
 
     private void HandleBox()
@@ -137,7 +156,7 @@ public class PuzzleTargetScript : MonoBehaviour
             StartCoroutine(FreezeONLY());
             FrozenOnce = true;
         }
-        if (SpawnObject && AffectedObject != null)  // if we want to spawn / activate an object
+        if (SpawnObject && AffectedObject != null && this.enabled == true)  // if we want to spawn / activate an object
         {
             if (!ObjectDisplaying && !HideTimed)  // if not already there and not a hidetimed event
             {
@@ -152,6 +171,10 @@ public class PuzzleTargetScript : MonoBehaviour
         if (TextTrigger && !TextPlayed) // if we want to spawn text
         {
             DisplayText();
+        }
+        if (TrappedText)
+        {
+            DisplayTrappedText();
         }
     }
 
@@ -324,4 +347,41 @@ public class PuzzleTargetScript : MonoBehaviour
         player.SetState(PlayerState.Idle);
 
     }
+
+    public void DisplayTrappedText()
+    {
+        if (player.GetState() == PlayerState.Trapped)
+        {
+            TextCanvas.SetActive(true);
+            TextObject.SetActive(true);
+
+            TextObject.GetComponent<TextMeshProUGUI>().text = TextToDisplay[0];
+        }
+        else
+        {
+            TextObject.SetActive(false);
+        }
+    }
+    public void DisplayPushText()
+    {
+        if (!(player.GetState() == PlayerState.Pushing || player.GetState() == PlayerState.Pulling) && !InteractionOver)
+        {
+            TextCanvas.SetActive(true);
+            TextObject.SetActive(true);
+
+            TextObject.GetComponent<TextMeshProUGUI>().text = TextToDisplay[0];
+        }
+        else
+        {
+            InteractionOver = true;
+            StartCoroutine(RemoveTextAfterWait(FreezeTime));
+        }
+    }
+
+    private IEnumerator RemoveTextAfterWait(float Seconds)
+    {
+        yield return new WaitForSeconds(Seconds);
+        TextObject.SetActive(false);
+    }
+
 }
