@@ -698,30 +698,35 @@ PrefabInstance:
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: 24300002, guid: dddc32f5fe8c3054281c30a262542c79,
+      objectReference: {fileID: 24300002, guid: 3d85109d31b1ec64792ac493cd64dda3,
         type: 2}
     - target: {fileID: 4377050035647058549, guid: 5061bfcf95272e8d1828858371c6eb98,
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: 24300002, guid: dddc32f5fe8c3054281c30a262542c79,
+      objectReference: {fileID: 24300002, guid: 3d85109d31b1ec64792ac493cd64dda3,
         type: 2}
     - target: {fileID: 7620583976525697109, guid: 5061bfcf95272e8d1828858371c6eb98,
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: f9c650fd369a749e4b8b3aafcf79041c, type: 3}
+      objectReference: {fileID: 8300000, guid: c80fc1f1cee3f2c0495baa121a31ec3b, type: 3}
+    - target: {fileID: 7620583976525697109, guid: 5061bfcf95272e8d1828858371c6eb98,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7620583976525697109, guid: 5061bfcf95272e8d1828858371c6eb98,
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: 24300002, guid: dddc32f5fe8c3054281c30a262542c79,
+      objectReference: {fileID: 24300002, guid: 3d85109d31b1ec64792ac493cd64dda3,
         type: 2}
     - target: {fileID: 7713190544705205875, guid: 5061bfcf95272e8d1828858371c6eb98,
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: 24300002, guid: dddc32f5fe8c3054281c30a262542c79,
+      objectReference: {fileID: 24300002, guid: 3d85109d31b1ec64792ac493cd64dda3,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5061bfcf95272e8d1828858371c6eb98, type: 3}
