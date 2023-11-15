@@ -1285,6 +1285,7 @@ MonoBehaviour:
   PlaySound: 0
   Sounds: []
   Unlock: 1
+  NextScene: 
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!4 &374679020
@@ -2412,6 +2413,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1aefd03d2dc9ab26a934fed59cbacc21, type: 3}
   - {fileID: 8300000, guid: 7c7a88ea8c2e2681d8186bf3117f3584, type: 3}
   Unlock: 0
+  NextScene: 
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!82 &741868895
@@ -2676,6 +2678,7 @@ MonoBehaviour:
   PlaySound: 0
   Sounds: []
   Unlock: 0
+  NextScene: 
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!1 &781546634
@@ -2926,6 +2929,7 @@ MonoBehaviour:
   PlaySound: 0
   Sounds: []
   Unlock: 0
+  NextScene: 
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!1 &830816248
@@ -3293,7 +3297,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: leftBound
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -13330,6 +13334,7 @@ MonoBehaviour:
   PlaySound: 0
   Sounds: []
   Unlock: 0
+  NextScene: 
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!61 &1870322499
@@ -13650,6 +13655,7 @@ MonoBehaviour:
   PlaySound: 0
   Sounds: []
   Unlock: 0
+  NextScene: 
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!1 &1922120054
@@ -14198,6 +14204,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas (Follows Player)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947781139820973, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947781139820973, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947781139820973, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947781139820973, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781139820975, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
