@@ -295,7 +295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162216419}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.98, y: 8.22, z: 1.1135379}
+  m_LocalPosition: {x: 4.918, y: 8.234, z: 1.1135379}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1222566505}
@@ -339,7 +339,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: -2685972703711886696, guid: 6e9a4c5169d86fc459afbcdf25c8caf2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -548,6 +548,7 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 5864651397218608464, guid: 6e9a4c5169d86fc459afbcdf25c8caf2, type: 3}
   Outline: {fileID: 4579213629283508523, guid: 6e9a4c5169d86fc459afbcdf25c8caf2, type: 3}
+  removeSprite: 0
   PromptTextObject: {fileID: 601616360}
   PromptCanvas: {fileID: 601616359}
   InteractMessage: Press 'E' to Interact
@@ -692,6 +693,7 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 7321950870207722796, guid: 6e9a4c5169d86fc459afbcdf25c8caf2, type: 3}
   Outline: {fileID: 8942417543056275258, guid: 6e9a4c5169d86fc459afbcdf25c8caf2, type: 3}
+  removeSprite: 0
   PromptTextObject: {fileID: 601616360}
   PromptCanvas: {fileID: 601616359}
   InteractMessage: Press 'E' to Interact
@@ -2448,36 +2450,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 894332710}
     m_ColliderPaths:
-    - - X: -70000041
-        Y: -112500100
-      - X: -59999959
-        Y: -112500100
-      - X: -59999900
-        Y: -112500041
-      - X: -59999900
-        Y: -112500000
-      - X: 60000000
+    - - X: 60000000
         Y: -112500000
       - X: 60000000
         Y: -32500000
-      - X: -59999900
+      - X: -70000000
         Y: -32500000
-      - X: -59999900
-        Y: -32499959
-      - X: -59999959
-        Y: -32499900
-      - X: -70000041
-        Y: -32499900
-      - X: -70000100
-        Y: -32499959
-      - X: -70000100
-        Y: -112500041
+      - X: -70000000
+        Y: -112500000
   m_CompositePaths:
     m_Paths:
-    - - {x: -7.0000095, y: -11.249974}
-      - {x: 6, y: -11.24997}
+    - - {x: 5.999971, y: -11.25}
       - {x: 5.999971, y: -3.25}
-      - {x: -7.0000095, y: -3.2500253}
+      - {x: -7, y: -3.2500293}
+      - {x: -6.9999704, y: -11.25}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &894332712
@@ -2783,7 +2769,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057680, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: orthographic size
-      value: 2.8
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057681, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -2793,12 +2779,12 @@ PrefabInstance:
     - target: {fileID: 3072271084244057681, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.29
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057681, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: -0.85
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057681, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -2848,7 +2834,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: leftBound
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -2858,7 +2844,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: cameraYOffset
-      value: 0
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057685, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -3082,7 +3068,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098891252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.69, y: 8.22, z: 1.1135379}
+  m_LocalPosition: {x: -6.833, y: 8.22, z: 1.1135379}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1222566505}
@@ -3126,7 +3112,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 2524838898622914909, guid: 6e9a4c5169d86fc459afbcdf25c8caf2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
