@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -27,6 +28,8 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         if ((audioSource = GetComponent<AudioSource>()) == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
+            AudioMixer mixer = Resources.Load("Master") as AudioMixer;
+            audioSource.outputAudioMixerGroup = mixer.outputAudioMixerGroup;
         }
         button.onClick.AddListener(delegate {
             audioSource.PlayOneShot(selectSound, 0.5f);
