@@ -17,6 +17,7 @@ public class InteractableObjectScript : MonoBehaviour
     [Header("Sprites")]
     public Sprite Default = null;
     public Sprite Outline = null;
+    public bool removeSprite = false;  // used for kitchen drawer
 
     [Header("Interaction")]
     public GameObject PromptTextObject = null;  // this is the screen that displays prompt to interact
@@ -89,6 +90,10 @@ public class InteractableObjectScript : MonoBehaviour
             if (Unlock)
             {
                 UnlockDoor(NextScene);
+            }
+            if (removeSprite)
+            {
+                RemoveSprite();
             }
             RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
         }
@@ -229,4 +234,12 @@ public class InteractableObjectScript : MonoBehaviour
             this.GetComponent<SpriteRenderer>().sprite = Default;
         }
     }
+
+
+    private void RemoveSprite()
+    {
+        this.GetComponent<SpriteRenderer>().sprite = null;
+        this.GetComponent<PuzzleTargetScript>().enabled = true;
+    }
+
 }

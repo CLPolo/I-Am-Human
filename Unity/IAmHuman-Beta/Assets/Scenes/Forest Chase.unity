@@ -345,18 +345,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.130871, y: -0.11114618, z: -161.27539}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 899840934}
-  - {fileID: 510155954}
-  - {fileID: 156285965}
-  - {fileID: 1507944813}
-  - {fileID: 1813849835}
-  - {fileID: 1231082447}
-  - {fileID: 830816249}
-  - {fileID: 287648024}
-  - {fileID: 1370652079}
-  - {fileID: 735844536}
-  - {fileID: 2146942079}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -586,108 +575,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &156285963
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 156285965}
-  - component: {fileID: 156285964}
-  - component: {fileID: 156285966}
-  m_Layer: 0
-  m_Name: FreezeOnSpawn Trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!61 &156285964
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156285963}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!4 &156285965
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156285963}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.11, y: -2.2388537, z: 1.1953125}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &156285966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156285963}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 0}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
-  DoorToBeOpened: {fileID: 0}
-  LayerSwitch: 0
-  DeleteObject: 0
-  SpawnObject: 0
-  TurnOffObject: 0
-  NoiseTrigger: 0
-  TextTrigger: 0
-  HideTimed: 0
-  FreezePlayerObject: 0
-  FreezePlayerText: 0
-  FreezePlayerOnly: 1
-  UnlockDoor: 0
-  FreezeContinuously: 0
-  NoisePlayOnSpawn: 0
-  SpawnDoor: 0
-  TrappedText: 0
-  PushPullText: 0
-  LayerToSwitchTo: 
-  NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: []
-  TextObject: {fileID: 0}
-  TextCanvas: {fileID: 0}
-  TextDisplayOnce: 0
-  DisplayTimeText: 0
-  DisplayTimeObject: 0
-  DelayTime: 0
-  HideTime: 0
-  FreezeTime: 8
-  player: {fileID: 0}
 --- !u!1 &192598262
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,193 +683,6 @@ Transform:
   m_Father: {fileID: 1437555303}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &239101196
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 239101198}
-  - component: {fileID: 239101197}
-  m_Layer: 0
-  m_Name: Deer Head
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!212 &239101197
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239101196}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -5966669313685652861, guid: 1ade3915d1f455e48909ad079c66672b,
-    type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.72, y: 0.9}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &239101198
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239101196}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 59.39, y: 1.79, z: 2.8310864}
-  m_LocalScale: {x: 4, y: 5, z: 1}
-  m_Children: []
-  m_Father: {fileID: 363476082}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &287648023
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 287648024}
-  - component: {fileID: 287648026}
-  - component: {fileID: 287648025}
-  m_Layer: 0
-  m_Name: AnimalTextTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &287648024
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287648023}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.17, y: -2.08, z: 160.5335}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &287648025
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287648023}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &287648026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287648023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 0}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
-  DoorToBeOpened: {fileID: 0}
-  LayerSwitch: 0
-  DeleteObject: 0
-  SpawnObject: 0
-  TurnOffObject: 0
-  NoiseTrigger: 0
-  TextTrigger: 1
-  HideTimed: 0
-  FreezePlayerObject: 0
-  FreezePlayerText: 1
-  FreezePlayerOnly: 0
-  UnlockDoor: 0
-  FreezeContinuously: 0
-  NoisePlayOnSpawn: 0
-  SpawnDoor: 0
-  TrappedText: 0
-  PushPullText: 0
-  LayerToSwitchTo: 
-  NoiseToBePlayed: {fileID: 0}
-  TextToDisplay:
-  - Woah, that kinda looks like the animal from the road.
-  - I don't think I hit it, but it looks hurt.
-  - Weird, I should keep looking for Lily.
-  TextObject: {fileID: 554301874}
-  TextCanvas: {fileID: 1162561049}
-  TextDisplayOnce: 1
-  DisplayTimeText: 3
-  DisplayTimeObject: 0
-  DelayTime: 0
-  HideTime: 0
-  FreezeTime: 3
-  player: {fileID: 0}
 --- !u!1 &346030812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +899,6 @@ Transform:
   m_LocalPosition: {x: 12, y: -2.223, z: -1.8310864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 239101198}
   - {fileID: 2117047772}
   - {fileID: 1958124061}
   m_Father: {fileID: 0}
@@ -1280,7 +979,6 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 0}
   Outline: {fileID: 0}
-  removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: Press E to interact
@@ -1492,207 +1190,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 1160711573}
   ParallaxEffect: 0.2
---- !u!1 &510155950
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 510155954}
-  - component: {fileID: 510155953}
-  - component: {fileID: 510155952}
-  - component: {fileID: 510155951}
-  m_Layer: 0
-  m_Name: Rock Hide Event Trigger
-  m_TagString: Target
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &510155951
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510155950}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: dddc32f5fe8c3054281c30a262542c79,
-    type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &510155952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510155950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 239101196}
-  ActivateTriggerObject: {fileID: 287648023}
-  DeactivateTriggerObject: {fileID: 1370652078}
-  DoorToBeOpened: {fileID: 0}
-  LayerSwitch: 0
-  DeleteObject: 0
-  SpawnObject: 1
-  TurnOffObject: 1
-  NoiseTrigger: 1
-  TextTrigger: 1
-  HideTimed: 1
-  FreezePlayerObject: 1
-  FreezePlayerText: 1
-  FreezePlayerOnly: 0
-  UnlockDoor: 0
-  FreezeContinuously: 0
-  NoisePlayOnSpawn: 1
-  SpawnDoor: 0
-  TrappedText: 0
-  PushPullText: 0
-  LayerToSwitchTo: 
-  NoiseToBePlayed: {fileID: 8300000, guid: 9ae53c57e4974eee79c16ebdc43a840b, type: 3}
-  TextToDisplay:
-  - What was that?
-  TextObject: {fileID: 554301874}
-  TextCanvas: {fileID: 1162561049}
-  TextDisplayOnce: 1
-  DisplayTimeText: 1
-  DisplayTimeObject: 3
-  DelayTime: 0
-  HideTime: 3
-  FreezeTime: 4
-  player: {fileID: 0}
---- !u!61 &510155953
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510155950}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.34123445, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3175311, y: 1}
-  m_EdgeRadius: 0
---- !u!4 &510155954
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510155950}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45.34913, y: -1.8288535, z: 30.861053}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519134324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,13 +1523,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01
+      value: 98.18
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.517
+      value: -1.81
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -2321,207 +1823,6 @@ Transform:
   m_Father: {fileID: 1958124061}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &735844535
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 735844536}
-  - component: {fileID: 735844539}
-  - component: {fileID: 735844537}
-  - component: {fileID: 735844538}
-  m_Layer: 0
-  m_Name: Mud Text Trigger
-  m_TagString: Target
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &735844536
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735844535}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29.71, y: -0.51, z: 30.861053}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &735844537
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735844535}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: dddc32f5fe8c3054281c30a262542c79,
-    type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &735844538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735844535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 0}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
-  DoorToBeOpened: {fileID: 0}
-  LayerSwitch: 0
-  DeleteObject: 0
-  SpawnObject: 0
-  TurnOffObject: 0
-  NoiseTrigger: 0
-  TextTrigger: 0
-  HideTimed: 0
-  FreezePlayerObject: 0
-  FreezePlayerText: 0
-  FreezePlayerOnly: 0
-  UnlockDoor: 0
-  FreezeContinuously: 0
-  NoisePlayOnSpawn: 0
-  SpawnDoor: 0
-  TrappedText: 1
-  PushPullText: 0
-  LayerToSwitchTo: 
-  NoiseToBePlayed: {fileID: 0}
-  TextToDisplay:
-  - Mash SPACE to escape!
-  TextObject: {fileID: 1261286780}
-  TextCanvas: {fileID: 660751624}
-  TextDisplayOnce: 0
-  DisplayTimeText: 0
-  DisplayTimeObject: 0
-  DelayTime: 0
-  HideTime: 0
-  FreezeTime: 0
-  player: {fileID: 0}
---- !u!61 &735844539
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735844535}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.39826775, y: -0.2851591}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.9708061, y: 0.38820457}
-  m_EdgeRadius: 0
 --- !u!1 &738061607
 GameObject:
   m_ObjectHideFlags: 0
@@ -2606,18 +1907,15 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 0}
   Outline: {fileID: 0}
-  removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
-  InteractMessage: Press 'E' to interact
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
-  TextList:
-  - Hmm, this door won't budge.
-  - Something must be blocking it.
-  FreezePlayer: 1
-  PlaySound: 1
+  TextList: []
+  FreezePlayer: 0
+  PlaySound: 0
   Sounds:
   - {fileID: 8300000, guid: 4286549cff6719f08ac1d227d26e1bf7, type: 3}
   - {fileID: 8300000, guid: 7b5a75d9c6e15f916a9872301678753f, type: 3}
@@ -2876,7 +2174,6 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 0}
   Outline: {fileID: 0}
-  removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: Press E to interact
@@ -3066,6 +2363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 811875098}
   - component: {fileID: 811875097}
+  - component: {fileID: 811875099}
   m_Layer: 0
   m_Name: Mud
   m_TagString: TrapArmedNoKill
@@ -3113,213 +2411,36 @@ Transform:
   m_Father: {fileID: 738061608}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &830816248
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 830816249}
-  - component: {fileID: 830816251}
-  - component: {fileID: 830816250}
-  m_Layer: 0
-  m_Name: CabinExpositionTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &830816249
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830816248}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 85.02, y: -2.21, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &830816250
+--- !u!114 &811875099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830816248}
+  m_GameObject: {fileID: 811875096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
+  m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 0}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
-  DoorToBeOpened: {fileID: 0}
-  LayerSwitch: 0
-  DeleteObject: 0
-  SpawnObject: 0
-  TurnOffObject: 0
-  NoiseTrigger: 0
-  TextTrigger: 1
-  HideTimed: 0
-  FreezePlayerObject: 0
-  FreezePlayerText: 1
-  FreezePlayerOnly: 0
-  UnlockDoor: 0
-  FreezeContinuously: 0
-  NoisePlayOnSpawn: 0
-  SpawnDoor: 0
-  TrappedText: 0
-  PushPullText: 0
-  LayerToSwitchTo: 
-  NoiseToBePlayed: {fileID: 0}
-  TextToDisplay:
-  - Looks like no one's been here for years.
-  - Maybe Lily went in there...
-  TextObject: {fileID: 554301874}
-  TextCanvas: {fileID: 1162561049}
-  TextDisplayOnce: 1
-  DisplayTimeText: 2
-  DisplayTimeObject: 0
-  DelayTime: 0
-  HideTime: 0
-  FreezeTime: 3
+  logic: {fileID: 0}
   player: {fileID: 0}
---- !u!61 &830816251
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830816248}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.28712463, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.42575073, y: 1}
-  m_EdgeRadius: 0
---- !u!1 &899840933
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 899840934}
-  - component: {fileID: 899840936}
-  - component: {fileID: 899840935}
-  m_Layer: 0
-  m_Name: Lily Exposition Trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &899840934
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899840933}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -2.04, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &899840935
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899840933}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &899840936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899840933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 1162561049}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
-  DoorToBeOpened: {fileID: 0}
-  LayerSwitch: 0
-  DeleteObject: 0
-  SpawnObject: 0
-  TurnOffObject: 0
-  NoiseTrigger: 0
-  TextTrigger: 1
-  HideTimed: 0
-  FreezePlayerObject: 0
-  FreezePlayerText: 1
-  FreezePlayerOnly: 0
-  UnlockDoor: 0
-  FreezeContinuously: 0
-  NoisePlayOnSpawn: 0
-  SpawnDoor: 0
-  TrappedText: 0
-  PushPullText: 0
-  LayerToSwitchTo: 
-  NoiseToBePlayed: {fileID: 0}
-  TextToDisplay:
-  - Lily isn't here, but this is her teddy bear.
-  TextObject: {fileID: 554301874}
-  TextCanvas: {fileID: 1162561049}
-  TextDisplayOnce: 1
-  DisplayTimeText: 3
-  DisplayTimeObject: 0
-  DelayTime: 0
-  HideTime: 0
-  FreezeTime: 3
-  player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
+  PromptTextObject: {fileID: 1261286780}
+  PromptCanvas: {fileID: 660751624}
+  InteractMessage: Mash 'SPACE' to pull your foot out of the mud!
+  ShowPromptOnce: 0
+  DialogueTextObject: {fileID: 0}
+  DialogueCanvas: {fileID: 0}
+  TextList: []
+  FreezePlayer: 0
+  PlaySound: 0
+  Sounds: []
+  Unlock: 0
+  NextScene: 
+  monsterComing: 0
+  rawr: {fileID: 0}
 --- !u!1 &907597746
 GameObject:
   m_ObjectHideFlags: 0
@@ -4142,108 +3263,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1231082444
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1231082447}
-  - component: {fileID: 1231082446}
-  - component: {fileID: 1231082445}
-  m_Layer: 0
-  m_Name: UnlockTriggerLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1231082445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231082444}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 374679016}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
-  DoorToBeOpened: {fileID: 374679016}
-  LayerSwitch: 0
-  DeleteObject: 0
-  SpawnObject: 0
-  TurnOffObject: 0
-  NoiseTrigger: 0
-  TextTrigger: 0
-  HideTimed: 0
-  FreezePlayerObject: 0
-  FreezePlayerText: 0
-  FreezePlayerOnly: 0
-  UnlockDoor: 1
-  FreezeContinuously: 0
-  NoisePlayOnSpawn: 0
-  SpawnDoor: 1
-  TrappedText: 0
-  PushPullText: 0
-  LayerToSwitchTo: Interactable
-  NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: []
-  TextObject: {fileID: 0}
-  TextCanvas: {fileID: 0}
-  TextDisplayOnce: 0
-  DisplayTimeText: 5
-  DisplayTimeObject: 0
-  DelayTime: 0
-  HideTime: 0
-  FreezeTime: 0
-  player: {fileID: 0}
---- !u!61 &1231082446
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231082444}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.113055706, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7738886, y: 1}
-  m_EdgeRadius: 0
---- !u!4 &1231082447
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231082444}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 98.129135, y: -1.9688537, z: 161.27539}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1258834494
 GameObject:
   m_ObjectHideFlags: 0
@@ -11697,110 +10716,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1370652078
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1370652079}
-  - component: {fileID: 1370652081}
-  - component: {fileID: 1370652080}
-  m_Layer: 0
-  m_Name: TooFarHideTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1370652079
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370652078}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 62.39, y: -2.06, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1974312823}
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1370652080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370652078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 0}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 1974312822}
-  DoorToBeOpened: {fileID: 0}
-  LayerSwitch: 0
-  DeleteObject: 0
-  SpawnObject: 0
-  TurnOffObject: 0
-  NoiseTrigger: 0
-  TextTrigger: 1
-  HideTimed: 0
-  FreezePlayerObject: 0
-  FreezePlayerText: 0
-  FreezePlayerOnly: 0
-  UnlockDoor: 0
-  FreezeContinuously: 0
-  NoisePlayOnSpawn: 0
-  SpawnDoor: 0
-  TrappedText: 0
-  PushPullText: 0
-  LayerToSwitchTo: 
-  NoiseToBePlayed: {fileID: 0}
-  TextToDisplay:
-  - It's getting closer, I should hide...
-  TextObject: {fileID: 554301874}
-  TextCanvas: {fileID: 1162561049}
-  TextDisplayOnce: 1
-  DisplayTimeText: 2
-  DisplayTimeObject: 0
-  DelayTime: 0
-  HideTime: 0
-  FreezeTime: 0
-  player: {fileID: 0}
---- !u!61 &1370652081
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370652078}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &1437555302
 GameObject:
   m_ObjectHideFlags: 0
@@ -11997,109 +10912,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1507944810
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1507944813}
-  - component: {fileID: 1507944812}
-  - component: {fileID: 1507944811}
-  m_Layer: 0
-  m_Name: BoxPassableTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1507944811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507944810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 1643031427}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
-  DoorToBeOpened: {fileID: 0}
-  LayerSwitch: 1
-  DeleteObject: 0
-  SpawnObject: 0
-  TurnOffObject: 0
-  NoiseTrigger: 0
-  TextTrigger: 0
-  HideTimed: 0
-  FreezePlayerObject: 0
-  FreezePlayerText: 0
-  FreezePlayerOnly: 0
-  UnlockDoor: 0
-  FreezeContinuously: 0
-  NoisePlayOnSpawn: 0
-  SpawnDoor: 0
-  TrappedText: 0
-  PushPullText: 0
-  LayerToSwitchTo: Interactable
-  NoiseToBePlayed: {fileID: 0}
-  TextToDisplay:
-  - Press and hold 'SPACE' to push / pull!
-  TextObject: {fileID: 1261286780}
-  TextCanvas: {fileID: 660751624}
-  TextDisplayOnce: 1
-  DisplayTimeText: 5
-  DisplayTimeObject: 0
-  DelayTime: 0
-  HideTime: 0
-  FreezeTime: 0
-  player: {fileID: 0}
---- !u!61 &1507944812
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507944810}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.113055706, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7738886, y: 1}
-  m_EdgeRadius: 0
---- !u!4 &1507944813
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507944810}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 98.35913, y: -1.9688535, z: 161.27539}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1586296781
 GameObject:
   m_ObjectHideFlags: 0
@@ -13291,108 +12103,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1813849832
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1813849835}
-  - component: {fileID: 1813849834}
-  - component: {fileID: 1813849833}
-  m_Layer: 0
-  m_Name: UnlockTriggerRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1813849833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813849832}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 374679016}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
-  DoorToBeOpened: {fileID: 374679016}
-  LayerSwitch: 0
-  DeleteObject: 0
-  SpawnObject: 0
-  TurnOffObject: 0
-  NoiseTrigger: 0
-  TextTrigger: 0
-  HideTimed: 0
-  FreezePlayerObject: 0
-  FreezePlayerText: 0
-  FreezePlayerOnly: 0
-  UnlockDoor: 1
-  FreezeContinuously: 0
-  NoisePlayOnSpawn: 0
-  SpawnDoor: 1
-  TrappedText: 0
-  PushPullText: 0
-  LayerToSwitchTo: Interactable
-  NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: []
-  TextObject: {fileID: 0}
-  TextCanvas: {fileID: 0}
-  TextDisplayOnce: 0
-  DisplayTimeText: 5
-  DisplayTimeObject: 0
-  DelayTime: 0
-  HideTime: 0
-  FreezeTime: 0
-  player: {fileID: 0}
---- !u!61 &1813849834
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813849832}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.113055706, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7738886, y: 1}
-  m_EdgeRadius: 0
---- !u!4 &1813849835
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813849832}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 105.869125, y: -1.9688537, z: 161.27539}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1821548631
 GameObject:
   m_ObjectHideFlags: 0
@@ -13512,7 +12222,6 @@ MonoBehaviour:
     type: 3}
   Outline: {fileID: -7568201677410657936, guid: 1a8d2bec2e3e32c48a913a5b4e54ff3e,
     type: 3}
-  removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: Press 'E' to Interact
@@ -13838,7 +12547,6 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 0}
   Outline: {fileID: 0}
-  removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: Press and hold E to hide!
@@ -13966,7 +12674,7 @@ Transform:
   - {fileID: 648387375}
   - {fileID: 567988487}
   m_Father: {fileID: 363476082}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1969642769
 GameObject:
@@ -14050,63 +12758,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1974312822
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1974312823}
-  - component: {fileID: 1974312824}
-  m_Layer: 0
-  m_Name: TooFarBlock
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1974312823
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974312822}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1370652079}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1974312824
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974312822}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &1980417474
 GameObject:
   m_ObjectHideFlags: 0
@@ -14386,111 +13037,8 @@ Transform:
   m_Children:
   - {fileID: 675067404}
   m_Father: {fileID: 363476082}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2146942078
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2146942079}
-  - component: {fileID: 2146942081}
-  - component: {fileID: 2146942080}
-  m_Layer: 0
-  m_Name: PushTextTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2146942079
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146942078}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 98.35913, y: -1.9688535, z: 161.27539}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2146942080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146942078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 0}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
-  DoorToBeOpened: {fileID: 0}
-  LayerSwitch: 0
-  DeleteObject: 0
-  SpawnObject: 0
-  TurnOffObject: 0
-  NoiseTrigger: 0
-  TextTrigger: 0
-  HideTimed: 0
-  FreezePlayerObject: 0
-  FreezePlayerText: 0
-  FreezePlayerOnly: 0
-  UnlockDoor: 0
-  FreezeContinuously: 0
-  NoisePlayOnSpawn: 0
-  SpawnDoor: 0
-  TrappedText: 0
-  PushPullText: 1
-  LayerToSwitchTo: Interactable
-  NoiseToBePlayed: {fileID: 0}
-  TextToDisplay:
-  - Press and hold 'SPACE' to push / pull!
-  TextObject: {fileID: 1261286780}
-  TextCanvas: {fileID: 660751624}
-  TextDisplayOnce: 1
-  DisplayTimeText: 0
-  DisplayTimeObject: 0
-  DelayTime: 0
-  HideTime: 0
-  FreezeTime: 3
-  player: {fileID: 0}
---- !u!61 &2146942081
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2146942078}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.5870209, y: -0.671473}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.7035065, y: 1.1138086}
-  m_EdgeRadius: 0
 --- !u!1001 &6528947780735895949
 PrefabInstance:
   m_ObjectHideFlags: 0
