@@ -1938,6 +1938,7 @@ MonoBehaviour:
   Default: {fileID: -6365268522444001063, guid: 86c6adbf31208ed43a7a55c4f9814c59,
     type: 3}
   Outline: {fileID: 7915642271378980114, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
+  removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
   InteractMessage: Press 'E' to Interact
@@ -2068,8 +2069,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540365284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.01, y: 0.72, z: 3}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: -4.983, y: 0.787, z: 3}
+  m_LocalScale: {x: 2.9438136, y: 3.123777, z: 1}
   m_Children: []
   m_Father: {fileID: 610039248}
   m_RootOrder: 6
@@ -2252,6 +2253,7 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 258260131048083505, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
   Outline: {fileID: 928198207591277937, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
+  removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
   InteractMessage: Press 'E' to Interact
@@ -2474,6 +2476,7 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 7115196702410045057, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
   Outline: {fileID: 9100872387468827304, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
+  removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
   InteractMessage: Press 'E' to pick up
@@ -2590,8 +2593,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064006530}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.08, y: 0.72, z: 3}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: -15.2045, y: 0.7613, z: 3}
+  m_LocalScale: {x: 2.2205405, y: 3.1356356, z: 1}
   m_Children: []
   m_Father: {fileID: 610039248}
   m_RootOrder: 5
@@ -2606,7 +2609,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057680, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: orthographic size
-      value: 2.3801775
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057681, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -2686,7 +2689,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: cameraYOffset
-      value: 0.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057685, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
