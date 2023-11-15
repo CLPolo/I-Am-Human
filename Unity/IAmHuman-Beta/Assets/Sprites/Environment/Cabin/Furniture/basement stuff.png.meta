@@ -4,16 +4,16 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 642822953838445728
-    second: basement_wall_left
+    second: basement_wall_LEFT
   - first:
       213: -8331230838356770852
-    second: basement_wall_right
+    second: basement_wall_RIGHT
   - first:
       213: -6455981534079650739
     second: flashlight
   - first:
       213: 7716043580317340856
-    second: basement_board
+    second: basement stuff_3
   - first:
       213: 9132965570561667338
     second: flashlight_interact
@@ -22,10 +22,19 @@ TextureImporter:
     second: basement_drain
   - first:
       213: -9031860772554589512
-    second: basement_shelves
+    second: basement_toolbench
   - first:
       213: 7353455192910715932
+    second: basement_cellar_OPEN
+  - first:
+      213: 5640488480480378748
     second: basement_stairs
+  - first:
+      213: 2964583441530538189
+    second: basement_ladder
+  - first:
+      213: 3446185997900415647
+    second: basement_cellar_SHUT
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,7 +120,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: basement_wall_left
+      name: basement_wall_LEFT
       rect:
         serializedVersion: 2
         x: 16
@@ -119,7 +128,7 @@ TextureImporter:
         width: 16
         height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -132,7 +141,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basement_wall_right
+      name: basement_wall_RIGHT
       rect:
         serializedVersion: 2
         x: 48
@@ -140,7 +149,7 @@ TextureImporter:
         width: 16
         height: 68
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,7 +170,7 @@ TextureImporter:
         width: 6
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -169,27 +178,6 @@ TextureImporter:
       bones: []
       spriteID: d4473b0000fb766a0800000000000000
       internalID: -6455981534079650739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: basement_board
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 146
-        width: 41
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b49f3441c4e41b60800000000000000
-      internalID: 7716043580317340856
       vertices: []
       indices: 
       edges: []
@@ -203,7 +191,7 @@ TextureImporter:
         width: 8
         height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -224,7 +212,7 @@ TextureImporter:
         width: 13
         height: 25
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -237,15 +225,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basement_shelves
+      name: basement_toolbench
       rect:
         serializedVersion: 2
         x: 129
         y: 111
         width: 47
-        height: 30
+        height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -253,6 +241,27 @@ TextureImporter:
       bones: []
       spriteID: 8ba391fea7268a280800000000000000
       internalID: -9031860772554589512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement_cellar_OPEN
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 64
+        width: 35
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1cd135a988bc0660800000000000000
+      internalID: 7353455192910715932
       vertices: []
       indices: 
       edges: []
@@ -266,14 +275,56 @@ TextureImporter:
         width: 86
         height: 63
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1cd135a988bc0660800000000000000
-      internalID: 7353455192910715932
+      spriteID: c7f37be636a074e40800000000000000
+      internalID: 5640488480480378748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement_ladder
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 16
+        width: 23
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc8ce6bdee0542920800000000000000
+      internalID: 2964583441530538189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement_cellar_SHUT
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 32
+        width: 35
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9287ca08ef43df20800000000000000
+      internalID: 3446185997900415647
       vertices: []
       indices: 
       edges: []
