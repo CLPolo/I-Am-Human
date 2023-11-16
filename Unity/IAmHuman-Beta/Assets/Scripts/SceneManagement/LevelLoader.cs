@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEditor;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,12 @@ public class LevelLoader : MonoBehaviour
 {
     private static LevelLoader _instance;
     public static LevelLoader Instance { get { return _instance; } }
+
+    [Header("Fade Animation")]
+    public GameObject fadeAnimatedCanvas = null;
+    public Animator fadeAnimator = null;
+    public bool HoldLonger = false;  // if we want start fade to be delayed
+    public float HoldFor = 0.0f;  // how long we want screen to be dark for initially
     
     // fading stuff
     // NOTE: EVEN I DONT KNOW HOW THIS CODE IS WORKING SO PROBABLY DONT TOUCH IT
@@ -38,6 +45,14 @@ public class LevelLoader : MonoBehaviour
         {
             _instance = this;
         }
+
+        if (fadeAnimatedCanvas != null)
+        {
+            fadeAnimator = fadeAnimatedCanvas.GetComponent<Animator>();
+            if (HoldLonger) { StartCoroutine(HoldDark()); }  // if we are holding on black
+            else { fadeAnimator.SetBool("TimeMet", true); }  // if not auto fades in
+
+        }
     }
 
     // temporary linear scene progression
@@ -55,69 +70,94 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    public void Reset()
-    {
-        doneFade = false;
-        _alpha = 1;
-        _time = 0;
-    }
+    //public void Reset()
+    //{
+    //    doneFade = false;
+    //    _alpha = 1;
+    //    _time = 0;
+    //}
 
     [RuntimeInitializeOnLoadMethod]
-    public void RedoFade()
-    {
-        Reset();
-    }
+    // COMMENTED OUT FOR NEW FADE
+    //public void RedoFade()
+    //{
+    //    Reset();
+    //}
 
-    public void OnGUI()
-    {
-        if (_texture != null && _alpha > 0)
-        {
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _texture);
-        }
-        if (doneFade) return;
-        if (_texture == null) _texture = new Texture2D(1, 1);
-        _texture.SetPixel(0, 0, new Color(0, 0, 0, _alpha));
-        _texture.Apply();
-        _time += Time.deltaTime;
-        if (!fadeOut)
-        {
-            _alpha = FadeCurve.Evaluate(_time*_timeRatio);
-        } else {
-            _alpha = 1 - FadeCurve.Evaluate(_time*_timeRatio);
-        }
-        if ((_alpha <= 0 && !fadeOut) || (_alpha >= 1 && fadeOut)) {
-            doneFade = true;
-        }
-    }
+    // COMMENTED OUT FOR NEW FADE
+    //public void OnGUI()
+    //{
+    //    if (_texture != null && _alpha > 0)
+    //    {
+    //        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _texture);
+    //    }
+    //    if (doneFade) return;
+    //    if (_texture == null) _texture = new Texture2D(1, 1);
+    //    _texture.SetPixel(0, 0, new Color(0, 0, 0, _alpha));
+    //    _texture.Apply();
+    //    _time += Time.deltaTime;
+    //    if (!fadeOut)
+    //    {
+    //        _alpha = FadeCurve.Evaluate(_time*_timeRatio);
+    //    } else {
+    //        _alpha = 1 - FadeCurve.Evaluate(_time*_timeRatio);
+    //    }
+    //    if ((_alpha <= 0 && !fadeOut) || (_alpha >= 1 && fadeOut)) {
+    //        doneFade = true;
+    //    }
+    //}
 
-    public void FadeToBlack(bool _fadeOut = true)
+    // COMMENTED OUT FOR NEW FADE
+    //public void FadeToBlack(bool _fadeOut = true)
+    //{
+    //    fadeOut = _fadeOut;
+    //    doneFade = false;
+    //    _time = 0;
+    //}
+
+    // COMMENTED OUT FOR NEW FADE
+    //public IEnumerator finishLoadScene<T>(T scene)
+    //{
+    //    yield return new WaitUntil(() => doneFade);
+    //    yield return new WaitForSeconds(_timeDark);
+    //    if (doneFade)
+    //    {
+    //        if (typeof(T) == typeof(int))
+    //        {
+    //            SceneManager.LoadScene(Convert.ToInt32(scene));
+    //        } else if (typeof(T) == typeof(string)) {
+    //            SceneManager.LoadScene(scene as string);
+    //        }
+    //        FadeToBlack(false);
+    //    }
+    //    yield return null;
+    //}
+
+    public IEnumerator HoldDark()
     {
-        fadeOut = _fadeOut;
-        doneFade = false;
-        _time = 0;
+        yield return new WaitForSeconds(HoldFor);  // waits
+        fadeAnimator.SetBool("TimeMet", true);  // updates animator parameter so that fade in happens
     }
-    
     public IEnumerator finishLoadScene<T>(T scene)
     {
-        yield return new WaitUntil(() => doneFade);
-        yield return new WaitForSeconds(_timeDark);
-        if (doneFade)
+        // new fade finish function
+
+        fadeAnimator.SetInteger("EndScene", 1);  // starts the fade out animation
+        yield return new WaitForSeconds(1);  // waits one second until it loads other scene so that animation has time to play
+        if (typeof(T) == typeof(int))
         {
-            if (typeof(T) == typeof(int))
-            {
-                SceneManager.LoadScene(Convert.ToInt32(scene));
-            } else if (typeof(T) == typeof(string)) {
-                SceneManager.LoadScene(scene as string);
-            }
-            FadeToBlack(false);
+            SceneManager.LoadScene(Convert.ToInt32(scene));
         }
-        yield return null;
+        else if (typeof(T) == typeof(string))
+        {
+            SceneManager.LoadScene(scene as string);
+        }
     }
 
     // this is a wrapper around SceneManager.LoadScene to standardize scene change effects
     public void loadScene<T>(T scene)
     {
-        FadeToBlack();
+        //FadeToBlack();  // COMMENTED OUT FOR NEW FADE
         StartCoroutine(finishLoadScene<T>(scene));
     }
 

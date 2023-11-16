@@ -304,6 +304,7 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 0}
   Outline: {fileID: 0}
+  removeSprite: 0
   PromptTextObject: {fileID: 1676686121}
   PromptCanvas: {fileID: 1684466412}
   InteractMessage: Press 'E' to go upstairs
@@ -670,8 +671,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: fadeAnimatedCanvas
+      value: 
+      objectReference: {fileID: 419648475}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aba456c54d27d059e9a59a6bc319bc05, type: 3}
+--- !u!1 &419648475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
+    type: 3}
+  m_PrefabInstance: {fileID: 651734526}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &538361256
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,9 +2400,44 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6528947780196874865, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780196874870, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2315.096
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780196874870, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1282.1375
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780196874870, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780196874870, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -11.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6528947780213591173, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780633873019, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
@@ -2969,6 +3016,7 @@ MonoBehaviour:
   Default: {fileID: -6455981534079650739, guid: ed83356179f3041489b1b3dbdd48339b,
     type: 3}
   Outline: {fileID: 9132965570561667338, guid: ed83356179f3041489b1b3dbdd48339b, type: 3}
+  removeSprite: 0
   PromptTextObject: {fileID: 1676686121}
   PromptCanvas: {fileID: 1684466412}
   InteractMessage: Press 'E' to Interact

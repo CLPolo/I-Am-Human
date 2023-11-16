@@ -72,6 +72,12 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625293, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: fadeAnimatedCanvas
+      value: 
+      objectReference: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
     - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: speed
