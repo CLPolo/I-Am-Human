@@ -21,6 +21,7 @@ TagManager:
   - Death
   - TrapArmedNoKill
   - AudioManager
+  - Crowbar
   layers:
   - Default
   - TransparentFX

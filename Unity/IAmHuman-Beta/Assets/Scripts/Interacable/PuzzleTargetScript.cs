@@ -58,6 +58,7 @@ public class PuzzleTargetScript : MonoBehaviour
     private bool FrozenOnce = false;
     private int textIndex = 0;
     private bool PlayerTriggered = false;
+    private bool BoxTriggered = false;
 
     // misc
     public Player player;
@@ -75,6 +76,7 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             player = Player.Instance;
         }
+ 
         if (HideTimed)  // if hide timed, allows timer to function and handles any actions after
         {
             HideTimer();
@@ -90,21 +92,14 @@ public class PuzzleTargetScript : MonoBehaviour
                 ActivateTarget(DeactivateTriggerObject, false);
             }
         }
-        if (PlayerTriggered && TextTrigger && (TextDisplayOnce ? (!TextPlayed) : true))
-        {
-            DisplayText();
-        }
-        if (TrappedText && PlayerTriggered)
-        {
-            DisplayTrappedText();
-        }
-        if (PushPullText && PlayerTriggered)
-        {
-            DisplayPushText();
-        }
+
         if (PlayerTriggered)
         {
             HandlePlayer();
+        }
+        if (BoxTriggered)
+        {
+            HandleBox();
         }
     }
 
@@ -112,11 +107,12 @@ public class PuzzleTargetScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Box")  // if box passes collides with target
         {
-            HandleBox();
+            HandleBox();  // has to happen here ?? in update, box triggers in forest don't work properly.
+            BoxTriggered = true;
         }
         if (other.gameObject.tag == "Player")  // if player collides with target
         {
-            HandlePlayer();
+            //HandlePlayer();
             PlayerTriggered = true;
         }
     }
@@ -124,6 +120,7 @@ public class PuzzleTargetScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         PlayerTriggered = false;
+        BoxTriggered = false;
     }
 
     private void HandleBox()
@@ -168,13 +165,17 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             PlayNoise(NoiseToBePlayed);
         }
-        if (TextTrigger && !TextPlayed) // if we want to spawn text
+        if (TextTrigger && (TextDisplayOnce ? (!TextPlayed) : true)) // if we want to spawn text
         {
             DisplayText();
         }
-        if (TrappedText)
+        if (TrappedText)  // if player is trapped and want to display trapped text
         {
             DisplayTrappedText();
+        }
+        if (PushPullText)  // if want to display text for push pull
+        {
+            DisplayPushText();
         }
     }
 
@@ -224,7 +225,8 @@ public class PuzzleTargetScript : MonoBehaviour
     }
     private void HideTimedActivation()
     {
-        // activates an object post hide time
+        // Activates an object post hide time
+        // NOT SURE IF I NEED THIS STILL
 
         if (!ObjectDisplaying)
         {
@@ -235,13 +237,16 @@ public class PuzzleTargetScript : MonoBehaviour
 
     private void Unlock()
     {
+        // unlocks a door that was previously locked (used for cellar), makes it so that next time they press interact button when prompted, switch scene.
+        // NOTE: Affected object must have door script.
+
         AffectedObject.GetComponent<Door>().IsInteractable = true;
     }
 
     private void DisplayText()
     {
-        // click through version for text interaction. Will remove auto timed version from script & clean it up after
-        // we've confirmed it's not being used and that click thru will be default. I also will rename the variables.
+        // Displays Text Post Interaction, and freezes the player during that text if desired (SHOULD BE STANDARD ?).
+        // Text is click through using enter (currently set up for dialogue, can make version for prompt).
 
         if (FreezePlayerText)
         {
@@ -276,9 +281,13 @@ public class PuzzleTargetScript : MonoBehaviour
 
     private IEnumerator ActivateObject()
     {
-        // activates an object after DelatTime, then either deletes or turns it off based on specification
+        // Activates an object (AffectedObject) after a Delay (DelayTime), then also sets off any of a series of post activation actions.
+        // These include: Noise Playing before &/or after, deactivation after X seconds, freezing the player for X seconds,
+        // Deactivating &/or Activating a seperate puzzle target / trigger.
+
         yield return new WaitForSeconds(DelayTime * Time.timeScale);
         AffectedObject.SetActive(true);
+        
         if (NoisePlayOnSpawn)
         {
             PlayNoise(NoiseToBePlayed);
@@ -287,7 +296,7 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             StartCoroutine(Freeze());
         }
-        if (DeleteObject)
+        if (DeleteObject)  // will likely be removed, and everything standardized to turn off / deactivate.
         {
             StartCoroutine(DestroyObject());
         }
@@ -303,29 +312,34 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             ActivateTarget(ActivateTriggerObject, true);
         }
+        
         ObjectDisplaying = false;
     }
 
     private void ActivateTarget(GameObject trigger, bool val)
     {
+        // activates (or deactivates) a given puzzle target (trigger) based on given value (val) [for example, used for the 'too far hide' trigger]
+
         trigger.SetActive(val);
     }
 
     private IEnumerator DestroyObject()
     {
-        // destroys object after display time
+        // Destroys object after display time
+        // likely won't ever need this either, and don't think it's being used.
+        // Will probably remove, especially since it's dead easy to re-implement.
 
-        yield return new WaitForSeconds(DisplayTimeObject);
-        Destroy(AffectedObject);
+        yield return new WaitForSeconds(DisplayTimeObject);  // waits X time
+        Destroy(AffectedObject);  // destroys Object (deletes it permanently)
     }
 
     private IEnumerator DeactivateObject()
     {
-        // deavtivates object after display time
+        // Deactivates object after display time
 
-        yield return new WaitForSeconds(DisplayTimeObject);
-        AffectedObject.SetActive(false);
-        if (NoisePlayOnSpawn)
+        yield return new WaitForSeconds(DisplayTimeObject);  // waits X time / object displays for X time
+        AffectedObject.SetActive(false);  // turns it off
+        if (NoisePlayOnSpawn)  // need to rework, this is used for specific instance of deer head and bush rustle.
         {
             PlayNoise(NoiseToBePlayed);
         }
@@ -333,7 +347,10 @@ public class PuzzleTargetScript : MonoBehaviour
 
     private IEnumerator FreezeONLY()
     {
-        // 'freezes' the player for freeze time seconds.
+        // 'Freezes' the player for freeze time seconds.
+        // May not be needed anymore, was used for beginning freeze during car crash sound in a way that prolonged the fade.
+        // Will double check if can reuse below function instead since fade more easily controlled.
+
         Time.timeScale = 0.000001f;
         yield return new WaitForSeconds(FreezeTime * Time.timeScale);
         Time.timeScale = 1f;
@@ -342,6 +359,8 @@ public class PuzzleTargetScript : MonoBehaviour
     private IEnumerator Freeze()
     {
         // 'freezes' the player for freeze time seconds.
+        // NOTE: Useful only when trying to freeze the player NOT during dialogue text
+
         player.SetState(PlayerState.Frozen);
         yield return new WaitForSeconds(FreezeTime);
         player.SetState(PlayerState.Idle);
@@ -350,36 +369,45 @@ public class PuzzleTargetScript : MonoBehaviour
 
     public void DisplayTrappedText()
     {
-        if (player.GetState() == PlayerState.Trapped)
+        // displays text for WHILE player is trapped, will reactivate whenever trap is reactivated
+        // NOTE: collider / target for this must rest above the trap and be a bit wider than the trap collider
+
+
+        if (player.GetState() == PlayerState.Trapped)  // once player is trapped
         {
-            TextCanvas.SetActive(true);
+            TextCanvas.SetActive(true);  // turn on appropriate canvases
             TextObject.SetActive(true);
 
-            TextObject.GetComponent<TextMeshProUGUI>().text = TextToDisplay[0];
+            TextObject.GetComponent<TextMeshProUGUI>().text = TextToDisplay[0];  // set prompt text (first string in list)
         }
-        else
+        else  // not trapped anymore
         {
-            TextObject.SetActive(false);
+            TextObject.SetActive(false);  // turn off text display
         }
     }
     public void DisplayPushText()
     {
-        if (!(player.GetState() == PlayerState.Pushing || player.GetState() == PlayerState.Pulling) && !InteractionOver)
+        // displays text for X amount of seconds AFTER player has pushed or pulled an object
+        // NOTE: Collider must accomodate area player could move in, player has to push/pull while inside
+
+        if (!(player.GetState() == PlayerState.Pushing || player.GetState() == PlayerState.Pulling) && !InteractionOver)  // if not pushing || pulling && hasn't happened already (no reactivation)
         {
-            TextCanvas.SetActive(true);
+            TextCanvas.SetActive(true);  // turn on appropriate canvases
             TextObject.SetActive(true);
 
-            TextObject.GetComponent<TextMeshProUGUI>().text = TextToDisplay[0];
+            TextObject.GetComponent<TextMeshProUGUI>().text = TextToDisplay[0];  // set prompt text (first string in list)
         }
-        else
+        else  // once pushed or pull
         {
-            InteractionOver = true;
-            StartCoroutine(RemoveTextAfterWait(FreezeTime));
+            InteractionOver = true;  // interaction has happened (no reactivation)
+            StartCoroutine(RemoveTextAfterWait(FreezeTime));  // Will turn text off after FreezeTime Seconds
         }
     }
 
     private IEnumerator RemoveTextAfterWait(float Seconds)
     {
+        // will turn text off after X amount of seconds (currently useful for push/pull text)
+
         yield return new WaitForSeconds(Seconds);
         TextObject.SetActive(false);
     }

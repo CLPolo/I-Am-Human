@@ -881,6 +881,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
+      propertyPath: m_text
+      value: PRESS hi TO CONTINUE...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
       propertyPath: m_fontSize
       value: 15
       objectReference: {fileID: 0}
@@ -888,7 +893,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: b748c5a24cb674749b762c4c1385ce2d,
+      objectReference: {fileID: 11400000, guid: e12427099091559459e0a10cc7b3cd85,
         type: 2}
     - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}

@@ -143,4 +143,12 @@ public class LogicScript : MonoBehaviour
         LevelLoader.Instance.loadScene(0);
         TogglePause();
     }
+
+    public void OnApplicationQuit()
+    {
+        //PlayerPrefs.SetInt("Flashlight", 0);
+
+        PlayerPrefs.DeleteAll(); // might mess w/ box stuff
+    }
+
 }
