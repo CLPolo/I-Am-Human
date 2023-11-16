@@ -307,7 +307,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 1676686121}
   PromptCanvas: {fileID: 1684466412}
-  InteractMessage: Press 'E' to go upstairs
+  InteractMessage: PRESS a TO GO UPSTAIRS
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -2435,6 +2435,23 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_text
+      value: PrEss hi to ContInuE...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e12427099091559459e0a10cc7b3cd85,
+        type: 2}
+    - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -2791517959012354143, guid: e12427099091559459e0a10cc7b3cd85,
+        type: 2}
     - target: {fileID: 6528947780633873019, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_Enabled
@@ -2576,7 +2593,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: b748c5a24cb674749b762c4c1385ce2d,
+      objectReference: {fileID: 11400000, guid: e12427099091559459e0a10cc7b3cd85,
         type: 2}
     - target: {fileID: 6528947781627493619, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -2592,7 +2609,7 @@ PrefabInstance:
     - target: {fileID: 6528947781627493619, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781856251796, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -2929,7 +2946,7 @@ GameObject:
   - component: {fileID: 1701560421}
   m_Layer: 0
   m_Name: Flashlight
-  m_TagString: Untagged
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3019,7 +3036,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 1676686121}
   PromptCanvas: {fileID: 1684466412}
-  InteractMessage: Press 'E' to Interact
+  InteractMessage: PRESS a TO INTERACT
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}

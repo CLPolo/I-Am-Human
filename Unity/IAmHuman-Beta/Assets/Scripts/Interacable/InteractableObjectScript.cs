@@ -7,6 +7,7 @@ using Unity.Mathematics;
 using System.Linq;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.PlayerLoop;
 
 public class InteractableObjectScript : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class InteractableObjectScript : MonoBehaviour
     private bool NoisePlayed = false;
     private bool TextHasPlayed = false;  // makes it so that text doesn't play if press E again while still in collider
     private bool PressedInteract = false;
+    private bool isPickup = false;  // will only handle pickup stuff (like turning off object) if the interaction is happening with a pickup.
 
 
     // Below Should be removed and placed into monster script
@@ -59,9 +61,10 @@ public class InteractableObjectScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         logic = LogicScript.Instance;
         player = Player.Instance;
+
+        RemovePickedUpObjects();
 
         // turns off all screens
         if (PromptCanvas != null)
@@ -82,7 +85,7 @@ public class InteractableObjectScript : MonoBehaviour
             PressedInteract = true;
             PromptCanvas.SetActive(false);  // turns off 'interact' prompt
             CheckAndDisplayInfo();  // checks if there's info to display, if so does that
-            if (PlaySound && !NoisePlayed)
+            if (PlaySound && !NoisePlayed)  // used rn for cabin door sounds
             {
                 PlayNoise();
                 NoisePlayed = true;
@@ -96,8 +99,9 @@ public class InteractableObjectScript : MonoBehaviour
                 RemoveSprite();
             }
             RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
+            PickupSet();
         }
-        if (PressedInteract) { CheckAndDisplayInfo(); }
+        if (PressedInteract) { CheckAndDisplayInfo(); }  // displays info even if outside of collider, only needed if not frozen
     }
 
     // if they press InteractKey to interact & haven't already interacted with object and we only want the interact prompt to appear once
@@ -116,7 +120,7 @@ public class InteractableObjectScript : MonoBehaviour
             }
         }
         DisplayOutline();  // when in collider, displays outline on obj
-
+        PickupCheck();
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -129,6 +133,38 @@ public class InteractableObjectScript : MonoBehaviour
         TextHasPlayed = false;
         RemoveOutline();  // removes outline of sprite once no longer in range (collider)
         PressedInteract = false;
+        isPickup = false;
+    }
+
+    private void PickupCheck()
+    {
+        // checks if object being interacted with is a pickup
+
+        if (this.gameObject.tag.isOneOf("Flashlight", "Crowbar", "Key"))  // if one of our pickups, will give us usable string for tag.
+        {
+            PlayerPrefs.SetString("Pickup", this.tag);
+            isPickup = true;
+        }
+    }
+
+    private void PickupSet()
+    {
+        if (isPickup && PlayerPrefs.GetString("Pickup").isOneOf("Flashlight", "Crowbar", "Key")) // if one of our pickups, it will set playerprefs of that to 1 (true).
+        {
+            PlayerPrefs.SetInt(PlayerPrefs.GetString("Pickup"), 1);
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    private void RemovePickedUpObjects()
+    {
+        if (this.gameObject.tag.isOneOf("Flashlight", "Crowbar", "Key"))
+        {
+            if (PlayerPrefs.GetInt(this.gameObject.tag) == 1)
+            {
+                this.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void PlayNoise()

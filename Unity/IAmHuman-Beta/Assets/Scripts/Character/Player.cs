@@ -109,6 +109,7 @@ public class Player : AnimatedEntity
         checkMovement();
         checkFlashlight();
         AnimationUpdate();
+        //Debug.Log(PlayerPrefs.GetInt("Flashlight") + " || " + PlayerPrefs.GetInt("Crowbar"));
     }
 
     public PlayerState GetState()
