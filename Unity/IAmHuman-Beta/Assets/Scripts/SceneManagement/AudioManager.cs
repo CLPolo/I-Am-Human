@@ -19,13 +19,22 @@ public class Fade {
     }
 }
 
+
 public class AudioManager : MonoBehaviour
 {
+    //player
     private Player p;
     private AudioSource pA;
+    private PlayerState pState;
     
+    //scene
     private SceneManager SceneManager;
-    private string scene;
+    private int scene;
+    private string pathBGM = "Sounds/Music/";
+    private string pathAmb = "Sounds/SoundEffects/Environment/";
+    private string pathCutscene = "Sounds/SoundEffects/Misc/";
+    private string pathEntity = "Sounds/SoundEffects/Entity/";
+    private string fromScene;
 
     private static AudioManager _instance;
     public static AudioManager Instance
@@ -43,6 +52,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -57,14 +67,24 @@ public class AudioManager : MonoBehaviour
             .GetComponentsInChildren<AudioSource>().ToDictionary(child => child.gameObject.name);
         }
 
-        scene = SceneManager.GetActiveScene().name;
+        //initiate sceneNames list
+        //sceneNames 
 
-        if (scene == "Title Screen")
+        //set scene
+        scene = SceneManager.GetActiveScene().buildIndex;
+        fromScene = SceneManager.GetActiveScene().name;
+        Debug.Log("In Audio Manager Start. Scene: " + fromScene);
+        
+        if (scene == 0) //Title Screen?
         {   
+            Debug.Log("In Title Screen Check at start up");
             if (srcs.TryGetValue("BGM", out AudioSource bgm) && !bgm.isPlaying)
-            {
+            {   
+                if (bgm.clip == null) bgm.clip = (AudioClip)Resources.Load("Sounds/Music/title-theme-lofx");
+                Debug.Log("Playing bgm: Title");
                 bgm.Play();
                 StartCoroutine(Fade.Start(bgm, 0.25f, 1f));
+                
             }
         }
     }
@@ -77,12 +97,13 @@ public class AudioManager : MonoBehaviour
         {
             p = Player.Instance;
             pA = p.AudioSource;
+            pState = p.GetState();
         }
 
         //check for scene change
-        if (scene != SceneManager.GetActiveScene().name)
+        if (scene != SceneManager.GetActiveScene().buildIndex)
         {
-            scene = SceneManager.GetActiveScene().name;
+            scene = SceneManager.GetActiveScene().buildIndex;
             ChangeScene(scene);
         }
         if (p != null)
@@ -93,13 +114,12 @@ public class AudioManager : MonoBehaviour
         CheckScenewide(scene);
     }
 
-    void ChangeScene(string scene)
-    {   
-        string pathBGM = "Sounds/Music/";
-        string pathAmb = "Sounds/SoundEffects/Environment/";
-        string pathCutscene = "Sounds/SoundEffects/Misc/";
+    void ChangeScene(int scene)
+    {   Debug.Log("Scene change detected. New scene: " + scene);
 
-        StopAll(true);
+        int[] woodFloors = {4, 5, 6, 7, 8};
+
+        //Set scene-wide audio sources
         foreach(KeyValuePair<string, AudioSource> src in srcs){
 
             string name = src.Key;
@@ -107,54 +127,100 @@ public class AudioManager : MonoBehaviour
 
             switch (scene){
  
-                case "Vertical Slice - Player Freezing":
-                    if (name == "BGM") s.clip = Resources.Load<AudioClip>(pathBGM + "forest-theme");
-                    if (name == "Cutscene")
-                    {   
-                        s.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-comp");
-                        s.PlayOneShot(s.clip, 0.8f);
-                    } 
-                    if (name == "AmbArea") {
-                        s.clip = Resources.Load<AudioClip>(pathAmb + "Forest/forest_ambience");
-                        RestartSource(s, true, 0.25f, 15f);
-                    }
-                    if (name == "AmbMisc"){
-                        s.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");     
-                        RestartSource(s, true, 0.08f, 15f);        
-                    }  
+                case 0: //Title Screen
+                    Debug.Log("In Title Screen case");
+                    ToTitleScreen(s, name);
                     break;
 
-                case "Title Screen":
+                case 2: //Forest Intro
+                    Debug.Log("In Forest-Start case");
+                    ToForestStart(s, name);
+                    break;
+                
+                case 3: //Basement
+                    ToBasement(s, name);
+                    break;
+            
+                case 4: //Hallway
+                    ToHallway(s, name);
+                    break;
+                }
+            }
+        
 
-                    if (name == "BGM") s.clip = (AudioClip)Resources.Load(pathBGM + "title-theme-lofx");
-                    if (name == "Cutscene")
-                    {
-                        // s.clip = (AudioClip)Resources.Load(pathCutscene + "car-crash-comp");
-                        // s.Play();
-                    } 
-                    if (name == "AmbArea") s.clip = (AudioClip)Resources.Load(pathAmb + "Forest/forest_ambience");
-                    if (name == "AmbMisc" )s.clip = (AudioClip)Resources.Load(pathAmb + "creepyambience");
-                    break;
-                case "End of Vertical Slice":
-                    if (name == "Cutscene") s.PlayOneShot(Resources.Load<AudioClip>(pathCutscene + "death-temp"), 0.8f);
-                    if (name == "AmbMisc") {
-                        s.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");
-                        RestartSource(s, true, 0.02f, 20f);
-                    }
-                    break;
-            }       
+        //Set entity audio clips
+        if (woodFloors.Contains(scene)){
+            p.SetFootfalls(pathEntity+"Player/Footfalls/Wood/Walk", pathEntity+"Player/Footfalls/Wood/Run");
+        } else {
+            p.SetFootfalls(pathEntity+"Player/Footfalls/Dirt/Walk", pathEntity+"Player/Footfalls/Wood/Run");
         }
+
+        fromScene = SceneManager.GetActiveScene().name;
     }
 
-    void RestartSource(AudioSource s, bool fade = false, float targetVolume = 0.5f, float duration = 0f){
-            s.volume = fade ? 0.01f : 0.8f;
+    void ToTitleScreen(AudioSource s, string name){
+        s.Stop();
+        if (name == "BGM"){
+            s.clip = (AudioClip)Resources.Load(pathBGM + "title-theme-lofx");
+            RestartSource(s, true, 0.25f, 1.0f);
+        }
+        if (name == "Cutscene")  s.clip = null;
+        if (name == "AmbArea") s.clip = null;
+        if (name == "AmbMisc") s.clip = null;
+    }
+    void ToForestStart(AudioSource s, string name){
+        if (name == "BGM") s.clip = Resources.Load<AudioClip>(pathBGM + "forest-theme");
+        if (name == "Cutscene")
+        {   
+            s.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-comp");
+            s.PlayOneShot(s.clip, 0.8f);
+        } 
+        if (name == "AmbArea") {
+            s.clip = Resources.Load<AudioClip>(pathAmb + "Forest/forest_ambience");
+            RestartSource(s, true, 0.25f, 15f);
+        }
+        if (name == "AmbMisc"){
+            s.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");     
+            RestartSource(s, true, 0.03f, 15f);        
+        }  
+    }
+    void ToBasement(AudioSource s, string name){
+        s.Stop();
+        if (name == "BGM") {
+            s.clip = Resources.Load<AudioClip>(pathBGM + "cabin-theme-A1");
+                RestartSource(s);
+            }
+        if (name == "Cutscene") {
+            s.clip = Resources.Load<AudioClip>(pathEntity + "Interactable/Door/cellar-door-close-0");
+            s.PlayOneShot(s.clip);
+        }
+            
+        if (name == "AmbArea") {
+            s.clip = Resources.Load<AudioClip>(pathAmb + "Cabin/Basement/basement-drips");
+            RestartSource(s, true, 0.02f, 10f);
+        }
+    }
+    void ToHallway(AudioSource s, string name){
+        if (name == "BGM") { //TO DO: Logic accounting for choosing music based on progression
+            s.loop = false;
+            while(s.isPlaying); //TO DO: transition which links the two clips without stalling the game
+            s.clip = Resources.Load<AudioClip>(pathBGM + "cabin-theme-A2");
+            RestartSource(s);
+            s.loop = true;
+        }
+        if (name == "AmbArea") {
+            s.Stop();
+            s.clip = null;
+        }
+    }
+    void RestartSource(AudioSource s, bool fade = false, float targetVolume = 0.25f, float duration = 0.01f){
+
+            s.volume = fade ? 0.01f : targetVolume;
             if (s.isPlaying) s.Stop();
             s.Play();
             if (fade) StartCoroutine(Fade.Start(s, targetVolume, duration));
     }
-
-    void StopAll(bool fade = true)
-    {   
+    void StopAll(bool fade = false){   
         foreach(KeyValuePair<string, AudioSource>  src in srcs) 
         {   if (src.Key != "Cutscene"){
                 if (fade) StartCoroutine(Fade.Start(src.Value, 0.01f, 1.5f));
@@ -162,11 +228,8 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
-
-
-    void CheckScenewide(string scene)
-    {   
-        if (scene != "Title Screen"){
+    void CheckScenewide(int scene){   
+        if (scene != 0){ // != Title Screen
             //Check for cutscene audio before playing everything else
             if (!srcs.TryGetValue("Cutscene", out AudioSource cutscene) || !cutscene.isPlaying) {
                 //play background music
@@ -182,10 +245,10 @@ public class AudioManager : MonoBehaviour
             }
         }
     }   
-    void CheckPlayer(PlayerState state)
-    {
+    void CheckPlayer(PlayerState state){   
+
         if(!pA.isPlaying && !p.touchingWall && state != PlayerState.Idle)
-        {
+        {   
             if(state.isOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
             
             //TODO
@@ -194,9 +257,7 @@ public class AudioManager : MonoBehaviour
             //if(state == PlayerState.Trapped);
         }
     }
-
-    void PlayerFootfall(PlayerState state)
-    {
+    void PlayerFootfall(PlayerState state){
         if (state == PlayerState.Running) 
         {
             pA.PlayOneShot(p.footstepsRun[UnityEngine.Random.Range(0, p.footstepsRun.Capacity)]);
@@ -204,5 +265,5 @@ public class AudioManager : MonoBehaviour
         } else if (state == PlayerState.Walking && p.GetAnimationIndex().isOneOf(2, 11)) {
             pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.25f);
         }   
-    }
+    }  
 }

@@ -107,7 +107,6 @@ public class Player : AnimatedEntity
     void Update()
     {
         checkMovement();
-        //playFootfall();
         checkFlashlight();
         AnimationUpdate();
     }
@@ -115,6 +114,11 @@ public class Player : AnimatedEntity
     public PlayerState GetState()
     {
         return state;
+    }
+
+    public void SetFootfalls(string walking, string running){
+        footstepsRun  = Resources.LoadAll<AudioClip>(running).ToList();
+        footstepsWalk = Resources.LoadAll<AudioClip>(walking).ToList();
     }
 
     public void SetState(PlayerState _state)
@@ -226,19 +230,6 @@ public class Player : AnimatedEntity
             CheckFlip();
         }
     }
-
-    // void playFootfall()
-    // {
-    //     if(AudioSource != null && !AudioSource.isPlaying && !touchingWall)
-    //     {
-    //         if (state == PlayerState.Running) 
-    //         {
-    //             AudioSource.PlayOneShot(footstepsRun[UnityEngine.Random.Range(0, footstepsRun.Capacity)]);
-    //         } else if (state == PlayerState.Walking && GetAnimationIndex().isOneOf(2, 11)) {
-    //             AudioSource.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)], 0.25f);
-    //         }
-    //     }
-    // }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
