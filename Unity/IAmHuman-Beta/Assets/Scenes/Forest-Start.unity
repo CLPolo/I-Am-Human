@@ -805,10 +805,13 @@ MonoBehaviour:
   FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: 
-  TextDisplay: {fileID: 0}
+  TextToDisplay: []
+  TextObject: {fileID: 0}
+  TextCanvas: {fileID: 0}
   TextDisplayOnce: 0
   DisplayTimeText: 0
   DisplayTimeObject: 0
@@ -1227,10 +1230,13 @@ MonoBehaviour:
   FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: "What an unsettling animal\u2026 I should keep looking for Lily."
-  TextDisplay: {fileID: 175964153}
+  TextToDisplay: []
+  TextObject: {fileID: 0}
+  TextCanvas: {fileID: 0}
   TextDisplayOnce: 1
   DisplayTimeText: 3
   DisplayTimeObject: 0
@@ -1531,23 +1537,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractableScreen: {fileID: 906817842}
+  logic: {fileID: 0}
+  player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
+  removeSprite: 0
+  PromptTextObject: {fileID: 0}
+  PromptCanvas: {fileID: 0}
   InteractMessage: Press E to interact
   ShowPromptOnce: 0
-  Unlock: 1
-  InfoScreen: {fileID: 0}
-  InfoMessages: []
-  InfoTime: 3
-  DelayBySeconds: 0
-  TextCanvas: {fileID: 0}
-  FlashbackImages: []
-  FlashbackScreen: {fileID: 0}
-  FlashbackTime: 4
-  logic: {fileID: 0}
+  DialogueTextObject: {fileID: 0}
+  DialogueCanvas: {fileID: 0}
+  TextList: []
   FreezePlayer: 0
-  FreezeTime: 0
   PlaySound: 0
   Sounds: []
+  Unlock: 1
+  NextScene: 
+  SpawnEnemy: 0
+  EnemyObject: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!4 &374679020
@@ -2026,10 +2034,13 @@ MonoBehaviour:
   FreezeContinuously: 0
   NoisePlayOnSpawn: 1
   SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 8300000, guid: 9ae53c57e4974eee79c16ebdc43a840b, type: 3}
-  TextToDisplay: What was that?
-  TextDisplay: {fileID: 878925414}
+  TextToDisplay: []
+  TextObject: {fileID: 0}
+  TextCanvas: {fileID: 0}
   TextDisplayOnce: 1
   DisplayTimeText: 1
   DisplayTimeObject: 3
@@ -2980,28 +2991,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractableScreen: {fileID: 76552281}
+  logic: {fileID: 0}
+  player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
+  removeSprite: 0
+  PromptTextObject: {fileID: 0}
+  PromptCanvas: {fileID: 0}
   InteractMessage: Press 'E' to interact
   ShowPromptOnce: 0
-  Unlock: 0
-  InfoScreen: {fileID: 76552281}
-  InfoMessages:
-  - "Hm... It won't budge. I\u2019ll have to find another way in."
-  InfoTime: 8
-  DelayBySeconds: 0
-  TextCanvas: {fileID: 0}
-  FlashbackImages: []
-  FlashbackScreen: {fileID: 0}
-  FlashbackTime: 4
-  logic: {fileID: 0}
+  DialogueTextObject: {fileID: 0}
+  DialogueCanvas: {fileID: 0}
+  TextList: []
   FreezePlayer: 0
-  FreezeTime: 0
   PlaySound: 1
   Sounds:
   - {fileID: 8300000, guid: 4286549cff6719f08ac1d227d26e1bf7, type: 3}
   - {fileID: 8300000, guid: 7b5a75d9c6e15f916a9872301678753f, type: 3}
   - {fileID: 8300000, guid: 1aefd03d2dc9ab26a934fed59cbacc21, type: 3}
   - {fileID: 8300000, guid: 7c7a88ea8c2e2681d8186bf3117f3584, type: 3}
+  Unlock: 0
+  NextScene: 
+  SpawnEnemy: 0
+  EnemyObject: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!82 &741868895
@@ -3242,10 +3254,13 @@ MonoBehaviour:
   FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: Lily's Shoe... She must have gotten stuck in that mud too
-  TextDisplay: {fileID: 472264829}
+  TextToDisplay: []
+  TextObject: {fileID: 0}
+  TextCanvas: {fileID: 0}
   TextDisplayOnce: 0
   DisplayTimeText: 3
   DisplayTimeObject: 0
@@ -3291,24 +3306,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractableScreen: {fileID: 472264829}
+  logic: {fileID: 0}
+  player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
+  removeSprite: 0
+  PromptTextObject: {fileID: 0}
+  PromptCanvas: {fileID: 0}
   InteractMessage: Press E to interact
   ShowPromptOnce: 0
-  Unlock: 0
-  InfoScreen: {fileID: 472264829}
-  InfoMessages:
-  - She must have gotten stuck in that mud too.
-  InfoTime: 3
-  DelayBySeconds: 0
-  TextCanvas: {fileID: 0}
-  FlashbackImages: []
-  FlashbackScreen: {fileID: 0}
-  FlashbackTime: 4
-  logic: {fileID: 0}
+  DialogueTextObject: {fileID: 0}
+  DialogueCanvas: {fileID: 0}
+  TextList: []
   FreezePlayer: 1
-  FreezeTime: 2
   PlaySound: 0
   Sounds: []
+  Unlock: 0
+  NextScene: 
+  SpawnEnemy: 0
+  EnemyObject: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!1 &781546634
@@ -3562,10 +3578,13 @@ MonoBehaviour:
   FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: Mash SPACE to pull yourself out of the mud!
-  TextDisplay: {fileID: 2135954519}
+  TextToDisplay: []
+  TextObject: {fileID: 0}
+  TextCanvas: {fileID: 0}
   TextDisplayOnce: 1
   DisplayTimeText: 3
   DisplayTimeObject: 0
@@ -3901,11 +3920,13 @@ MonoBehaviour:
   FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: It looks like no one has lived here for a while. Lily might have
-    gone in here.
-  TextDisplay: {fileID: 812313277}
+  TextToDisplay: []
+  TextObject: {fileID: 0}
+  TextCanvas: {fileID: 0}
   TextDisplayOnce: 1
   DisplayTimeText: 2
   DisplayTimeObject: 0
@@ -4160,10 +4181,13 @@ MonoBehaviour:
   FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: "Lily isn\u2019t here, but this is her teddy bear."
-  TextDisplay: {fileID: 683492317}
+  TextToDisplay: []
+  TextObject: {fileID: 0}
+  TextCanvas: {fileID: 0}
   TextDisplayOnce: 1
   DisplayTimeText: 3
   DisplayTimeObject: 0
@@ -5192,6 +5216,72 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 913551730}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1222280080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1222280083}
+  - component: {fileID: 1222280082}
+  - component: {fileID: 1222280081}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1222280081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222280080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1222280082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222280080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1222280083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222280080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1222451608
 GameObject:
   m_ObjectHideFlags: 0
@@ -5322,10 +5412,13 @@ MonoBehaviour:
   FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 1
+  TrappedText: 0
+  PushPullText: 0
   LayerToSwitchTo: Interactable
   NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: 
-  TextDisplay: {fileID: 0}
+  TextToDisplay: []
+  TextObject: {fileID: 0}
+  TextCanvas: {fileID: 0}
   TextDisplayOnce: 0
   DisplayTimeText: 5
   DisplayTimeObject: 0
@@ -12883,10 +12976,13 @@ MonoBehaviour:
   FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: 'Whatever it is, it''s getting closer. I should hide. '
-  TextDisplay: {fileID: 965437591}
+  TextToDisplay: []
+  TextObject: {fileID: 0}
+  TextCanvas: {fileID: 0}
   TextDisplayOnce: 0
   DisplayTimeText: 2
   DisplayTimeObject: 0
@@ -13297,10 +13393,13 @@ MonoBehaviour:
   FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
   LayerToSwitchTo: Interactable
   NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: Press and hold SPACE to push or pull the box
-  TextDisplay: {fileID: 822154067}
+  TextToDisplay: []
+  TextObject: {fileID: 0}
+  TextCanvas: {fileID: 0}
   TextDisplayOnce: 1
   DisplayTimeText: 5
   DisplayTimeObject: 0
@@ -14703,10 +14802,13 @@ MonoBehaviour:
   FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 1
+  TrappedText: 0
+  PushPullText: 0
   LayerToSwitchTo: Interactable
   NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: 
-  TextDisplay: {fileID: 0}
+  TextToDisplay: []
+  TextObject: {fileID: 0}
+  TextCanvas: {fileID: 0}
   TextDisplayOnce: 0
   DisplayTimeText: 5
   DisplayTimeObject: 0
@@ -14867,29 +14969,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractableScreen: {fileID: 1401916877}
+  logic: {fileID: 0}
+  player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
+  removeSprite: 0
+  PromptTextObject: {fileID: 0}
+  PromptCanvas: {fileID: 0}
   InteractMessage: Press 'E' to Interact
   ShowPromptOnce: 0
-  Unlock: 0
-  InfoScreen: {fileID: 965437591}
-  InfoMessages:
-  - We must've crashed...
-  - I didn't want to hit whatever that was that popped up on the road!
-  - Maybe she got scared and wandered into the woods. I should go find her.
-  InfoTime: 4
-  DelayBySeconds: 0
-  TextCanvas: {fileID: 0}
-  FlashbackImages:
-  - {fileID: 21300000, guid: 0b3c883091f331f4886a4e0a0cc18d74, type: 3}
-  - {fileID: 21300000, guid: b66afec3ea19b684c979f20d2b3bb3b1, type: 3}
-  - {fileID: 9033699428484915931, guid: 40df686498e86f44789ba472d86fb55d, type: 3}
-  FlashbackScreen: {fileID: 702942127}
-  FlashbackTime: 4
-  logic: {fileID: 0}
+  DialogueTextObject: {fileID: 0}
+  DialogueCanvas: {fileID: 0}
+  TextList: []
   FreezePlayer: 1
-  FreezeTime: 12
   PlaySound: 0
   Sounds: []
+  Unlock: 0
+  NextScene: 
+  SpawnEnemy: 0
+  EnemyObject: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!61 &1870322499
@@ -15195,23 +15293,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractableScreen: {fileID: 1908348307}
+  logic: {fileID: 0}
+  player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
+  removeSprite: 0
+  PromptTextObject: {fileID: 0}
+  PromptCanvas: {fileID: 0}
   InteractMessage: Press and hold E to hide!
   ShowPromptOnce: 0
-  Unlock: 0
-  InfoScreen: {fileID: 0}
-  InfoMessages: []
-  InfoTime: 3
-  DelayBySeconds: 0
-  TextCanvas: {fileID: 0}
-  FlashbackImages: []
-  FlashbackScreen: {fileID: 0}
-  FlashbackTime: 4
-  logic: {fileID: 0}
+  DialogueTextObject: {fileID: 0}
+  DialogueCanvas: {fileID: 0}
+  TextList: []
   FreezePlayer: 0
-  FreezeTime: 0
   PlaySound: 0
   Sounds: []
+  Unlock: 0
+  NextScene: 
+  SpawnEnemy: 0
+  EnemyObject: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!1 &1908348307
