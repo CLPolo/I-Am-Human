@@ -55,7 +55,7 @@ public class InteractableObjectScript : MonoBehaviour
     private bool TextHasPlayed = false;  // makes it so that text doesn't play if press E again while still in collider
     private bool PressedInteract = false;
     private bool isPickup = false;  // will only handle pickup stuff (like turning off object) if the interaction is happening with a pickup.
-
+    private bool hasBeenTrapped = false;
 
     // Below Should be removed and placed into monster script
     public bool monsterComing = false;  // This is for activating Monster.cs
@@ -69,6 +69,7 @@ public class InteractableObjectScript : MonoBehaviour
         player = Player.Instance;
 
         RemovePickedUpObjects();
+        PlayerPrefs.SetInt("escaped", 0);
 
         // turns off all screens
         if (PromptCanvas != null)
@@ -84,10 +85,16 @@ public class InteractableObjectScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)  // when player assigned on start, but room is left and returned to (hallway hub for example), throws an error as that player version was destroyed. 
+        {
+            player = Player.Instance;
+        }
+
         if (Inside && Input.GetKey(Controls.Interact) && PlayerPrefs.GetString("CollisionTagInteractable") == "Player") // if player is inside the interactable object's box collider
         {
             PressedInteract = true;
             PromptCanvas.SetActive(false);  // turns off 'interact' prompt
+            CheckPickupInteractions();  // checks first, that way text doesn't activate
             CheckAndDisplayInfo();  // checks if there's info to display, if so does that
             if (PlaySound && !NoisePlayed)  // used rn for cabin door sounds
             {
@@ -107,6 +114,7 @@ public class InteractableObjectScript : MonoBehaviour
             EnemyCheck();
         }
         if (PressedInteract) { CheckAndDisplayInfo(); }  // displays info even if outside of collider, only needed if not frozen
+        CheckPickupInteractions();
     }
 
     // if they press InteractKey to interact & haven't already interacted with object and we only want the interact prompt to appear once
@@ -159,6 +167,8 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void PickupSet()
     {
+        // sets appropriate player pref to reflect that pickup has been grabbed
+
         if (isPickup && PlayerPrefs.GetString("Pickup").isOneOf("Flashlight", "Crowbar", "Key")) // if one of our pickups, it will set playerprefs of that to 1 (true).
         {
             PlayerPrefs.SetInt(PlayerPrefs.GetString("Pickup"), 1);
@@ -168,6 +178,8 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void RemovePickedUpObjects()
     {
+        // ensures they won't spawn on re-entry of a room if they were picked up
+
         if (this.gameObject.tag.isOneOf("Flashlight", "Crowbar", "Key"))
         {
             if (PlayerPrefs.GetInt(this.gameObject.tag) == 1)
@@ -203,7 +215,7 @@ public class InteractableObjectScript : MonoBehaviour
     private void CheckAndDisplayInfo()
     {
         // if there's info to display it will display it
-        if (DialogueCanvas != null && TextList.Count > 0 && !TextHasPlayed)
+        if (DialogueCanvas != null && TextList != null && TextList.Count > 0 && !TextHasPlayed)
         {
             DisplayText();
         }
@@ -293,6 +305,30 @@ public class InteractableObjectScript : MonoBehaviour
         this.GetComponent<PuzzleTargetScript>().enabled = true;
     }
 
+    private void CheckPickupInteractions()
+    {
+        if (PlayerPrefs.GetInt("Crowbar") == 1 && this.name == "KitchenDoor (BOARDS)")
+        {
+            TextList = null;  // won't display text that was previously on the door
+            if (PlayerPrefs.GetInt("escaped") == 0 && PressedInteract)
+            {
+                PromptCanvas.SetActive(true);
+                PromptTextObject.GetComponent<TextMeshProUGUI>().text = "MASH efg TO PULL OFF BOARDS";
+                logic.trapKills = false;
+                player.SetState(PlayerState.Trapped);
+            }
+            else if (PlayerPrefs.GetInt("escaped") == 1)
+            {
+                SetObjectActive(EnemyObject, true); // hijacking enemy object (will update to general object spawn) to turn on other version of kitchen door
+                SetObjectActive(this.gameObject, false);  // turns itself off
+            }
+        }
+    }
+
+    private void SetObjectActive(GameObject obj, bool State)
+    {
+        obj.gameObject.SetActive(State);
+    }
 
     private void EnemyCheck()
     {

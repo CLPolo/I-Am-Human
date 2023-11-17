@@ -92,6 +92,7 @@ public class LogicScript : MonoBehaviour
             // The player escapes!
             mashTimer = defaultMashTimer;
             player.SetState(PlayerState.Idle);
+            PlayerPrefs.SetInt("escaped", 1);  // Miriam uses this for the kitchen door trapped interaction
             if (trappedText != null)
             {
                 trappedText.SetActive(false);
