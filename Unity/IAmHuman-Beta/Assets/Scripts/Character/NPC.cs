@@ -15,6 +15,8 @@ public class NPC : AnimatedEntity
     protected float untilDistance = 0f;
     protected Player player;
 
+    private bool inLatency = false;
+
     protected void FollowPlayer()
     {
         Vector3 playerPosition = player.transform.position;
@@ -26,7 +28,7 @@ public class NPC : AnimatedEntity
             following = false;
         }
 
-        if (following && distance > untilDistance)
+        if (following && distance > untilDistance && !inLatency)
         {
             Vector3 direction = playerPosition - transform.position;
             direction.y = 0;
@@ -44,6 +46,28 @@ public class NPC : AnimatedEntity
     protected void Patrol()
     {
         // non following movement goes here, if its walking left to right etc.
+
+    }
+
+    protected void HidingLatency()
+    {
+        inLatency = true;
+        StartCoroutine(Timer());
+    }
+
+    protected IEnumerator Timer()
+    {
+        
+        //Debug.Log("start (in lat) = " + inLatency);
+        yield return new WaitForSeconds(1f);
+        inLatency = false;
+        PlayerPrefs.SetInt("Patrol", 1);
+        //Debug.Log("end (in lat) = " + inLatency);
+    }
+
+    public bool GetLatency()
+    {
+        return inLatency;
     }
 
     private void Flip(float x)

@@ -26,7 +26,7 @@ public class InteractableObjectScript : MonoBehaviour
     public String InteractMessage;
     public Boolean ShowPromptOnce;
 
-    [Header("Info Display")]
+    [Header("Dialogue Display")]
     public GameObject DialogueTextObject = null;  // this is the screen that displays info about object post interaction
     public GameObject DialogueCanvas = null;  // NOTE: need to seperate text object and entire canvas as there are two text object on the canvas
     public List<String> TextList;
@@ -41,6 +41,10 @@ public class InteractableObjectScript : MonoBehaviour
     [Header("Unlock Door")]
     public bool Unlock;
     public string NextScene = null;
+
+    [Header("Spawn Enemy Post Interact")]
+    public bool SpawnEnemy = false;
+    public GameObject EnemyObject = null;
 
     // Booleans
     private int textIndex = 0;
@@ -80,7 +84,7 @@ public class InteractableObjectScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Inside && Input.GetKey(Controls.Interact)) // if player is inside the interactable object's box collider
+        if (Inside && Input.GetKey(Controls.Interact) && PlayerPrefs.GetString("CollisionTagInteractable") == "Player") // if player is inside the interactable object's box collider
         {
             PressedInteract = true;
             PromptCanvas.SetActive(false);  // turns off 'interact' prompt
@@ -100,6 +104,7 @@ public class InteractableObjectScript : MonoBehaviour
             }
             RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
             PickupSet();
+            EnemyCheck();
         }
         if (PressedInteract) { CheckAndDisplayInfo(); }  // displays info even if outside of collider, only needed if not frozen
     }
@@ -108,19 +113,24 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (Inside = true && !Input.GetKeyDown(Controls.Interact))  // if player in collider and has NOT pressed interact key yet
+        PlayerPrefs.SetString("CollisionTagInteractable", col.tag);  // Allows us to prevent the enemy from triggering items (like doors & outlines)
+
+        if (PlayerPrefs.GetString("CollisionTagInteractable") == "Player")
         {
-            if (Unlock && this.GetComponent<Door>().IsInteractable == true)
+            if (Inside = true && !Input.GetKeyDown(Controls.Interact))  // if player in collider and has NOT pressed interact key yet
             {
-                DisplayInteractPrompt();  // shows the interact prompt
+                if (Unlock && this.GetComponent<Door>().IsInteractable == true)
+                {
+                    DisplayInteractPrompt();  // shows the interact prompt
+                }
+                else if (!Unlock)
+                {
+                    DisplayInteractPrompt();
+                }
             }
-            else if (!Unlock)
-            {
-                DisplayInteractPrompt();
-            }
-        }
-        DisplayOutline();  // when in collider, displays outline on obj
-        PickupCheck();
+            DisplayOutline();  // when in collider, displays outline on obj
+            PickupCheck();
+        }  
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -245,11 +255,14 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void UnlockDoor(string NextScene)
     {
+        // Upon door interact, as long as it is unlocked and interactable, will freeze player (during fade out anim) and load next scene.
+
         if (NextScene != null && this.GetComponent<Door>().IsInteractable == true)
         {
+            player.SetState(PlayerState.Frozen);
             LevelLoader.Instance.loadScene(NextScene);
         }
-        //THIS WILL BE CHANGED, AGAIN PANIC 
+
     }
     private void DisplayOutline()
     {
@@ -274,8 +287,28 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void RemoveSprite()
     {
+        // removes sprites and turns off puzzle target script (used for drawer in kitchen, goes from closed to open).
+
         this.GetComponent<SpriteRenderer>().sprite = null;
         this.GetComponent<PuzzleTargetScript>().enabled = true;
+    }
+
+
+    private void EnemyCheck()
+    {
+        // checks if enemy should be spawned, then spawns them
+
+        if (SpawnEnemy && EnemyObject != null)
+        {
+            EnemySpawn();
+        }
+    }
+
+    private void EnemySpawn()
+    {
+        // 'spawns' enemy by turning on an enemy object
+
+        EnemyObject.SetActive(true);
     }
 
 }
