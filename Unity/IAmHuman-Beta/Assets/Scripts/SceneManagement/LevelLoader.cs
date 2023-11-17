@@ -49,6 +49,7 @@ public class LevelLoader : MonoBehaviour
         if (fadeAnimatedCanvas != null)
         {
             fadeAnimator = fadeAnimatedCanvas.GetComponent<Animator>();
+            StartCoroutine(FreezeOnFadeIn());
             if (HoldLonger) { StartCoroutine(HoldDark()); }  // if we are holding on black
             else { fadeAnimator.SetBool("TimeMet", true); }  // if not auto fades in
 
@@ -62,7 +63,7 @@ public class LevelLoader : MonoBehaviour
         { "Vertical Slice - Player Freezing", "End of Vertical Slice" }
     };
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)  // since all doors will be interactable, do we nned this ??
     {
         if (other.tag == "Door" && !other.GetComponent<Door>().isLocked)
         {
@@ -133,6 +134,17 @@ public class LevelLoader : MonoBehaviour
     //    yield return null;
     //}
 
+    public IEnumerator FreezeOnFadeIn()
+    {
+        // Freezes the player while the fade in is happening.
+
+        float freezeTime = HoldLonger ? (HoldFor + 0.5f) : 0.5f;
+
+        this.gameObject.GetComponent<Player>().SetState(PlayerState.Frozen);
+        yield return new WaitForSeconds(freezeTime);
+        this.gameObject.GetComponent<Player>().SetState(PlayerState.Idle);
+
+    }
     public IEnumerator HoldDark()
     {
         yield return new WaitForSeconds(HoldFor);  // waits
