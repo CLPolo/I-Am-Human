@@ -58,7 +58,6 @@ public class Monster : NPC
         
 
         _priorPosition = transform.position;
-        Debug.Log(stationed);
     }
 
     private void CheckFollowing()
