@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -118,15 +119,25 @@ public class LogicScript : MonoBehaviour
         //audioSource.PlayOneShot(audioSource.clip, 0.5f)
         //AudioListener.pause = IsPaused;
     }
-    public void TogglePause()
+
+    // disable menu is used so certain methods of closing pause menu such as
+    // clicking the continue button can pass 'false' since THEY will deal with
+    // disabling the menu (i.e. need to play click sound before disabling but
+    // click audio source is on button and cant be played if it gets disabled first
+    public void TogglePause(bool disableMenu = true)
     {
         // Pauses game
         // Note: When we add enemy script, enemy movement should also be stopped if paused
-        PauseMenu.SetActive(!IsPaused);
+        if (disableMenu)
+        {
+            PauseMenu.SetActive(!IsPaused);
+        }
         IsPaused = !IsPaused;  // will prevent player from moving while paused
         Time.timeScale = IsPaused?0:1F;
 
-        AudioListener.pause = IsPaused;
+        // DONT PAUSE AUDIO LISTENER WHEN PAUSING GAME,
+        // NEED TO PROGRAMATICALLY GO THROUGH PLAYING AUDIO SOURCES AND PAUSE THEM INSTEAD
+        // AudioListener.pause = IsPaused;
     }
 
     public void RestartGame()
@@ -141,7 +152,7 @@ public class LogicScript : MonoBehaviour
     public void ReturnToMainMenu()
     {
         LevelLoader.Instance.loadScene(0);
-        TogglePause();
+        TogglePause(false);
     }
 
     public void OnApplicationQuit()
