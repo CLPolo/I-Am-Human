@@ -531,9 +531,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press 'ENTER' to Continue...
+  m_text: PRESS hi TO CONTINUE...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b748c5a24cb674749b762c4c1385ce2d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e12427099091559459e0a10cc7b3cd85, type: 2}
   m_sharedMaterial: {fileID: -4785275578455290244, guid: b748c5a24cb674749b762c4c1385ce2d,
     type: 2}
   m_fontSharedMaterials: []
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &6528947780428320114
@@ -1091,7 +1091,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b748c5a24cb674749b762c4c1385ce2d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e12427099091559459e0a10cc7b3cd85, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

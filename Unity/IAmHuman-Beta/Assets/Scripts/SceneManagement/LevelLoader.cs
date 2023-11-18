@@ -14,6 +14,7 @@ public class LevelLoader : MonoBehaviour
 {
     private static LevelLoader _instance;
     public static LevelLoader Instance { get { return _instance; } }
+    public Player player = null;
 
     [Header("Fade Animation")]
     public GameObject fadeAnimatedCanvas = null;
@@ -37,6 +38,7 @@ public class LevelLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -45,6 +47,8 @@ public class LevelLoader : MonoBehaviour
         {
             _instance = this;
         }
+
+        CheckPositioning();
 
         if (fadeAnimatedCanvas != null)
         {
@@ -57,7 +61,7 @@ public class LevelLoader : MonoBehaviour
     }
 
     // temporary linear scene progression
-    private Dictionary<string, string> nextScene = new Dictionary<string, string>()
+    private Dictionary<string, string> nextScene = new Dictionary<string, string>()  // again (see below), since all doors will be on interact, do wee need this?
     {
         { "Cabin Exterior + Door", "End of Vertical Slice" },
         { "Vertical Slice - Player Freezing", "End of Vertical Slice" }
@@ -154,6 +158,7 @@ public class LevelLoader : MonoBehaviour
     {
         // new fade finish function
 
+        SetPlayerPosition();
         fadeAnimator.SetInteger("EndScene", 1);  // starts the fade out animation
         yield return new WaitForSeconds(1);  // waits one second until it loads other scene so that animation has time to play
         if (typeof(T) == typeof(int))
@@ -177,6 +182,35 @@ public class LevelLoader : MonoBehaviour
     {
         // Returns the name of the current scene
         return SceneManager.GetActiveScene().name;
+    }
+
+    private void SetPlayerPosition()
+    {
+        // sets playerprefs for player's position and scene. 
+
+        if (PlayerPrefs.GetInt("positioningIndex") == 0)  // checks every second scene to see if we're returning to the same scene we entered from
+        {
+            PlayerPrefs.SetFloat("ScenePositionX", transform.position.x);
+            PlayerPrefs.SetFloat("ScenePositionY", transform.position.y);
+            PlayerPrefs.SetFloat("ScenePositionZ", transform.position.z);
+            PlayerPrefs.SetString("PreviousScene", getSceneName());
+            PlayerPrefs.SetInt("positioningIndex", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("positioningIndex", 0);
+        }
+        Debug.Log(PlayerPrefs.GetFloat("ScenePositionX") + " " + PlayerPrefs.GetFloat("ScenePositionY") + " " + PlayerPrefs.GetFloat("ScenePositionZ") + " " + PlayerPrefs.GetString("PreviousScene") + " || " + PlayerPrefs.GetInt("positioningIndex") % 2);
+    }
+    private void CheckPositioning()
+    {
+        // Checks to see if player's positioning should be update on load, and resets it.
+
+        if (PlayerPrefs.GetString("PreviousScene") == getSceneName())
+        {
+            Vector3 pos = new Vector3(PlayerPrefs.GetFloat("ScenePositionX"), PlayerPrefs.GetFloat("ScenePositionY"), PlayerPrefs.GetFloat("ScenePositionZ"));
+            this.gameObject.transform.position = pos;
+        }
     }
 
     public void StartGame(string sceneName)

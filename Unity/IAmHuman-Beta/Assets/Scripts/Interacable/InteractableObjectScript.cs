@@ -43,9 +43,10 @@ public class InteractableObjectScript : MonoBehaviour
     public string NextScene = null;
 
     [Header("Spawn Object (or enemy) Post Interact")]
-    public string SpawnObject = "Entity";
-    public GameObject ObjectSpawned = null;
-    public GameObject EntitySpawn = null;
+    public bool SpawnObject = false;
+    public bool SpawnEntity = false;
+    public List<GameObject> ObjectsSpawned = null;
+    public List<GameObject> EntitySpawn = null;
 
     // Booleans
     private int textIndex = 0;
@@ -56,7 +57,7 @@ public class InteractableObjectScript : MonoBehaviour
     private bool TextHasPlayed = false;  // makes it so that text doesn't play if press E again while still in collider
     private bool PressedInteract = false;
     private bool isPickup = false;  // will only handle pickup stuff (like turning off object) if the interaction is happening with a pickup.
-    private bool hasBeenTrapped = false;
+    private bool triggered = false;
 
     // Below Should be removed and placed into monster script
     public bool monsterComing = false;  // This is for activating Monster.cs
@@ -101,8 +102,9 @@ public class InteractableObjectScript : MonoBehaviour
                 PlayNoise();
                 NoisePlayed = true;
             }
-            if (Unlock)
+            if (Unlock && !triggered) // triggered prevented a billion calls to level loader during the fade out, which prevented the positioning stuff from working properly
             {
+                triggered = true;
                 UnlockDoor(NextScene);
             }
             if (removeSprite)
@@ -111,7 +113,7 @@ public class InteractableObjectScript : MonoBehaviour
             }
             RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
             PickupSet();
-            if (SpawnObject == "Entity") { SpawnObjectCheck(); } // spawns entity objects
+            if (SpawnObject || SpawnEntity) { SpawnObjectCheck(); } // spawns entity objects
         }
         if (PressedInteract) { CheckAndDisplayInfo(); }  // displays info even if outside of collider, only needed if not frozen
         CheckPickupInteractions();
@@ -158,7 +160,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // checks if object being interacted with is a pickup
 
-        if (this.gameObject.tag.isOneOf("Flashlight", "Crowbar", "Key"))  // if one of our pickups, will give us usable string for tag.
+        if (this.gameObject.tag.isOneOf("Flashlight", "Crowbar", "AtticKey"))  // if one of our pickups, will give us usable string for tag.
         {
             PlayerPrefs.SetString("Pickup", this.tag);
             isPickup = true;
@@ -169,7 +171,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // sets appropriate player pref to reflect that pickup has been grabbed
 
-        if (isPickup && PlayerPrefs.GetString("Pickup").isOneOf("Flashlight", "Crowbar", "Key")) // if one of our pickups, it will set playerprefs of that to 1 (true).
+        if (isPickup && PlayerPrefs.GetString("Pickup").isOneOf("Flashlight", "Crowbar", "AtticKey")) // if one of our pickups, it will set playerprefs of that to 1 (true).
         {
             PlayerPrefs.SetInt(PlayerPrefs.GetString("Pickup"), 1);
             this.gameObject.SetActive(false);
@@ -180,7 +182,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // ensures they won't spawn on re-entry of a room if they were picked up
 
-        if (this.gameObject.tag.isOneOf("Flashlight", "Crowbar", "Key"))
+        if (this.gameObject.tag.isOneOf("Flashlight", "Crowbar", "AtticKey"))
         {
             if (PlayerPrefs.GetInt(this.gameObject.tag) == 1)
             {
@@ -301,41 +303,82 @@ public class InteractableObjectScript : MonoBehaviour
         // removes sprites and turns off puzzle target script (used for drawer in kitchen, goes from closed to open).
 
         this.GetComponent<SpriteRenderer>().sprite = null;
-        this.GetComponent<PuzzleTargetScript>().enabled = true;
+        this.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     private void CheckPickupInteractions()
     {
-        if (PlayerPrefs.GetInt("Crowbar") == 1 && this.name == "KitchenDoor (BOARDS)")
+        if (PlayerPrefs.GetInt("Crowbar") == 1 && this.name == "KitchenDoor (BOARDS)")  // when have crowbar and using on boarded door
         {
-            TextList = null;  // won't display text that was previously on the door
-            if (PlayerPrefs.GetInt("escaped") == 0 && PressedInteract)
-            {
-                PromptCanvas.SetActive(true);
-                PromptTextObject.GetComponent<TextMeshProUGUI>().text = "MASH efg TO PULL OFF BOARDS";
-                logic.trapKills = false;
-                player.SetState(PlayerState.Trapped);
-            }
-            else if (PlayerPrefs.GetInt("escaped") == 1)
-            {
-                SetObjectActive(ObjectSpawned, true); // turn on other version of kitchen door
-                SetObjectActive(this.gameObject, false);  // turns itself off
-            }
+            HandleCrowbar();
         }
 
         if (PlayerPrefs.GetInt("Flashlight") == 1 && SceneManager.GetActiveScene().name == "Basement")  // When player grabs the flashlight
         {
-            PlayerPrefs.SetInt("DoorClosed", 1);  // door is now closed
-            if (PlayerPrefs.GetInt("DoorClosed") == 1)
-            {
-                SpawnObjectCheck();  // spawns closed door
-                if (this.gameObject.name == "Cellar Door (OPENED)")  // turns off open one, and will keep it off everytime you re-enter the scene
-                {
-                    this.gameObject.SetActive(false);
-                }
-            }
+            HandleFlashlight();
         }
 
+        if (PlayerPrefs.GetInt("AtticKey") == 1)
+        {
+            HandleAtticKey();
+        }
+
+    }
+
+    private void HandleCrowbar()
+    {
+        TextList = null;  // won't display text that was previously on the door
+        if (PlayerPrefs.GetInt("escaped") == 0 && PressedInteract)
+        {
+            PromptCanvas.SetActive(true);
+            PromptTextObject.GetComponent<TextMeshProUGUI>().text = "MASH efg TO PULL OFF BOARDS";
+            logic.trapKills = false;
+            player.SetState(PlayerState.Trapped);
+        }
+        else if (PlayerPrefs.GetInt("escaped") == 1)
+        {
+            SetObjectActive(ObjectsSpawned[0], true); // turn on other version of kitchen door
+            SetObjectActive(this.gameObject, false);  // turns itself off
+            PlayerPrefs.SetInt("DoorOff", 1);
+        }
+        else if (PlayerPrefs.GetInt("DoorOff") == 1)  // turns off boarded door and on non boarded door on load
+        {
+            SetObjectActive(ObjectsSpawned[0], true);
+            SetObjectActive(this.gameObject, false);  // turns itself off
+        }
+    }
+
+    private void HandleFlashlight()
+    {
+        PlayerPrefs.SetInt("DoorClosed", 1);  // door is now closed
+        if (PlayerPrefs.GetInt("DoorClosed") == 1)
+        {
+            SpawnObjectCheck();  // spawns closed door
+            if (this.gameObject.name == "Cellar Door (OPENED)")  // turns off open one, and will keep it off everytime you re-enter the scene
+            {
+                this.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void HandleAtticKey()
+    {
+        if (this.gameObject.name == "Attic Door")
+        {
+            if (SceneManager.GetActiveScene().name == "Hallway Hub")
+            {
+                SpawnEntity = true;
+                SpawnObjectCheck();
+            }
+
+            TextList = null;  // won't display text that was previously on the door
+            if (PressedInteract)
+            {
+                this.GetComponent<Door>().IsInteractable = true;
+                Unlock = true;
+                UnlockDoor(NextScene);
+            }
+        }
     }
 
     private void SetObjectActive(GameObject obj, bool State)
@@ -349,13 +392,19 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // checks if enemy should be 'spawned' (turned on), then spawns them.
 
-        if (SpawnObject == "Object" && ObjectSpawned != null)
+        if (SpawnObject == true && ObjectsSpawned != null)
         {
-            SetObjectActive(ObjectSpawned.gameObject, true);
+            foreach (GameObject obj in ObjectsSpawned)
+            {
+                SetObjectActive(obj.gameObject, true);
+            }
         }
-        else if (SpawnObject == "Entity" && EntitySpawn != null)
+        else if (SpawnEntity == true && EntitySpawn != null)  // spawns any entity in the list
         {
-            SetObjectActive(EntitySpawn.gameObject, true);
+            foreach (GameObject entity in EntitySpawn)
+            {
+                SetObjectActive(entity.gameObject, true);
+            }
         }
     }
 }

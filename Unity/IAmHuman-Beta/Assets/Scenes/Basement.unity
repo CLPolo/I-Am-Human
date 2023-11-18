@@ -318,8 +318,10 @@ MonoBehaviour:
   Unlock: 1
   NextScene: Hallway Hub
   SpawnObject: 0
-  ObjectSpawned: {fileID: 0}
-  EntitySpawn: {fileID: 0}
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn:
+  - {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!114 &123445483
@@ -2448,9 +2450,11 @@ MonoBehaviour:
   Sounds: []
   Unlock: 1
   NextScene: Forest Chase
-  SpawnObject: Object
-  ObjectSpawned: {fileID: 1788591179}
-  EntitySpawn: {fileID: 0}
+  SpawnObject: 1
+  SpawnEntity: 0
+  ObjectsSpawned:
+  - {fileID: 1788591179}
+  EntitySpawn: []
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!212 &586858252
@@ -3222,8 +3226,10 @@ MonoBehaviour:
   Unlock: 0
   NextScene: 
   SpawnObject: 0
-  ObjectSpawned: {fileID: 0}
-  EntitySpawn: {fileID: 0}
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn:
+  - {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!61 &1701560422
@@ -3428,8 +3434,10 @@ MonoBehaviour:
   Unlock: 0
   NextScene: 
   SpawnObject: 0
-  ObjectSpawned: {fileID: 0}
-  EntitySpawn: {fileID: 0}
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn:
+  - {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!61 &1788591183

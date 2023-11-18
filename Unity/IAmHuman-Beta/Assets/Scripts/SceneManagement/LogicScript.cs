@@ -119,6 +119,11 @@ public class LogicScript : MonoBehaviour
         DeathScreen.SetActive(val);
         //audioSource.PlayOneShot(audioSource.clip, 0.5f)
         //AudioListener.pause = IsPaused;
+        player.SetState(PlayerState.Frozen);
+        if (SceneManager.GetActiveScene().name == "Bed room")
+        {
+            PlayerPrefs.SetInt("Crowbar", 0);  // if you die in the bedroom after grabbing the crowbar, it will respawn on load
+        }
     }
 
     // disable menu is used so certain methods of closing pause menu such as
