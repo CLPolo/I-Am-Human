@@ -551,7 +551,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 601616360}
   PromptCanvas: {fileID: 601616359}
-  InteractMessage: Press 'E' to Interact
+  InteractMessage: PRESS a TO INTERACT
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 497646947}
   DialogueCanvas: {fileID: 1451251084}
@@ -564,6 +564,10 @@ MonoBehaviour:
   Sounds: []
   Unlock: 0
   NextScene: 
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn: []
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!61 &389490226
@@ -696,7 +700,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 601616360}
   PromptCanvas: {fileID: 601616359}
-  InteractMessage: Press 'E' to Interact
+  InteractMessage: PRESS a TO INTERACT
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -706,6 +710,10 @@ MonoBehaviour:
   Sounds: []
   Unlock: 1
   NextScene: Hallway Hub
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn: []
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!61 &392325599

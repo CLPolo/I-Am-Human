@@ -1277,7 +1277,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
-  InteractMessage: Press E to interact
+  InteractMessage: PRESS a TO INTERACT
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -1287,9 +1287,11 @@ MonoBehaviour:
   Sounds: []
   Unlock: 1
   NextScene: Basement
-  SpawnObject: Entity
-  ObjectSpawned: {fileID: 0}
-  EntitySpawn: {fileID: 0}
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn:
+  - {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!4 &374679020
@@ -2087,7 +2089,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.9
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -2559,7 +2561,7 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - Mash SPACE to escape!
+  - MASH efg TO ESCAPE!
   TextObject: {fileID: 1261286780}
   TextCanvas: {fileID: 660751624}
   TextDisplayOnce: 0
@@ -2681,7 +2683,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
-  InteractMessage: Press 'E' to interact
+  InteractMessage: PRESS a TO INTERACT
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
@@ -2697,9 +2699,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7c7a88ea8c2e2681d8186bf3117f3584, type: 3}
   Unlock: 0
   NextScene: 
-  SpawnObject: Entity
-  ObjectSpawned: {fileID: 0}
-  EntitySpawn: {fileID: 0}
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn:
+  - {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!82 &741868895
@@ -2954,7 +2958,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
-  InteractMessage: Press E to interact
+  InteractMessage: PRESS a TO INTERACT
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
@@ -2966,9 +2970,11 @@ MonoBehaviour:
   Sounds: []
   Unlock: 0
   NextScene: 
-  SpawnObject: Entity
-  ObjectSpawned: {fileID: 0}
-  EntitySpawn: {fileID: 0}
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn:
+  - {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!1 &781546634
@@ -12016,7 +12022,7 @@ MonoBehaviour:
   LayerToSwitchTo: Interactable
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - Press and hold 'SPACE' to push / pull!
+  - PRESS AND HOLD efg TO PUSH / PULL!
   TextObject: {fileID: 1261286780}
   TextCanvas: {fileID: 660751624}
   TextDisplayOnce: 1
@@ -13477,7 +13483,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
-  InteractMessage: Press 'E' to Interact
+  InteractMessage: PRESS a TO INTERACT
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
@@ -13491,9 +13497,11 @@ MonoBehaviour:
   Sounds: []
   Unlock: 0
   NextScene: 
-  SpawnObject: Entity
-  ObjectSpawned: {fileID: 0}
-  EntitySpawn: {fileID: 0}
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn:
+  - {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!61 &1870322499
@@ -13806,7 +13814,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
-  InteractMessage: Press and hold E to hide!
+  InteractMessage: PRESS AND HOLD a TO HIDE!
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -13816,9 +13824,11 @@ MonoBehaviour:
   Sounds: []
   Unlock: 0
   NextScene: 
-  SpawnObject: Entity
-  ObjectSpawned: {fileID: 0}
-  EntitySpawn: {fileID: 0}
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn:
+  - {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!1 &1922120054
@@ -14421,7 +14431,7 @@ MonoBehaviour:
   LayerToSwitchTo: Interactable
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - Press and hold 'SPACE' to push / pull!
+  - PRESS AND HOLD efg TO PUSH / PULL!
   TextObject: {fileID: 1261286780}
   TextCanvas: {fileID: 660751624}
   TextDisplayOnce: 1
