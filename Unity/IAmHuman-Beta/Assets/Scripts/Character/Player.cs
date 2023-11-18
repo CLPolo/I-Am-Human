@@ -38,7 +38,7 @@ public class Player : AnimatedEntity
     public static Player Instance { get { return _instance; } }
 
     [Header("Movement")]
-    public float speed = 5f;
+    private float speed = 5f;
     public const float sneakSpeed = 0.8f;
     public const float pushSpeed = 2.5f;
     public const float walkSpeed = 5f;

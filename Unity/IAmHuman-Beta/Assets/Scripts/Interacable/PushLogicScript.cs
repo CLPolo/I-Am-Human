@@ -37,11 +37,11 @@ public class PushLogicScript : MonoBehaviour
             player = Player.Instance;
         }
 
-        RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);  // uses raycast starting at GrabDetect to get object info
+        RaycastHit2D grabCheck = Physics2D.RaycastAll(grabDetect.position, Vector2.right * transform.localScale, rayDist).FirstOrDefault(x => x.collider.CompareTag("Box"));  // uses raycast starting at GrabDetect to get object info
 
         Debug.DrawRay(transform.position + new Vector3(0.2f, 0, 0), Vector3.right * rayDist, Color.green);
 
-        if (grabCheck.collider != null && grabCheck.collider.tag == "Box")  // if there is an object colliding AND that object is a box
+        if (grabCheck.collider != null && grabCheck.collider.CompareTag("Box"))  // if there is an object colliding AND that object is a box
         {
             GameObject box = grabCheck.collider.gameObject;
             Rigidbody2D rb = box.GetComponent<Rigidbody2D>();
@@ -56,8 +56,14 @@ public class PushLogicScript : MonoBehaviour
                     // ALL CODE IN HERE WILL ONLY RUN AT START OF PUSH/PULL INSTEAD OF EVERY FRAME
                     box.transform.position = new Vector3(boxHolder.position.x, box.transform.position.y, box.transform.position.z);  // moves object being pushed to boxHolder (by center)
                     rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-                    PlayerPrefs.SetString("boxlayer", LayerMask.LayerToName(box.layer));
-                    box.layer = LayerMask.NameToLayer("Default");
+                    string boxlayer = LayerMask.LayerToName(box.layer);
+                    PlayerPrefs.SetString("boxlayer", boxlayer);
+                    if (boxlayer == "Interactable")
+                    {
+                        // this can usually be walked through but for pushing & pulling,
+                        // we want player to collide with it
+                        box.layer = LayerMask.NameToLayer("PlayerExclusiveCollision");
+                    }
                 }
                 rb.velocity = player.GetComponent<Rigidbody2D>().velocity;
                 AudioSource aSource = box.GetComponent<AudioSource>();
