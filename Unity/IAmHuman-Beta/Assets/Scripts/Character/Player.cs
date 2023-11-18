@@ -246,19 +246,7 @@ public class Player : AnimatedEntity
         {
             // This is when the monster sees you and you are not behind the box
             logic.Death();
-        } else if (collision.gameObject.CompareTag("TrapArmed")) {
-            logic.trapKills = true;
-            SetState(PlayerState.Trapped);
-            collision.gameObject.tag = "TrapDisarmed";
-            StartCoroutine(ResetTrap(collision));
-        }
-        else if (collision.gameObject.CompareTag("TrapArmedNoKill"))
-        {
-            logic.trapKills = false;
-            SetState(PlayerState.Trapped);
-            collision.gameObject.tag = "TrapDisarmed";
-            StartCoroutine(ResetTrap(collision));
-        }
+        } 
         else if (collision.gameObject.CompareTag("Key"))
         {
             Destroy(collision.gameObject);
@@ -281,6 +269,24 @@ public class Player : AnimatedEntity
         if (collision.gameObject.CompareTag("Hideable") || collision.gameObject.CompareTag("Box"))
         {
             CheckHiding(Hideable);
+        }
+        else if (collision.gameObject.CompareTag("TrapArmed") && !state.isOneOf(PlayerState.Pushing, PlayerState.Pulling))
+        {
+            logic.trapKills = true;
+            if (collision.gameObject.name == "Gore Pile")
+            {
+                logic.inGore = true;
+            }
+            SetState(PlayerState.Trapped);
+            collision.gameObject.tag = "TrapDisarmed";
+            StartCoroutine(ResetTrap(collision));
+        }
+        else if (collision.gameObject.CompareTag("TrapArmedNoKill") && !state.isOneOf(PlayerState.Pushing, PlayerState.Pulling))
+        {
+            logic.trapKills = false;
+            SetState(PlayerState.Trapped);
+            collision.gameObject.tag = "TrapDisarmed";
+            StartCoroutine(ResetTrap(collision));
         }
     }
 
@@ -390,7 +396,16 @@ public class Player : AnimatedEntity
     {
         // After 5 seconds the trap resets (i.e. player can fall back into mud)
         yield return new WaitUntil(() => state == PlayerState.Idle);
-        yield return new WaitForSeconds(2);
+        if (collision.gameObject.name == "Mud")
+        {
+            yield return new WaitForSeconds(2);  // Wait for 2 seconds to reset mud
+        }
+        if (collision.gameObject.name == "Gore Pile")
+        {
+            yield return new WaitForSeconds(0.2f);  // Wait for 0.3 seconds to reset gore
+            logic.inGore = false;
+        }
+
         if (logic.trapKills)
         {
             collision.gameObject.tag = "TrapArmed";

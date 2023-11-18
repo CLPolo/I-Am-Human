@@ -4,6 +4,7 @@ using System.Net;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 public class LogicScript : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class LogicScript : MonoBehaviour
     public float defaultMashTimer = 1.5f;  // If you don't mash for 1 seconds you die
     private float mashTimer;
     public bool trapKills;
+    public bool inGore = false;
+    private float playerYStart = 1000f;
 
 
     // Start is called before the first frame update
@@ -53,16 +56,19 @@ public class LogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-            if (player == null)
-            {
-                player = Player.Instance;
-            }
-            // PUT ALL LOGIC HERE
-            if (player.GetState() == PlayerState.Trapped)
-            {   
-                MashTrap();
-            }
+        if (player == null)
+        {
+            player = Player.Instance;
+        }
+        if (playerYStart == 1000f)
+        {
+            playerYStart = player.transform.position.y;
+        }
+        // PUT ALL LOGIC HERE
+        if (player.GetState() == PlayerState.Trapped)
+        {   
+            MashTrap();
+        }
 
         if (Input.GetKeyDown(Controls.Pause))  // Pauses game when player hits esc
         {
@@ -72,11 +78,20 @@ public class LogicScript : MonoBehaviour
 
     public void MashTrap()
     {
-        if(trappedText != null)
+        if (trappedText != null)
         {
             trappedText.SetActive(true);
         }
         mashTimer -= Time.deltaTime;
+        if (inGore)
+        {
+            TilemapCollider2D tilemapCollider = GameObject.Find("Tilemap").GetComponent<TilemapCollider2D>();
+            tilemapCollider.enabled = false;  // Disable the collider so the player can fall in the goop
+            player.transform.position = new Vector3(player.transform.position.x,
+                        player.transform.position.y - Time.deltaTime * (1.5f / 2.5f),
+                        player.transform.position.z);
+            
+        }
         if (mashTimer <= 0 && trapKills)
         {
             // If the player does not mash fast enough they die :(
@@ -91,6 +106,11 @@ public class LogicScript : MonoBehaviour
         {
             // The player escapes!
             mashTimer = defaultMashTimer;
+            if (inGore)
+            {
+                TilemapCollider2D tilemapCollider = GameObject.Find("Tilemap").GetComponent<TilemapCollider2D>();
+                tilemapCollider.enabled = true;  // Enable the collider so the player no fall in goop
+            }
             player.SetState(PlayerState.Idle);
             if (trappedText != null)
             {
@@ -105,7 +125,16 @@ public class LogicScript : MonoBehaviour
                     //audioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString());
                     audioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString()), 0.5f);
                 }
-                mashTimer += 0.3f;  // Add 0.2 seconds to the timer
+                if (inGore)
+                {
+                    mashTimer += 3;  // This allows player to spam space and keep moving right
+                    player.transform.position = new Vector3(player.transform.position.x,
+                        playerYStart, player.transform.position.z);
+                }
+                else
+                {
+                    mashTimer += 0.3f;  // Add 0.2 seconds to the timer
+                }
             }
         }
     }
