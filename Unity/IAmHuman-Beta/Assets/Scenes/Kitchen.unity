@@ -157,7 +157,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057681, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.56
+      value: -0.6750196
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057681, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -202,12 +202,12 @@ PrefabInstance:
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: leftBound
-      value: 0.34
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: rightBound
-      value: 0.34
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -792,7 +792,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -4578376867270928684, guid: 7db36e24ff2ce5e418e68af9d70bef59,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -813,8 +813,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326877948}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.717, y: -2.659, z: 0.17822266}
-  m_LocalScale: {x: 2.9829018, y: 3.606627, z: 1}
+  m_LocalPosition: {x: 0.5743, y: -2.5302, z: 0.17822266}
+  m_LocalScale: {x: 3.0817196, y: 4.168484, z: 1}
   m_Children: []
   m_Father: {fileID: 811281106}
   m_RootOrder: 4
@@ -1051,6 +1051,16 @@ PrefabInstance:
       propertyPath: fadeAnimatedCanvas
       value: 
       objectReference: {fileID: 1375488759}
+    - target: {fileID: 8113169828239833077, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.15728347
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113169828239833077, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.000000007450581
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aba456c54d27d059e9a59a6bc319bc05, type: 3}
 --- !u!1 &1425993290
@@ -1078,7 +1088,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425993290}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.57, y: 0, z: 0}
+  m_LocalPosition: {x: 5.35, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2031248811}
@@ -1331,7 +1341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844402362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.74, y: 0, z: 0}
+  m_LocalPosition: {x: -6.33, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2031248811}
@@ -1373,11 +1383,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1849521141}
   - component: {fileID: 1849521140}
-  - component: {fileID: 1849521143}
   - component: {fileID: 1849521142}
   m_Layer: 0
   m_Name: Gore Pile
-  m_TagString: Untagged
+  m_TagString: TrapArmed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1420,7 +1429,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -3897862059077438994, guid: 7db36e24ff2ce5e418e68af9d70bef59,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1441,8 +1450,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849521139}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6215924, y: -0.9890353, z: 0.17822266}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: 1.521, y: -0.9890353, z: 0.17822266}
+  m_LocalScale: {x: 3.08779, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1571245135}
   m_RootOrder: 2
@@ -1454,13 +1463,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849521139}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.08340144}
+  m_Offset: {x: -0.49054495, y: -0.08340144}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1471,44 +1480,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3, y: 0.39319712}
+  m_Size: {x: 1.3189099, y: 0.39319712}
   m_EdgeRadius: 0
---- !u!114 &1849521143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1849521139}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  logic: {fileID: 0}
-  player: {fileID: 0}
-  Default: {fileID: 0}
-  Outline: {fileID: 0}
-  removeSprite: 0
-  PromptTextObject: {fileID: 0}
-  PromptCanvas: {fileID: 0}
-  InteractMessage: 
-  ShowPromptOnce: 0
-  DialogueTextObject: {fileID: 0}
-  DialogueCanvas: {fileID: 0}
-  TextList: []
-  FreezePlayer: 0
-  PlaySound: 0
-  Sounds: []
-  Unlock: 0
-  NextScene: 
-  SpawnObject: 0
-  SpawnEntity: 0
-  ObjectsSpawned: []
-  EntitySpawn:
-  - {fileID: 0}
-  monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!1 &1878749474
 GameObject:
   m_ObjectHideFlags: 0
