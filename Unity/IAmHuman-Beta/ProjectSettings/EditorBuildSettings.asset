@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Attic.unity
     guid: 5f1cd506b808df6488591a1cc3145ea1
+  - enabled: 1
+    path: Assets/Scenes/Forest Chase.unity
+    guid: fd6ea4e00fc9f6043af9d19d614829b5
   m_configObjects: {}

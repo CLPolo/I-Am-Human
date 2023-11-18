@@ -317,6 +317,9 @@ MonoBehaviour:
   Sounds: []
   Unlock: 1
   NextScene: Hallway Hub
+  SpawnObject: 0
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!114 &123445483
@@ -2382,6 +2385,165 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &586858249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586858250}
+  - component: {fileID: 586858252}
+  - component: {fileID: 586858251}
+  - component: {fileID: 586858253}
+  - component: {fileID: 586858254}
+  m_Layer: 0
+  m_Name: Cellar Door (OPENED)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586858250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586858249}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.06, y: 1.32, z: 1.4403721}
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1626793662}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &586858251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586858249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logic: {fileID: 0}
+  player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
+  removeSprite: 0
+  PromptTextObject: {fileID: 1676686121}
+  PromptCanvas: {fileID: 1684466412}
+  InteractMessage: PRESS a TO INTERACT
+  ShowPromptOnce: 0
+  DialogueTextObject: {fileID: 0}
+  DialogueCanvas: {fileID: 0}
+  TextList: []
+  FreezePlayer: 0
+  PlaySound: 0
+  Sounds: []
+  Unlock: 1
+  NextScene: Forest Chase
+  SpawnObject: Object
+  ObjectSpawned: {fileID: 1788591179}
+  EntitySpawn: {fileID: 0}
+  monsterComing: 0
+  rawr: {fileID: 0}
+--- !u!212 &586858252
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586858249}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 7353455192910715932, guid: ed83356179f3041489b1b3dbdd48339b,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.7, y: 0.34}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!61 &586858253
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586858249}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.07011053, y: -0.51515985}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.7, y: 0.34}
+    newSize: {x: 0.7, y: 0.34}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3890751, y: 0.9008843}
+  m_EdgeRadius: 0
+--- !u!114 &586858254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586858249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8212f5bf452ef79428680c26e56ebfdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocked: 1
+  IsInteractable: 1
 --- !u!1001 &651734526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2428,7 +2590,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780213591173, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -2649,7 +2811,6 @@ Transform:
   - {fileID: 362887771}
   - {fileID: 322040749}
   - {fileID: 23825186}
-  - {fileID: 1788591180}
   - {fileID: 1997812649}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -2711,6 +2872,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.0135212}
   m_EdgeRadius: 0
+--- !u!1 &1469968467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6528947781856251796, guid: 969fc196346bf8e439b03a6f53125632,
+    type: 3}
+  m_PrefabInstance: {fileID: 651734526}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1498201183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2805,6 +2972,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fa3c384785e55a4e89cdabe549750e4, type: 3}
+--- !u!1 &1575254622 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6528947780182831167, guid: 969fc196346bf8e439b03a6f53125632,
+    type: 3}
+  m_PrefabInstance: {fileID: 651734526}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1626793661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2834,6 +3007,8 @@ Transform:
   m_Children:
   - {fileID: 123445481}
   - {fileID: 1701560420}
+  - {fileID: 1788591180}
+  - {fileID: 586858250}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3046,6 +3221,9 @@ MonoBehaviour:
   Sounds: []
   Unlock: 0
   NextScene: 
+  SpawnObject: 0
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!61 &1701560422
@@ -3141,13 +3319,16 @@ GameObject:
   m_Component:
   - component: {fileID: 1788591180}
   - component: {fileID: 1788591181}
+  - component: {fileID: 1788591182}
+  - component: {fileID: 1788591183}
+  - component: {fileID: 1788591184}
   m_Layer: 0
-  m_Name: Cellar Door
+  m_Name: Cellar Door (CLOSED)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1788591180
 Transform:
   m_ObjectHideFlags: 0
@@ -3159,8 +3340,8 @@ Transform:
   m_LocalPosition: {x: -1.06, y: 1.32, z: 1.4403721}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
-  m_Father: {fileID: 856827792}
-  m_RootOrder: 4
+  m_Father: {fileID: 1626793662}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1788591181
 SpriteRenderer:
@@ -3200,7 +3381,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 3446185997900415647, guid: ed83356179f3041489b1b3dbdd48339b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3213,6 +3394,167 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1788591182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788591179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logic: {fileID: 0}
+  player: {fileID: 0}
+  Default: {fileID: 0}
+  Outline: {fileID: 0}
+  removeSprite: 0
+  PromptTextObject: {fileID: 1676686121}
+  PromptCanvas: {fileID: 1684466412}
+  InteractMessage: PRESS a TO INTERACT
+  ShowPromptOnce: 0
+  DialogueTextObject: {fileID: 1575254622}
+  DialogueCanvas: {fileID: 1469968467}
+  TextList:
+  - It's shut solid, I can't move it.
+  - I guess we've got to find another way out...
+  FreezePlayer: 1
+  PlaySound: 1
+  Sounds:
+  - {fileID: 8300000, guid: 4286549cff6719f08ac1d227d26e1bf7, type: 3}
+  - {fileID: 8300000, guid: 7b5a75d9c6e15f916a9872301678753f, type: 3}
+  Unlock: 0
+  NextScene: 
+  SpawnObject: 0
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 0}
+  monsterComing: 0
+  rawr: {fileID: 0}
+--- !u!61 &1788591183
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788591179}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.07011053, y: -0.51515985}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.7, y: 0.34}
+    newSize: {x: 0.7, y: 0.34}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3890751, y: 0.9008843}
+  m_EdgeRadius: 0
+--- !u!82 &1788591184
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788591179}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3d85109d31b1ec64792ac493cd64dda3,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1997812648
 GameObject:
   m_ObjectHideFlags: 0
@@ -3238,11 +3580,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997812648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.97, y: -0.23, z: 1.4403721}
+  m_LocalPosition: {x: -0.97, y: -0.23000014, z: 1.4403721}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 856827792}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1997812650
 SpriteRenderer:

@@ -8,6 +8,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
+using UnityEditorInternal;
 
 public class PuzzleTargetScript : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class PuzzleTargetScript : MonoBehaviour
     [Header("Target Affect Type")]
     // these allow us to define what the target will do
     public bool LayerSwitch;                    // will switch layer of object
-    public bool DeleteObject;                   // will delete object
     public bool SpawnObject;                    // will spawn object
     public bool TurnOffObject;                  // will set object to off instead of destroying it
     public bool NoiseTrigger;                   // will trigger a noise
@@ -29,7 +29,6 @@ public class PuzzleTargetScript : MonoBehaviour
     public bool FreezePlayerText;               // freeze player after activating text
     public bool FreezePlayerOnly;               // freezes player once when collide, doesn't trigger anything else tho (does it only once)
     public bool UnlockDoor;                     // unlocks a door when collide w/ box
-    public bool FreezeContinuously;             // for impassable target where it still triggers text (messy i know, i'll refactor after)
     public bool NoisePlayOnSpawn;               // again messy i know, just panic
     public bool SpawnDoor;
     public bool TrappedText;
@@ -38,11 +37,10 @@ public class PuzzleTargetScript : MonoBehaviour
     [Header("Affect Specifications")]
     public string LayerToSwitchTo = null;       // what layer the object will be switched to
     public AudioClip NoiseToBePlayed = null;    // what noise will be played
-    public List<String> TextToDisplay = null;          // what text string will be displayed
-    public GameObject TextObject = null;       // canvas for text to be displayed on
+    public List<String> TextToDisplay = null;   // what text string will be displayed
+    public GameObject TextObject = null;        // canvas for text to be displayed on
     public GameObject TextCanvas = null;
-    public bool TextDisplayOnce = false;
-    public int DisplayTimeText = 0;             // time for text to be displayed for
+    public bool TextDisplayOnce = false;        // if text should only be displayed once (only one pass through)
     public int DisplayTimeObject = 0;           // time for object to be displayed for
     public int DelayTime = 0;                   // time to delay given action by
     public float HideTime = 0;                  // time player must hide for before action activates
@@ -85,13 +83,6 @@ public class PuzzleTargetScript : MonoBehaviour
                 HandleHideTimed();
             }
         }
-        if (FreezeContinuously)
-        {
-            if (this.isActiveAndEnabled == false)
-            {
-                ActivateTarget(DeactivateTriggerObject, false);
-            }
-        }
 
         if (PlayerTriggered)
         {
@@ -112,7 +103,6 @@ public class PuzzleTargetScript : MonoBehaviour
         }
         if (other.gameObject.tag == "Player")  // if player collides with target
         {
-            //HandlePlayer();
             PlayerTriggered = true;
         }
     }
@@ -121,16 +111,16 @@ public class PuzzleTargetScript : MonoBehaviour
     {
         PlayerTriggered = false;
         BoxTriggered = false;
+        if (!TextDisplayOnce)  // if want to retrigger text everytime player walks into collider, resets textplayed after leave
+        {
+            TextPlayed = false;
+        }
     }
 
     private void HandleBox()
     {
         // handles any actions post box interaction
 
-        if (DeleteObject && AffectedObject != null)  // if object should be deleted
-        {
-            Destroy(AffectedObject);
-        }
         if (LayerSwitch && AffectedObject != null && LayerToSwitchTo != null)  // if object layer should be changed
         {
             UpdateObjectLayer(LayerToSwitchTo);
@@ -150,7 +140,7 @@ public class PuzzleTargetScript : MonoBehaviour
         // handles any actions post player interaction
         if (FreezePlayerOnly && !FrozenOnce)
         {
-            StartCoroutine(FreezeONLY());
+            StartCoroutine(Freeze());
             FrozenOnce = true;
         }
         if (SpawnObject && AffectedObject != null && this.enabled == true)  // if we want to spawn / activate an object
@@ -165,7 +155,7 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             PlayNoise(NoiseToBePlayed);
         }
-        if (TextTrigger && (TextDisplayOnce ? (!TextPlayed) : true)) // if we want to spawn text
+        if (TextTrigger && !TextPlayed) // if we want to spawn text
         {
             DisplayText();
         }
@@ -296,11 +286,7 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             StartCoroutine(Freeze());
         }
-        if (DeleteObject)  // will likely be removed, and everything standardized to turn off / deactivate.
-        {
-            StartCoroutine(DestroyObject());
-        }
-        else if (TurnOffObject)
+        if (TurnOffObject)
         {
             StartCoroutine(DeactivateObject());
         }
@@ -323,16 +309,6 @@ public class PuzzleTargetScript : MonoBehaviour
         trigger.SetActive(val);
     }
 
-    private IEnumerator DestroyObject()
-    {
-        // Destroys object after display time
-        // likely won't ever need this either, and don't think it's being used.
-        // Will probably remove, especially since it's dead easy to re-implement.
-
-        yield return new WaitForSeconds(DisplayTimeObject);  // waits X time
-        Destroy(AffectedObject);  // destroys Object (deletes it permanently)
-    }
-
     private IEnumerator DeactivateObject()
     {
         // Deactivates object after display time
@@ -343,18 +319,6 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             PlayNoise(NoiseToBePlayed);
         }
-    }
-
-    private IEnumerator FreezeONLY()
-    {
-        // 'Freezes' the player for freeze time seconds.
-        // May not be needed anymore, was used for beginning freeze during car crash sound in a way that prolonged the fade.
-        // Will double check if can reuse below function instead since fade more easily controlled.
-
-        Time.timeScale = 0.000001f;
-        yield return new WaitForSeconds(FreezeTime * Time.timeScale);
-        Time.timeScale = 1f;
-
     }
     private IEnumerator Freeze()
     {
