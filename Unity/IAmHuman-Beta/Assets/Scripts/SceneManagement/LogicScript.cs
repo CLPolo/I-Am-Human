@@ -55,15 +55,15 @@ public class LogicScript : MonoBehaviour
     void Update()
     {
 
-            if (player == null)
-            {
-                player = Player.Instance;
-            }
-            // PUT ALL LOGIC HERE
-            if (player.GetState() == PlayerState.Trapped)
-            {   
-                MashTrap();
-            }
+        if (player == null)
+        {
+            player = Player.Instance;
+        }
+        // PUT ALL LOGIC HERE
+        if (player.GetState() == PlayerState.Trapped)
+        {   
+            MashTrap();
+        }
 
         if (Input.GetKeyDown(Controls.Pause))  // Pauses game when player hits esc
         {

@@ -96,12 +96,12 @@ public class PuzzleTargetScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Box")  // if box passes collides with target
+        if (other.gameObject.CompareTag("Box"))  // if box passes collides with target
         {
             HandleBox();  // has to happen here ?? in update, box triggers in forest don't work properly.
             BoxTriggered = true;
         }
-        if (other.gameObject.tag == "Player")  // if player collides with target
+        if (other.gameObject.CompareTag("Player"))  // if player collides with target
         {
             PlayerTriggered = true;
         }
@@ -200,9 +200,12 @@ public class PuzzleTargetScript : MonoBehaviour
         // changes an objects layer to the one passed through by the string Layer.
         // For example, used to change box's layer to Interactable, allowing the player to NOT be blocked by the box.
         // Allows to switch from box preventing player passing by / through to allowing player to pass through.
-
-        AffectedObject.layer = LayerMask.NameToLayer(Layer);
-        PlayerPrefs.SetString("boxlayer", Layer);
+        if (PlayerPrefs.HasKey("boxlayer"))
+        {
+            PlayerPrefs.SetString("boxlayer", Layer);
+        } else {
+            AffectedObject.layer = LayerMask.NameToLayer(Layer);
+        }
     }
 
     private void PlayNoise(AudioClip Noise)

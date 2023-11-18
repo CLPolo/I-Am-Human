@@ -65,7 +65,7 @@ public class LevelLoader : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)  // since all doors will be interactable, do we nned this ??
     {
-        if (other.tag == "Door" && !other.GetComponent<Door>().isLocked)
+        if (other.CompareTag("Door") && !other.GetComponent<Door>().isLocked)
         {
             loadScene(nextScene[getSceneName()]);
         }
