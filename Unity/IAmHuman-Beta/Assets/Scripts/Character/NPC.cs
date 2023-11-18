@@ -51,26 +51,18 @@ public class NPC : AnimatedEntity
 
     protected void HidingLatency()
     {
-        inLatency = true;
         StartCoroutine(Timer());
     }
 
     protected IEnumerator Timer()
     {
-        
-        //Debug.Log("start (in lat) = " + inLatency);
+        inLatency = true;
         yield return new WaitForSeconds(1f);
         inLatency = false;
-        PlayerPrefs.SetInt("Patrol", 1);
-        //Debug.Log("end (in lat) = " + inLatency);
+        PlayerPrefs.SetInt("finishedLatency", 1);
     }
 
-    public bool GetLatency()
-    {
-        return inLatency;
-    }
-
-    private void Flip(float x)
+    public void Flip(float x)
     {
         GetComponent<SpriteRenderer>().flipX = (x < 0);
     }

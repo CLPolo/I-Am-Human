@@ -2173,8 +2173,9 @@ MonoBehaviour:
   Sounds: []
   Unlock: 0
   NextScene: 
-  SpawnEnemy: 0
-  EnemyObject: {fileID: 0}
+  SpawnObject: 
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!4 &882772032 stripped
@@ -2323,8 +2324,9 @@ MonoBehaviour:
   Sounds: []
   Unlock: 1
   NextScene: Hallway Hub
-  SpawnEnemy: 0
-  EnemyObject: {fileID: 0}
+  SpawnObject: 
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!114 &1268332365
@@ -2744,8 +2746,9 @@ MonoBehaviour:
   Sounds: []
   Unlock: 0
   NextScene: 
-  SpawnEnemy: 0
-  EnemyObject: {fileID: 0}
+  SpawnObject: 
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!61 &1747945812
@@ -2969,8 +2972,9 @@ MonoBehaviour:
   Sounds: []
   Unlock: 0
   NextScene: 
-  SpawnEnemy: 1
-  EnemyObject: {fileID: 1067024013}
+  SpawnObject: Entity
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 1067024013}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!61 &2060647654
@@ -3399,13 +3403,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 659195641330735231, guid: 9f0ae501a97cb864e81554ae5170ce4c,
         type: 3}
+      propertyPath: DetectionRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 659195641330735231, guid: 9f0ae501a97cb864e81554ae5170ce4c,
+        type: 3}
+      propertyPath: detectionRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 659195641330735231, guid: 9f0ae501a97cb864e81554ae5170ce4c,
+        type: 3}
       propertyPath: patrol.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 659195641330735231, guid: 9f0ae501a97cb864e81554ae5170ce4c,
         type: 3}
+      propertyPath: patrol.Array.data[1].direction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 659195641330735231, guid: 9f0ae501a97cb864e81554ae5170ce4c,
+        type: 3}
       propertyPath: patrol.Array.data[0].location.x
-      value: 5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 659195641330735231, guid: 9f0ae501a97cb864e81554ae5170ce4c,
         type: 3}
@@ -3420,7 +3439,7 @@ PrefabInstance:
     - target: {fileID: 659195641330735231, guid: 9f0ae501a97cb864e81554ae5170ce4c,
         type: 3}
       propertyPath: patrol.Array.data[1].location.x
-      value: -4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 659195641330735231, guid: 9f0ae501a97cb864e81554ae5170ce4c,
         type: 3}

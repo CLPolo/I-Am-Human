@@ -42,9 +42,10 @@ public class InteractableObjectScript : MonoBehaviour
     public bool Unlock;
     public string NextScene = null;
 
-    [Header("Spawn Enemy Post Interact")]
-    public bool SpawnEnemy = false;
-    public GameObject EnemyObject = null;
+    [Header("Spawn Object (or enemy) Post Interact")]
+    public string SpawnObject = "Entity";
+    public GameObject ObjectSpawned = null;
+    public GameObject EntitySpawn = null;
 
     // Booleans
     private int textIndex = 0;
@@ -94,7 +95,6 @@ public class InteractableObjectScript : MonoBehaviour
         {
             PressedInteract = true;
             PromptCanvas.SetActive(false);  // turns off 'interact' prompt
-            CheckPickupInteractions();  // checks first, that way text doesn't activate
             CheckAndDisplayInfo();  // checks if there's info to display, if so does that
             if (PlaySound && !NoisePlayed)  // used rn for cabin door sounds
             {
@@ -111,7 +111,7 @@ public class InteractableObjectScript : MonoBehaviour
             }
             RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
             PickupSet();
-            EnemyCheck();
+            if (SpawnObject == "Entity") { SpawnObjectCheck(); } // spawns entity objects
         }
         if (PressedInteract) { CheckAndDisplayInfo(); }  // displays info even if outside of collider, only needed if not frozen
         CheckPickupInteractions();
@@ -296,7 +296,6 @@ public class InteractableObjectScript : MonoBehaviour
         }
     }
 
-
     private void RemoveSprite()
     {
         // removes sprites and turns off puzzle target script (used for drawer in kitchen, goes from closed to open).
@@ -319,32 +318,44 @@ public class InteractableObjectScript : MonoBehaviour
             }
             else if (PlayerPrefs.GetInt("escaped") == 1)
             {
-                SetObjectActive(EnemyObject, true); // hijacking enemy object (will update to general object spawn) to turn on other version of kitchen door
+                SetObjectActive(ObjectSpawned, true); // turn on other version of kitchen door
                 SetObjectActive(this.gameObject, false);  // turns itself off
             }
         }
+
+        if (PlayerPrefs.GetInt("Flashlight") == 1 && SceneManager.GetActiveScene().name == "Basement")  // When player grabs the flashlight
+        {
+            PlayerPrefs.SetInt("DoorClosed", 1);  // door is now closed
+            if (PlayerPrefs.GetInt("DoorClosed") == 1)
+            {
+                SpawnObjectCheck();  // spawns closed door
+                if (this.gameObject.name == "Cellar Door (OPENED)")  // turns off open one, and will keep it off everytime you re-enter the scene
+                {
+                    this.gameObject.SetActive(false);
+                }
+            }
+        }
+
     }
 
     private void SetObjectActive(GameObject obj, bool State)
     {
+        // sets an object active or not depending on State
+
         obj.gameObject.SetActive(State);
     }
 
-    private void EnemyCheck()
+    private void SpawnObjectCheck()
     {
-        // checks if enemy should be spawned, then spawns them
+        // checks if enemy should be 'spawned' (turned on), then spawns them.
 
-        if (SpawnEnemy && EnemyObject != null)
+        if (SpawnObject == "Object" && ObjectSpawned != null)
         {
-            EnemySpawn();
+            SetObjectActive(ObjectSpawned.gameObject, true);
+        }
+        else if (SpawnObject == "Entity" && EntitySpawn != null)
+        {
+            SetObjectActive(EntitySpawn.gameObject, true);
         }
     }
-
-    private void EnemySpawn()
-    {
-        // 'spawns' enemy by turning on an enemy object
-
-        EnemyObject.SetActive(true);
-    }
-
 }

@@ -661,7 +661,6 @@ MonoBehaviour:
   DeactivateTriggerObject: {fileID: 0}
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
-  DeleteObject: 0
   SpawnObject: 0
   TurnOffObject: 0
   NoiseTrigger: 0
@@ -671,7 +670,6 @@ MonoBehaviour:
   FreezePlayerText: 0
   FreezePlayerOnly: 1
   UnlockDoor: 0
-  FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
   TrappedText: 0
@@ -682,7 +680,6 @@ MonoBehaviour:
   TextObject: {fileID: 0}
   TextCanvas: {fileID: 0}
   TextDisplayOnce: 0
-  DisplayTimeText: 0
   DisplayTimeObject: 0
   DelayTime: 0
   HideTime: 0
@@ -953,7 +950,6 @@ MonoBehaviour:
   DeactivateTriggerObject: {fileID: 0}
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
-  DeleteObject: 0
   SpawnObject: 0
   TurnOffObject: 0
   NoiseTrigger: 0
@@ -963,7 +959,6 @@ MonoBehaviour:
   FreezePlayerText: 1
   FreezePlayerOnly: 0
   UnlockDoor: 0
-  FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
   TrappedText: 0
@@ -977,7 +972,6 @@ MonoBehaviour:
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
-  DisplayTimeText: 3
   DisplayTimeObject: 0
   DelayTime: 0
   HideTime: 0
@@ -1293,8 +1287,9 @@ MonoBehaviour:
   Sounds: []
   Unlock: 1
   NextScene: Basement
-  SpawnEnemy: 0
-  EnemyObject: {fileID: 0}
+  SpawnObject: Entity
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!4 &374679020
@@ -1627,7 +1622,6 @@ MonoBehaviour:
   DeactivateTriggerObject: {fileID: 1370652078}
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
-  DeleteObject: 0
   SpawnObject: 1
   TurnOffObject: 1
   NoiseTrigger: 1
@@ -1637,7 +1631,6 @@ MonoBehaviour:
   FreezePlayerText: 1
   FreezePlayerOnly: 0
   UnlockDoor: 0
-  FreezeContinuously: 0
   NoisePlayOnSpawn: 1
   SpawnDoor: 0
   TrappedText: 0
@@ -1649,7 +1642,6 @@ MonoBehaviour:
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
-  DisplayTimeText: 1
   DisplayTimeObject: 3
   DelayTime: 0
   HideTime: 3
@@ -2095,7 +2087,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01
+      value: 46.9
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -2551,7 +2543,6 @@ MonoBehaviour:
   DeactivateTriggerObject: {fileID: 0}
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
-  DeleteObject: 0
   SpawnObject: 0
   TurnOffObject: 0
   NoiseTrigger: 0
@@ -2561,7 +2552,6 @@ MonoBehaviour:
   FreezePlayerText: 0
   FreezePlayerOnly: 0
   UnlockDoor: 0
-  FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
   TrappedText: 1
@@ -2573,7 +2563,6 @@ MonoBehaviour:
   TextObject: {fileID: 1261286780}
   TextCanvas: {fileID: 660751624}
   TextDisplayOnce: 0
-  DisplayTimeText: 0
   DisplayTimeObject: 0
   DelayTime: 0
   HideTime: 0
@@ -2708,8 +2697,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7c7a88ea8c2e2681d8186bf3117f3584, type: 3}
   Unlock: 0
   NextScene: 
-  SpawnEnemy: 0
-  EnemyObject: {fileID: 0}
+  SpawnObject: Entity
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!82 &741868895
@@ -2976,8 +2966,9 @@ MonoBehaviour:
   Sounds: []
   Unlock: 0
   NextScene: 
-  SpawnEnemy: 0
-  EnemyObject: {fileID: 0}
+  SpawnObject: Entity
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!1 &781546634
@@ -3249,7 +3240,6 @@ MonoBehaviour:
   DeactivateTriggerObject: {fileID: 0}
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
-  DeleteObject: 0
   SpawnObject: 0
   TurnOffObject: 0
   NoiseTrigger: 0
@@ -3259,7 +3249,6 @@ MonoBehaviour:
   FreezePlayerText: 1
   FreezePlayerOnly: 0
   UnlockDoor: 0
-  FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
   TrappedText: 0
@@ -3272,7 +3261,6 @@ MonoBehaviour:
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
-  DisplayTimeText: 2
   DisplayTimeObject: 0
   DelayTime: 0
   HideTime: 0
@@ -3385,7 +3373,6 @@ MonoBehaviour:
   DeactivateTriggerObject: {fileID: 0}
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
-  DeleteObject: 0
   SpawnObject: 0
   TurnOffObject: 0
   NoiseTrigger: 0
@@ -3395,7 +3382,6 @@ MonoBehaviour:
   FreezePlayerText: 1
   FreezePlayerOnly: 0
   UnlockDoor: 0
-  FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
   TrappedText: 0
@@ -3407,7 +3393,6 @@ MonoBehaviour:
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
-  DisplayTimeText: 3
   DisplayTimeObject: 0
   DelayTime: 0
   HideTime: 0
@@ -4166,7 +4151,6 @@ MonoBehaviour:
   DeactivateTriggerObject: {fileID: 0}
   DoorToBeOpened: {fileID: 374679016}
   LayerSwitch: 0
-  DeleteObject: 0
   SpawnObject: 0
   TurnOffObject: 0
   NoiseTrigger: 0
@@ -4176,7 +4160,6 @@ MonoBehaviour:
   FreezePlayerText: 0
   FreezePlayerOnly: 0
   UnlockDoor: 1
-  FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 1
   TrappedText: 0
@@ -4187,7 +4170,6 @@ MonoBehaviour:
   TextObject: {fileID: 0}
   TextCanvas: {fileID: 0}
   TextDisplayOnce: 0
-  DisplayTimeText: 5
   DisplayTimeObject: 0
   DelayTime: 0
   HideTime: 0
@@ -11736,17 +11718,15 @@ MonoBehaviour:
   DeactivateTriggerObject: {fileID: 1974312822}
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
-  DeleteObject: 0
   SpawnObject: 0
   TurnOffObject: 0
   NoiseTrigger: 0
   TextTrigger: 1
   HideTimed: 0
   FreezePlayerObject: 0
-  FreezePlayerText: 0
+  FreezePlayerText: 1
   FreezePlayerOnly: 0
   UnlockDoor: 0
-  FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
   TrappedText: 0
@@ -11757,8 +11737,7 @@ MonoBehaviour:
   - It's getting closer, I should hide...
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
-  TextDisplayOnce: 1
-  DisplayTimeText: 2
+  TextDisplayOnce: 0
   DisplayTimeObject: 0
   DelayTime: 0
   HideTime: 0
@@ -12021,7 +12000,6 @@ MonoBehaviour:
   DeactivateTriggerObject: {fileID: 0}
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 1
-  DeleteObject: 0
   SpawnObject: 0
   TurnOffObject: 0
   NoiseTrigger: 0
@@ -12031,7 +12009,6 @@ MonoBehaviour:
   FreezePlayerText: 0
   FreezePlayerOnly: 0
   UnlockDoor: 0
-  FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
   TrappedText: 0
@@ -12043,7 +12020,6 @@ MonoBehaviour:
   TextObject: {fileID: 1261286780}
   TextCanvas: {fileID: 660751624}
   TextDisplayOnce: 1
-  DisplayTimeText: 5
   DisplayTimeObject: 0
   DelayTime: 0
   HideTime: 0
@@ -13315,7 +13291,6 @@ MonoBehaviour:
   DeactivateTriggerObject: {fileID: 0}
   DoorToBeOpened: {fileID: 374679016}
   LayerSwitch: 0
-  DeleteObject: 0
   SpawnObject: 0
   TurnOffObject: 0
   NoiseTrigger: 0
@@ -13325,7 +13300,6 @@ MonoBehaviour:
   FreezePlayerText: 0
   FreezePlayerOnly: 0
   UnlockDoor: 1
-  FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 1
   TrappedText: 0
@@ -13336,7 +13310,6 @@ MonoBehaviour:
   TextObject: {fileID: 0}
   TextCanvas: {fileID: 0}
   TextDisplayOnce: 0
-  DisplayTimeText: 5
   DisplayTimeObject: 0
   DelayTime: 0
   HideTime: 0
@@ -13518,8 +13491,9 @@ MonoBehaviour:
   Sounds: []
   Unlock: 0
   NextScene: 
-  SpawnEnemy: 0
-  EnemyObject: {fileID: 0}
+  SpawnObject: Entity
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!61 &1870322499
@@ -13842,8 +13816,9 @@ MonoBehaviour:
   Sounds: []
   Unlock: 0
   NextScene: 
-  SpawnEnemy: 0
-  EnemyObject: {fileID: 0}
+  SpawnObject: Entity
+  ObjectSpawned: {fileID: 0}
+  EntitySpawn: {fileID: 0}
   monsterComing: 0
   rawr: {fileID: 0}
 --- !u!1 &1922120054
@@ -14430,7 +14405,6 @@ MonoBehaviour:
   DeactivateTriggerObject: {fileID: 0}
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
-  DeleteObject: 0
   SpawnObject: 0
   TurnOffObject: 0
   NoiseTrigger: 0
@@ -14440,7 +14414,6 @@ MonoBehaviour:
   FreezePlayerText: 0
   FreezePlayerOnly: 0
   UnlockDoor: 0
-  FreezeContinuously: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
   TrappedText: 0
@@ -14452,7 +14425,6 @@ MonoBehaviour:
   TextObject: {fileID: 1261286780}
   TextCanvas: {fileID: 660751624}
   TextDisplayOnce: 1
-  DisplayTimeText: 0
   DisplayTimeObject: 0
   DelayTime: 0
   HideTime: 0
@@ -14494,7 +14466,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
