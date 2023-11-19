@@ -31,6 +31,7 @@ public class LogicScript : MonoBehaviour
 
     public Player player;
     private AudioSource audioSource;
+    public string currentScene;
 
     // TRAP
     public GameObject trappedText;
@@ -57,7 +58,7 @@ public class LogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        currentScene = SceneManager.GetActiveScene().name;
         if (player == null)
         {
             player = Player.Instance;
@@ -149,7 +150,7 @@ public class LogicScript : MonoBehaviour
         //audioSource.PlayOneShot(audioSource.clip, 0.5f)
         //AudioListener.pause = IsPaused;
         player.SetState(PlayerState.Frozen);
-        if (SceneManager.GetActiveScene().name == "Bed room")
+        if (currentScene == "Bed room")
         {
             PlayerPrefs.SetInt("Crowbar", 0);  // if you die in the bedroom after grabbing the crowbar, it will respawn on load
         }
@@ -178,7 +179,7 @@ public class LogicScript : MonoBehaviour
     public void RestartGame()
     {
         // Restarts the game by resetting scene
-        LevelLoader.Instance.loadScene(SceneManager.GetActiveScene().name);
+        LevelLoader.Instance.loadScene(currentScene);
         mashTimer = 1.5f;
         System.Threading.Thread.Sleep(100);
         Death(false);
