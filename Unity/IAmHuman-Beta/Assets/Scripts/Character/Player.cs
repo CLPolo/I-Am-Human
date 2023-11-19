@@ -38,7 +38,7 @@ public class Player : AnimatedEntity
     public static Player Instance { get { return _instance; } }
 
     [Header("Movement")]
-    public float speed = 5f;
+    private float speed = 5f;
     public const float sneakSpeed = 0.8f;
     public const float pushSpeed = 2.5f;
     public const float walkSpeed = 5f;
@@ -236,18 +236,6 @@ public class Player : AnimatedEntity
         {
             // This is when the monster sees you and you are not behind the box
             logic.Death();
-        } else if (collision.gameObject.CompareTag("TrapArmed")) {
-            logic.trapKills = true;
-            SetState(PlayerState.Trapped);
-            collision.gameObject.tag = "TrapDisarmed";
-            StartCoroutine(ResetTrap(collision));
-        }
-        else if (collision.gameObject.CompareTag("TrapArmedNoKill"))
-        {
-            logic.trapKills = false;
-            SetState(PlayerState.Trapped);
-            collision.gameObject.tag = "TrapDisarmed";
-            StartCoroutine(ResetTrap(collision));
         }
         else if (collision.gameObject.CompareTag("Key"))
         {
@@ -272,6 +260,31 @@ public class Player : AnimatedEntity
         {
             CheckHiding(Hideable);
         }
+        else if (collision.gameObject.CompareTag("TrapArmed") && !state.isOneOf(PlayerState.Pushing, PlayerState.Pulling))
+        {
+            logic.trapKills = true;
+            if (collision.gameObject.name == "Gore Pile")
+            {
+                logic.inGore = true;
+            }
+            SetState(PlayerState.Trapped);
+            collision.gameObject.tag = "TrapDisarmed";
+            StartCoroutine(ResetTrap(collision));
+        }
+        else if (collision.gameObject.CompareTag("TrapArmedNoKill") && !state.isOneOf(PlayerState.Pushing, PlayerState.Pulling))
+        {
+            logic.trapKills = false;
+            SetState(PlayerState.Trapped);
+            collision.gameObject.tag = "TrapDisarmed";
+            StartCoroutine(ResetTrap(collision));
+        }
+        if ((collision.gameObject.CompareTag("TrapArmedNoKill") || 
+            collision.gameObject.CompareTag("TrapArmed") ||
+            collision.gameObject.CompareTag("TrapDisarmed")) && state != PlayerState.Trapped)
+        {
+            // Slow the player while they are walking over something goopy i.e. mud or gore
+            speed = walkSpeed - 2f;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -284,6 +297,13 @@ public class Player : AnimatedEntity
                 // remove fog
                 Unhide(hideable);
             }
+        }
+        if (collision.gameObject.CompareTag("TrapArmedNoKill") ||
+            collision.gameObject.CompareTag("TrapArmed") ||
+            collision.gameObject.CompareTag("TrapDisarmed"))
+        {
+            // Fix the walk speed after leaving trap
+            speed = walkSpeed;
         }
     }
 
@@ -380,7 +400,15 @@ public class Player : AnimatedEntity
     {
         // After 5 seconds the trap resets (i.e. player can fall back into mud)
         yield return new WaitUntil(() => state == PlayerState.Idle);
-        yield return new WaitForSeconds(2);
+        if (collision.gameObject.name == "Gore Pile")
+        {
+            yield return new WaitForSeconds(0.2f);  // Wait for 0.2 seconds to reset gore
+            logic.inGore = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(2);  // Wait for 2 seconds to reset mud and other traps
+        }
         if (logic.trapKills)
         {
             collision.gameObject.tag = "TrapArmed";

@@ -11,7 +11,6 @@ public struct CinematicStep
 {
     public Vector3 location;
     public string statement;
-    public int direction;
     public float timeAtLocation;
 }
 
@@ -34,7 +33,6 @@ public class Monster : NPC
     private float minDiff = 0.000001f;
 
     private bool stationed = false;
-    private bool HideWithinDetect = false;
 
     // Start is called before the first frame update
     void Start()

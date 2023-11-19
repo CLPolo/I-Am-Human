@@ -163,7 +163,7 @@ public class InteractableObjectScript : MonoBehaviour
         // checks if object being interacted with is a pickup
 
         if (this.gameObject.tag.isOneOf("Flashlight", "Crowbar", "AtticKey"))  // if one of our pickups, will give us usable string for tag.
-        {   
+        {
             PlayerPrefs.SetString("Pickup", this.tag);
             isPickup = true;
 
@@ -381,7 +381,6 @@ public class InteractableObjectScript : MonoBehaviour
             }
         }
     }
-
     private void HandleAtticKey()
     {
         if (this.gameObject.name == "Attic Door")
@@ -391,7 +390,6 @@ public class InteractableObjectScript : MonoBehaviour
                 SpawnEntity = true;
                 SpawnObjectCheck();
             }
-
             TextList = null;  // won't display text that was previously on the door
             if (PressedInteract)
             {
