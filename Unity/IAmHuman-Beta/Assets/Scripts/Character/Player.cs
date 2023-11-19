@@ -206,8 +206,10 @@ public class Player : AnimatedEntity
             rb.velocity = Vector2.zero;
             moving = false;
         } else {
-            if (Input.GetKey(Controls.Left))
+            if (Input.GetKey(Controls.Left) &&
+                !(logic.currentScene == "Kitchen" && state.isOneOf(PlayerState.Pushing, PlayerState.Pulling)))
             {
+                // Jon note - I added some stuff to the if statement so the player cannot pull the body left in the Kitchen
                 rb.velocity = Vector2.left * speed;
                 movingRight = false;
             }
