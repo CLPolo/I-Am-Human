@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Threading;
@@ -12,9 +12,6 @@ using UnityEditorInternal;
 
 public class PuzzleTargetScript : MonoBehaviour
 {
-    private static PuzzleTargetScript _instance;
-    public static PuzzleTargetScript Instance { get { return _instance; } }
-
     public GameObject AffectedObject = null;  // object to be affected by trigger actions (if desired)
     public GameObject ActivateTriggerObject = null;  // trigger to be deleted / deactivated if player performs this action
     public GameObject DeactivateTriggerObject = null;
@@ -68,13 +65,6 @@ public class PuzzleTargetScript : MonoBehaviour
     void Start()
     {
         player = Player.Instance;
-
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        } else {
-            _instance = this;
-        }
     }
 
     // Update is called once per frame
@@ -106,12 +96,12 @@ public class PuzzleTargetScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Box")  // if box passes collides with target
+        if (other.gameObject.CompareTag("Box"))  // if box passes collides with target
         {
             HandleBox();  // has to happen here ?? in update, box triggers in forest don't work properly.
             BoxTriggered = true;
         }
-        if (other.gameObject.tag == "Player")  // if player collides with target
+        if (other.gameObject.CompareTag("Player"))  // if player collides with target
         {
             PlayerTriggered = true;
         }
@@ -210,9 +200,12 @@ public class PuzzleTargetScript : MonoBehaviour
         // changes an objects layer to the one passed through by the string Layer.
         // For example, used to change box's layer to Interactable, allowing the player to NOT be blocked by the box.
         // Allows to switch from box preventing player passing by / through to allowing player to pass through.
-
-        AffectedObject.layer = LayerMask.NameToLayer(Layer);
-        PlayerPrefs.SetString("boxlayer", Layer);
+        if (PlayerPrefs.HasKey("boxlayer"))
+        {
+            PlayerPrefs.SetString("boxlayer", Layer);
+        } else {
+            AffectedObject.layer = LayerMask.NameToLayer(Layer);
+        }
     }
 
     private void PlayNoise(AudioClip Noise)
@@ -269,12 +262,18 @@ public class PuzzleTargetScript : MonoBehaviour
                 // change the text & increase index
                 TextObject.GetComponent<TextMeshProUGUI>().text = TextToDisplay[textIndex];
                 textIndex++;
+
+                // play text advance sound
+                AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance");
+                player.AudioSource.PlayOneShot(clip, 0.25f);
             }
             else if (textIndex >= TextToDisplay.Count && TextObject != null)  // if no more messages
             {
                 if (FreezePlayerText) { player.SetState(PlayerState.Idle); }
                 TextPlayed = true;
                 TextCanvas.SetActive(false);  // turn of canvas (might switch to indiv text on / off w/ one canvas that's always on)
+                AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance-close");
+                player.AudioSource.PlayOneShot(clip, 0.25f);
             }
         }
     }
