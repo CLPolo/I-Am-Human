@@ -610,7 +610,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.92, y: 3.2}
+    oldSize: {x: 1.92, y: 2.56}
     newSize: {x: 5, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -718,7 +718,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.92, y: 3.2}
+    oldSize: {x: 1.92, y: 2.56}
     newSize: {x: 5, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -990,10 +990,14 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 1
   NextScene: Basement
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!4 &374679020
 Transform:
   m_ObjectHideFlags: 0
@@ -1928,10 +1932,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7b5a75d9c6e15f916a9872301678753f, type: 3}
   - {fileID: 8300000, guid: 1aefd03d2dc9ab26a934fed59cbacc21, type: 3}
   - {fileID: 8300000, guid: 7c7a88ea8c2e2681d8186bf3117f3584, type: 3}
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!82 &741868895
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2194,10 +2202,14 @@ MonoBehaviour:
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!1 &781546634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,10 +2458,14 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!1 &907597746
 GameObject:
   m_ObjectHideFlags: 0
@@ -3272,6 +3288,72 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1256598397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256598400}
+  - component: {fileID: 1256598399}
+  - component: {fileID: 1256598398}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1256598398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256598397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1256598399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256598397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1256598400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256598397}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1258834494
 GameObject:
   m_ObjectHideFlags: 0
@@ -12246,10 +12328,14 @@ MonoBehaviour:
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &1870322499
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12568,10 +12654,14 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!1 &1922120054
 GameObject:
   m_ObjectHideFlags: 0

@@ -143,11 +143,15 @@ public class LevelLoader : MonoBehaviour
         // Freezes the player while the fade in is happening.
 
         float freezeTime = HoldLonger ? (HoldFor + 0.5f) : 0.5f;
-
-        this.gameObject.GetComponent<Player>().SetState(PlayerState.Frozen);
-        yield return new WaitForSeconds(freezeTime);
-        this.gameObject.GetComponent<Player>().SetState(PlayerState.Idle);
-
+        if (player != null)
+        {
+            player.SetState(PlayerState.Frozen);
+            yield return new WaitForSeconds(freezeTime);
+            player.SetState(PlayerState.Idle);
+        }
+        //this.gameObject.GetComponent<Player>().SetState(PlayerState.Frozen);
+        //yield return new WaitForSeconds(freezeTime);
+        //this.gameObject.GetComponent<Player>().SetState(PlayerState.Idle);
     }
     public IEnumerator HoldDark()
     {
