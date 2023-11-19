@@ -76,9 +76,9 @@ public class AudioManager : MonoBehaviour
     {   
         //check if player exists
         if (p == null && Player.Instance != null)
-        {   Debug.Log("player lol");
+        {
             p = Player.Instance;
-            pA = p.AudioSource;
+            pA = p.gameObject.GetComponent<AudioSource>();
         }
 
         //check for scene change
@@ -89,8 +89,10 @@ public class AudioManager : MonoBehaviour
             ChangeScene(scene);
         }
         
-
-        CheckPlayer(p.GetState());
+        if (p != null)
+        {
+            CheckPlayer(p.GetState());
+        }
         CheckScenewide(scene);
     }
 
@@ -295,7 +297,7 @@ public class AudioManager : MonoBehaviour
     void CheckScenewide(int scene){   
 
         //Only resume other audio if cutscene isn't playing
-        if (!srcs.TryGetValue("Cutscene", out AudioSource cutscene) || !cutscene.isPlaying) {
+        if (!srcs.TryGetValue("Cutscene", out AudioSource cutscene) && !cutscene.isPlaying) {
             //check background music
             if (srcs.TryGetValue("BGM", out AudioSource bgm))
             {    
@@ -359,7 +361,7 @@ public class AudioManager : MonoBehaviour
             }
         }
         // if no longer pushing/pulling, stop the push audio
-        if (!state.isOneOf(PlayerState.Pushing, PlayerState.Pulling) && pA.isPlaying && pA.clip.name == "push-pull-loop") pA.Stop();
+        if (!state.isOneOf(PlayerState.Pushing, PlayerState.Pulling) && pA.isPlaying && pA.clip?.name == "push-pull-loop") pA.Stop();
     }
     void PlayerFootfall(PlayerState state){
         
