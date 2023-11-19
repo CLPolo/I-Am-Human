@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +37,7 @@ public class InteractableObjectScript : MonoBehaviour
     [Header("Play Sound")]
     public bool PlaySound = false;
     public List<AudioClip> Sounds;
+    public AudioSource Audio;
 
     [Header("Unlock Door")]
     public bool Unlock;
@@ -61,7 +62,7 @@ public class InteractableObjectScript : MonoBehaviour
 
     // Below Should be removed and placed into monster script
     public bool monsterComing = false;  // This is for activating Monster.cs
-    public AudioSource rawr = null;
+    
 
 
     // Start is called before the first frame update
@@ -69,6 +70,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         logic = LogicScript.Instance;
         player = Player.Instance;
+        
 
         RemovePickedUpObjects();
         PlayerPrefs.SetInt("escaped", 0);
@@ -91,7 +93,7 @@ public class InteractableObjectScript : MonoBehaviour
         {
             player = Player.Instance;
         }
-
+        if (Audio == null) Audio = GetComponent<AudioSource>();
         if (Inside && Input.GetKey(Controls.Interact) && PlayerPrefs.GetString("CollisionTagInteractable") == "Player") // if player is inside the interactable object's box collider
         {
             PressedInteract = true;
@@ -164,6 +166,7 @@ public class InteractableObjectScript : MonoBehaviour
         {
             PlayerPrefs.SetString("Pickup", this.tag);
             isPickup = true;
+
         }
     }
 
@@ -175,7 +178,19 @@ public class InteractableObjectScript : MonoBehaviour
         {
             PlayerPrefs.SetInt(PlayerPrefs.GetString("Pickup"), 1);
             this.gameObject.SetActive(false);
+            AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/item-pickup");
+            player.AudioSource.PlayOneShot(clip, 0.5f);
+            if (this.tag == "Flashlight")
+            {   
+                Audio = gameObject.GetComponent<AudioSource>();
+                Audio.loop = false;
+                Audio.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cellar-door-close-0");
+                Audio.Play();
+            }
+
+
         }
+
     }
 
     private void RemovePickedUpObjects()
@@ -250,10 +265,13 @@ public class InteractableObjectScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))  // when interact key (enter) is pressed
             {
                 if (textIndex < TextList.Count)  // if more text to go through
-                {
+                {   
                     // change the text & increase index
                     DialogueTextObject.GetComponent<TextMeshProUGUI>().text = TextList[textIndex]; 
                     textIndex++;
+                    // play text advance sound
+                    AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance");
+                    player.AudioSource.PlayOneShot(clip, 0.25f);
                 }
                 else if (textIndex >= TextList.Count && DialogueTextObject != null)  // if no more messages
                 {
@@ -262,6 +280,9 @@ public class InteractableObjectScript : MonoBehaviour
                     textIndex = 0;  // reset to start for re-interactable text prompts
                     DialogueTextObject.GetComponent<TextMeshProUGUI>().text = TextList[0];  // same as above
                     if (FreezePlayer) { player.SetState(PlayerState.Idle); }  // unfreezes player if they were frozen
+                    //play text close sound
+                    AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance-close");
+                    player.AudioSource.PlayOneShot(clip, 0.25f);
                 }
             }
         }
@@ -360,7 +381,6 @@ public class InteractableObjectScript : MonoBehaviour
             }
         }
     }
-
     private void HandleAtticKey()
     {
         if (this.gameObject.name == "Attic Door")
@@ -370,7 +390,6 @@ public class InteractableObjectScript : MonoBehaviour
                 SpawnEntity = true;
                 SpawnObjectCheck();
             }
-
             TextList = null;  // won't display text that was previously on the door
             if (PressedInteract)
             {

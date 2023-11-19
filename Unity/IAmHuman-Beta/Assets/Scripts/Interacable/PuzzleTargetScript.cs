@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Threading;
@@ -262,12 +262,18 @@ public class PuzzleTargetScript : MonoBehaviour
                 // change the text & increase index
                 TextObject.GetComponent<TextMeshProUGUI>().text = TextToDisplay[textIndex];
                 textIndex++;
+
+                // play text advance sound
+                AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance");
+                player.AudioSource.PlayOneShot(clip, 0.25f);
             }
             else if (textIndex >= TextToDisplay.Count && TextObject != null)  // if no more messages
             {
                 if (FreezePlayerText) { player.SetState(PlayerState.Idle); }
                 TextPlayed = true;
                 TextCanvas.SetActive(false);  // turn of canvas (might switch to indiv text on / off w/ one canvas that's always on)
+                AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance-close");
+                player.AudioSource.PlayOneShot(clip, 0.25f);
             }
         }
     }
