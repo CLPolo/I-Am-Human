@@ -4,13 +4,13 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -5088337885355641681
-    second: teddy_bear
+    second: lily_bear
   - first:
       213: 8754149281199294149
-    second: lily_shoe
-  - first:
-      213: -5966669313685652861
     second: deer_head
+  - first:
+      213: -667970240133171378
+    second: lily_shoe
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -96,7 +96,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: teddy_bear
+      name: lily_bear
       rect:
         serializedVersion: 2
         x: 3
@@ -104,7 +104,7 @@ TextureImporter:
         width: 9
         height: 11
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,15 +117,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_shoe
+      name: deer_head
       rect:
         serializedVersion: 2
-        x: 45
-        y: 32
-        width: 3
-        height: 2
+        x: 6
+        y: 0
+        width: 42
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,22 +138,22 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: deer_head
+      name: lily_shoe
       rect:
         serializedVersion: 2
-        x: 6
-        y: 0
-        width: 37
-        height: 23
+        x: 44
+        y: 32
+        width: 4
+        height: 4
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38afa893fd1223da0800000000000000
-      internalID: -5966669313685652861
+      spriteID: e47745c0b94eab6f0800000000000000
+      internalID: -667970240133171378
       vertices: []
       indices: 
       edges: []
