@@ -199,7 +199,7 @@ public class AudioManager : MonoBehaviour
 
             if (name == "BGM") {
                 playBGM = true;
-                nextBGM = src["BGM2"];
+                nextBGM = srcs["BGM2"];
                 //if coming from the starting forest scene, load correct audio file
                 //if(fromScene == 2){
                     s.clip = Resources.Load<AudioClip>(pathBGM + "cabin-theme-A1");
@@ -388,7 +388,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void loadNext(AudioSource s){
+    void playNext(AudioSource s){
         //This method is mainly just for switching between the sections of the cabin theme, which is why the logic is hard coded in atm
         Debug.Log("s.clip.name is " + s.clip.name);
         if (s.clip.name == "cabin-theme-A2") //A2 is a one shot, need to play A3 as soon as it's done
@@ -396,7 +396,7 @@ public class AudioManager : MonoBehaviour
             AudioClip clip = Resources.Load<AudioClip>("Sounds/Music/cabin-theme-A3");
             float remaining = GetTimeRemaining(s);
             StartCoroutine(DelayedStart(s, clip, remaining));
-            loadNextBGM = false;
+            playNextBGM = false;
         }
     }
 
