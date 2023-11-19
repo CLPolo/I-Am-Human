@@ -12,6 +12,9 @@ using UnityEngine.PlayerLoop;
 public class InteractableObjectScript : MonoBehaviour
 {
 
+    private static InteractableObjectScript _instance;
+    public static InteractableObjectScript Instance { get { return _instance; } }
+
     public LogicScript logic;
     public Player player;
 
@@ -37,6 +40,7 @@ public class InteractableObjectScript : MonoBehaviour
     [Header("Play Sound")]
     public bool PlaySound = false;
     public List<AudioClip> Sounds;
+    public AudioSource audioSource;
 
     [Header("Unlock Door")]
     public bool Unlock;
@@ -60,7 +64,7 @@ public class InteractableObjectScript : MonoBehaviour
 
     // Below Should be removed and placed into monster script
     public bool monsterComing = false;  // This is for activating Monster.cs
-    public AudioSource rawr = null;
+    
 
 
     // Start is called before the first frame update
@@ -71,6 +75,13 @@ public class InteractableObjectScript : MonoBehaviour
 
         RemovePickedUpObjects();
         PlayerPrefs.SetInt("escaped", 0);
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        } else {
+            _instance = this;
+        }
 
         // turns off all screens
         if (PromptCanvas != null)
@@ -216,7 +227,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // if there's info to display it will display it
         if (DialogueCanvas != null && TextList != null && TextList.Count > 0 && !TextHasPlayed)
-        {
+        {   
             DisplayText();
         }
         HasInteracted = true;  // Show interact prompt only once
@@ -234,9 +245,12 @@ public class InteractableObjectScript : MonoBehaviour
         // we've confirmed it's not being used and that click thru will be default. I also will rename the variables.
     
         if (TextList != null)  // if there is a list of text
-        {
+        {   
+
             if (FreezePlayer) { player.SetState(PlayerState.Frozen); }  // freezes player until they've worked thru dialogue
 
+            if (textIndex < TextList.Count)  // if more text to go through
+            {
             DialogueCanvas.SetActive(true);
             DialogueTextObject.SetActive(true);
             if (textIndex == 0)
@@ -246,12 +260,12 @@ public class InteractableObjectScript : MonoBehaviour
             }
 
             if (Input.GetKeyDown(KeyCode.Return))  // when interact key (enter) is pressed
-            {
-                if (textIndex < TextList.Count)  // if more text to go through
-                {
+            {   
                     // change the text & increase index
                     DialogueTextObject.GetComponent<TextMeshProUGUI>().text = TextList[textIndex]; 
                     textIndex++;
+                    //play the text clickthrough sound
+                    audioSource.Play();
                 }
                 else if (textIndex >= TextList.Count && DialogueTextObject != null)  // if no more messages
                 {

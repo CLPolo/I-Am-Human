@@ -12,6 +12,9 @@ using UnityEditorInternal;
 
 public class PuzzleTargetScript : MonoBehaviour
 {
+    private static PuzzleTargetScript _instance;
+    public static PuzzleTargetScript Instance { get { return _instance; } }
+
     public GameObject AffectedObject = null;  // object to be affected by trigger actions (if desired)
     public GameObject ActivateTriggerObject = null;  // trigger to be deleted / deactivated if player performs this action
     public GameObject DeactivateTriggerObject = null;
@@ -65,6 +68,13 @@ public class PuzzleTargetScript : MonoBehaviour
     void Start()
     {
         player = Player.Instance;
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        } else {
+            _instance = this;
+        }
     }
 
     // Update is called once per frame
