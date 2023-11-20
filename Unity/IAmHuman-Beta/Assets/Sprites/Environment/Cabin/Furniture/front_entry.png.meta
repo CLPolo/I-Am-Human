@@ -4,25 +4,25 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -2851968542134450633
-    second: front_door
+    second: front_entry_0
   - first:
       213: 7591111232653955957
-    second: front_door_interact
+    second: front_entry_1
   - first:
       213: 6109661358387300941
-    second: front_entry_basement
+    second: front_entry_2
   - first:
       213: 9050972669717703844
-    second: front_entry_light
+    second: front_entry_3
   - first:
       213: 4335818747649862436
-    second: front_entry_attic
+    second: front_entry_4
   - first:
       213: 5645264086627507348
-    second: front_entry_archway
+    second: front_entry_archway_left
   - first:
       213: 7106970658493304501
-    second: welcome_mat
+    second: front_entry_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -66,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -104,11 +104,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: front_door
+      name: front_entry_0
       rect:
         serializedVersion: 2
         x: 0
@@ -129,7 +141,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: front_door_interact
+      name: front_entry_1
       rect:
         serializedVersion: 2
         x: 32
@@ -150,7 +162,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: front_entry_basement
+      name: front_entry_2
       rect:
         serializedVersion: 2
         x: 54
@@ -171,7 +183,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: front_entry_light
+      name: front_entry_3
       rect:
         serializedVersion: 2
         x: 86
@@ -192,7 +204,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: front_entry_attic
+      name: front_entry_4
       rect:
         serializedVersion: 2
         x: 93
@@ -213,12 +225,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: front_entry_archway
+      name: front_entry_archway_left
       rect:
         serializedVersion: 2
         x: 128
         y: 9
-        width: 16
+        width: 8
         height: 69
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -234,7 +246,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: welcome_mat
+      name: front_entry_6
       rect:
         serializedVersion: 2
         x: 71

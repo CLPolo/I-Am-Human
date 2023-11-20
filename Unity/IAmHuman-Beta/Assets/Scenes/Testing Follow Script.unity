@@ -194,6 +194,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crawler
       objectReference: {fileID: 0}
+    - target: {fileID: 8214629693895832316, guid: 8124123ed1221654b8757dee44fb5ff8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8124123ed1221654b8757dee44fb5ff8, type: 3}
 --- !u!1001 &412970643
@@ -2563,6 +2568,26 @@ PrefabInstance:
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 776ee63835f3ca4aabe1a65ff3975395, type: 3}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4846bdb6ca1f7dee4ade5df935d88909, type: 3}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 39d69e4f9d2569f74bd7e432f2d72706, type: 3}
     - target: {fileID: 948246213204472780, guid: 18275c16382c20d488778db66826b372,
         type: 3}
       propertyPath: m_Name
@@ -2571,7 +2596,7 @@ PrefabInstance:
     - target: {fileID: 948246213204472780, guid: 18275c16382c20d488778db66826b372,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 948246213204472782, guid: 18275c16382c20d488778db66826b372,
         type: 3}
