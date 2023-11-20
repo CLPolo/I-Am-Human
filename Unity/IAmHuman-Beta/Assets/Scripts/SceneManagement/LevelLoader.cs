@@ -45,21 +45,6 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    // temporary linear scene progression
-    private Dictionary<string, string> nextScene = new Dictionary<string, string>()  // again (see below), since all doors will be on interact, do wee need this?
-    {
-        { "Cabin Exterior + Door", "End of Vertical Slice" },
-        { "Vertical Slice - Player Freezing", "End of Vertical Slice" }
-    };
-
-    private void OnTriggerEnter2D(Collider2D other)  // since all doors will be interactable, do we nned this ??
-    {
-        if (other.CompareTag("Door") && !other.GetComponent<Door>().isLocked)
-        {
-            loadScene(nextScene[getSceneName()]);
-        }
-    }
-
     [RuntimeInitializeOnLoadMethod]
 
     public IEnumerator FreezeOnFadeIn()
@@ -170,7 +155,8 @@ public class LevelLoader : MonoBehaviour
                 key = getSceneName() + obj.name + "active";
                 if (PlayerPrefs.HasKey(key))
                 {
-                    obj.SetActive(PlayerPrefs.GetInt(key) > 0);
+                    bool active = PlayerPrefs.GetInt(key) > 0;
+                    obj.SetActive(active);
                 }
             }
         }
