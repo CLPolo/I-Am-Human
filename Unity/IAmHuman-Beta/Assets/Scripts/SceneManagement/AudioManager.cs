@@ -440,10 +440,10 @@ public class AudioManager : MonoBehaviour
         if(!pA.isPlaying && !p.touchingWall && state != PlayerState.Idle)
         {   
             //if walking or running, play appropriate footfall sfx
-            if(state.isOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
+            if(state.IsOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
             
             //if pushing an obeject, play the push loop starting at a random point in the file
-            if(state.isOneOf(PlayerState.Pushing, PlayerState.Pulling)){
+            if(state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling)){
 
                 s.clip = Resources.Load<AudioClip>(pathInteract + "push-pull-loop");
                 s.time = UnityEngine.Random.Range(0, s.clip.length/1);
@@ -494,7 +494,7 @@ public class AudioManager : MonoBehaviour
         }
         
         // if no longer pushing/pulling, stop the push audio
-        if (!state.isOneOf(PlayerState.Pushing, PlayerState.Pulling) && 
+        if (!state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling) && 
                                                          s.isPlaying && 
                                                          s.clip.name != null &&
                                                          s.clip.name == "push-pull-loop") s.Stop();
