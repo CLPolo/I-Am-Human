@@ -849,13 +849,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5966669313685652861, guid: 1ade3915d1f455e48909ad079c66672b,
+  m_Sprite: {fileID: 8754149281199294149, guid: 1ade3915d1f455e48909ad079c66672b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.72, y: 0.9}
+  m_Size: {x: 0.84, y: 0.46}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1288,6 +1288,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 1
   NextScene: Basement
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -2163,6 +2164,16 @@ PrefabInstance:
       propertyPath: fadeAnimatedCanvas
       value: 
       objectReference: {fileID: 889047327}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: objectStates.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: objectStates.Array.data[0]
+      value: 
+      objectReference: {fileID: 1643031427}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aba456c54d27d059e9a59a6bc319bc05, type: 3}
 --- !u!1 &586919105
@@ -2700,6 +2711,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -2887,9 +2899,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 8754149281199294149, guid: 1ade3915d1f455e48909ad079c66672b,
+  m_Sprite: {fileID: -667970240133171378, guid: 1ade3915d1f455e48909ad079c66672b,
     type: 3}
-  m_Color: {r: 1, g: 0.5707547, b: 0.9828314, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2930,7 +2942,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.06, y: 0.04}
+    oldSize: {x: 0.08, y: 0.08}
     newSize: {x: 0.06, y: 0.04}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2971,6 +2983,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -12350,6 +12363,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
+      propertyPath: m_Size.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e08dc188ec233a14db9d42ae744489b0,
@@ -12358,6 +12381,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671545, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -12468,6 +12496,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.y
       value: -0.08724822
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -13498,6 +13536,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -13825,6 +13864,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []

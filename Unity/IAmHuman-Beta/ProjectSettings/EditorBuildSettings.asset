@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Title Screen.unity
     guid: 550578b48eb8d15419d92ef369fc4394
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Forest-Start.unity
     guid: c993f8bc856e2ce4a8ef94e1032d9d19
   - enabled: 0

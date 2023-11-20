@@ -422,10 +422,10 @@ public class AudioManager : MonoBehaviour
         if(!pA.isPlaying && !p.touchingWall && state != PlayerState.Idle)
         {   
             //if walking or running, play appropriate footfall sfx
-            if(state.isOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
+            if(state.IsOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
             
             //if pushing an obeject, play the push loop starting at a random point in the file
-            if(state.isOneOf(PlayerState.Pushing, PlayerState.Pulling)){
+            if(state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling)){
                 srcs["MiscEntity"].clip = Resources.Load<AudioClip>(pathEntity + "Interactable/push-pull-loop");
                 srcs["MiscEntity"].time = UnityEngine.Random.Range(0, srcs["MiscEntity"].clip.length/1);
                 srcs["MiscEntity"].volume = 0.15f;
@@ -443,7 +443,7 @@ public class AudioManager : MonoBehaviour
             }
         }
         // if no longer pushing/pulling, stop the push audio
-        if (!state.isOneOf(PlayerState.Pushing, PlayerState.Pulling) && srcs["MiscEntity"].isPlaying && srcs["MiscEntity"].clip.name == "push-pull-loop") srcs["MiscEntity"].Stop();
+        if (!state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling) && srcs["MiscEntity"].isPlaying && srcs["MiscEntity"].clip.name == "push-pull-loop") srcs["MiscEntity"].Stop();
     }
     void PlayerFootfall(PlayerState state)
     {    
@@ -451,7 +451,7 @@ public class AudioManager : MonoBehaviour
         if (state == PlayerState.Running) pA.PlayOneShot(p.footstepsRun[UnityEngine.Random.Range(0, p.footstepsRun.Capacity)]);
             
         //if walking, play a random walking footfall
-         if (state == PlayerState.Walking && p.GetAnimationIndex().isOneOf(2, 11)) pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.25f);      
+         if (state == PlayerState.Walking && p.GetAnimationIndex().IsOneOf(2, 11)) pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.25f);      
     }  
 
     private float GetTimeRemaining(AudioSource s) 

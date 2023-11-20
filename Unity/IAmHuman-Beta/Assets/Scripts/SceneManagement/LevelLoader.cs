@@ -16,6 +16,9 @@ public class LevelLoader : MonoBehaviour
     public static LevelLoader Instance { get { return _instance; } }
     public Player player = null;
 
+    [Header("Scene States")]
+    public List<GameObject> objectStates = new List<GameObject>();
+
     [Header("Fade Animation")]
     public GameObject fadeAnimatedCanvas = null;
     public Animator fadeAnimator = null;
@@ -44,7 +47,6 @@ public class LevelLoader : MonoBehaviour
             StartCoroutine(FreezeOnFadeIn());
             if (HoldLonger) { StartCoroutine(HoldDark()); }  // if we are holding on black
             else { fadeAnimator.SetBool("TimeMet", true); }  // if not auto fades in
-
         }
     }
 
@@ -94,7 +96,7 @@ public class LevelLoader : MonoBehaviour
         }
         else
         {
-            SetPlayerPosition();
+            SetScenePositions();
             PlayerPrefs.SetInt("Fading", 1);
             fadeAnimator.SetInteger("EndScene", 1);  // starts the fade out animation
             yield return new WaitForSeconds(1);  // waits one second until it loads other scene so that animation has time to play
@@ -124,32 +126,36 @@ public class LevelLoader : MonoBehaviour
         return SceneManager.GetActiveScene().name;
     }
 
-    private void SetPlayerPosition()
+    private void SetScenePositions()
     {
         // sets playerprefs for player's position and scene. 
-
-        if (PlayerPrefs.GetInt("positioningIndex") == 0)  // checks every second scene to see if we're returning to the same scene we entered from
+        PlayerPrefs.SetInt(getSceneName(), 1);
+        PlayerPrefs.SetFloat(getSceneName() + "playerx", transform.position.x);
+        PlayerPrefs.SetFloat(getSceneName() + "playery", transform.position.y);
+        PlayerPrefs.SetFloat(getSceneName() + "playerz", transform.position.z);
+        foreach (GameObject obj in objectStates)
         {
-            PlayerPrefs.SetFloat("ScenePositionX", transform.position.x);
-            PlayerPrefs.SetFloat("ScenePositionY", transform.position.y);
-            PlayerPrefs.SetFloat("ScenePositionZ", transform.position.z);
-            PlayerPrefs.SetString("PreviousScene", getSceneName());
-            PlayerPrefs.SetInt("positioningIndex", 1);
+            PlayerPrefs.SetFloat(getSceneName() + obj.name + 'x', obj.transform.position.x);
+            PlayerPrefs.SetFloat(getSceneName() + obj.name + 'y', obj.transform.position.y);
+            PlayerPrefs.SetFloat(getSceneName() + obj.name + 'z', obj.transform.position.z);
         }
-        else
-        {
-            PlayerPrefs.SetInt("positioningIndex", 0);
-        }
-        Debug.Log(PlayerPrefs.GetFloat("ScenePositionX") + " " + PlayerPrefs.GetFloat("ScenePositionY") + " " + PlayerPrefs.GetFloat("ScenePositionZ") + " " + PlayerPrefs.GetString("PreviousScene") + " || " + PlayerPrefs.GetInt("positioningIndex") % 2);
     }
     private void CheckPositioning()
     {
         // Checks to see if player's positioning should be update on load, and resets it.
 
-        if (PlayerPrefs.GetString("PreviousScene") == getSceneName())
+        if (PlayerPrefs.HasKey(getSceneName()))
         {
-            Vector3 pos = new Vector3(PlayerPrefs.GetFloat("ScenePositionX"), PlayerPrefs.GetFloat("ScenePositionY"), PlayerPrefs.GetFloat("ScenePositionZ"));
+            string key = getSceneName() + "player";
+            Vector3 pos = new Vector3(PlayerPrefs.GetFloat(key+'x'), PlayerPrefs.GetFloat(key+'y'), PlayerPrefs.GetFloat(key+'z'));
             this.gameObject.transform.position = pos;
+            CameraMovement.checkBoundsAgain = true;
+
+            foreach (GameObject obj in objectStates)
+            {
+                key = getSceneName() + obj.name;
+                obj.transform.position = new Vector3(PlayerPrefs.GetFloat(key + 'x'), PlayerPrefs.GetFloat(key + 'y'), PlayerPrefs.GetFloat(key + 'z'));
+            }
         }
     }
 

@@ -86,7 +86,7 @@ public class PushLogicScript : MonoBehaviour
                 }
             }
             // if push key is not being held down and the player was pushing last frame, now they are not pushing
-            else if (player.GetState().isOneOf(PlayerState.Pulling, PlayerState.Pushing))
+            else if (player.GetState().IsOneOf(PlayerState.Pulling, PlayerState.Pushing))
             {
                 player.SetState(PlayerState.Walking);
                 box.transform.parent = null;  // removes boxHolder as parent
