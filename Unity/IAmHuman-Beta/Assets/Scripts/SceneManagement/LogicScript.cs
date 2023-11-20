@@ -154,6 +154,7 @@ public class LogicScript : MonoBehaviour
         {
             PlayerPrefs.SetInt("Crowbar", 0);  // if you die in the bedroom after grabbing the crowbar, it will respawn on load
         }
+        PlayerPrefs.SetInt("Dead", 1);
     }
 
     // disable menu is used so certain methods of closing pause menu such as

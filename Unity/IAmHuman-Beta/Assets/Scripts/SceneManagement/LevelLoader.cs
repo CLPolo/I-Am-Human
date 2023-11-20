@@ -21,20 +21,7 @@ public class LevelLoader : MonoBehaviour
     public Animator fadeAnimator = null;
     public bool HoldLonger = false;  // if we want start fade to be delayed
     public float HoldFor = 0.0f;  // how long we want screen to be dark for initially
-    
-    // fading stuff
-    // NOTE: EVEN I DONT KNOW HOW THIS CODE IS WORKING SO PROBABLY DONT TOUCH IT
-    private bool fadeOut;
-    private bool doneFade = false;
-    public AnimationCurve FadeCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(0.6f, 0.7f, -1.8f, -1.2f), new Keyframe(1, 0));
-    private float _alpha = 1;
-    private Texture2D _texture;
-    private float _time = 0;
-    // how fast should the fade effect be
-    private float _timeRatio = 1; // if you set it to 0.5, the fade will take 2x as long
-    // number of seconds to wait on black screen
-    private float _timeDark = 0; // if you want the black screen longer increase this
-
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +39,7 @@ public class LevelLoader : MonoBehaviour
 
         if (fadeAnimatedCanvas != null)
         {
+            PlayerPrefs.SetInt("Dead", 0);  // resets if player was dead
             fadeAnimator = fadeAnimatedCanvas.GetComponent<Animator>();
             StartCoroutine(FreezeOnFadeIn());
             if (HoldLonger) { StartCoroutine(HoldDark()); }  // if we are holding on black
@@ -75,68 +63,7 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    //public void Reset()
-    //{
-    //    doneFade = false;
-    //    _alpha = 1;
-    //    _time = 0;
-    //}
-
     [RuntimeInitializeOnLoadMethod]
-    // COMMENTED OUT FOR NEW FADE
-    //public void RedoFade()
-    //{
-    //    Reset();
-    //}
-
-    // COMMENTED OUT FOR NEW FADE
-    //public void OnGUI()
-    //{
-    //    if (_texture != null && _alpha > 0)
-    //    {
-    //        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _texture);
-    //    }
-    //    if (doneFade) return;
-    //    if (_texture == null) _texture = new Texture2D(1, 1);
-    //    _texture.SetPixel(0, 0, new Color(0, 0, 0, _alpha));
-    //    _texture.Apply();
-    //    _time += Time.deltaTime;
-    //    if (!fadeOut)
-    //    {
-    //        _alpha = FadeCurve.Evaluate(_time*_timeRatio);
-    //    } else {
-    //        _alpha = 1 - FadeCurve.Evaluate(_time*_timeRatio);
-    //    }
-    //    if ((_alpha <= 0 && !fadeOut) || (_alpha >= 1 && fadeOut)) {
-    //        doneFade = true;
-    //    }
-    //}
-
-    // COMMENTED OUT FOR NEW FADE
-    //public void FadeToBlack(bool _fadeOut = true)
-    //{
-    //    fadeOut = _fadeOut;
-    //    doneFade = false;
-    //    _time = 0;
-    //}
-
-    // COMMENTED OUT FOR NEW FADE
-    //public IEnumerator finishLoadScene<T>(T scene)
-    //{
-    //    yield return new WaitUntil(() => doneFade);
-    //    yield return new WaitForSeconds(_timeDark);
-    //    if (doneFade)
-    //    {
-    //        if (typeof(T) == typeof(int))
-    //        {
-    //            SceneManager.LoadScene(Convert.ToInt32(scene));
-    //        } else if (typeof(T) == typeof(string)) {
-    //            SceneManager.LoadScene(scene as string);
-    //        }
-    //        FadeToBlack(false);
-    //    }
-    //    yield return null;
-    //}
 
     public IEnumerator FreezeOnFadeIn()
     {
@@ -149,9 +76,6 @@ public class LevelLoader : MonoBehaviour
             yield return new WaitForSeconds(freezeTime);
             player.SetState(PlayerState.Idle);
         }
-        //this.gameObject.GetComponent<Player>().SetState(PlayerState.Frozen);
-        //yield return new WaitForSeconds(freezeTime);
-        //this.gameObject.GetComponent<Player>().SetState(PlayerState.Idle);
     }
     public IEnumerator HoldDark()
     {
@@ -162,23 +86,31 @@ public class LevelLoader : MonoBehaviour
     {
         // new fade finish function
 
-        SetPlayerPosition();
-        fadeAnimator.SetInteger("EndScene", 1);  // starts the fade out animation
-        yield return new WaitForSeconds(1);  // waits one second until it loads other scene so that animation has time to play
-        if (typeof(T) == typeof(int))
+        if (PlayerPrefs.GetInt("Dead") == 1)  // prevents fading on player death screen restart
         {
-            SceneManager.LoadScene(Convert.ToInt32(scene));
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            fadeAnimator.SetBool("Death", true);
         }
-        else if (typeof(T) == typeof(string))
+        else
         {
-            SceneManager.LoadScene(scene as string);
+            SetPlayerPosition();
+            fadeAnimator.SetInteger("EndScene", 1);  // starts the fade out animation
+            yield return new WaitForSeconds(1);  // waits one second until it loads other scene so that animation has time to play
+            if (typeof(T) == typeof(int))
+            {
+                SceneManager.LoadScene(Convert.ToInt32(scene));
+            }
+            else if (typeof(T) == typeof(string))
+            {
+                SceneManager.LoadScene(scene as string);
+            }
         }
+
     }
 
     // this is a wrapper around SceneManager.LoadScene to standardize scene change effects
     public void loadScene<T>(T scene)
     {
-        //FadeToBlack();  // COMMENTED OUT FOR NEW FADE
         StartCoroutine(finishLoadScene<T>(scene));
     }
 
