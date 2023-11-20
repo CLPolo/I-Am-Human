@@ -11,7 +11,8 @@ public class LevelLoader : MonoBehaviour
     public Player player = null;
 
     [Header("Scene States")]
-    public List<GameObject> objectStates = new List<GameObject>();
+    public List<GameObject> saveObjectPositions = new List<GameObject>();
+    public List<GameObject> saveObjectActive = new List<GameObject>();
 
     [Header("Fade Animation")]
     public GameObject fadeAnimatedCanvas = null;
@@ -122,16 +123,29 @@ public class LevelLoader : MonoBehaviour
 
     private void SetScenePositions()
     {
+        if (getSceneName() == "Hallway Hub")
+        {
+            PlayerPrefs.SetInt("DoneSisterCinematic", 1);
+        } else if (getSceneName() == "Basement") {
+            if (PlayerPrefs.GetInt("Flashlight") == 1)
+            {
+                PlayerPrefs.SetInt("CellarDoorClosed", 1);
+            }
+        }
         // sets playerprefs for player's position and scene. 
         PlayerPrefs.SetInt(getSceneName(), 1);
         PlayerPrefs.SetFloat(getSceneName() + "playerx", transform.position.x);
         PlayerPrefs.SetFloat(getSceneName() + "playery", transform.position.y);
         PlayerPrefs.SetFloat(getSceneName() + "playerz", transform.position.z);
-        foreach (GameObject obj in objectStates)
+        foreach (GameObject obj in saveObjectPositions)
         {
             PlayerPrefs.SetFloat(getSceneName() + obj.name + 'x', obj.transform.position.x);
             PlayerPrefs.SetFloat(getSceneName() + obj.name + 'y', obj.transform.position.y);
             PlayerPrefs.SetFloat(getSceneName() + obj.name + 'z', obj.transform.position.z);
+        }
+        foreach (GameObject obj in saveObjectActive)
+        {
+            PlayerPrefs.SetInt(getSceneName() + obj.name + "active", obj.activeSelf ? 1 : 0);
         }
     }
     private void CheckPositioning()
@@ -145,10 +159,19 @@ public class LevelLoader : MonoBehaviour
             this.gameObject.transform.position = pos;
             CameraMovement.checkBoundsAgain = true;
 
-            foreach (GameObject obj in objectStates)
+            foreach (GameObject obj in saveObjectPositions)
             {
                 key = getSceneName() + obj.name;
                 obj.transform.position = new Vector3(PlayerPrefs.GetFloat(key + 'x'), PlayerPrefs.GetFloat(key + 'y'), PlayerPrefs.GetFloat(key + 'z'));
+            }
+
+            foreach (GameObject obj in saveObjectActive)
+            {
+                key = getSceneName() + obj.name + "active";
+                if (PlayerPrefs.HasKey(key))
+                {
+                    obj.SetActive(PlayerPrefs.GetInt(key) > 0);
+                }
             }
         }
     }

@@ -43,10 +43,9 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         });
     }
 
-    private IEnumerator FinishClick(float delay = 0.1f)
+    private IEnumerator FinishClick()
     {
         yield return new WaitUntil(() => !audioSource.isPlaying);
-        Debug.Log("renabling");
         button.interactable = true;
         if (disableParentOnClick)
         {

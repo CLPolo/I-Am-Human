@@ -60,7 +60,12 @@ public class Sister : NPC
         Bark();
         if (SceneManager.GetActiveScene().name == "Hallway Hub")
         {
-            sisterAnimator.SetInteger("State", 2);
+            if (PlayerPrefs.HasKey("DoneSisterCinematic"))
+            {
+                this.gameObject.SetActive(false);
+            } else {
+                sisterAnimator.SetInteger("State", 2);
+            }
         }
         else if (GetFollowing())
         {

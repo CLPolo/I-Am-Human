@@ -942,6 +942,26 @@ PrefabInstance:
       propertyPath: fadeAnimatedCanvas
       value: 
       objectReference: {fileID: 419648475}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: saveObjectActive.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: saveObjectActive.Array.data[0]
+      value: 
+      objectReference: {fileID: 586858249}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: saveObjectActive.Array.data[1]
+      value: 
+      objectReference: {fileID: 1788591179}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: saveObjectActive.Array.data[2]
+      value: 
+      objectReference: {fileID: 582977872}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aba456c54d27d059e9a59a6bc319bc05, type: 3}
 --- !u!1 &419648475 stripped
