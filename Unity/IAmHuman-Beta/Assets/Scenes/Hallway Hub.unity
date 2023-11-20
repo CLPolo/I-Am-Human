@@ -1366,6 +1366,26 @@ PrefabInstance:
       propertyPath: objectStates.Array.data[3]
       value: 
       objectReference: {fileID: 1828829376}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: saveObjectPositions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: saveObjectPositions.Array.data[0]
+      value: 
+      objectReference: {fileID: 1312885029}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: saveObjectPositions.Array.data[1]
+      value: 
+      objectReference: {fileID: 1828829376}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: saveObjectPositions.Array.data[2]
+      value: 
+      objectReference: {fileID: 1069864000}
     - target: {fileID: 8113169828239833077, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_Size.x

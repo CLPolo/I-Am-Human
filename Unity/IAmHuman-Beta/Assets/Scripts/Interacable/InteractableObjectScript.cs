@@ -401,7 +401,7 @@ public class InteractableObjectScript : MonoBehaviour
                 float len = player.AudioSource.clip?.length ?? 0;
                 float passed = player.AudioSource.time;
 
-                if (player.AudioSource.clip.name == "cellar-door-close-0") StartCoroutine(DelayedActivate(0));// len - passed - 0.247f)); // float literal accounts for tail of audio file
+                if (player.AudioSource.clip.name == "cellar-door-close-0") StartCoroutine(DelayedActivate(len - passed - 0.247f)); // float literal accounts for tail of audio file
             }                                                                                                                        // allowing the door closing audio and visual to sync
         }
     }
