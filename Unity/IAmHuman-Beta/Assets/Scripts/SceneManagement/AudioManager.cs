@@ -423,14 +423,6 @@ public class AudioManager : MonoBehaviour
             //if walking or running, play appropriate footfall sfx
             if(state.IsOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
             
-            //if pushing an obeject, play the push loop starting at a random point in the file
-            if(state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling)){
-                srcs["MiscEntity"].clip = Resources.Load<AudioClip>(pathEntity + "Interactable/push-pull-loop");
-                srcs["MiscEntity"].time = UnityEngine.Random.Range(0, srcs["MiscEntity"].clip.length/1);
-                srcs["MiscEntity"].volume = 0.15f;
-                if (!srcs["MiscEntity"].isPlaying) srcs["MiscEntity"].Play();
-            }
-            
             if (state == PlayerState.Trapped){
                 //TO DO: specific scene trapped logic
                 // forest 1 -> mud
@@ -441,8 +433,6 @@ public class AudioManager : MonoBehaviour
                  
             }
         }
-        // if no longer pushing/pulling, stop the push audio
-        if (!state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling) && srcs["MiscEntity"].isPlaying && srcs["MiscEntity"].clip.name == "push-pull-loop") srcs["MiscEntity"].Stop();
     }
     void PlayerFootfall(PlayerState state)
     {    

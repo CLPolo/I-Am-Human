@@ -72,14 +72,15 @@ public class PushLogicScript : MonoBehaviour
                     gracePeriod = 0;
                     if (!aSource.isPlaying)
                     {
-                        box.GetComponent<AudioSource>().Play();
+                        aSource.time = UnityEngine.Random.Range(0, aSource.clip.length);
+                        aSource.Play();
                     }
                 } else if (aSource.isPlaying) {
                     // ok so this kept replaying and pausing almost every frame so i need a
                     // "grace period" of sorts to not immediately pause the first time velocity = 0
                     if (gracePeriod > 2)
                     {
-                        box.GetComponent<AudioSource>().Pause();
+                        aSource.Pause();
                     } else {
                         gracePeriod++;
                     }
