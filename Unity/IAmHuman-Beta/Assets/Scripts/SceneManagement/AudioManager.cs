@@ -188,7 +188,6 @@ public class AudioManager : MonoBehaviour
 
         //Set scene-wide audio sources
         switch (scene){
-
             //Title Screen
             case 0: 
                 // fade out all other audio when returning to title screen
@@ -198,14 +197,14 @@ public class AudioManager : MonoBehaviour
                 break;
 
             //Forest Intro
-            case 2: 
+            case 1: 
                 inCabin = false;
                 Stop(true, true);
                 ToForestStart();
                 break;
             
             //Basement
-            case 3:
+            case 2:
                 //can only enter cabin via basement; no need to set to true anywhere else
                 inCabin = true;
                 if(fromScene == 2) Stop(true, true);
@@ -213,32 +212,32 @@ public class AudioManager : MonoBehaviour
                 break;
 
             //Hallway
-            case 4: 
+            case 3: 
                 ToHallway();
                 break;
 
             //Kitchen
-            case 5:
+            case 4:
                 inKitchen = true;
                 //ToKitchen();
                 break;
 
             //Study                
-            case 6:
+            case 5:
                 break;
 
             //Bedroom                
-            case 7:
+            case 6:
                 break;
 
             //Attic
-            case 8:
+            case 7:
                 break;
 
             //Chase
-            case 9:
+            case 8:
                 break;
-            }
+        }
 
         //Set entity audio clips
         if (woodFloors.Contains(scene)){
@@ -506,7 +505,7 @@ public class AudioManager : MonoBehaviour
         if (state == PlayerState.Running) pA.PlayOneShot(p.footstepsRun[UnityEngine.Random.Range(0, p.footstepsRun.Capacity)]);
             
         //if walking, play a random walking footfall
-         if (state == PlayerState.Walking && p.GetAnimationIndex().isOneOf(2, 11)) pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.25f);      
+         if (state == PlayerState.Walking && p.GetAnimationIndex().IsOneOf(2, 11)) pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.25f);      
     }  
 
     private float GetTimeRemaining(AudioSource s) 

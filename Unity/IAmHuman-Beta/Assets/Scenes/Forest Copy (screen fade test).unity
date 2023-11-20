@@ -849,13 +849,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5966669313685652861, guid: 1ade3915d1f455e48909ad079c66672b,
+  m_Sprite: {fileID: 8754149281199294149, guid: 1ade3915d1f455e48909ad079c66672b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.72, y: 0.9}
+  m_Size: {x: 0.84, y: 0.46}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1288,6 +1288,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 1
   NextScene: Basement
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -1638,7 +1639,7 @@ MonoBehaviour:
   TrappedText: 0
   PushPullText: 0
   LayerToSwitchTo: 
-  NoiseToBePlayed: {fileID: 8300000, guid: 9ae53c57e4974eee79c16ebdc43a840b, type: 3}
+  NoiseToBePlayed: {fileID: 8300000, guid: 593af27df6b0bd92baa3d5b108874808, type: 3}
   TextToDisplay:
   - What was that?
   TextObject: {fileID: 554301874}
@@ -2163,6 +2164,16 @@ PrefabInstance:
       propertyPath: fadeAnimatedCanvas
       value: 
       objectReference: {fileID: 889047327}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: objectStates.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: objectStates.Array.data[0]
+      value: 
+      objectReference: {fileID: 1643031427}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aba456c54d27d059e9a59a6bc319bc05, type: 3}
 --- !u!1 &586919105
@@ -2693,13 +2704,14 @@ MonoBehaviour:
   FreezePlayer: 1
   PlaySound: 1
   Sounds:
-  - {fileID: 8300000, guid: 4286549cff6719f08ac1d227d26e1bf7, type: 3}
-  - {fileID: 8300000, guid: 7b5a75d9c6e15f916a9872301678753f, type: 3}
-  - {fileID: 8300000, guid: 1aefd03d2dc9ab26a934fed59cbacc21, type: 3}
-  - {fileID: 8300000, guid: 7c7a88ea8c2e2681d8186bf3117f3584, type: 3}
+  - {fileID: 8300000, guid: 658ceef22356d3babb5e085a768dd8d5, type: 3}
+  - {fileID: 8300000, guid: 8f7087400b6ec2443be7326e0fcce55d, type: 3}
+  - {fileID: 8300000, guid: 4665dd1198b27e2308d1ccfc5c176dce, type: 3}
+  - {fileID: 8300000, guid: d4473471f4ea3fc1c809c73bfb78b7ce, type: 3}
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -2887,9 +2899,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 8754149281199294149, guid: 1ade3915d1f455e48909ad079c66672b,
+  m_Sprite: {fileID: -667970240133171378, guid: 1ade3915d1f455e48909ad079c66672b,
     type: 3}
-  m_Color: {r: 1, g: 0.5707547, b: 0.9828314, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2930,7 +2942,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.06, y: 0.04}
+    oldSize: {x: 0.08, y: 0.08}
     newSize: {x: 0.06, y: 0.04}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2971,6 +2983,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -12350,6 +12363,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
+      propertyPath: m_Size.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e08dc188ec233a14db9d42ae744489b0,
@@ -12358,6 +12381,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671545, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -12471,6 +12499,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.48
       objectReference: {fileID: 0}
@@ -12498,7 +12536,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 3d85109d31b1ec64792ac493cd64dda3,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 761c2ea2dd8bab6feb44709e01e9ad62, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4846bdb6ca1f7dee4ade5df935d88909, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1
@@ -13498,6 +13536,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -13825,6 +13864,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -14476,7 +14516,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}

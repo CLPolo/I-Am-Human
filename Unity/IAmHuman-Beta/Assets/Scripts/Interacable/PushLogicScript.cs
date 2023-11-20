@@ -72,21 +72,22 @@ public class PushLogicScript : MonoBehaviour
                     gracePeriod = 0;
                     if (!aSource.isPlaying)
                     {
-                        box.GetComponent<AudioSource>().Play();
+                        aSource.time = UnityEngine.Random.Range(0, aSource.clip.length);
+                        aSource.Play();
                     }
                 } else if (aSource.isPlaying) {
                     // ok so this kept replaying and pausing almost every frame so i need a
                     // "grace period" of sorts to not immediately pause the first time velocity = 0
                     if (gracePeriod > 2)
                     {
-                        box.GetComponent<AudioSource>().Pause();
+                        aSource.Pause();
                     } else {
                         gracePeriod++;
                     }
                 }
             }
             // if push key is not being held down and the player was pushing last frame, now they are not pushing
-            else if (player.GetState().isOneOf(PlayerState.Pulling, PlayerState.Pushing))
+            else if (player.GetState().IsOneOf(PlayerState.Pulling, PlayerState.Pushing))
             {
                 player.SetState(PlayerState.Walking);
                 box.transform.parent = null;  // removes boxHolder as parent

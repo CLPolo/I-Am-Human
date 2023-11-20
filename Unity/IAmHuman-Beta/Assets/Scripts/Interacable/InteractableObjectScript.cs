@@ -43,6 +43,7 @@ public class InteractableObjectScript : MonoBehaviour
     [Header("Unlock Door")]
     public bool Unlock;
     public string NextScene = null;
+    public int NextSceneIndex = -1;
 
     [Header("Spawn Object (or enemy) Post Interact")]
     public bool SpawnObject = false;
@@ -109,7 +110,7 @@ public class InteractableObjectScript : MonoBehaviour
             if (Unlock && !triggered) // triggered prevented a billion calls to level loader during the fade out, which prevented the positioning stuff from working properly
             {
                 triggered = true;
-                UnlockDoor(NextScene);
+                UnlockDoor();
             }
             if (removeSprite)
             {
@@ -175,7 +176,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // checks if object being interacted with is a pickup
 
-        if (this.gameObject.tag.isOneOf("Flashlight", "Crowbar", "AtticKey"))  // if one of our pickups, will give us usable string for tag.
+        if (this.gameObject.tag.IsOneOf("Flashlight", "Crowbar", "AtticKey"))  // if one of our pickups, will give us usable string for tag.
         {
             PlayerPrefs.SetString("Pickup", this.tag);
             isPickup = true;
@@ -187,7 +188,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // sets appropriate player pref to reflect that pickup has been grabbed
 
-        if (isPickup && PlayerPrefs.GetString("Pickup").isOneOf("Flashlight", "Crowbar", "AtticKey")) // if one of our pickups, it will set playerprefs of that to 1 (true).
+        if (isPickup && PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight", "Crowbar", "AtticKey")) // if one of our pickups, it will set playerprefs of that to 1 (true).
         {
             PlayerPrefs.SetInt(PlayerPrefs.GetString("Pickup"), 1);
             this.gameObject.SetActive(false);
@@ -206,7 +207,8 @@ public class InteractableObjectScript : MonoBehaviour
     private void RemovePickedUpObjects()
     {
         // ensures they won't spawn on re-entry of a room if they were picked up
-        if (this.gameObject.tag.isOneOf("Flashlight", "Crowbar", "AtticKey"))
+
+        if (this.gameObject.tag.IsOneOf("Flashlight", "Crowbar", "AtticKey"))
         {
             if (PlayerPrefs.GetInt(this.gameObject.tag) == 1)
             {
@@ -297,14 +299,19 @@ public class InteractableObjectScript : MonoBehaviour
         }
     }
 
-    private void UnlockDoor(string NextScene)
+    private void UnlockDoor()
     {
         // Upon door interact, as long as it is unlocked and interactable, will freeze player (during fade out anim) and load next scene.
 
-        if (NextScene != null && this.GetComponent<Door>().IsInteractable == true)
+        if (this.GetComponent<Door>().IsInteractable == true)
         {
-            player.SetState(PlayerState.Frozen);
-            LevelLoader.Instance.loadScene(NextScene);
+            if (NextSceneIndex >= 0) {
+                player.SetState(PlayerState.Frozen);
+                LevelLoader.Instance.loadScene(NextSceneIndex);
+            } else if (!NextScene.IsNullOrEmpty()) {
+                player.SetState(PlayerState.Frozen);
+                LevelLoader.Instance.loadScene(NextScene);
+            }
         }
 
     }
@@ -414,7 +421,7 @@ public class InteractableObjectScript : MonoBehaviour
             {
                 this.GetComponent<Door>().IsInteractable = true;
                 Unlock = true;
-                UnlockDoor(NextScene);
+                UnlockDoor();
             }
         }
     }

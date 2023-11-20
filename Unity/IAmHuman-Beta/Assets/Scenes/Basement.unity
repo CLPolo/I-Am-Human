@@ -318,6 +318,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 1
   NextScene: Hallway Hub
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -440,7 +441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152853898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.8154378, y: -0.1, z: 1.5605469}
+  m_LocalPosition: {x: 2.8154378, y: 0.11110564, z: 1.5605469}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 856827792}
@@ -695,7 +696,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.07
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -2516,11 +2517,11 @@ MonoBehaviour:
   Sounds: []
   Audio: {fileID: 0}
   Unlock: 1
-  NextScene: Forest Chase
-  SpawnObject: 1
+  NextScene: 
+  NextSceneIndex: 1
+  SpawnObject: 0
   SpawnEntity: 0
-  ObjectsSpawned:
-  - {fileID: 1788591179}
+  ObjectsSpawned: []
   EntitySpawn: []
   monsterComing: 0
 --- !u!212 &586858252
@@ -2612,7 +2613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8212f5bf452ef79428680c26e56ebfdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLocked: 1
+  isLocked: 0
   IsInteractable: 1
 --- !u!1001 &651734526
 PrefabInstance:
@@ -3255,7 +3256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701560418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5644376, y: -0.04110565, z: 1.5605469}
+  m_LocalPosition: {x: 3.5644376, y: 0.17, z: 1.5605469}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1626793662}
@@ -3292,11 +3293,12 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
-  SpawnObject: 0
+  NextSceneIndex: -1
+  SpawnObject: 1
   SpawnEntity: 0
-  ObjectsSpawned: []
-  EntitySpawn:
-  - {fileID: 0}
+  ObjectsSpawned:
+  - {fileID: 1788591179}
+  EntitySpawn: []
   monsterComing: 0
 --- !u!61 &1701560422
 BoxCollider2D:
@@ -3500,6 +3502,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []

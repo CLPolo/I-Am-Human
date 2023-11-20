@@ -164,6 +164,8 @@ public class Player : AnimatedEntity
                 break;
             case PlayerState.Running:
                 speed = runSpeed;
+                DefaultAnimationCycle[0] = idleWalk;
+                currentCycle = runCycle;
                 break;
             case PlayerState.Pushing:
                 speed = pushSpeed;
@@ -196,7 +198,7 @@ public class Player : AnimatedEntity
     {
         if (!Input.GetKey(Controls.Right) && !Input.GetKey(Controls.Left))
         {
-            if (state.isOneOf(PlayerState.Walking, PlayerState.Running))
+            if (state.IsOneOf(PlayerState.Walking, PlayerState.Running))
             {
                 SetState(PlayerState.Idle);
             }
@@ -204,7 +206,7 @@ public class Player : AnimatedEntity
             moving = false;
         } else {
             if (Input.GetKey(Controls.Left) &&
-                !(logic.currentScene == "Kitchen" && state.isOneOf(PlayerState.Pushing, PlayerState.Pulling)))
+                !(logic.currentScene == "Kitchen" && state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling)))
             {
                 // Jon note - I added some stuff to the if statement so the player cannot pull the body left in the Kitchen
                 rb.velocity = Vector2.left * speed;
@@ -215,9 +217,9 @@ public class Player : AnimatedEntity
                 rb.velocity = Vector2.right * speed;
                 movingRight = true;
             }
-            if (!state.isOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped, PlayerState.Frozen))
+            if (!state.IsOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped, PlayerState.Frozen))
             {
-                if (false) // temporarily disabling running like this xd // Input.GetKey(Controls.Run))
+                if (Input.GetKey(Controls.Run) && logic.currentScene.IsOneOf("Attic", "Forest Chase"))
                 {
                     SetState(PlayerState.Running);
                 }
@@ -226,7 +228,7 @@ public class Player : AnimatedEntity
                     SetState(PlayerState.Walking);
                 }
             }
-            moving = !state.isOneOf(PlayerState.Trapped, PlayerState.Frozen);
+            moving = !state.IsOneOf(PlayerState.Trapped, PlayerState.Frozen);
             CheckFlip();
         }
     }
@@ -261,7 +263,7 @@ public class Player : AnimatedEntity
         {
             CheckHiding(Hideable);
         }
-        else if (collision.gameObject.CompareTag("TrapArmed") && !state.isOneOf(PlayerState.Pushing, PlayerState.Pulling))
+        else if (collision.gameObject.CompareTag("TrapArmed") && !state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling))
         {
             logic.trapKills = true;
             if (collision.gameObject.name == "Gore Pile")
@@ -272,7 +274,7 @@ public class Player : AnimatedEntity
             collision.gameObject.tag = "TrapDisarmed";
             StartCoroutine(ResetTrap(collision));
         }
-        else if (collision.gameObject.CompareTag("TrapArmedNoKill") && !state.isOneOf(PlayerState.Pushing, PlayerState.Pulling))
+        else if (collision.gameObject.CompareTag("TrapArmedNoKill") && !state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling))
         {
             logic.trapKills = false;
             SetState(PlayerState.Trapped);
@@ -310,7 +312,7 @@ public class Player : AnimatedEntity
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!LayerMask.LayerToName(collision.gameObject.layer).isOneOf("Entity", "Interactable", "Floor")
+        if (!LayerMask.LayerToName(collision.gameObject.layer).IsOneOf("Entity", "Interactable", "Floor")
             && !collision.gameObject.CompareTag("Box"))
         {
             touchingWall = true;
@@ -319,7 +321,7 @@ public class Player : AnimatedEntity
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (!LayerMask.LayerToName(collision.gameObject.layer).isOneOf("Entity", "Interactable", "Floor")
+        if (!LayerMask.LayerToName(collision.gameObject.layer).IsOneOf("Entity", "Interactable", "Floor")
             && !collision.gameObject.CompareTag("Box"))
         {
             touchingWall = false;
@@ -351,7 +353,7 @@ public class Player : AnimatedEntity
     private void CheckFlip()
     {
         // Checks if player needs to be flipped (i.e. if the player is not facing the direction they are moving)
-        if (!state.isOneOf(PlayerState.Pushing, PlayerState.Pulling, PlayerState.Frozen) && !logic.IsPaused) // if not pushing and facing right and not paused or frozen (timeScale is 1), flips
+        if (!state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling, PlayerState.Frozen) && !logic.IsPaused) // if not pushing and facing right and not paused or frozen (timeScale is 1), flips
         {
             if (facingRight != movingRight) // if facing right and moving left OR facing left and moving right, flips
             {
