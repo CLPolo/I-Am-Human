@@ -427,12 +427,16 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 1
   SpawnEntity: 0
   ObjectsSpawned:
   - {fileID: 2006762649}
   EntitySpawn:
   - {fileID: 0}
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!1 &629600443
 GameObject:
@@ -1381,11 +1385,15 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 1
   NextScene: Hallway Hub
+  NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 0}
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!114 &1589239923
 MonoBehaviour:
@@ -2801,7 +2809,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006762649}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.597, y: 0.47, z: 0}
+  m_LocalPosition: {x: 2.597, y: 0.27, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1571245135}
@@ -2846,7 +2854,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 258260131048083505, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
+  m_Sprite: {fileID: 1095141833252711340, guid: 50c02617f89f9d142b18e800f9145004,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2871,8 +2880,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
   player: {fileID: 0}
-  Default: {fileID: 258260131048083505, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
-  Outline: {fileID: 928198207591277937, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
+  Default: {fileID: 1095141833252711340, guid: 50c02617f89f9d142b18e800f9145004, type: 3}
+  Outline: {fileID: 1095141833252711340, guid: 50c02617f89f9d142b18e800f9145004, type: 3}
   removeSprite: 0
   PromptTextObject: {fileID: 150503878}
   PromptCanvas: {fileID: 958308840}
@@ -2887,11 +2896,15 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 0}
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &2006762653
 BoxCollider2D:
@@ -2910,7 +2923,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.1, y: 0.24}
+    oldSize: {x: 0.18, y: 0.08}
     newSize: {x: 0.1, y: 0.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

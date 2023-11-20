@@ -108,7 +108,7 @@ public class Sister : NPC
     void LilyFootfall()
     {
         //if walking, play a random footfall
-        if (sisterAnimator.GetInteger("State") == 1 && GetComponent<SpriteRenderer>().sprite.name.IsOneOf("lily_walking_sprites_2", "lily_walking_sprites_11"))
+        if (sisterAnimator.GetInteger("State") == 1 && GetComponent<SpriteRenderer>().sprite.name.IsOneOf("lily_walking_sprites_2", "lily_walking_sprites_11") && !sisterAudio.isPlaying)
         {
             sisterAudio.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)], 0.25f);
         }

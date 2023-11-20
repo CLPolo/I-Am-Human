@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 948246213204472783}
   - component: {fileID: 948246213204472779}
   - component: {fileID: -9043176289080446307}
+  - component: {fileID: 2059837128050959846}
   m_Layer: 9
   m_Name: Sister
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   Framerate: 12
   SpriteRenderer: {fileID: 948246213204472782}
   speed: 3
+  detectRange: -1
   walkCycle:
   - {fileID: 2366196539303066041, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
   - {fileID: -1285610294072581339, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
@@ -74,7 +76,15 @@ MonoBehaviour:
   - {fileID: 5779285700705985889, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
   DefaultSprite: {fileID: 1839722279949751616, guid: 1dc1317c15ecd6f46aa91315bcac2884,
     type: 3}
-  footstepsWalk: []
+  footstepsWalk:
+  - {fileID: 8300000, guid: 8c187e4b1afea8046bcd7f64f1d8c51f, type: 3}
+  - {fileID: 8300000, guid: d3bbd397c54adde6d97d73691f486138, type: 3}
+  - {fileID: 8300000, guid: df32667190a9a1498aa3fbcb28019bb8, type: 3}
+  - {fileID: 8300000, guid: 3c3b6eda4aebc6deb91b148a1199f3be, type: 3}
+  - {fileID: 8300000, guid: e175fd37f5e5ecbf495e6ae500806494, type: 3}
+  - {fileID: 8300000, guid: 191c8a0cd734d194f878cf028dd83895, type: 3}
+  - {fileID: 8300000, guid: 03b61afd21dd40c72afe208b7385aadf, type: 3}
+  - {fileID: 8300000, guid: 95456892630f0337d8e70ecd64ee4237, type: 3}
   footstepsRun: []
   maxTimeBetweenBarks: 10
   minTimeBetweenBarks: 50
@@ -274,3 +284,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &2059837128050959846
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948246213204472780}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 30ec58585d636f649ac2ff23dcf62e4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

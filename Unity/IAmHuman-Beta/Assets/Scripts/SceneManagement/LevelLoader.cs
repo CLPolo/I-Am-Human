@@ -72,9 +72,8 @@ public class LevelLoader : MonoBehaviour
         // Freezes the player while the fade in is happening.
         PlayerPrefs.SetInt("Fading", 1);
         float freezeTime = HoldLonger ? (HoldFor + 0.5f) : 0.5f;
-        if (player != null)
+        if (player != null && getSceneName() != "Hallway Hub")  // would prevent player freezing for lily cutscene (the hallway hub check)
         {
-            Debug.Log("nope");
             player.SetState(PlayerState.Frozen);
             yield return new WaitForSeconds(freezeTime);
             player.SetState(PlayerState.Idle);
