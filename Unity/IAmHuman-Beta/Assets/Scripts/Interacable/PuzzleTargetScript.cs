@@ -382,7 +382,10 @@ public class PuzzleTargetScript : MonoBehaviour
         // will turn text off after X amount of seconds (currently useful for push/pull text)
 
         yield return new WaitForSeconds(Seconds);
-        TextObject.SetActive(false);
+        if (PlayerTriggered)  // prevents collision with other prompt after from turning that prompt off, and instead would just update the text
+        {
+            TextObject.SetActive(false);
+        }
     }
 
 }

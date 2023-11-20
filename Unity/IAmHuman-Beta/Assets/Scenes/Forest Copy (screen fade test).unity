@@ -1639,7 +1639,7 @@ MonoBehaviour:
   TrappedText: 0
   PushPullText: 0
   LayerToSwitchTo: 
-  NoiseToBePlayed: {fileID: 8300000, guid: 9ae53c57e4974eee79c16ebdc43a840b, type: 3}
+  NoiseToBePlayed: {fileID: 8300000, guid: 593af27df6b0bd92baa3d5b108874808, type: 3}
   TextToDisplay:
   - What was that?
   TextObject: {fileID: 554301874}
@@ -2090,7 +2090,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.01
+      value: 97.23
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -2704,10 +2704,10 @@ MonoBehaviour:
   FreezePlayer: 1
   PlaySound: 1
   Sounds:
-  - {fileID: 8300000, guid: 4286549cff6719f08ac1d227d26e1bf7, type: 3}
-  - {fileID: 8300000, guid: 7b5a75d9c6e15f916a9872301678753f, type: 3}
-  - {fileID: 8300000, guid: 1aefd03d2dc9ab26a934fed59cbacc21, type: 3}
-  - {fileID: 8300000, guid: 7c7a88ea8c2e2681d8186bf3117f3584, type: 3}
+  - {fileID: 8300000, guid: 658ceef22356d3babb5e085a768dd8d5, type: 3}
+  - {fileID: 8300000, guid: 8f7087400b6ec2443be7326e0fcce55d, type: 3}
+  - {fileID: 8300000, guid: 4665dd1198b27e2308d1ccfc5c176dce, type: 3}
+  - {fileID: 8300000, guid: d4473471f4ea3fc1c809c73bfb78b7ce, type: 3}
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
