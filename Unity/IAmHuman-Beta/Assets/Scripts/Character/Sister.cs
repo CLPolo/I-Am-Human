@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Sister : NPC
 {
@@ -29,28 +30,34 @@ public class Sister : NPC
     private Animator sisterAnimator;
     private float untilDist = 3f;
 
-
     // Start is called before the first frame update
     void Start()
     {
+
         sisterAudio = GetComponent<AudioSource>();
         sisterAnimator = GetComponent<Animator>();
-        //AnimationSetup();  (ONLY NEEDED IF DECIDE NOT TO USE ANIMATOR)
+
         BarkReset();  // Bark will happen randomly every 10-30 seconds
         SetupNPC(speed, 3f, 1f);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (player ==  null)
         {
             player = Player.Instance;
         }
-        //AnimationUpdate();  (ONLY NEEDED IF DECIDE NOT TO USE ANIMATOR)
+
         FollowPlayer();
         Bark();
-        if (GetFollowing())
+        if (SceneManager.GetActiveScene().name == "Hallway Hub")
+        {
+            sisterAnimator.SetInteger("State", 2);
+        }
+        else if (GetFollowing())
         {
             sisterAnimator.SetInteger("State", 1);
         }
@@ -58,6 +65,12 @@ public class Sister : NPC
         {
             sisterAnimator.SetInteger("State", 0);
         }
+
+        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("LilyHallwayCutscene") && !sisterAudio.isPlaying)
+        {
+            sisterAudio.PlayOneShot((AudioClip)Resources.Load("Sounds/SoundEffects/Environment/Cabin/Misc/scare-lily-away"), 0.25f);
+        }
+        LilyFootfall();
     }
 
     private void Bark()
@@ -77,6 +90,15 @@ public class Sister : NPC
         if (barks.Count > 0 && sisterAudio != null)
         {
             sisterAudio.clip = barks[(int)Random.Range(0, barks.Count - 0.1f)];
+        }
+    }
+
+    void LilyFootfall()
+    {
+        //if walking, play a random footfall
+        if (sisterAnimator.GetInteger("State") == 1 && GetComponent<SpriteRenderer>().sprite.name.IsOneOf("lily_walking_sprites_2", "lily_walking_sprites_11"))
+        {
+            sisterAudio.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)], 0.25f);
         }
     }
 }
