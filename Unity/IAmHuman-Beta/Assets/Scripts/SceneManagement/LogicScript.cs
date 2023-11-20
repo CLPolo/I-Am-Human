@@ -76,6 +76,7 @@ public class LogicScript : MonoBehaviour
         {
             TogglePause();
         }
+        CheckCutscenes();
     }
 
     public void MashTrap()
@@ -201,4 +202,27 @@ public class LogicScript : MonoBehaviour
         PlayerPrefs.DeleteAll(); // might mess w/ box stuff
     }
 
+    public void CheckCutscenes()
+    {
+        Debug.Log(player.GetState());
+        if (currentScene == "Forest Chase")
+        {
+            if (PlayerPrefs.GetInt("ChaseStartDone") != 1)
+            {
+                player.SetState(PlayerState.Frozen);
+                ChaseStartCutscene();
+            }
+        }
+    }
+
+    public void ChaseStartCutscene()
+    {
+        // This is the cutscene of the player jumpin out da window
+        if (player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("EndOfStartChaseAnimation"))
+        {
+            player.gameObject.GetComponent<Animator>().enabled = false;
+            PlayerPrefs.SetInt("ChaseStartDone", 1);
+            player.SetState(PlayerState.Idle);
+        }
+    }
 }

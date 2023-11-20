@@ -165,6 +165,8 @@ public class Player : AnimatedEntity
                 break;
             case PlayerState.Running:
                 speed = runSpeed;
+                DefaultAnimationCycle[0] = idleWalk;
+                currentCycle = runCycle;
                 break;
             case PlayerState.Pushing:
                 speed = pushSpeed;
@@ -218,7 +220,7 @@ public class Player : AnimatedEntity
             }
             if (!state.IsOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped, PlayerState.Frozen))
             {
-                if (false) // temporarily disabling running like this xd // Input.GetKey(Controls.Run))
+                if (Input.GetKey(Controls.Run) && logic.currentScene.isOneOf("Attic", "Forest Chase"))
                 {
                     SetState(PlayerState.Running);
                 }
