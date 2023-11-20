@@ -33,6 +33,7 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Master").First();
         }
         button.onClick.AddListener(delegate {
+            button.interactable = false;
             audioSource.PlayOneShot(selectSound, 0.5f);
             if (unselected != null)
             {
@@ -42,9 +43,11 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         });
     }
 
-    private IEnumerator FinishClick()
+    private IEnumerator FinishClick(float delay = 0.1f)
     {
         yield return new WaitUntil(() => !audioSource.isPlaying);
+        Debug.Log("renabling");
+        button.interactable = true;
         if (disableParentOnClick)
         {
             transform.parent.gameObject.SetActive(false);
