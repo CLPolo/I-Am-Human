@@ -220,7 +220,7 @@ public class Player : AnimatedEntity
             }
             if (!state.IsOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped, PlayerState.Frozen))
             {
-                if (Input.GetKey(Controls.Run) && logic.currentScene.isOneOf("Attic", "Forest Chase"))
+                if (Input.GetKey(Controls.Run) && logic.currentScene.IsOneOf("Attic", "Forest Chase"))
                 {
                     SetState(PlayerState.Running);
                 }
