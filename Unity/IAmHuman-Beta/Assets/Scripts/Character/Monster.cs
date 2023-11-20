@@ -38,7 +38,6 @@ public class Monster : NPC
     void Start()
     {
         logic = LogicScript.Instance;
-        //AnimationSetup();
         audioSource = GetComponent<AudioSource>();
         enemyAnimator = GetComponent<Animator>();
         SetupNPC(speed, 0f, null, DetectionRange);
@@ -52,11 +51,14 @@ public class Monster : NPC
             player = Player.Instance;
         }
 
-        //AnimationUpdate();
-        CheckFollowing();
-        if (patrolling) { HandlePatrolling(); }
-        else { FollowPlayer(); }
-        DeterminePatrolling();
+        if (PlayerPrefs.GetInt("Dead") != 1 && PlayerPrefs.GetInt("Paused") != 1 && PlayerPrefs.GetInt("Fading") != 1)  // doesn't move when dead, paused, or fading.
+        {
+            CheckFollowing();
+            if (patrolling) { HandlePatrolling(); }
+            else { FollowPlayer(); }
+            DeterminePatrolling();
+        }
+
 
         // update sprite direction
         if ((_priorPosition - transform.position).magnitude > minDiff)  // has moved

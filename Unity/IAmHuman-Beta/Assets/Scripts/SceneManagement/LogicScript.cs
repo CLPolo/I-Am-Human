@@ -170,6 +170,11 @@ public class LogicScript : MonoBehaviour
             PauseMenu.SetActive(!IsPaused);
         }
         IsPaused = !IsPaused;  // will prevent player from moving while paused
+        if (IsPaused)
+        {
+            PlayerPrefs.SetInt("Paused", 1);
+        }
+        else { PlayerPrefs.SetInt("Paused", 0); }
         Time.timeScale = IsPaused?0:1F;
 
         // DONT PAUSE AUDIO LISTENER WHEN PAUSING GAME,
@@ -194,8 +199,6 @@ public class LogicScript : MonoBehaviour
 
     public void OnApplicationQuit()
     {
-        //PlayerPrefs.SetInt("Flashlight", 0);
-
         PlayerPrefs.DeleteAll(); // might mess w/ box stuff
     }
 
