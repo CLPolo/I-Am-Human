@@ -21,10 +21,10 @@ public class NPC : AnimatedEntity
     {
         Vector3 playerPosition = player.transform.position;
         float distance = Vector2.Distance(transform.position, playerPosition);
-        if (!following && (proximity == null || distance > proximity) && (detectionRange == null || distance <= detectionRange))
+        if ((proximity == null || distance > proximity) && (detectionRange == null || distance <= detectionRange))
         {
             following = true;
-        } else if (following && proximity != null) {
+        } else if (following && distance <= untilDistance) {
             following = false;
         }
 
