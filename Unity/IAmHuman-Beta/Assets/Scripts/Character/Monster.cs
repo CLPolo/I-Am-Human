@@ -66,6 +66,7 @@ public class Monster : NPC
             if (patrolling) { HandlePatrolling(); }
             else { FollowPlayer(); }
             DeterminePatrolling();
+            CheckAudio();
         }
 
 
@@ -121,6 +122,15 @@ public class Monster : NPC
             _patrolIndex = 0;
             _patrolTimer = 0;
         }
+    }
+
+    private void CheckAudio()
+    {   
+        //if patrolling, play walking audio
+        if (enemyAnimator.GetInteger("State") == 1 && !audioSource.isPlaying) audioSource.Play();
+
+        //if stopped, stop audio
+        if (enemyAnimator.GetInteger("State") == 0) audioSource.Pause();
     }
 
     private void DeterminePatrolling()
