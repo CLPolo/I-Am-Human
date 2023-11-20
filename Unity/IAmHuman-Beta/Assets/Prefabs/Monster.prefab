@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 659195641330735225}
   - component: {fileID: 659195641330735229}
   - component: {fileID: 659195641330735231}
+  - component: {fileID: 2577123537531255613}
   m_Layer: 9
   m_Name: Monster
   m_TagString: Enemy
@@ -131,7 +132,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1839722279949751616, guid: 1dc1317c15ecd6f46aa91315bcac2884,
+  m_Sprite: {fileID: 2069472264067621936, guid: 2f125374dc6c83a4db83d2734744972d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -181,7 +182,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.07, y: 0.29}
+    oldSize: {x: 0.96, y: 1.76}
     newSize: {x: 0.07, y: 0.29}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -202,27 +203,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ece17eef08424b449cda4cb25d05633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultAnimationCycle:
-  - {fileID: 2366196539303066041, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: -1285610294072581339, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: -8510423838208034518, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: 3169272326964111174, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: 5510970932724893404, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: 2314524072760324151, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: -3880358036958492580, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: -8247921477489617718, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: 2335890290695762615, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: 7654949334285065764, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: 7681078935051941080, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: -5208338495101516875, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: -8934502477255080552, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: 5644897366836688156, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: -3074915707575501308, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: 5785032090117764367, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: 1848629016090078480, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: -5438415820590521320, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: 8663453876194831811, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
-  - {fileID: 5779285700705985889, guid: 1dc1317c15ecd6f46aa91315bcac2884, type: 3}
+  DefaultAnimationCycle: []
   Framerate: 40
   SpriteRenderer: {fileID: 659195641330735224}
-  speed: 1.5
+  speed: 6
+  DetectionRange: 1000
+  patrolling: 0
+  patrol: []
+  crawler: 0
+  monster: 1
+--- !u!95 &2577123537531255613
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659195641330735226}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bab28788e0a473349b7a7c3390790013, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

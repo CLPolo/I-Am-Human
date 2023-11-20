@@ -17,6 +17,7 @@ public struct CinematicStep
 public class Monster : NPC
 {
     public float speed = 1.5f;
+    private float monsterDefaultSpeed = 7f;
     public float DetectionRange = 3f;
 
     private LogicScript logic;
@@ -34,6 +35,7 @@ public class Monster : NPC
 
     private bool stationed = false;
     public bool crawler = true;
+    public bool monster = false;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,11 @@ public class Monster : NPC
             audioSource.loop = true;
             audioSource.volume = 0.5f;
             audioSource.Play();
+        }
+        if (monster)
+        {
+            speed = monsterDefaultSpeed;
+            // HI COREY !!! HELLO COREY!!!!! HIIIIIII do audio stuff here :D
         }
         enemyAnimator = GetComponent<Animator>();
         SetupNPC(speed, 0f, null, DetectionRange);
@@ -126,25 +133,53 @@ public class Monster : NPC
     private void DeterminePatrolling()
     {
         // determines if the player is patrolling &/or stationed (hiding latency)
-
-        if (!patrolling && PlayerPrefs.GetInt("finishedLatency") == 1)  // changes back to patrolling
+        if (crawler)
         {
-            PlayerPrefs.SetInt("finishedLatency", 0);
-            patrolling = true;
+            if (!patrolling && PlayerPrefs.GetInt("finishedLatency") == 1)  // changes back to patrolling
+            {
+                PlayerPrefs.SetInt("finishedLatency", 0);
+                patrolling = true;
+            }
+            else if ((transform.position - player.transform.position).magnitude < DetectionRange && player.GetState() != PlayerState.Hiding)  // if player within range & not hiding
+            {
+                patrolling = false;  // not patrolling
+            }
+            else if (!patrolling && player.GetState() == PlayerState.Hiding)  // if following & player hides
+            {
+                enemyAnimator.SetInteger("State", 0);  // idle animation
+                HidingLatency();  // pauses crawler for 2 seconds
+            }
+            else
+            {
+                patrolling = true;
+            }
         }
-        else if ((transform.position - player.transform.position).magnitude < DetectionRange && player.GetState() != PlayerState.Hiding)  // if player within range & not hiding
+        if (monster)
         {
-            patrolling = false;  // not patrolling
+            if (patrolling && (gameObject.transform.position.x < 70 || gameObject.transform.position.x > 60))
+            {
+                speed = monsterDefaultSpeed - 3;
+            }
+            if (!patrolling && PlayerPrefs.GetInt("finishedLatency") == 1)  // changes back to patrolling
+            {
+                PlayerPrefs.SetInt("finishedLatency", 0);
+                patrolling = true;
+            }
+            else if ((transform.position - player.transform.position).magnitude < DetectionRange && player.GetState() != PlayerState.Hiding)  // if player within range & not hiding
+            {
+                patrolling = false;  // not patrolling
+                speed = monsterDefaultSpeed;
+            }
+            else if (!patrolling && player.GetState() == PlayerState.Hiding)  // if following & player hides
+            {
+                PlayerPrefs.SetInt("finishedLatency", 1);
+            }
+            else
+            {
+                patrolling = true;
+            }
         }
-        else if (!patrolling && player.GetState() == PlayerState.Hiding)  // if following & player hides
-        {
-            enemyAnimator.SetInteger("State", 0);  // idle animation
-            HidingLatency();  // pauses crawler for 2 seconds
-        }
-        else
-        {
-            patrolling = true;
-        }
+        
     }
 
 

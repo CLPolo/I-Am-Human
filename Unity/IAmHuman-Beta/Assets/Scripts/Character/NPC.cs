@@ -43,12 +43,6 @@ public class NPC : AnimatedEntity
         }
     }
 
-    protected void Patrol()
-    {
-        // non following movement goes here, if its walking left to right etc.
-
-    }
-
     protected void HidingLatency()
     {
         StartCoroutine(Timer());
@@ -69,7 +63,6 @@ public class NPC : AnimatedEntity
 
     protected void SetupNPC(float speed, float untilDistance = 0f, float? proximity = null, float? detectionRange = null)
     {
-        Debug.Log(proximity);
         this.speed = speed;
         this.untilDistance = untilDistance;
         this.proximity = proximity;

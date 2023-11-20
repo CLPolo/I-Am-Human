@@ -287,7 +287,14 @@ public class Player : AnimatedEntity
             collision.gameObject.CompareTag("TrapDisarmed")) && state != PlayerState.Trapped)
         {
             // Slow the player while they are walking over something goopy i.e. mud or gore
-            speed = walkSpeed - 2f;
+            if (state == PlayerState.Walking)
+            {
+                speed = walkSpeed - 2f;
+            }
+            else if (state == PlayerState.Running)
+            {
+                speed = runSpeed - 4f; // lol :)
+            }
         }
     }
 
@@ -307,7 +314,14 @@ public class Player : AnimatedEntity
             collision.gameObject.CompareTag("TrapDisarmed"))
         {
             // Fix the walk speed after leaving trap
-            speed = walkSpeed;
+            if (state == PlayerState.Walking)
+            {
+                speed = walkSpeed;
+            }
+            else if (state == PlayerState.Running)
+            {
+                speed = runSpeed;
+            }
         }
     }
 
