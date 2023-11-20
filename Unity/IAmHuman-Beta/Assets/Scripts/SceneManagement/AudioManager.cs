@@ -34,12 +34,13 @@ public class AudioManager : MonoBehaviour
     private bool  trapEntered = false;
     
     //progression flags
-    private bool              inCabin = false;
-    private bool            inKitchen = false;
-    private bool              inAttic = false;
-    private bool     kitchenTriggered = false;
-    private bool crowbarFadeTriggered = false;
-    private bool          gameStarted = false;
+    public bool              inTitle = true;
+    public bool              inCabin = false;
+    public bool            inKitchen = false;
+    public bool              inAttic = false;
+    public bool     kitchenTriggered = false;
+    public bool crowbarFadeTriggered = false;
+    public bool          gameStarted = false;
 
     private static AudioManager _instance;
     public  static AudioManager Instance{ get{ return _instance; }}
@@ -146,34 +147,48 @@ public class AudioManager : MonoBehaviour
 
     private void CheckProgress()
     {
-        if (inCabin)
-        {   
-            if (!srcs["BGM2"].isPlaying) srcs["BGM2"].Play();
-            if (!srcs["BGM3"].isPlaying) srcs["BGM3"].Play();
-
-            if (PlayerPrefs.GetInt("Crowbar") == 1)
-            {
-                if(!crowbarFadeTriggered)
-                {   
-                    //Fade into next distortion level
-                    playBGM = false;
-                    //fade in distorted version
-                    StartCoroutine(Start(srcs["BGM2"], 0.33f, 0.75f));
-                    //fade out currently playing version
-                    StartCoroutine(Start(srcs["BGM"], 0f, 0.75f, true));
-                    crowbarFadeTriggered = true;
-                }
-            }
-            //if you have entered the kitchen, play distortion lvl 2
-            if (inKitchen && !kitchenTriggered)
+        if(!inTitle)
+        {
+            if (inCabin)
             {   
-                kitchenTriggered = true;
-                playBGM = false;
+                if (!srcs["BGM2"].isPlaying && playBGM2) srcs["BGM2"].Play();
+                
+                if (fromScene == 7)
+                {   
+                    srcs["BGM3"].volume = 0f;
+                    srcs["BGM3"].Play();
+                    StartCoroutine(Start(srcs["BGM3"], 0.33f, 1f));
+                    
+                } else if (!srcs["BGM3"].isPlaying && playBGM3){ srcs["BGM3"].Play();}
+
+                if (PlayerPrefs.GetInt("Crowbar") == 1)
+                {
+                    if(!crowbarFadeTriggered)
+                    {   
+                        //Fade into next distortion level
+                        playBGM = false;
+                        playBGM2 = true;
+                        //fade in distorted version
+                        StartCoroutine(Start(srcs["BGM2"], 0.33f, 0.75f));
+                        //fade out currently playing version
+                        StartCoroutine(Start(srcs["BGM"], 0f, 0.75f, true));
+                        crowbarFadeTriggered = true;
+
+                    }
+                }
+                //if you have entered the kitchen, play distortion lvl 2
+                if (inKitchen && !kitchenTriggered)
+                {   
+                    kitchenTriggered = true;
+                    playBGM2 = false;
+                    playBGM3 = true;
+                    srcs["BGM"].clip = null;
                     //fade in distorted version
                     StartCoroutine(Start(srcs["BGM3"], 0.33f, 0.75f));
                     //fade out currently playing version
                     StartCoroutine(Start(srcs["BGM2"], 0f, 0.75f, true));
                     crowbarFadeTriggered = true;
+                }
             }
         }
     }
@@ -181,14 +196,18 @@ public class AudioManager : MonoBehaviour
     void ChangeScene(int scene)
     {   
         //if coming from the title screen, fade out all audio
-        if (fromScene == 0) Stop(true, true);
+        if (fromScene == 0)
+        {
+            inTitle = false;
+            Stop(true, true);
+        } 
 
         //Set scene-wide audio sources
         switch (scene){
             //Title Screen
             case 0: 
                 // fade out all other audio when returning to title screen
-                inCabin = false;
+                inTitle = true;
                 Stop(true, true);
                 ToTitleScreen();
                 break;
@@ -214,6 +233,7 @@ public class AudioManager : MonoBehaviour
                 {
                     inCabin = true; //set so bgm resumes in CheckProgress()
                     kitchenTriggered = false;
+                    Stop(false, true, srcs["AmbMisc"]);
                 }
 
                 ToHallway();
@@ -228,11 +248,15 @@ public class AudioManager : MonoBehaviour
             //Attic Stairwell
             case 7:
                 //if entering from the hall way, pause bgm
-                if (fromScene == 3)
+                //if (fromScene == 3)
                 {
                     inCabin = false; // set so CheckProgress() doesn't automatically restart bgm
                     srcs["BGM3"].Pause();
                     srcs["BGM2"].Pause();
+                    srcs["AmbMisc"].clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");
+                    srcs["AmbMisc"].volume = 0;
+                    srcs["AmbMisc"].Play();
+                    StartCoroutine(Start(srcs["AmbMisc"], 0.005f, 3f));
                 }
                 break;
 
@@ -276,6 +300,7 @@ public class AudioManager : MonoBehaviour
                 playAmbMisc = false;
                 s.clip = null;
             }
+
         }
     }
     void ToForestStart(){
@@ -323,7 +348,7 @@ public class AudioManager : MonoBehaviour
             {
                 playBGM = true;
                 //if coming from the starting forest scene, load correct audio file
-                if(fromScene == 1){
+                if(fromScene.IsOneOf(0, 1)){
                     s.clip = Resources.Load<AudioClip>(pathBGM + "cabin-theme-A1");
                     srcs["BGM2"].Play();
                     srcs["BGM3"].Play();
@@ -408,7 +433,11 @@ public class AudioManager : MonoBehaviour
             yield return null;
 
         }
-        if (stop) audioSource.Stop();
+        if (stop)
+        {
+            yield return new WaitUntil(() => audioSource.volume >= 0.001f);
+            audioSource.Stop();
+        } 
         yield break;
     }
 
@@ -439,7 +468,7 @@ public class AudioManager : MonoBehaviour
 
         //Does the player have a reason to make a sound?
         if(!pA.isPlaying && !p.touchingWall && state != PlayerState.Idle)
-        {   Debug.Log("Checking player... State: " + state);
+        {   //Debug.Log("Checking player... State: " + state);
 
             //if walking or running, play appropriate footfall sfx
             if(state.IsOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);

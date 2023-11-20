@@ -224,9 +224,9 @@ public class InteractableObjectScript : MonoBehaviour
     }
 
     private void PlayNoise()
-    {
+    {   
         // plays a random sound from the sound list each time
-
+        Sounds = Resources.LoadAll<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/Locked/").ToList();
         AudioSource audio = GetComponent<AudioSource>();
         int randomNumber = UnityEngine.Random.Range(0, Sounds.Count);
         audio.PlayOneShot(Sounds.ElementAt(randomNumber));
@@ -319,7 +319,6 @@ public class InteractableObjectScript : MonoBehaviour
                 LevelLoader.Instance.loadScene(NextScene);
             }
         }
-
     }
     private void DisplayOutline()
     {
@@ -396,7 +395,7 @@ public class InteractableObjectScript : MonoBehaviour
         PlayerPrefs.SetInt("DoorClosed", 1);  // door is now closed
         if (PlayerPrefs.GetInt("DoorClosed") == 1)
         {
-            if (this.gameObject.name == "Cellar Door (OPENED)")  // turns off open one, and will keep it off everytime you re-enter the scene
+            if (this.gameObject.name == "Cellar Door (OPENED)" && this.gameObject.activeSelf)  // turns off open one, and will keep it off everytime you re-enter the scene
             {
                 //only deactivate the open door once the closing sound it done playing
                 float len = player.AudioSource.clip.length;
