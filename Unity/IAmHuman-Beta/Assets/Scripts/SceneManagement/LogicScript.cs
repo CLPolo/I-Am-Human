@@ -124,10 +124,7 @@ public class LogicScript : MonoBehaviour
         {
             if (Input.GetKeyDown(Controls.Mash))
             {
-                if (!audioSource.isPlaying){
-                    //audioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString());
-                    audioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Traps/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString()), 0.5f);
-                }
+
                 if (inGore)
                 {
                     mashTimer += 3;  // This allows player to insta escape if in gore

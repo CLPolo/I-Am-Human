@@ -18,27 +18,31 @@ public class AudioManager : MonoBehaviour
 
 
     //resource paths
-    private string      pathBGM = "Sounds/Music/";
-    private string      pathAmb = "Sounds/SoundEffects/Environment/";
-    private string pathCutscene = "Sounds/SoundEffects/Misc/";
-    private string   pathEntity = "Sounds/SoundEffects/Entity/";
+    private string       pathBGM = "Sounds/Music/";
+    private string       pathAmb = "Sounds/SoundEffects/Environment/";
+    private string  pathCutscene = "Sounds/SoundEffects/Misc/";
+    private string    pathEntity = "Sounds/SoundEffects/Entity/";
+    private string  pathInteract = "Sounds/SoundEffects/Entity/Interactable/";
 
 
-    //BGM management
+    //BGM management flags
     private bool      playBGM = true;
     private bool     playBGM2 = false;
     private bool     playBGM3 = false;
    
-    //other bools
+    //other flags
     private bool  playAmbArea = false;
     private bool  playAmbMisc = false;
     private bool playCutscene = false;
     private bool       fading = false;
+    private bool  trapEntered = false;
     
-    //progression bools
-    private bool      inCabin = false;
-    private bool    inKitchen = false;
+    //progression flags
+    private bool              inCabin = false;
+    private bool            inKitchen = false;
+    private bool     kitchenTriggered = false;
     private bool crowbarFadeTriggered = false;
+    private bool          gameStarted = false;
 
     private static AudioManager _instance;
     public  static AudioManager Instance{ get{ return _instance; }}
@@ -95,12 +99,15 @@ public class AudioManager : MonoBehaviour
         }
         
         if (p != null) CheckPlayer();
+        CheckProgress();
         CheckScenewide(scene);
     }
     void CheckScenewide(int scene){   
 
         //Only resume other audio if cutscene isn't playing
-        if (!srcs.TryGetValue("Cutscene", out AudioSource cutscene) || !cutscene.isPlaying) {
+        if (!srcs.TryGetValue("Cutscene", out AudioSource cutscene) || !cutscene.isPlaying) { //Debug.Log("BGM playing? " + srcs["BGM"].isPlaying + 
+                                                                                                   // " || 2 playing? " + srcs["BGM2"].isPlaying +
+                                                                                                   //eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee  " || 3 playing? " + srcs["BGM3"].isPlaying);
             //check background music
             if (srcs.TryGetValue("BGM", out AudioSource bgm))
             {    
@@ -117,7 +124,7 @@ public class AudioManager : MonoBehaviour
             if (srcs.TryGetValue("AmbArea", out AudioSource ambArea))
             {    
                 // if ambArea isn't already playing, has an audio clip, and global is set, then play
-                if (!ambArea.isPlaying && ambArea.clip != null && playBGM) RestartSource(ambArea);
+                if (!ambArea.isPlaying && ambArea.clip != null && playAmbArea) RestartSource(ambArea);
 
                 // if ambArea is playing and shouldn't be, stop it
                 if (ambArea.isPlaying && !playAmbArea) ambArea.Stop();
@@ -129,7 +136,7 @@ public class AudioManager : MonoBehaviour
             if (srcs.TryGetValue("AmbMisc", out AudioSource ambMisc))
             {    
                 // if ambMisc isn't already playing, has an audio clip, and global is set, then play
-                if (!ambMisc.isPlaying && ambMisc.clip != null && playBGM) RestartSource(ambMisc);
+                if (!ambMisc.isPlaying && ambMisc.clip != null && playAmbMisc) RestartSource(ambMisc);
 
                 // if ambMisc is playing and shouldn't be, stop it
                 if (ambMisc.isPlaying && !playAmbMisc) ambMisc.Stop();
@@ -144,25 +151,32 @@ public class AudioManager : MonoBehaviour
     {
         if (inCabin)
         {   
+            if (!srcs["BGM2"].isPlaying) srcs["BGM2"].Play();
+            if (!srcs["BGM3"].isPlaying) srcs["BGM3"].Play();
+
             if (PlayerPrefs.GetInt("Crowbar") == 1)
             {
                 if(!crowbarFadeTriggered)
-                {
+                {   
                     //Fade into next distortion level
                     playBGM = false;
                     //fade in distorted version
-                    RestartSource(srcs["BGM2"], true, 0.33f, 0.75f);
-                    //fade out bgmd
-                    RestartSource(srcs["BGM"], true, 0f, 0.75f, true);
+                    StartCoroutine(Start(srcs["BGM2"], 0.33f, 0.75f));
+                    //fade out currently playing version
+                    StartCoroutine(Start(srcs["BGM"], 0f, 0.75f, true));
+                    crowbarFadeTriggered = true;
                 }
             }
             //if you have entered the kitchen, play distortion lvl 2
-            if (inKitchen)
+            if (inKitchen && !kitchenTriggered)
             {   
+                kitchenTriggered = true;
                 playBGM = false;
-                //fade in distorted version, fadeout currently playing version
-                RestartSource(srcs["BGM3"], true, 0.4f, 0.75f);
-                RestartSource(srcs["BGM2"], true, 0f, 0.75f, true);
+                    //fade in distorted version
+                    StartCoroutine(Start(srcs["BGM3"], 0.33f, 0.75f));
+                    //fade out currently playing version
+                    StartCoroutine(Start(srcs["BGM2"], 0f, 0.75f, true));
+                    crowbarFadeTriggered = true;
             }
         }
     }
@@ -170,7 +184,7 @@ public class AudioManager : MonoBehaviour
     void ChangeScene(int scene)
     {   
         //if coming from the title screen, fade out all audio
-        if (fromScene == 0) Stop(true, true);
+        if (fromScene == 0) Stop(true, false);
 
         //Set scene-wide audio sources
         switch (scene){
@@ -268,11 +282,13 @@ public class AudioManager : MonoBehaviour
             if (name == "BGM") 
             {   
                 playBGM = true;
+                s.volume = 0;
                 s.clip = Resources.Load<AudioClip>(pathBGM + "forest-theme");
-                RestartSource(s, true, 0.33f, 15f);
+                RestartSource(s, true, 0.33f, 10f);
             }
-            if (name == "Cutscene")
+            if (name == "Cutscene" && !gameStarted)
             {   
+                gameStarted = true;
                 playCutscene = true;
                 s.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-comp");
                 s.PlayOneShot(s.clip, 0.8f);
@@ -281,13 +297,13 @@ public class AudioManager : MonoBehaviour
             {
                 playAmbArea = true;
                 s.clip = Resources.Load<AudioClip>(pathAmb + "Forest/forest_ambience");
-                RestartSource(s, true, 0.25f, 15f);
+                RestartSource(s, true, 0.25f, 10f);
             }
             if (name == "AmbMisc")
             {
                 playAmbMisc = true;
                 s.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");     
-                RestartSource(s, true, 0.02f, 15f);        
+                RestartSource(s, true, 0.01f, 10f);        
             }  
         }
     }
@@ -313,7 +329,7 @@ public class AudioManager : MonoBehaviour
             //if we're coming from the forest, cue up the cellar door closing clip         
             if (name == "MiscEntity" && fromScene == 2) 
             {
-                s.clip = Resources.Load<AudioClip>(pathEntity + "Interactable/Door/cabin-door-open-0");
+                s.clip = Resources.Load<AudioClip>(pathInteract + "Door/cabin-door-open-0");
                 s.loop = false;
                 s.volume = 0.5f;
                 s.Play();
@@ -403,36 +419,85 @@ public class AudioManager : MonoBehaviour
                 // if audio source isn't a Cutscene
                 if (src.Key != "Cutscene") 
                 {   
-                    if (fade) {RestartSource(src.Value, true, 0f, 1.5f, true);
+                    if (fade) { StartCoroutine(Start(s, 0f, 1.5f, true));;
                     } else {src.Value.Stop();}
                        
                 }
             } 
+        //single audio source
         } else if (s != null) {
-            if (fade){ RestartSource(s, true, 0.001f, 1.5f, true);
+            if (fade){ StartCoroutine(Start(s, 0f, 1.5f, true));
             } else {s.Stop();}
         }
     }
        
     void CheckPlayer(){
         PlayerState state = p.GetState();
-        
+        AudioSource s = srcs["MiscEntity"];
+        AudioClip clip = null;
+
         //Does the player have a reason to make a sound?
         if(!pA.isPlaying && !p.touchingWall && state != PlayerState.Idle)
         {   
             //if walking or running, play appropriate footfall sfx
-            if(state.IsOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
+            if(state.isOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
+            
+            //if pushing an obeject, play the push loop starting at a random point in the file
+            if(state.isOneOf(PlayerState.Pushing, PlayerState.Pulling)){
+
+                s.clip = Resources.Load<AudioClip>(pathInteract + "push-pull-loop");
+                s.time = UnityEngine.Random.Range(0, s.clip.length/1);
+                s.volume = 0.15f;
+                if (!s.isPlaying) s.Play();
+            }
             
             if (state == PlayerState.Trapped){
                 //TO DO: specific scene trapped logic
-                // forest 1 -> mud
-                // hallway -> pry door open
-                // kitchen -> gore
-
-                pA.PlayOneShot(Resources.Load<AudioClip>(pathEntity + "Interactable/Traps/mud-trap-entered-0"), 0.5f);
-                 
-            }
+                // forest: mud trap
+                if (scene == 2 || scene == 9)
+                {
+                    if (!trapEntered)
+                    {   
+                        clip = Resources.Load<AudioClip>(pathInteract + "Traps/Mud/mud-trap-entererd-0");
+                        Debug.Log("Checking trap. Is clip null? " + clip == null);
+                        s.PlayOneShot(clip, 0.3f);
+                        trapEntered = true;
+                    } else if (Input.GetKeyDown(Controls.Mash) && !s.isPlaying)
+                    {
+                        clip = Resources.Load<AudioClip>(pathInteract + "Traps/Mud/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString());
+                        Debug.Log("Checking trap. Is clip null? " + clip == null);
+                        s.PlayOneShot(clip, 0.3f);
+                    }
+                
+                // hallway: prying board off the door 
+                } else if (scene == 4)
+                {
+                    if (Input.GetKeyDown(Controls.Mash))
+                    {   
+                        //if this is the last mash, play the final sound
+                        if (PlayerPrefs.GetInt("DoorOff") == 1)
+                        {   
+                            clip = Resources.Load<AudioClip>(pathInteract + "Traps/Plywood/plywood-pull-end");
+                            Debug.Log("Checking trap. Is clip null? " + clip == null);
+                            s.PlayOneShot(clip, 0.5f);
+                        } 
+                        else if (!s.isPlaying)
+                        {   
+                            clip = Resources.Load<AudioClip>(pathInteract + "Traps/Plywood/plywood-pull-" + UnityEngine.Random.Range(0,8).ToString());
+                            Debug.Log("Checking trap. Is clip null? " + clip == null);
+                            s.PlayOneShot(clip, 0.5f);
+                        }
+                    }
+                } 
+            //player is no longer trapped
+            } else { trapEntered = false; }
         }
+        
+        // if no longer pushing/pulling, stop the push audio
+        if (!state.isOneOf(PlayerState.Pushing, PlayerState.Pulling) && 
+                                                         s.isPlaying && 
+                                                         s.clip.name != null &&
+                                                         s.clip.name == "push-pull-loop") s.Stop();
     }
     void PlayerFootfall(PlayerState state)
     {    
