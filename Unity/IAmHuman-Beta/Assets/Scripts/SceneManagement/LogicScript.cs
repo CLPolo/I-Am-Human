@@ -31,6 +31,7 @@ public class LogicScript : MonoBehaviour
 
     public Player player;
     private AudioSource audioSource;
+    public string currentScene => SceneManager.GetActiveScene().name;
 
     // TRAP
     public GameObject trappedText;
@@ -57,7 +58,6 @@ public class LogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (player == null)
         {
             player = Player.Instance;
@@ -149,10 +149,11 @@ public class LogicScript : MonoBehaviour
         //audioSource.PlayOneShot(audioSource.clip, 0.5f)
         //AudioListener.pause = IsPaused;
         player.SetState(PlayerState.Frozen);
-        if (SceneManager.GetActiveScene().name == "Bed room")
+        if (currentScene == "Bed room")
         {
             PlayerPrefs.SetInt("Crowbar", 0);  // if you die in the bedroom after grabbing the crowbar, it will respawn on load
         }
+        PlayerPrefs.SetInt("Dead", 1);
     }
 
     // disable menu is used so certain methods of closing pause menu such as
@@ -168,6 +169,11 @@ public class LogicScript : MonoBehaviour
             PauseMenu.SetActive(!IsPaused);
         }
         IsPaused = !IsPaused;  // will prevent player from moving while paused
+        if (IsPaused)
+        {
+            PlayerPrefs.SetInt("Paused", 1);
+        }
+        else { PlayerPrefs.SetInt("Paused", 0); }
         Time.timeScale = IsPaused?0:1F;
 
         // DONT PAUSE AUDIO LISTENER WHEN PAUSING GAME,
@@ -178,7 +184,7 @@ public class LogicScript : MonoBehaviour
     public void RestartGame()
     {
         // Restarts the game by resetting scene
-        LevelLoader.Instance.loadScene(SceneManager.GetActiveScene().name);
+        LevelLoader.Instance.loadScene(currentScene);
         mashTimer = 1.5f;
         System.Threading.Thread.Sleep(100);
         Death(false);
@@ -192,8 +198,6 @@ public class LogicScript : MonoBehaviour
 
     public void OnApplicationQuit()
     {
-        //PlayerPrefs.SetInt("Flashlight", 0);
-
         PlayerPrefs.DeleteAll(); // might mess w/ box stuff
     }
 

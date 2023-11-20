@@ -562,6 +562,7 @@ MonoBehaviour:
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
   SpawnObject: 0
@@ -569,7 +570,6 @@ MonoBehaviour:
   ObjectsSpawned: []
   EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &389490226
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -708,6 +708,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 1
   NextScene: Hallway Hub
   SpawnObject: 0
@@ -715,7 +716,6 @@ MonoBehaviour:
   ObjectsSpawned: []
   EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &392325599
 BoxCollider2D:
   m_ObjectHideFlags: 0

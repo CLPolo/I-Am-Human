@@ -1,16 +1,7 @@
 fileFormatVersion: 2
-guid: 1ade3915d1f455e48909ad079c66672b
+guid: 50c02617f89f9d142b18e800f9145004
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -5088337885355641681
-    second: lily_bear
-  - first:
-      213: 8754149281199294149
-    second: deer_head
-  - first:
-      213: -667970240133171378
-    second: lily_shoe
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -94,70 +85,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: lily_bear
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 32
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa4f63607a79269b0800000000000000
-      internalID: -5088337885355641681
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: deer_head
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 0
-        width: 42
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c600a8c36cfc7970800000000000000
-      internalID: 8754149281199294149
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lily_shoe
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 32
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e47745c0b94eab6f0800000000000000
-      internalID: -667970240133171378
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []

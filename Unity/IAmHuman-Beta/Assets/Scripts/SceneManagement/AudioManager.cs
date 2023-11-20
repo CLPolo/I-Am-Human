@@ -83,7 +83,7 @@ public class AudioManager : MonoBehaviour
         if (p == null && Player.Instance != null)
         {   
             p = Player.Instance;
-            pA = p.AudioSource;
+            pA = p.gameObject.GetComponent<AudioSource>();
         }
 
         //check for scene change
@@ -95,7 +95,6 @@ public class AudioManager : MonoBehaviour
         }
         
         if (p != null) CheckPlayer();
-        
         CheckScenewide(scene);
     }
     void CheckScenewide(int scene){   
@@ -304,7 +303,6 @@ public class AudioManager : MonoBehaviour
             if (name == "BGM") 
             {
                 playBGM = true;
-                
                 //if coming from the starting forest scene, load correct audio file
                 if(fromScene == 2){
                     s.clip = Resources.Load<AudioClip>(pathBGM + "cabin-theme-A1");
@@ -415,8 +413,7 @@ public class AudioManager : MonoBehaviour
             if (fade){ RestartSource(s, true, 0.001f, 1.5f, true);
             } else {s.Stop();}
         }
-    }      
-
+    }
        
     void CheckPlayer(){
         PlayerState state = p.GetState();
