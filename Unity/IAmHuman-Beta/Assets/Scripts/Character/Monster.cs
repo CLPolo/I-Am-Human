@@ -33,6 +33,7 @@ public class Monster : NPC
     private float minDiff = 0.000001f;
 
     private bool stationed = false;
+    public bool crawler = true;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,14 @@ public class Monster : NPC
         logic = LogicScript.Instance;
         //AnimationSetup();
         audioSource = GetComponent<AudioSource>();
+        if (crawler)
+        {
+            audioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Crabs/crab-walk-loop-0");
+            audioSource.time = Random.Range(0, audioSource.clip.length/1);
+            audioSource.loop = true;
+            audioSource.volume = 0.5f;
+            audioSource.Play();
+        }
         enemyAnimator = GetComponent<Animator>();
         SetupNPC(speed, 0f, null, DetectionRange);
     }
