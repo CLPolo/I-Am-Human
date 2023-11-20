@@ -599,10 +599,13 @@ MonoBehaviour:
   Unlock: 1
   NextScene: Bed room
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &538264220
 BoxCollider2D:
@@ -1338,6 +1341,31 @@ PrefabInstance:
       propertyPath: fadeAnimatedCanvas
       value: 
       objectReference: {fileID: 906412517}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: objectStates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: objectStates.Array.data[0]
+      value: 
+      objectReference: {fileID: 1069864000}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: objectStates.Array.data[1]
+      value: 
+      objectReference: {fileID: 1312885029}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: objectStates.Array.data[2]
+      value: 
+      objectReference: {fileID: 1828829376}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: objectStates.Array.data[3]
+      value: 
+      objectReference: {fileID: 1828829376}
     - target: {fileID: 8113169828239833077, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_Size.x
@@ -1466,10 +1494,13 @@ MonoBehaviour:
   Unlock: 0
   NextScene: 
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &690171652
 BoxCollider2D:
@@ -1577,10 +1608,13 @@ MonoBehaviour:
   Unlock: 1
   NextScene: Study
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &755448032
 BoxCollider2D:
@@ -1723,10 +1757,13 @@ MonoBehaviour:
   Unlock: 1
   NextScene: Kitchen
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &775677870
 BoxCollider2D:
@@ -4546,12 +4583,15 @@ MonoBehaviour:
   Unlock: 0
   NextScene: Attic
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 1312885029}
   - {fileID: 1828829376}
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &840854461
 BoxCollider2D:
@@ -4639,7 +4679,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -5205,10 +5245,13 @@ MonoBehaviour:
   Unlock: 0
   NextScene: 
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!1 &1074101676
 GameObject:
@@ -5289,10 +5332,13 @@ MonoBehaviour:
   Unlock: 1
   NextScene: Basement
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &1074101680
 BoxCollider2D:
@@ -5927,11 +5973,14 @@ MonoBehaviour:
   Unlock: 0
   NextScene: 
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned:
   - {fileID: 775677867}
   EntitySpawn: []
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &1829220743
 BoxCollider2D:

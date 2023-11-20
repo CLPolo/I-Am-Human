@@ -398,7 +398,7 @@ public class InteractableObjectScript : MonoBehaviour
             if (this.gameObject.name == "Cellar Door (OPENED)" && this.gameObject.activeSelf)  // turns off open one, and will keep it off everytime you re-enter the scene
             {
                 //only deactivate the open door once the closing sound it done playing
-                float len = player.AudioSource.clip.length;
+                float len = player.AudioSource.clip?.length ?? 0;
                 float passed = player.AudioSource.time;
 
                 if (player.AudioSource.clip.name == "cellar-door-close-0") StartCoroutine(DelayedActivate(0));// len - passed - 0.247f)); // float literal accounts for tail of audio file

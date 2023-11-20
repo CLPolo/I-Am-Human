@@ -423,6 +423,10 @@ public class AudioManager : MonoBehaviour
 
     private static IEnumerator Start(AudioSource audioSource, float targetVolume = 1f, float duration = 3f, bool stop = false)
     {   //taken from https://johnleonardfrench.com/how-to-fade-audio-in-unity-i-tested-every-method-this-ones-the-best/ 
+        if (audioSource == null)
+        {
+            yield break;
+        }
         float currentTime = 0;
         float start = audioSource.volume;
         if (!audioSource.isPlaying) audioSource.Play();
@@ -467,9 +471,7 @@ public class AudioManager : MonoBehaviour
         AudioClip clip = null;
 
         //Does the player have a reason to make a sound?
-        if(!pA.isPlaying && !p.touchingWall && state != PlayerState.Idle)
-        {   //Debug.Log("Checking player... State: " + state);
-
+        if(!pA.isPlaying && !p.touchingWall && state != PlayerState.Idle) {
             //if walking or running, play appropriate footfall sfx
             if(state.IsOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
             

@@ -35,6 +35,7 @@ public class LogicScript : MonoBehaviour
     private AudioSource audioSource;
     private AudioClip monsterEmergesAudio;
     public string currentScene => SceneManager.GetActiveScene().name;
+    public int currentSceneIndex => SceneManager.GetActiveScene().buildIndex;
     private GameObject monster;
 
     [Header("Traps")]
@@ -64,7 +65,7 @@ public class LogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentScene == "Forest Chase"  && monster == null)
+        if (currentScene == "Forest Chase" && monster == null)
         {
             monster = GameObject.Find("Monster");
             monster.SetActive(false);
@@ -84,7 +85,7 @@ public class LogicScript : MonoBehaviour
             MashTrap();
         }
 
-        if (Input.GetKeyDown(Controls.Pause))  // Pauses game when player hits esc
+        if (Input.GetKeyDown(Controls.Pause) && currentSceneIndex > 0)  // Pauses game when player hits esc
         {
             TogglePause();
         }
@@ -155,7 +156,10 @@ public class LogicScript : MonoBehaviour
     {   
         // Activates death screen
         IsPaused = val;  // will prevent player from moving after death
-        DeathScreen.SetActive(val);
+        if (val)
+        {
+            DeathScreen.SetActive(val);
+        }
         //audioSource.PlayOneShot(audioSource.clip, 0.5f)
         //AudioListener.pause = IsPaused;
         player.SetState(PlayerState.Frozen);
@@ -202,8 +206,9 @@ public class LogicScript : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        LevelLoader.Instance.loadScene(0);
+        PlayerPrefs.SetString("StartScene", currentScene);
         TogglePause(false);
+        LevelLoader.Instance.loadScene(0);
     }
 
     public void OnApplicationQuit()

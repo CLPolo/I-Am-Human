@@ -53,6 +53,7 @@ MonoBehaviour:
   trappedText: {fileID: 0}
   defaultMashTimer: 1.5
   trapKills: 1
+  inGore: 0
 --- !u!82 &-2802661191308577900
 AudioSource:
   m_ObjectHideFlags: 0
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unselected: {fileID: 0}
   selected: {fileID: 0}
-  disableParentOnClick: 0
+  disableParentOnClick: 1
 --- !u!114 &5799688081445461547
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -900,7 +900,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780213591173, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -1139,6 +1139,16 @@ PrefabInstance:
       propertyPath: fadeAnimatedCanvas
       value: 
       objectReference: {fileID: 1375488759}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: objectStates.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: objectStates.Array.data[0]
+      value: 
+      objectReference: {fileID: 2428121061649968173}
     - target: {fileID: 8113169828239833077, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_Size.x
@@ -3080,7 +3090,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cdbaa6f7a80691743ab4ccce5d65f3cb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

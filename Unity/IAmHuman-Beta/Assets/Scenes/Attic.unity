@@ -778,7 +778,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -1273,14 +1273,18 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 1
   NextScene: Forest Chase
+  NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!114 &799326115
 MonoBehaviour:
   m_ObjectHideFlags: 0

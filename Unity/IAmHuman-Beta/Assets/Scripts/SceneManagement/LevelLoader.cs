@@ -155,7 +155,12 @@ public class LevelLoader : MonoBehaviour
 
     public void StartGame(string sceneName)
     {
-        loadScene(sceneName);
+        if (PlayerPrefs.HasKey("StartScene"))
+        {
+            loadScene(PlayerPrefs.GetString("StartScene"));
+        } else {
+            loadScene(sceneName);
+        }
     }
 
     public void QuitGame()
