@@ -720,7 +720,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.92, y: 3.2}
+    oldSize: {x: 1.92, y: 2.56}
     newSize: {x: 5, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1012,7 +1012,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.92, y: 3.2}
+    oldSize: {x: 1.92, y: 2.56}
     newSize: {x: 5, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1285,6 +1285,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 1
   NextScene: Basement
   SpawnObject: 0
@@ -1293,7 +1294,6 @@ MonoBehaviour:
   EntitySpawn:
   - {fileID: 0}
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!4 &374679020
 Transform:
   m_ObjectHideFlags: 0
@@ -2697,6 +2697,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7b5a75d9c6e15f916a9872301678753f, type: 3}
   - {fileID: 8300000, guid: 1aefd03d2dc9ab26a934fed59cbacc21, type: 3}
   - {fileID: 8300000, guid: 7c7a88ea8c2e2681d8186bf3117f3584, type: 3}
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
   SpawnObject: 0
@@ -2705,7 +2706,6 @@ MonoBehaviour:
   EntitySpawn:
   - {fileID: 0}
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!82 &741868895
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2968,6 +2968,7 @@ MonoBehaviour:
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
   SpawnObject: 0
@@ -2976,7 +2977,6 @@ MonoBehaviour:
   EntitySpawn:
   - {fileID: 0}
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!1 &781546634
 GameObject:
   m_ObjectHideFlags: 0
@@ -13495,6 +13495,7 @@ MonoBehaviour:
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
   SpawnObject: 0
@@ -13503,7 +13504,6 @@ MonoBehaviour:
   EntitySpawn:
   - {fileID: 0}
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &1870322499
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13822,6 +13822,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
   SpawnObject: 0
@@ -13830,7 +13831,6 @@ MonoBehaviour:
   EntitySpawn:
   - {fileID: 0}
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!1 &1922120054
 GameObject:
   m_ObjectHideFlags: 0
