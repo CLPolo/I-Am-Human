@@ -66,10 +66,17 @@ public class Sister : NPC
             sisterAnimator.SetInteger("State", 0);
         }
 
-        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("LilyHallwayCutscene") && !sisterAudio.isPlaying)
+        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && !sisterAudio.isPlaying)
         {
             sisterAudio.PlayOneShot((AudioClip)Resources.Load("Sounds/SoundEffects/Environment/Cabin/Misc/scare-lily-away"), 0.25f);
+            player.SetState(PlayerState.Frozen);
         }
+
+        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("LilyEndCutscene") && player.GetState() == PlayerState.Frozen)
+        {
+            player.SetState(PlayerState.Idle);
+        }
+
         LilyFootfall();
     }
 
