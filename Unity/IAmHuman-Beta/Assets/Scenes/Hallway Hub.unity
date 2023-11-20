@@ -344,6 +344,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 1
   NextScene: Bed room
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -845,7 +846,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.87
+      value: -5.87
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -1010,6 +1011,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 1
   NextScene: Study
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -1155,6 +1157,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 1
   NextScene: Kitchen
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -3529,6 +3532,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: Attic
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -4100,6 +4104,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -4183,6 +4188,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 1
   NextScene: Basement
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
@@ -4711,6 +4717,7 @@ MonoBehaviour:
   Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
+  NextSceneIndex: -1
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned:

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class CameraMovement : MonoBehaviour
     public float rightBound = 100;
     public float cameraYOffset = 0;
 
+    public static bool checkBoundsAgain = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +34,11 @@ public class CameraMovement : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
      
         offset.Set(0f, cameraYOffset, -10f);
+        CheckBounds();
+    }
+
+    private void CheckBounds()
+    {
         if (player.transform.position.x <= leftBound)
         {
             transform.position = new Vector3(leftBound, player.position.y, player.position.z) + offset;
@@ -44,6 +52,11 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (checkBoundsAgain)
+        {
+            CheckBounds();
+            checkBoundsAgain = false;
+        }
         if (player.transform.position.x > leftBound && player.transform.position.x < rightBound)
         {
             transform.position = player.position + offset;  // Only change position if within bounds
