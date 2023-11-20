@@ -1289,11 +1289,14 @@ MonoBehaviour:
   Unlock: 1
   NextScene: Basement
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 0}
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!4 &374679020
 Transform:
@@ -2712,11 +2715,14 @@ MonoBehaviour:
   Unlock: 0
   NextScene: 
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 0}
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!82 &741868895
 AudioSource:
@@ -2984,11 +2990,14 @@ MonoBehaviour:
   Unlock: 0
   NextScene: 
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 0}
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!1 &781546634
 GameObject:
@@ -13537,11 +13546,14 @@ MonoBehaviour:
   Unlock: 0
   NextScene: 
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 0}
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &1870322499
 BoxCollider2D:
@@ -13865,11 +13877,14 @@ MonoBehaviour:
   Unlock: 0
   NextScene: 
   NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 0}
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
 --- !u!1 &1922120054
 GameObject:

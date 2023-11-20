@@ -74,6 +74,7 @@ public class LevelLoader : MonoBehaviour
         float freezeTime = HoldLonger ? (HoldFor + 0.5f) : 0.5f;
         if (player != null)
         {
+            Debug.Log("nope");
             player.SetState(PlayerState.Frozen);
             yield return new WaitForSeconds(freezeTime);
             player.SetState(PlayerState.Idle);
