@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -639,7 +639,7 @@ TilemapCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0, y: -4.5}
+  m_Offset: {x: 0, y: -4.25}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
 --- !u!66 &428537914
@@ -662,28 +662,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 428537913}
     m_ColliderPaths:
-    - - X: 60000041
-        Y: -34999900
-      - X: -50000041
-        Y: -34999900
-      - X: -50000100
-        Y: -34999959
-      - X: -50000100
-        Y: -115000041
-      - X: -50000041
-        Y: -115000100
-      - X: 60000041
-        Y: -115000100
-      - X: 60000100
-        Y: -115000041
-      - X: 60000100
-        Y: -34999959
+    - - X: 60000000
+        Y: -112500000
+      - X: 60000000
+        Y: -32500000
+      - X: -50000000
+        Y: -32500000
+      - X: -50000000
+        Y: -112500000
   m_CompositePaths:
     m_Paths:
-    - - {x: 5.9999747, y: -11.50001}
-      - {x: 5.9999747, y: -3.49999}
-      - {x: -5.00001, y: -3.5000253}
-      - {x: -4.9999747, y: -11.50001}
+    - - {x: 5.999971, y: -11.25}
+      - {x: 5.999971, y: -3.25}
+      - {x: -5, y: -3.2500293}
+      - {x: -4.999971, y: -11.25}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &428537915
@@ -1930,7 +1922,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9039087
+      value: -0.496
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -1995,7 +1987,12 @@ PrefabInstance:
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.46
+      value: 0.4390044
+      objectReference: {fileID: 0}
+    - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.010497823
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -2237,6 +2234,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
   SpawnObject: 0
@@ -2245,7 +2243,6 @@ MonoBehaviour:
   EntitySpawn:
   - {fileID: 0}
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!4 &882772032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
@@ -2365,6 +2362,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 1
   NextScene: Hallway Hub
   SpawnObject: 0
@@ -2373,7 +2371,6 @@ MonoBehaviour:
   EntitySpawn:
   - {fileID: 0}
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!114 &1268332365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2521,7 +2518,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604046434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.18, y: -0.946, z: 1}
+  m_LocalPosition: {x: -5.72, y: -0.611, z: 1}
   m_LocalScale: {x: 3.1, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 610039248}
@@ -2603,7 +2600,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.63
+      value: -0.4250091
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -2789,6 +2786,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
   SpawnObject: 0
@@ -2797,7 +2795,6 @@ MonoBehaviour:
   EntitySpawn:
   - {fileID: 0}
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &1747945812
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3017,6 +3014,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
   SpawnObject: 0
@@ -3025,7 +3023,6 @@ MonoBehaviour:
   EntitySpawn:
   - {fileID: 659195639500718563}
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &2060647654
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3224,7 +3221,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: cameraYOffset
-      value: 0
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057685, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}

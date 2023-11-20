@@ -341,6 +341,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 1
   NextScene: Bed room
   SpawnObject: 0
@@ -348,7 +349,6 @@ MonoBehaviour:
   ObjectsSpawned: []
   EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &538264220
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -383,7 +383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538264218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.34, y: -0.18713194, z: 0.2472707}
+  m_LocalPosition: {x: 1.34, y: -0.37, z: 0.2472707}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 596244650}
@@ -530,7 +530,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.76
+      value: -1.529
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -730,7 +730,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -1
   m_Sprite: {fileID: -8760731882412330440, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -768,7 +768,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638039913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.11, y: -1.315, z: 0}
+  m_LocalPosition: {x: 9.11, y: -1.448, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1045133456}
@@ -850,7 +850,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.675001
+      value: -0.3750143
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -909,11 +909,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -8066552970204862018, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
         type: 3}
+    - target: {fileID: 7082313449261153278, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: rayDist
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: fadeAnimatedCanvas
       value: 
       objectReference: {fileID: 906412517}
+    - target: {fileID: 8113169828239833077, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.1809993
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113169828239833077, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.009539239
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aba456c54d27d059e9a59a6bc319bc05, type: 3}
 --- !u!1 &755448028
@@ -944,7 +959,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755448028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.21, y: -0.18713194, z: 0.2472707}
+  m_LocalPosition: {x: 10.21, y: -0.37, z: 0.2472707}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 596244650}
@@ -992,6 +1007,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 1
   NextScene: Study
   SpawnObject: 0
@@ -999,7 +1015,6 @@ MonoBehaviour:
   ObjectsSpawned: []
   EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &755448032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1137,6 +1152,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 1
   NextScene: Kitchen
   SpawnObject: 0
@@ -1144,7 +1160,6 @@ MonoBehaviour:
   ObjectsSpawned: []
   EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &775677870
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1284,7 +1299,7 @@ TilemapCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0, y: -4.5}
+  m_Offset: {x: 0, y: -4.2}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
 --- !u!66 &780428001
@@ -1307,46 +1322,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 780428000}
     m_ColliderPaths:
-    - - X: 129999900
-        Y: -115000041
-      - X: 129999900
-        Y: -85000100
-      - X: 130000041
-        Y: -85000100
-      - X: 130000100
-        Y: -85000041
-      - X: 130000100
-        Y: -34999959
-      - X: 130000041
-        Y: -34999900
-      - X: -70000041
-        Y: -34999900
-      - X: -70000100
-        Y: -34999959
-      - X: -70000100
-        Y: -35000100
-      - X: -100000041
-        Y: -35000100
-      - X: -100000100
-        Y: -35000041
-      - X: -100000100
-        Y: -34999900
-      - X: -130000041
-        Y: -34999900
-      - X: -130000100
-        Y: -34999959
-      - X: -130000100
-        Y: -115000041
-      - X: -130000041
-        Y: -115000100
-      - X: 129999959
-        Y: -115000100
+    - - X: 130000000
+        Y: -112000000
+      - X: 130000000
+        Y: -31999998
+      - X: -130000000
+        Y: -31999998
+      - X: -130000000
+        Y: -112000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 12.999967, y: -11.50001}
-      - {x: 12.999974, y: -3.49999}
-      - {x: -13.00001, y: -3.5000253}
-      - {x: -12.999974, y: -11.50001}
+    - - {x: 12.99997, y: -11.2}
+      - {x: 12.99997, y: -3.1999998}
+      - {x: -13, y: -3.2000291}
+      - {x: -12.99997, y: -11.2}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &780428002
@@ -3487,7 +3476,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840854457}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.3, y: -0.18713194, z: 0.2472707}
+  m_LocalPosition: {x: -10.78, y: -0.37, z: 0.2472707}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 596244650}
@@ -3537,6 +3526,7 @@ MonoBehaviour:
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: Attic
   SpawnObject: 0
@@ -3546,7 +3536,6 @@ MonoBehaviour:
   - {fileID: 1312885029}
   - {fileID: 1828829376}
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &840854461
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3851,7 +3840,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: cameraYOffset
-      value: -0.8
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057685, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -3885,7 +3874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984027409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.58, y: -0.59, z: 0}
+  m_LocalPosition: {x: 0.58, y: -0.517, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1045133456}
@@ -4108,6 +4097,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
   SpawnObject: 0
@@ -4115,7 +4105,6 @@ MonoBehaviour:
   ObjectsSpawned: []
   EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!1 &1074101676
 GameObject:
   m_ObjectHideFlags: 0
@@ -4144,7 +4133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074101676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.1, y: -0.18713194, z: 0.2472707}
+  m_LocalPosition: {x: -7.76, y: -0.37, z: 0.2472707}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 596244650}
@@ -4191,6 +4180,7 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 1
   NextScene: Basement
   SpawnObject: 0
@@ -4198,7 +4188,6 @@ MonoBehaviour:
   ObjectsSpawned: []
   EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &1074101680
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4478,7 +4467,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670551227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.4, y: -2.16, z: 0}
+  m_LocalPosition: {x: 15.12, y: -2.248, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1045133456}
@@ -4559,7 +4548,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745165691}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.18286806, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1829220740}
@@ -4592,7 +4581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815964110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.74, y: -0.608, z: 0}
+  m_LocalPosition: {x: 13.74, y: -0.476, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1045133456}
@@ -4719,6 +4708,7 @@ MonoBehaviour:
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 0
   NextScene: 
   SpawnObject: 0
@@ -4727,7 +4717,6 @@ MonoBehaviour:
   - {fileID: 775677867}
   EntitySpawn: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &1829220743
 BoxCollider2D:
   m_ObjectHideFlags: 0
