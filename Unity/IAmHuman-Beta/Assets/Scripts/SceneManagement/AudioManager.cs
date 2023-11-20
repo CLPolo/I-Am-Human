@@ -97,7 +97,7 @@ public class AudioManager : MonoBehaviour
             scene = SceneManager.GetActiveScene().buildIndex;
             ChangeScene(scene);
         }
-        
+
         if (p != null) CheckPlayer();
         CheckProgress();
         CheckScenewide(scene);
@@ -142,7 +142,7 @@ public class AudioManager : MonoBehaviour
                 if (ambMisc.isPlaying && !playAmbMisc) ambMisc.Stop();
 
                 // if ambMisc is playing and should be, but the volume is too low, restart it.
-                if (ambMisc.isPlaying && playAmbMisc && ambMisc.volume < 0.01f) RestartSource(ambMisc);
+                if (ambMisc.isPlaying && playAmbMisc && ambMisc.volume < 0.001f) RestartSource(ambMisc);
             }
         }
     }
@@ -184,7 +184,7 @@ public class AudioManager : MonoBehaviour
     void ChangeScene(int scene)
     {   
         //if coming from the title screen, fade out all audio
-        if (fromScene == 0) Stop(true, false);
+        if (fromScene == 0) Stop(true, true);
 
         //Set scene-wide audio sources
         switch (scene){
@@ -207,7 +207,7 @@ public class AudioManager : MonoBehaviour
             case 2:
                 //can only enter cabin via basement; no need to set to true anywhere else
                 inCabin = true;
-                if(fromScene == 2) Stop(true, true);
+                if(fromScene == 1) Stop(true, true);
                 ToBasement();
                 break;
 
@@ -319,7 +319,7 @@ public class AudioManager : MonoBehaviour
             {
                 playBGM = true;
                 //if coming from the starting forest scene, load correct audio file
-                if(fromScene == 2){
+                if(fromScene == 1){
                     s.clip = Resources.Load<AudioClip>(pathBGM + "cabin-theme-A1");
                     srcs["BGM2"].Play();
                     srcs["BGM3"].Play();
@@ -327,7 +327,7 @@ public class AudioManager : MonoBehaviour
                }
             }
             //if we're coming from the forest, cue up the cellar door closing clip         
-            if (name == "MiscEntity" && fromScene == 2) 
+            if (name == "MiscEntity" && fromScene == 1) 
             {
                 s.clip = Resources.Load<AudioClip>(pathInteract + "Door/cabin-door-open-0");
                 s.loop = false;
@@ -438,39 +438,32 @@ public class AudioManager : MonoBehaviour
 
         //Does the player have a reason to make a sound?
         if(!pA.isPlaying && !p.touchingWall && state != PlayerState.Idle)
-        {   
+        {   Debug.Log("Checking player... State: " + state);
+
             //if walking or running, play appropriate footfall sfx
             if(state.IsOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
-            
-            //if pushing an obeject, play the push loop starting at a random point in the file
-            if(state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling)){
-
-                s.clip = Resources.Load<AudioClip>(pathInteract + "push-pull-loop");
-                s.time = UnityEngine.Random.Range(0, s.clip.length/1);
-                s.volume = 0.15f;
-                if (!s.isPlaying) s.Play();
-            }
             
             if (state == PlayerState.Trapped){
                 //TO DO: specific scene trapped logic
                 // forest: mud trap
-                if (scene == 2 || scene == 9)
-                {
+                if (scene == 1 || scene == 8)
+                {   //Debug.Log("In Forest Trap");
+
                     if (!trapEntered)
                     {   
-                        clip = Resources.Load<AudioClip>(pathInteract + "Traps/Mud/mud-trap-entererd-0");
-                        Debug.Log("Checking trap. Is clip null? " + clip == null);
+                        clip = Resources.Load<AudioClip>(pathInteract + "Traps/Mud/mud-trap-entered-0");
+                        //Debug.Log("Checking trap. Is clip null? " + clip == null);
                         s.PlayOneShot(clip, 0.3f);
                         trapEntered = true;
                     } else if (Input.GetKeyDown(Controls.Mash) && !s.isPlaying)
-                    {
+                    {   print("key pressed");
                         clip = Resources.Load<AudioClip>(pathInteract + "Traps/Mud/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString());
-                        Debug.Log("Checking trap. Is clip null? " + clip == null);
+                        //Debug.Log("Checking trap. Is clip null? " + clip == null);
                         s.PlayOneShot(clip, 0.3f);
                     }
                 
                 // hallway: prying board off the door 
-                } else if (scene == 4)
+                } else if (scene == 3)
                 {
                     if (Input.GetKeyDown(Controls.Mash))
                     {   
@@ -478,27 +471,28 @@ public class AudioManager : MonoBehaviour
                         if (PlayerPrefs.GetInt("DoorOff") == 1)
                         {   
                             clip = Resources.Load<AudioClip>(pathInteract + "Traps/Plywood/plywood-pull-end");
-                            Debug.Log("Checking trap. Is clip null? " + clip == null);
+                            //Debug.Log("Checking trap. Is clip null? " + clip == null);
                             s.PlayOneShot(clip, 0.5f);
                         } 
                         else if (!s.isPlaying)
                         {   
                             clip = Resources.Load<AudioClip>(pathInteract + "Traps/Plywood/plywood-pull-" + UnityEngine.Random.Range(0,8).ToString());
-                            Debug.Log("Checking trap. Is clip null? " + clip == null);
+                            //Debug.Log("Checking trap. Is clip null? " + clip == null);
                             s.PlayOneShot(clip, 0.5f);
                         }
                     }
-                } 
+                  //kitchen: walking through the gore  
+                } else if (scene == 4 && !s.isPlaying)
+                {
+                        clip = Resources.Load<AudioClip>(pathInteract + "Traps/Gore/gore-trudge-" + UnityEngine.Random.Range(0,8).ToString());
+                        //Debug.Log("Checking trap. Is clip null? " + clip == null);
+                        s.PlayOneShot(clip, 0.75f);
+                }
             //player is no longer trapped
             } else { trapEntered = false; }
         }
-        
-        // if no longer pushing/pulling, stop the push audio
-        if (!state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling) && 
-                                                         s.isPlaying && 
-                                                         s.clip.name != null &&
-                                                         s.clip.name == "push-pull-loop") s.Stop();
     }
+
     void PlayerFootfall(PlayerState state)
     {    
         //if running, play a random running footfall

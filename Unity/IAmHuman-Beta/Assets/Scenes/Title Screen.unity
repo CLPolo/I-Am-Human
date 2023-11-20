@@ -236,43 +236,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75aeaa58e111dbc48aed71ce29d01720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  objectStates: []
   fadeAnimatedCanvas: {fileID: 2014548871}
   fadeAnimator: {fileID: 0}
   HoldLonger: 0
   HoldFor: 0
-  FadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.5907532
-      value: 0.6716644
-      inSlope: -1.8
-      outSlope: -1.8
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &301036078
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +666,7 @@ PrefabInstance:
     - target: {fileID: 1852240203327973744, guid: 5061bfcf95272e8d1828858371c6eb98,
         type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1852240203327973744, guid: 5061bfcf95272e8d1828858371c6eb98,
         type: 3}
