@@ -401,7 +401,7 @@ public class Player : AnimatedEntity
     IEnumerator ResetTrap(Collider2D collision)
     {
         // After 5 seconds the trap resets (i.e. player can fall back into mud)
-        yield return new WaitUntil(() => state == PlayerState.Idle);
+        yield return new WaitUntil(() => state != PlayerState.Trapped);
         if (collision.gameObject.name == "Gore Pile")
         {
             yield return new WaitForSeconds(0.2f);  // Wait for 0.2 seconds to reset gore

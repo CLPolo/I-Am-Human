@@ -31,7 +31,7 @@ public class LogicScript : MonoBehaviour
 
     public Player player;
     private AudioSource audioSource;
-    public string currentScene;
+    public string currentScene => SceneManager.GetActiveScene().name;
 
     // TRAP
     public GameObject trappedText;
@@ -58,7 +58,6 @@ public class LogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentScene = SceneManager.GetActiveScene().name;
         if (player == null)
         {
             player = Player.Instance;
