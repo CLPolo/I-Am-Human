@@ -1,14 +1,8 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
-using System.Threading;
-using System.Transactions;
 using TMPro;
 using System;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
-using UnityEngine.UIElements;
-using UnityEditorInternal;
 
 public class PuzzleTargetScript : MonoBehaviour
 {

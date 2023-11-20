@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEditor;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 
 [System.Serializable]

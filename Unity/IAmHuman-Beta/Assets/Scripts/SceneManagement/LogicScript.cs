@@ -58,6 +58,7 @@ public class LogicScript : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         DeathScreen.SetActive(false);  // Don't want to be dead at the start lol
         PauseMenu.SetActive(false);
+        PlayerPrefs.DeleteAll();
     }
 
     // Update is called once per frame
