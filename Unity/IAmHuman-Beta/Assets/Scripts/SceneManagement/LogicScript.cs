@@ -201,7 +201,6 @@ public class LogicScript : MonoBehaviour
 
     public void CheckCutscenes()
     {
-        Debug.Log(player.GetState());
         if (currentScene == "Forest Chase")
         {
             if (player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("StartChaseAnimation"))

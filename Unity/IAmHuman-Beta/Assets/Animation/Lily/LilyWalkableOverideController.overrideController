@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LilyWalkableOverideController
+  m_Controller: {fileID: 9100000, guid: d71d8b6d24381a74eb19a62ba5d70c64, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5e40316ff428a7e4c9f4f4baac9af0be, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7e91873840ef6f840b0b113d79f890f7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: bcd87636192c4f941b0fa1019b2dcb76, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7e91873840ef6f840b0b113d79f890f7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7e91873840ef6f840b0b113d79f890f7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7e91873840ef6f840b0b113d79f890f7, type: 2}
