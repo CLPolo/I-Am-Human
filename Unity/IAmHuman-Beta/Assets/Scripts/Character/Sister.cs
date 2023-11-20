@@ -6,6 +6,7 @@ public class Sister : NPC
 {
     [Header("Movement")]
     public float speed = 3f;
+    public float detectRange = -1;
 
     [Header("Animation Cycles")]
     public List<Sprite> walkCycle;
@@ -29,7 +30,6 @@ public class Sister : NPC
     private Animator sisterAnimator;
     private float untilDist = 3f;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +37,12 @@ public class Sister : NPC
         sisterAnimator = GetComponent<Animator>();
         //AnimationSetup();  (ONLY NEEDED IF DECIDE NOT TO USE ANIMATOR)
         BarkReset();  // Bark will happen randomly every 10-30 seconds
-        SetupNPC(speed, 3f, 1f);
+        if (detectRange >= 0)
+        {
+            SetupNPC(speed, 1f, 3f, detectRange);
+        } else {
+            SetupNPC(speed, 1f, 3f);
+        }
     }
 
     // Update is called once per frame
@@ -54,7 +59,7 @@ public class Sister : NPC
         {
             sisterAnimator.SetInteger("State", 1);
         }
-        else if (Vector2.Distance(transform.position, player.transform.position) < untilDist && !(player.GetState() == PlayerState.Walking))  // fix for state constantly fluctuating (potentially due to NPC following setting)
+        else
         {
             sisterAnimator.SetInteger("State", 0);
         }

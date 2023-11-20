@@ -46,10 +46,15 @@ public class InteractableObjectScript : MonoBehaviour
     public int NextSceneIndex = -1;
 
     [Header("Spawn Object (or enemy) Post Interact")]
+    public int spawnDelay = 0;
     public bool SpawnObject = false;
     public bool SpawnEntity = false;
     public List<GameObject> ObjectsSpawned = null;
     public List<GameObject> EntitySpawn = null;
+
+    [Header("Remove Object (or enemy) Post Interact")]
+    public bool DestroyObject = false;
+    public List<GameObject> ObjectsToDestroy = new List<GameObject>();
 
     // Booleans
     private int textIndex = 0;
@@ -119,6 +124,7 @@ public class InteractableObjectScript : MonoBehaviour
             RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
             PickupSet();
             if (SpawnObject || SpawnEntity) { SpawnObjectCheck(); } // spawns entity objects
+            if (DestroyObject) { DestroyObjectCheck(); }
         }
         if (PressedInteract) { CheckAndDisplayInfo(); }  // displays info even if outside of collider, only needed if not frozen
         CheckPickupInteractions();
@@ -390,20 +396,20 @@ public class InteractableObjectScript : MonoBehaviour
         PlayerPrefs.SetInt("DoorClosed", 1);  // door is now closed
         if (PlayerPrefs.GetInt("DoorClosed") == 1)
         {
-            SpawnObjectCheck();  // spawns closed door
             if (this.gameObject.name == "Cellar Door (OPENED)")  // turns off open one, and will keep it off everytime you re-enter the scene
-            {   
+            {
                 //only deactivate the open door once the closing sound it done playing
                 float len = player.AudioSource.clip.length;
                 float passed = player.AudioSource.time;
 
-                if (player.AudioSource.clip.name == "cellar-door-close-0") StartCoroutine(DelayedDeactivate(len - passed - 0.247f)); // float literal accounts for tail of audio file
+                if (player.AudioSource.clip.name == "cellar-door-close-0") StartCoroutine(DelayedActivate(0));// len - passed - 0.247f)); // float literal accounts for tail of audio file
             }                                                                                                                        // allowing the door closing audio and visual to sync
         }
     }
 
-    private IEnumerator DelayedDeactivate (float duration){
+    private IEnumerator DelayedActivate (float duration){
         yield return new WaitForSecondsRealtime(duration);
+        SpawnObjectCheck();  // spawns closed door
         this.gameObject.SetActive(false);
     }
 
@@ -435,6 +441,10 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void SpawnObjectCheck()
     {
+        if (spawnDelay > 0)
+        {
+            System.Threading.Thread.Sleep(spawnDelay*1000);
+        }
         // checks if enemy should be 'spawned' (turned on), then spawns them.
 
         if (SpawnObject == true && ObjectsSpawned != null)
@@ -449,6 +459,17 @@ public class InteractableObjectScript : MonoBehaviour
             foreach (GameObject entity in EntitySpawn)
             {
                 SetObjectActive(entity.gameObject, true);
+            }
+        }
+    }
+
+    private void DestroyObjectCheck()
+    {
+        if (DestroyObject == true && ObjectsToDestroy.Count > 0)
+        {
+            foreach (GameObject obj in ObjectsToDestroy)
+            {
+                SetObjectActive(obj, false);
             }
         }
     }
