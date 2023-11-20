@@ -23,6 +23,8 @@ public class Monster : NPC
     private LogicScript logic;
     private AudioSource audioSource;
     private Animator enemyAnimator;
+    private Sprite idleSprite;
+    private bool cutscene = false;
 
 
     [Header("Patrol Settings")]
@@ -40,6 +42,7 @@ public class Monster : NPC
     // Start is called before the first frame update
     void Start()
     {
+        idleSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
         logic = LogicScript.Instance;
         audioSource = GetComponent<AudioSource>();
         if (crawler)
@@ -67,7 +70,7 @@ public class Monster : NPC
             player = Player.Instance;
         }
 
-        if (PlayerPrefs.GetInt("Dead") != 1 && PlayerPrefs.GetInt("Paused") != 1 && PlayerPrefs.GetInt("Fading") != 1)  // doesn't move when dead, paused, or fading.
+        if (!cutscene && PlayerPrefs.GetInt("Dead") != 1 && PlayerPrefs.GetInt("Paused") != 1 && PlayerPrefs.GetInt("Fading") != 1)  // doesn't move when dead, paused, or fading.
         {
             CheckFollowing();
             if (patrolling) { HandlePatrolling(); }
@@ -84,6 +87,18 @@ public class Monster : NPC
             Flip(-(pos.x));
         }
         _priorPosition = transform.position;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "CrawlerRemovalService")
+        {
+            cutscene = true;  // Removes patrolling (Similar to freezing player)
+            monsterDefaultSpeed = 2f;  // Slow down the monster for the big reveal
+            speed = monsterDefaultSpeed;
+            enemyAnimator.enabled = false;  // Stop animating for the cutscene
+            SpriteRenderer.sprite = idleSprite;
+        }
     }
 
     private void CheckFollowing()
