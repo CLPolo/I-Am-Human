@@ -212,7 +212,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: cameraYOffset
-      value: 0.2
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057685, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -1123,7 +1123,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Outline
       value: 
-      objectReference: {fileID: -7739112529119816975, guid: 66109c9b8a4d5a541aa0de9f86ce818a,
+      objectReference: {fileID: -5022902154623271807, guid: 4411a04576758ee4f9bb1147cce112af,
         type: 3}
     - target: {fileID: 7082313449261153278, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
