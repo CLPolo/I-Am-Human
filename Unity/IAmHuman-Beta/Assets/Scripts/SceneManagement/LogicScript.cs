@@ -125,7 +125,7 @@ public class LogicScript : MonoBehaviour
             {
                 if (!audioSource.isPlaying){
                     //audioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString());
-                    audioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString()), 0.5f);
+                    audioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Traps/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString()), 0.5f);
                 }
                 if (inGore)
                 {

@@ -194,14 +194,11 @@ public class InteractableObjectScript : MonoBehaviour
             AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/item-pickup");
             player.AudioSource.PlayOneShot(clip, 0.5f);
             if (this.tag == "Flashlight")
-            {   
-                Audio = gameObject.GetComponent<AudioSource>();
-                Audio.loop = false;
-                Audio.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cellar-door-close-0");
-                Audio.Play();
+            {
+                clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cellar-door-close-0");
+                player.AudioSource.clip = clip;
+                player.AudioSource.PlayOneShot(clip);
             }
-
-
         }
 
     }
@@ -209,7 +206,6 @@ public class InteractableObjectScript : MonoBehaviour
     private void RemovePickedUpObjects()
     {
         // ensures they won't spawn on re-entry of a room if they were picked up
-
         if (this.gameObject.tag.isOneOf("Flashlight", "Crowbar", "AtticKey"))
         {
             if (PlayerPrefs.GetInt(this.gameObject.tag) == 1)
@@ -389,11 +385,21 @@ public class InteractableObjectScript : MonoBehaviour
         {
             SpawnObjectCheck();  // spawns closed door
             if (this.gameObject.name == "Cellar Door (OPENED)")  // turns off open one, and will keep it off everytime you re-enter the scene
-            {
-                this.gameObject.SetActive(false);
-            }
+            {   
+                //only deactivate the open door once the closing sound it done playing
+                float len = player.AudioSource.clip.length;
+                float passed = player.AudioSource.time;
+
+                if (player.AudioSource.clip.name == "cellar-door-close-0") StartCoroutine(DelayedDeactivate(len - passed - 0.247f)); // float literal accounts for tail of audio file
+            }                                                                                                                        // allowing the door closing audio and visual to sync
         }
     }
+
+    private IEnumerator DelayedDeactivate (float duration){
+        yield return new WaitForSecondsRealtime(duration);
+        this.gameObject.SetActive(false);
+    }
+
     private void HandleAtticKey()
     {
         if (this.gameObject.name == "Attic Door")
