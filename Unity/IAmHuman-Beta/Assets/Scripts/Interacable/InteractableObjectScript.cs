@@ -409,7 +409,6 @@ public class InteractableObjectScript : MonoBehaviour
 
     private IEnumerator DelayedActivate (float duration){
         yield return new WaitForSecondsRealtime(duration);
-        SpawnObjectCheck();  // spawns closed door
         this.gameObject.SetActive(false);
     }
 
@@ -441,10 +440,6 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void SpawnObjectCheck()
     {
-        if (spawnDelay > 0)
-        {
-            System.Threading.Thread.Sleep(spawnDelay*1000);
-        }
         // checks if enemy should be 'spawned' (turned on), then spawns them.
 
         if (SpawnObject == true && ObjectsSpawned != null)
