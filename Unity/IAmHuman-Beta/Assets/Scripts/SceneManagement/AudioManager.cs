@@ -14,16 +14,14 @@ public class AudioManager : MonoBehaviour
     private SceneManager SceneManager;
     private int scene;
     private int fromScene; 
-    private int[] woodFloors = {4, 5, 6, 7, 8};
-
+    private int[] woodFloors = {2, 3, 4, 5, 6, 7, 8};
 
     //resource paths
     private string       pathBGM = "Sounds/Music/";
     private string       pathAmb = "Sounds/SoundEffects/Environment/";
-    private string  pathCutscene = "Sounds/SoundEffects/Misc/";
     private string    pathEntity = "Sounds/SoundEffects/Entity/";
     private string  pathInteract = "Sounds/SoundEffects/Entity/Interactable/";
-
+    private string  pathCutscene = "Sounds/SoundEffects/Misc/";
 
     //BGM management flags
     private bool      playBGM = true;
@@ -33,13 +31,12 @@ public class AudioManager : MonoBehaviour
     //other flags
     private bool  playAmbArea = false;
     private bool  playAmbMisc = false;
-    private bool playCutscene = false;
-    private bool       fading = false;
     private bool  trapEntered = false;
     
     //progression flags
     private bool              inCabin = false;
     private bool            inKitchen = false;
+    private bool              inAttic = false;
     private bool     kitchenTriggered = false;
     private bool crowbarFadeTriggered = false;
     private bool          gameStarted = false;
@@ -213,6 +210,12 @@ public class AudioManager : MonoBehaviour
 
             //Hallway
             case 3: 
+                if (fromScene == 7)
+                {
+                    inCabin = true; //set so bgm resumes in CheckProgress()
+                    kitchenTriggered = false;
+                }
+
                 ToHallway();
                 break;
 
@@ -222,20 +225,23 @@ public class AudioManager : MonoBehaviour
                 //ToKitchen();
                 break;
 
-            //Study                
-            case 5:
-                break;
-
-            //Bedroom                
-            case 6:
+            //Attic Stairwell
+            case 7:
+                //if entering from the hall way, pause bgm
+                if (fromScene == 3)
+                {
+                    inCabin = false; // set so CheckProgress() doesn't automatically restart bgm
+                    srcs["BGM3"].Pause();
+                    srcs["BGM2"].Pause();
+                }
                 break;
 
             //Attic
-            case 7:
+            case 8:
                 break;
 
             //Chase
-            case 8:
+            case 9:
                 break;
         }
 
@@ -260,7 +266,6 @@ public class AudioManager : MonoBehaviour
                 RestartSource(s, true, 0.25f, 1.0f);
             }
             if (name == "Cutscene") {
-                playCutscene = false;
                 s.clip = null;
             } 
             if (name == "AmbArea"){
@@ -289,7 +294,6 @@ public class AudioManager : MonoBehaviour
             if (name == "Cutscene" && !gameStarted)
             {   
                 gameStarted = true;
-                playCutscene = true;
                 s.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-comp");
                 s.PlayOneShot(s.clip, 0.8f);
             } 
@@ -338,7 +342,6 @@ public class AudioManager : MonoBehaviour
             if (name == "Cutscene" )
             {
                 s.clip = null;
-                playCutscene = false;
             } 
             
             if (name == "AmbMisc")
@@ -395,7 +398,6 @@ public class AudioManager : MonoBehaviour
 
     private static IEnumerator Start(AudioSource audioSource, float targetVolume = 1f, float duration = 3f, bool stop = false)
     {   //taken from https://johnleonardfrench.com/how-to-fade-audio-in-unity-i-tested-every-method-this-ones-the-best/ 
-        _instance.fading = true;
         float currentTime = 0;
         float start = audioSource.volume;
         if (!audioSource.isPlaying) audioSource.Play();
@@ -407,7 +409,6 @@ public class AudioManager : MonoBehaviour
 
         }
         if (stop) audioSource.Stop();
-        _instance.fading = false;
         yield break;
     }
 
