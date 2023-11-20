@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -34,6 +35,11 @@ public class LevelLoader : MonoBehaviour
         }
 
         CheckPositioning();
+
+        if (getSceneIndex() == 1 && PlayerPrefs.HasKey("DoneIntroFade"))
+        {
+            HoldFor = 0;
+        }
 
         if (fadeAnimatedCanvas != null)
         {
@@ -106,6 +112,8 @@ public class LevelLoader : MonoBehaviour
         return SceneManager.GetActiveScene().name;
     }
 
+    public int getSceneIndex() => SceneManager.GetActiveScene().buildIndex;
+
     private void SetScenePositions()
     {
         if (getSceneName() == "Hallway Hub")
@@ -116,6 +124,8 @@ public class LevelLoader : MonoBehaviour
             {
                 PlayerPrefs.SetInt("CellarDoorClosed", 1);
             }
+        } else if (getSceneIndex() == 1) {
+            PlayerPrefs.SetInt("DoneIntroFade", 1);
         }
         // sets playerprefs for player's position and scene. 
         PlayerPrefs.SetInt(getSceneName(), 1);
