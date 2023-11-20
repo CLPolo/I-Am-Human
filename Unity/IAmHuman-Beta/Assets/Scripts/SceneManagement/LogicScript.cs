@@ -201,30 +201,20 @@ public class LogicScript : MonoBehaviour
 
     public void CheckCutscenes()
     {
+        Debug.Log(player.GetState());
         if (currentScene == "Forest Chase")
         {
-            player.gameObject.GetComponent<Animator>().SetBool("Reset", true);
-            Debug.Log(player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("EndOfStartChaseAnimation"));
-            Debug.Log(PlayerPrefs.GetInt("ChaseStartDone"));
-            if (PlayerPrefs.GetInt("ChaseStartDone") != 1)
+            if (player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("StartChaseAnimation"))
             {
-                Debug.Log("HEY FUCKER");
-                player.SetState(PlayerState.Frozen);
-                ChaseStartCutscene();
+                player.SetState(PlayerState.Frozen);  // Freeze when animation playing
+                PlayerPrefs.SetInt("InAnimation", 1);
             }
-        }
-    }
-
-    public void ChaseStartCutscene()
-    {
-        // This is the cutscene of the player jumpin out da window
-        Debug.Log("HEY PART 2 BAYBEEEEEEEEEEEEEEEEE");
-        if (player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("EndOfStartChaseAnimation"))
-        {
-            Debug.Log("WASUPPPPPPPPPPPPPPPPPPPP");
-            player.gameObject.GetComponent<Animator>().enabled = false;
-            PlayerPrefs.SetInt("ChaseStartDone", 1);
-            player.SetState(PlayerState.Idle);
+            else if (player.GetState() == PlayerState.Frozen && PlayerPrefs.GetInt("InAnimation") == 1)
+            {
+                player.gameObject.GetComponent<Animator>().enabled = false;  // Disable the animator to allow moving
+                PlayerPrefs.SetInt("InAnimation", 0);
+                player.SetState(PlayerState.Idle);
+            }
         }
     }
 }
