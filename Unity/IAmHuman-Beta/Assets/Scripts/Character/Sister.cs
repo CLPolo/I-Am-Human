@@ -71,7 +71,7 @@ public class Sister : NPC
             sisterAnimator.SetInteger("State", 0);
         }
 
-        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && !sisterAudio.isPlaying)
+        if (SceneManager.GetActiveScene().name == "Hallway Hub" && sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && !sisterAudio.isPlaying)
         {
             sisterAudio.PlayOneShot((AudioClip)Resources.Load("Sounds/SoundEffects/Environment/Cabin/Misc/scare-lily-away"), 0.25f);
             player.SetState(PlayerState.Frozen);
