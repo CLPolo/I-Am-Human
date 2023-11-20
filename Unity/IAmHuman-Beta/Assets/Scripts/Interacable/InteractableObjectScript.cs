@@ -226,7 +226,7 @@ public class InteractableObjectScript : MonoBehaviour
     private void PlayNoise()
     {   
         // plays a random sound from the sound list each time
-        Sounds = Resources.LoadAll<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/Locked/").ToList();
+        Sounds = Resources.LoadAll<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/Locked/").ToList();  // this might make this function not work for any other noises we'd want
         AudioSource audio = GetComponent<AudioSource>();
         int randomNumber = UnityEngine.Random.Range(0, Sounds.Count);
         audio.PlayOneShot(Sounds.ElementAt(randomNumber));
@@ -311,6 +311,7 @@ public class InteractableObjectScript : MonoBehaviour
 
         if (this.GetComponent<Door>().IsInteractable == true)
         {
+            player.AudioSource.PlayOneShot((AudioClip) Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cabin-door-open-0"), 0.25f);  // plays door open sound when opening
             if (NextSceneIndex >= 0) {
                 player.SetState(PlayerState.Frozen);
                 LevelLoader.Instance.loadScene(NextSceneIndex);
