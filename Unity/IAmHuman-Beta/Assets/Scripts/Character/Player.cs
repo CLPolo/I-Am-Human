@@ -61,6 +61,7 @@ public class Player : AnimatedEntity
     public AudioSource AudioSource;
     public List<AudioClip> footstepsWalk;
     public List<AudioClip> footstepsRun;
+    public List<AudioClip> monsterFootsteps;
     protected internal bool touchingWall = false;
 
     [Header("Items")]
@@ -79,7 +80,10 @@ public class Player : AnimatedEntity
     [Header("Other Objects")]
     private LogicScript logic;
     private Light lightCone;
-
+    public bool monsterEmergesCutscene = false;
+    public bool cameraCutscene = false;
+    public bool finalCutscene = false;
+    public bool shrinkCamera = false;
     private int keyCount = 0;
 
     void Start()
@@ -254,6 +258,36 @@ public class Player : AnimatedEntity
                 keyCount--;
             }
         }
+        else if (collision.gameObject.name == "MonsterEmerge")
+        {
+            // This is for the forest chase, it plays the monster coming out of the cabin cutscene
+            SetState(PlayerState.Frozen);
+            monsterEmergesCutscene = true;
+            collision.enabled = false;  // Disable so it doesn't play again
+        }
+        else if (collision.gameObject.CompareTag("CrawlerSpawner"))
+        {
+            // I added these for fun lol we can always delete them
+            collision.transform.GetChild(0).gameObject.SetActive(true);  // ACTIVATE THE CREATURE >:)
+            collision.enabled = false;  // Disable so it doesn't play again
+        }
+        else if (collision.gameObject.name == "CrawlerRemovalService")
+        {
+            shrinkCamera = true;  // Start shrinking the camera for final cutscene
+            for (int i=0; i<3; i++)
+            {
+                collision.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);  // DEACTIVATE THE CREATURE
+            
+            }
+            
+        }
+        else if (collision.gameObject.name == "EndingCutscene")
+        {
+            // This is the final cutscene in the game.
+            SetState(PlayerState.Frozen);
+            cameraCutscene = true;
+            finalCutscene = true;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -415,7 +449,7 @@ public class Player : AnimatedEntity
 
     IEnumerator ResetTrap(Collider2D collision)
     {
-        // After 5 seconds the trap resets (i.e. player can fall back into mud)
+        // After (LESS THAN) 5 seconds the trap resets (i.e. player can fall back into mud)
         yield return new WaitUntil(() => state != PlayerState.Trapped);
         if (collision.gameObject.name == "Gore Pile")
         {
@@ -424,7 +458,7 @@ public class Player : AnimatedEntity
         }
         else
         {
-            yield return new WaitForSeconds(2);  // Wait for 2 seconds to reset mud and other traps
+            yield return new WaitForSeconds(0.5f);  // Wait for 0.5 seconds to reset mud and other traps
         }
         if (logic.trapKills)
         {

@@ -23,6 +23,7 @@ TagManager:
   - AudioManager
   - Crowbar
   - AtticKey
+  - CrawlerSpawner
   layers:
   - Default
   - TransparentFX

@@ -30,10 +30,14 @@ public class LogicScript : MonoBehaviour
     public bool IsPaused = false;  // true if game is paused
 
     public Player player;
-    private AudioSource audioSource;
-    public string currentScene => SceneManager.GetActiveScene().name;
 
-    // TRAP
+    [Header("Cutscenes")]
+    private AudioSource audioSource;
+    private AudioClip monsterEmergesAudio;
+    public string currentScene => SceneManager.GetActiveScene().name;
+    private GameObject monster;
+
+    [Header("Traps")]
     public GameObject trappedText;
     public float defaultMashTimer = 1.5f;  // If you don't mash for 1 seconds you die
     private float mashTimer;
@@ -45,6 +49,7 @@ public class LogicScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        monsterEmergesAudio = (AudioClip)Resources.Load("Sounds/SoundEffects/Entity/Monster/monster-emerges");
         mashTimer = defaultMashTimer;
         if (Instance != null && Instance != this)
         {
@@ -58,6 +63,12 @@ public class LogicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentScene == "Forest Chase"  && monster == null)
+        {
+            monster = GameObject.Find("Monster");
+            monster.SetActive(false);
+            PlayerPrefs.SetInt("MonsterEmerges", 0);
+        }
         if (player == null)
         {
             player = Player.Instance;
@@ -133,7 +144,7 @@ public class LogicScript : MonoBehaviour
                 }
                 else
                 {
-                    mashTimer += 0.3f;  // Add 0.3 seconds to the timer
+                    mashTimer += 0.7f;  // Add 0.7 seconds to the timer
                 }
             }
         }
@@ -213,6 +224,17 @@ public class LogicScript : MonoBehaviour
                 player.gameObject.GetComponent<Animator>().enabled = false;  // Disable the animator to allow moving
                 PlayerPrefs.SetInt("InAnimation", 0);
                 player.SetState(PlayerState.Idle);
+            }
+
+            if (player.monsterEmergesCutscene == true && PlayerPrefs.GetInt("MonsterEmerges") == 2)
+            {
+                // We can continue the animation here
+                monster.SetActive(true);  // Monster appears at the doorway
+                audioSource.PlayOneShot(monsterEmergesAudio, 0.25f);
+                // START CHASE MUSIC HERE
+                PlayerPrefs.SetInt("MonsterEmerges", 0);  // Reset in case of death
+                player.monsterEmergesCutscene = false;  // The cutscene is over
+                player.SetState(PlayerState.Idle);  // THE PLAYER SHOULD RUN NOW
             }
         }
     }
