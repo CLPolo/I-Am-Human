@@ -293,9 +293,9 @@ public class AudioManager : MonoBehaviour
             AudioSource s = src.Value; 
 
             if (name == "BGM"){
-                //playBGM = true;
-                //s.clip = (AudioClip)Resources.Load(pathBGM + "title-theme-lofx");
-                //RestartSource(s, true, 0.25f, 1.0f);
+                playBGM = true;
+                s.clip = (AudioClip)Resources.Load(pathBGM + "title-theme-lofx");
+                RestartSource(s, true, 0.25f, 1.0f);
             }
             if (name == "Cutscene") {
                 s.clip = null;
@@ -327,7 +327,7 @@ public class AudioManager : MonoBehaviour
             if (name == "Cutscene" && !gameStarted)
             {   
                 gameStarted = true;
-                s.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-comp");
+                s.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-update");
                 s.PlayOneShot(s.clip, 0.8f);
             } 
             if (name == "AmbArea") 
