@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 220754582}
   - component: {fileID: 220754581}
   m_Layer: 0
-  m_Name: Stairs
+  m_Name: Attic Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,15 +194,19 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 1
   NextScene: Attic
+  NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 0}
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!114 &220754583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,14 +632,18 @@ MonoBehaviour:
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
+  Audio: {fileID: 0}
   Unlock: 1
   NextScene: Hallway Hub
+  NextSceneIndex: -1
+  spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
+  DestroyObject: 0
+  ObjectsToDestroy: []
   monsterComing: 0
-  rawr: {fileID: 0}
 --- !u!61 &1187412143
 BoxCollider2D:
   m_ObjectHideFlags: 0

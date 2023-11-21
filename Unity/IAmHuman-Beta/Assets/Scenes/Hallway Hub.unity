@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: patrol.Array.data[0].location.x
-      value: -1.56
+      value: -3.3
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
@@ -1152,7 +1152,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 5645264086627507348, guid: 833fd7f60718f7e4bb71e8f787e5a781,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4601,7 +4601,7 @@ MonoBehaviour:
   Sounds: []
   Audio: {fileID: 0}
   Unlock: 0
-  NextScene: Attic
+  NextScene: Stairwell
   NextSceneIndex: -1
   spawnDelay: 0
   SpawnObject: 0
