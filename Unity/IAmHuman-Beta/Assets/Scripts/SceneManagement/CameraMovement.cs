@@ -88,33 +88,26 @@ public class CameraMovement : MonoBehaviour
         else
         {
             // We are in a cutscene involving camera movement, so disable the other camera movement
-            if (playerAccess.finalCutscene && PlayerPrefs.GetInt("ShrinkCamera") == 2)
+            if (playerAccess.finalCutscene && PlayerPrefs.GetInt("ShrinkCamera") == 2  && PlayerPrefs.GetInt("NumPans") != -1)
             {
+                leftBound = -100;
                 // After the finalCutscene is started and camera is finished Shrinking we can Animate
-                PlayerPrefs.SetInt("ShrinkCamera", 3);  // Not rlly a good variable, but it makes it only play once
-                StartCoroutine(FinalAnimation());
-                
-                //PlayerPrefs.SetInt("NumPans", 0);
-                //// We are in the final cutscene and the camera has shrunk enough
-                //switch (PlayerPrefs.GetInt("NumPans"))
-                //{
-                //    case 0:
-                //        Debug.Log("CASE 1");
-                //        PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
-                //        StartCoroutine(PanCamera(1, -0.66f));
-                //        break;
-                //    case 1:
-                //        break;
-                //}
+                // We are in the final cutscene and the camera has shrunk enough
+                switch (PlayerPrefs.GetInt("NumPans"))
+                {
+                    case 0:
+                        Debug.Log("CASE 1");
+                        PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(1, -0.66f));
+                        break;
+                    case 1:
+                        Debug.Log("CASE 2");
+                        PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(2, 3.56f));
+                        break;
+                }
             }
         }
-    }
-
-    IEnumerator FinalAnimation()
-    {
-        gameObject.GetComponent<PlayableDirector>().Play();
-        yield return new WaitForSeconds(3);
-        // Add next thing of animation.... :(
     }
 
     IEnumerator Shaking(float shakeDuration, AnimationCurve curve)
@@ -165,26 +158,43 @@ public class CameraMovement : MonoBehaviour
             gameObject.GetComponent<Camera>().orthographicSize -= 0.1f;
             yield return new WaitForSeconds(0.05f);
         }
-        PlayerPrefs.SetInt("ShrinkCamera", 2);
+        PlayerPrefs.SetInt("ShrinkCamera", 2);  // We are ready to begin camera pans
     }
 
-    //IEnumerator PanCamera(int panNum, float xCoord)
-    //{
-    //    // Pans the camera in a specific direction
-    //    switch (panNum)
-    //    {
-    //        case 1:
-    //            while (gameObject.GetComponent<Camera>().transform.position.x > xCoord)
-    //            {
-    //                // We want a slow pan for a slow reveal of the car
-    //                gameObject.GetComponent<Camera>().transform.position = new Vector3(
-    //                    gameObject.GetComponent<Camera>().transform.position.x - (13.5f - xCoord) * Time.deltaTime / 5f,
-    //                    gameObject.GetComponent<Camera>().transform.position.y,
-    //                    gameObject.GetComponent<Camera>().transform.position.z);
-    //                yield return new WaitForSeconds((13.5f - xCoord) / 5f);
-    //            }
-    //            break;
-    //    }
-    //    PlayerPrefs.SetInt("NumPans", panNum);
-    //}
+    IEnumerator PanCamera(int panNum, float xCoord)
+    {
+        // Pans the camera in a specific direction
+        Vector3 originalLoc = gameObject.transform.position;
+        Debug.Log("THE PANNUM IS " + panNum.ToString());
+        switch (panNum)
+        {
+            case 1:
+                Debug.Log("HEY WE GOT HERE YASSSSS");
+                while (gameObject.transform.position.x > xCoord)
+                {
+                    // We want a slow pan for a slow reveal of the car
+                    gameObject.transform.position = new Vector3(
+                        gameObject.transform.position.x - ((originalLoc.x - xCoord)*Time.deltaTime/5f),  // Takes 5 seconds
+                        originalLoc.y,
+                        originalLoc.z);
+                    yield return null;
+                }
+                yield return new WaitForSeconds(2);
+                break;
+            case 2:
+                // Move to the right to make space for dialogue box
+                while (gameObject.transform.position.x < xCoord)
+                {
+                    gameObject.transform.position = new Vector3(
+                        gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / 3f),  // Takes 3 seconds
+                        originalLoc.y,
+                        originalLoc.z);
+                    yield return null;
+                }
+                PlayerPrefs.SetInt("FinalDialogue", 1);
+                break;
+        }
+        PlayerPrefs.SetInt("NumPans", panNum);
+        Debug.Log("THIS IS THE NUMPANS NOW: " + PlayerPrefs.GetInt("NumPans").ToString());
+    }
 }
