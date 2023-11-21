@@ -18,6 +18,7 @@ public class Monster : NPC
 
     private LogicScript logic;
     private AudioSource audioSource;
+    private AudioSource monsterAudio;
     public AudioClip clip;
 
     private Animator enemyAnimator;
@@ -46,6 +47,7 @@ public class Monster : NPC
         idleSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
         logic = LogicScript.Instance;
         audioSource = GetComponent<AudioSource>();
+
         if (crawler)
         {
             audioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Crabs/crab-walk-loop-0");
@@ -57,6 +59,10 @@ public class Monster : NPC
         if (monster)
         {
             speed = monsterDefaultSpeed;
+            monsterAudio = gameObject.AddComponent<AudioSource>();
+            monsterAudio.clip = Resources.Load<AudioClip>(monPath + "creature-idle-breath"); 
+            monsterAudio.volume = 0.5f;
+            monsterAudio.loop = true;
             
         }
         enemyAnimator = GetComponent<Animator>();
@@ -160,14 +166,22 @@ public class Monster : NPC
         if (monster)
         {   
             //Debug.Log(audioSource.isPlaying);
-            Debug.Log(GetComponent<SpriteRenderer>().sprite.name);
+            //Debug.Log(GetComponent<SpriteRenderer>().sprite.name);
             if(!audioSource.isPlaying && GetComponent<SpriteRenderer>().sprite.name.IsOneOf("monster_walking_sprites_3", "monster_walking_sprites_8") )
             {
-                Debug.Log("In monster playFootfall");
+                //Debug.Log("In monster playFootfall");
                 clip = Resources.Load<AudioClip>(monPath + "Footsteps/monster-step-" + UnityEngine.Random.Range(0,4).ToString());
-                //if (clip.name != null) Debug.Lo
                 audioSource.PlayOneShot(clip);
             }
+            if(PlayerPrefs.GetInt("MonsterEnabled") == 2)
+            {
+                monsterAudio.Play();
+            }
+        }
+        if (PlayerPrefs.GetInt("Dead") == 1)
+        {
+            audioSource.Stop();
+            monsterAudio.Stop();
         }
     }
 

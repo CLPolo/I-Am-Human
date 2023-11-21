@@ -88,6 +88,12 @@ public class AudioManager : MonoBehaviour
             pA = p.gameObject.GetComponent<AudioSource>();
         }
 
+        //are we dead?
+        if (PlayerPref.GetInt("Dead") == 1)
+        {   
+
+        }
+
         //check for scene change
         if (scene != SceneManager.GetActiveScene().buildIndex)
         {   
@@ -287,9 +293,9 @@ public class AudioManager : MonoBehaviour
             AudioSource s = src.Value; 
 
             if (name == "BGM"){
-                playBGM = true;
-                s.clip = (AudioClip)Resources.Load(pathBGM + "title-theme-lofx");
-                RestartSource(s, true, 0.25f, 1.0f);
+                //playBGM = true;
+                //s.clip = (AudioClip)Resources.Load(pathBGM + "title-theme-lofx");
+                //RestartSource(s, true, 0.25f, 1.0f);
             }
             if (name == "Cutscene") {
                 s.clip = null;
