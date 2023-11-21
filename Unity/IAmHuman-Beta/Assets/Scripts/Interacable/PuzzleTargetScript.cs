@@ -416,7 +416,34 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             PlayerPrefs.SetInt("StartTransform", 1);
         }
+        else if (this.gameObject.name == "EndingCutscene")
+        {
+            if (PlayerPrefs.GetInt("FinalDialogue") == 1)
+            {
+                TextTrigger = true;
+                TextToDisplay.Clear();
+                TextToDisplay.Add("Lily... ?");
+                LevelLoader.Instance.loadScene("End Credits");
+                PlayerPrefs.SetInt("FinalDialogue", 0);
+            }
+            else if (PlayerPrefs.GetInt("FinalDialogue") == 2)
+            {
+                TextTrigger = true;
+                TextToDisplay.Clear();
+                TextToDisplay.Add("Who... What are you?");
+                PlayerPrefs.SetInt("FinalDialogue", 0);
+                TextTrigger = false;
 
+            }
+            else if (PlayerPrefs.GetInt("FinalDialogue") == 3)
+            {
+                TextTrigger = true;
+                TextToDisplay.Clear();
+                TextToDisplay.Add("I AM HUMAN.");
+                PlayerPrefs.SetInt("FinalDialogue", 0);
+                TextTrigger = false;
+            }
+        }
     }
 
 }

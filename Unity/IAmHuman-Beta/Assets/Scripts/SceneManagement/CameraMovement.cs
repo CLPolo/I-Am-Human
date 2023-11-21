@@ -96,15 +96,21 @@ public class CameraMovement : MonoBehaviour
                 switch (PlayerPrefs.GetInt("NumPans"))
                 {
                     case 0:
-                        Debug.Log("CASE 1");
                         PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
                         StartCoroutine(PanCamera(1, -0.66f));
                         break;
                     case 1:
-                        Debug.Log("CASE 2");
                         PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
                         StartCoroutine(PanCamera(2, 3.56f));
                         break;
+                    //case 3:
+                    //    PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
+                    //    StartCoroutine(PanCamera(3, 13.5f));
+                    //    break;
+                    //case 4:
+                    //    PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
+                    //    StartCoroutine(PanCamera(4, 17.6f));
+                    //    break;
                 }
             }
         }
@@ -165,11 +171,9 @@ public class CameraMovement : MonoBehaviour
     {
         // Pans the camera in a specific direction
         Vector3 originalLoc = gameObject.transform.position;
-        Debug.Log("THE PANNUM IS " + panNum.ToString());
         switch (panNum)
         {
             case 1:
-                Debug.Log("HEY WE GOT HERE YASSSSS");
                 while (gameObject.transform.position.x > xCoord)
                 {
                     // We want a slow pan for a slow reveal of the car
@@ -192,9 +196,39 @@ public class CameraMovement : MonoBehaviour
                     yield return null;
                 }
                 PlayerPrefs.SetInt("FinalDialogue", 1);
+                //yield return new WaitUntil(()=>PlayerPrefs.GetInt("FinalDialogue") == 0);
                 break;
+                // DROP TO KNEES HERE FOR FUTURE REFERENCE
+            //case 3:
+            //    while (gameObject.transform.position.x < xCoord)
+            //    {
+            //        gameObject.transform.position = new Vector3(
+            //            gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / 3f),  // Takes 2 seconds
+            //            originalLoc.y,
+            //            originalLoc.z);
+            //        yield return null;
+            //    }
+            //    PlayerPrefs.SetInt("FinalDialogue", 2);
+            //    yield return new WaitUntil(() => PlayerPrefs.GetInt("FinalDialogue") == 0);
+            //    break;
+            //case 4:
+            //    while (gameObject.transform.position.x < xCoord)
+            //    {
+            //        gameObject.transform.position = new Vector3(
+            //            gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / 3f),  // Takes 2 seconds
+            //            originalLoc.y,
+            //            originalLoc.z);
+            //        yield return null;
+            //    }
+            //    while (gameObject.GetComponent<Camera>().orthographicSize > 3)
+            //    {
+            //        gameObject.GetComponent<Camera>().orthographicSize -= 0.1f;
+            //        yield return new WaitForSeconds(0.05f);
+            //    }
+            //    PlayerPrefs.SetInt("FinalDialogue", 3);
+            //    yield return new WaitUntil(() => PlayerPrefs.GetInt("FinalDialogue") == 0);
+            //    break;
         }
         PlayerPrefs.SetInt("NumPans", panNum);
-        Debug.Log("THIS IS THE NUMPANS NOW: " + PlayerPrefs.GetInt("NumPans").ToString());
     }
 }
