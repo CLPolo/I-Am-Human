@@ -199,7 +199,7 @@ public class AudioManager : MonoBehaviour
                     crowbarFadeTriggered = true;
                 }
             }
-            if (inAttic && !monsterTransformed && scene != 9)
+            if (inAttic && !monsterTransformed && scene != 9 && Input.GetKeyDown(KeyCode.Return))
             {
                 monsterTransformed = true;
                 AudioSource s = srcs["Cutscene"];
