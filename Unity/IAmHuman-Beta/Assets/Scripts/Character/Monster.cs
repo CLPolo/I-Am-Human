@@ -21,6 +21,12 @@ public class Monster : NPC
     private AudioSource audioSource;
     private AudioSource monsterAudio;
     public AudioClip clip;
+    // tracking for monsterAudio audio source
+    private const float maxMonsterVol = 0.5f;
+    // tracking for audioSource audio source - this gets set in the chase scene in Update()
+    private float maxVol = 1f;
+    // this is the original distance of the monster - this is when audio will be quietest
+    private float originalDistance = 0;
 
     private Animator enemyAnimator;
     public AnimatorOverrideController walkableOverride = null;
@@ -68,9 +74,8 @@ public class Monster : NPC
             speed = monsterDefaultSpeed;
             monsterAudio = gameObject.AddComponent<AudioSource>();
             monsterAudio.clip = Resources.Load<AudioClip>(monPath + "creature-idle-breath"); 
-            monsterAudio.volume = 0.5f;
+            monsterAudio.volume = maxMonsterVol;
             monsterAudio.loop = true;
-            
         }
         enemyAnimator = GetComponent<Animator>();
         SetupNPC(speed, 0f, null, DetectionRange);
@@ -109,6 +114,23 @@ public class Monster : NPC
             Flip(-(pos.x));
         }
         _priorPosition = transform.position;
+
+        if (logic.currentScene == "Forest Chase")
+        {
+            if (maxVol == 0 && audioSource != null)
+            {
+                maxVol = audioSource.volume;
+            }
+
+            float distance = Vector2.Distance(transform.position, player.transform.position);
+            if (originalDistance == 0)
+            {
+                originalDistance = distance;
+            }
+
+            audioSource.volume = maxVol * (1 - (Mathf.Max(originalDistance, distance) - originalDistance)/distance);
+            monsterAudio.volume = maxMonsterVol * (1 - (Mathf.Max(originalDistance, distance) - originalDistance)/distance);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
