@@ -31,6 +31,8 @@ public class Sister : NPC
     private Animator sisterAnimator;
     private float untilDist = 3f;
 
+    private bool endCutscene = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,9 +84,10 @@ public class Sister : NPC
             player.SetState(PlayerState.Frozen);
         }
 
-        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("LilyEndCutscene") && player.GetState() == PlayerState.Frozen)
+        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("LilyEndCutscene") && player.GetState() == PlayerState.Frozen && !endCutscene)
         {
             player.SetState(PlayerState.Idle);
+            endCutscene = true;
         }
 
         LilyFootfall();

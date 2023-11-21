@@ -312,7 +312,7 @@ public class InteractableObjectScript : MonoBehaviour
 
         if (this.GetComponent<Door>().IsInteractable == true)
         {
-            if (!this.gameObject.name.IsOneOf("Basement Stairs", "Attic Stairs")) player.AudioSource.PlayOneShot((AudioClip) Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cabin-door-open-0"), 0.25f);  // plays door open sound when opening
+            if (!this.gameObject.name.IsOneOf("Basement Stairs", "Attic Stairs") && !player.AudioSource.isPlaying) player.AudioSource.PlayOneShot((AudioClip) Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cabin-door-open-0"), 0.25f);  // plays door open sound when opening
             if (NextSceneIndex >= 0) {
                 player.SetState(PlayerState.Frozen);
                 LevelLoader.Instance.loadScene(NextSceneIndex);
