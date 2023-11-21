@@ -2727,8 +2727,7 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
   TextList:
-  - Hmm, this door won't budge.
-  - Something must be blocking it.
+  - The door won't budge.
   FreezePlayer: 1
   PlaySound: 1
   Sounds:
@@ -3006,8 +3005,8 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
   TextList:
-  - Lily's Shoe...
-  - She must've gotten stuck in the mud too.
+  - That's her shoe...
+  - She's gotta be around here somewhere.
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -13670,10 +13669,10 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
   TextList:
-  - We must've crashed...
-  - I didn't want to hit whatever that was that popped up on the road!
-  - Maybe she got scared and wandered into the woods.
-  - I should go find her.
+  - This is my sister's teddy bear. She was playing with it in the car.
+  - We must have crashed...
+  - If her bear is here, then so is she.
+  - I'd better find her and make sure she's okay.
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []

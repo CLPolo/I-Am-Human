@@ -12,6 +12,7 @@ public static class Controls
     public static readonly KeyCode Right = KeyCode.D;
     // actions
     public static readonly KeyCode Interact = KeyCode.E; // hiding is also interacting
+    public static readonly KeyCode Hide = KeyCode.F; // hiding is also interacting
     public static readonly KeyCode Push = KeyCode.Space;
     public static readonly KeyCode Mash = KeyCode.Space;
     public static readonly KeyCode Run = KeyCode.LeftShift;
@@ -385,7 +386,7 @@ public class Player : AnimatedEntity
 
     private void CheckHiding(GameObject Hideable)
     {
-        if (Input.GetKey(Controls.Interact))
+        if (Input.GetKey(Controls.Hide))
         {
             SetState(PlayerState.Hiding);    
             var hideablePosition = Hideable.transform.position;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PuzzleTargetScript : MonoBehaviour
 {
@@ -410,6 +411,10 @@ public class PuzzleTargetScript : MonoBehaviour
         else if (this.gameObject.name == "Lily Wait Trigger" && this.gameObject.activeSelf == true && PlayerPrefs.GetInt("LilyHallwayOver") != 2)
         {
             player.SetState(PlayerState.Frozen);
+        }
+        else if (this.gameObject.name == "Transform Text Trigger" && TextPlayed)
+        {
+            PlayerPrefs.SetInt("StartTransform", 1);
         }
 
     }

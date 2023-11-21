@@ -75,10 +75,11 @@ public class Monster : NPC
         enemyAnimator = GetComponent<Animator>();
         SetupNPC(speed, 0f, null, DetectionRange);
 
-        if (SceneManager.GetActiveScene().name == "Attic")
+        if (SceneManager.GetActiveScene().name == "Attic")  // resets things if you restart in the attic.
         {
             PlayerPrefs.SetInt("DoneTransformAnimation", 0);
             if (defaultAnimator != null) enemyAnimator.runtimeAnimatorController = defaultAnimator;
+            PlayerPrefs.SetInt("StartTransform", 0);
         }
 
     }
@@ -101,7 +102,8 @@ public class Monster : NPC
         }
 
         // update sprite direction
-        if (SceneManager.GetActiveScene().name == "Attic"? (PlayerPrefs.GetInt("DoneTransformAnimation") == 1) : true && (_priorPosition - transform.position).magnitude > minDiff)        
+
+        if (SceneManager.GetActiveScene().name == "Attic"? (PlayerPrefs.GetInt("DoneTransformAnimation") == 1) : true && (_priorPosition - transform.position).magnitude > minDiff)  // has moved (and not in attic for cutscene)
         {
             Vector3 pos = (_priorPosition - transform.position);
             Flip(-(pos.x));
@@ -127,12 +129,14 @@ public class Monster : NPC
         {
             if (enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("MonsterTransformEndCutscene"))
             {
+                player.SetState(PlayerState.Idle);
                 PlayerPrefs.SetInt("DoneTransformAnimation", 1);
                 if (walkableOverride != null) enemyAnimator.runtimeAnimatorController = walkableOverride;
             }
-            else
+            else if (PlayerPrefs.GetInt("StartTransform") == 1)
             {
                 enemyAnimator.SetInteger("State", 2);
+                player.SetState(PlayerState.Frozen);
             }
         }
         else if (GetFollowing() || Vector2.Distance(transform.position, player.transform.position) >= 0f)
