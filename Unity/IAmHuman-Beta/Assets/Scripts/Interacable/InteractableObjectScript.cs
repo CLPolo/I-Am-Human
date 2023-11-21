@@ -219,6 +219,7 @@ public class InteractableObjectScript : MonoBehaviour
             if (PlayerPrefs.GetInt(this.gameObject.tag) == 1)
             {
                 this.gameObject.SetActive(false);
+                SpawnObject = false;
             }
         }
     }
@@ -311,7 +312,7 @@ public class InteractableObjectScript : MonoBehaviour
 
         if (this.GetComponent<Door>().IsInteractable == true)
         {
-            player.AudioSource.PlayOneShot((AudioClip) Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cabin-door-open-0"), 0.25f);  // plays door open sound when opening
+            if (!this.gameObject.name.IsOneOf("Basement Stairs", "Attic Stairs")) player.AudioSource.PlayOneShot((AudioClip) Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cabin-door-open-0"), 0.25f);  // plays door open sound when opening
             if (NextSceneIndex >= 0) {
                 player.SetState(PlayerState.Frozen);
                 LevelLoader.Instance.loadScene(NextSceneIndex);
@@ -404,11 +405,18 @@ public class InteractableObjectScript : MonoBehaviour
 
                 if (player.AudioSource.clip.name == "cellar-door-close-0") StartCoroutine(DelayedActivate(len - passed - 0.247f)); // float literal accounts for tail of audio file
             }                                                                                                                        // allowing the door closing audio and visual to sync
+            if (this.gameObject.name == "Basement Stairs" && !Unlock)
+            {
+                Unlock = true;
+                TextList = null;  // won't display text that was previously on the door
+            }
         }
     }
 
-    private IEnumerator DelayedActivate (float duration){
+    private IEnumerator DelayedActivate (float duration) {
+        player.SetState(PlayerState.Frozen);  // player will unfreeze from puzzle target text
         yield return new WaitForSecondsRealtime(duration);
+        SetObjectActive(EntitySpawn[0], true); // add puzzle target for lily text that appears on player
         this.gameObject.SetActive(false);
     }
 

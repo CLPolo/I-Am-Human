@@ -145,9 +145,19 @@ public class PuzzleTargetScript : MonoBehaviour
                 ObjectDisplaying = true;
             }
         }
-        if (NoiseTrigger && !NoiseTriggered)  // if we want to play a noise
+        if (NoiseTrigger)  // if we want to play a noise
         {
-            PlayNoise(NoiseToBePlayed);
+            if (!TextDisplayOnce)  // if text will reactivate (want to show sound more than once)
+            {
+                if (this.GetComponent<AudioSource>() != null)
+                {
+                    if (!this.GetComponent<AudioSource>().isPlaying) PlayNoise(NoiseToBePlayed);
+                }
+            }
+            else if (!NoiseTriggered)  // else, as long as it hasn't already played
+            {
+                PlayNoise(NoiseToBePlayed);
+            }
         }
         if (TextTrigger && !TextPlayed) // if we want to spawn text
         {

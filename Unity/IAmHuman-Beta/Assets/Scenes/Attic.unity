@@ -591,6 +591,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: fadeAnimatedCanvas
+      value: 
+      objectReference: {fileID: 453712769}
     - target: {fileID: 8113169828239833077, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_Size.x
@@ -686,6 +691,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &453712769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
+    type: 3}
+  m_PrefabInstance: {fileID: 645747661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &512230687
 GameObject:
   m_ObjectHideFlags: 0
