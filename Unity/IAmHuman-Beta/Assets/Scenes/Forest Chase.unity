@@ -12323,6 +12323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1725077698}
   - component: {fileID: 1725077699}
+  - component: {fileID: 1725077700}
   m_Layer: 0
   m_Name: EndingCutscene
   m_TagString: Untagged
@@ -12370,6 +12371,48 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.70429945, y: 2.9590158}
   m_EdgeRadius: 0
+--- !u!114 &1725077700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725077697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AffectedObject: {fileID: 0}
+  ActivateTriggerObject: {fileID: 0}
+  DeactivateTriggerObject: {fileID: 0}
+  DoorToBeOpened: {fileID: 0}
+  LayerSwitch: 0
+  SpawnObject: 0
+  TurnOffObject: 0
+  NoiseTrigger: 0
+  TextTrigger: 0
+  HideTimed: 0
+  FreezePlayerObject: 0
+  FreezePlayerText: 0
+  FreezePlayerOnly: 0
+  UnlockDoor: 0
+  NoisePlayOnSpawn: 0
+  SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
+  LayerToSwitchTo: 
+  NoiseToBePlayed: {fileID: 0}
+  TextToDisplay:
+  - Lily... ?
+  TextObject: {fileID: 554301874}
+  TextCanvas: {fileID: 1162561049}
+  TextDisplayOnce: 0
+  DisplayTimeObject: 0
+  DelayTime: 0
+  HideTime: 0
+  FreezeTime: 0
+  player: {fileID: 0}
 --- !u!1 &1726099817
 GameObject:
   m_ObjectHideFlags: 0
