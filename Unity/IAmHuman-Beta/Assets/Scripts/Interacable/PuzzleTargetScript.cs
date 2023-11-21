@@ -68,7 +68,9 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             player = Player.Instance;
         }
- 
+
+        CheckOneOffTextTriggers();
+
         if (HideTimed)  // if hide timed, allows timer to function and handles any actions after
         {
             HideTimer();
@@ -390,6 +392,26 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             TextObject.SetActive(false);
         }
+    }
+
+    private void CheckOneOffTextTriggers()
+    {
+        // currently used for lily wait text during hallway cutscene
+        if (PlayerPrefs.GetInt("LilyHallwayOver") == 2 && this.gameObject.name == "Lily Wait Trigger")
+        {
+            this.gameObject.SetActive(false);
+        }
+        else if (PlayerPrefs.GetInt("LilyHallwayOver") == 1 && this.gameObject.name == "Lily Wait Trigger" && TextPlayed)
+        {
+            this.gameObject.SetActive(false);
+            player.SetState(PlayerState.Idle);
+            PlayerPrefs.SetInt("LilyHallwayOver", 2);
+        }
+        else if (this.gameObject.name == "Lily Wait Trigger" && this.gameObject.activeSelf == true && PlayerPrefs.GetInt("LilyHallwayOver") != 2)
+        {
+            player.SetState(PlayerState.Frozen);
+        }
+
     }
 
 }
