@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [System.Serializable]
@@ -19,6 +20,8 @@ public class Monster : NPC
     private LogicScript logic;
     private AudioSource audioSource;
     private Animator enemyAnimator;
+    public AnimatorOverrideController walkableOverride = null;
+    public RuntimeAnimatorController defaultAnimator = null;
     private Sprite idleSprite;
     private bool cutscene = false;
 
@@ -49,6 +52,10 @@ public class Monster : NPC
             audioSource.volume = 0.5f;
             audioSource.Play();
         }
+        if (SceneManager.GetActiveScene().name == "Attic")
+        {
+            monsterDefaultSpeed = 4.5f;  // Slow down the monster during attic
+        }
         if (monster)
         {
             speed = monsterDefaultSpeed;
@@ -56,6 +63,13 @@ public class Monster : NPC
         }
         enemyAnimator = GetComponent<Animator>();
         SetupNPC(speed, 0f, null, DetectionRange);
+
+        if (SceneManager.GetActiveScene().name == "Attic")
+        {
+            PlayerPrefs.SetInt("DoneTransformAnimation", 0);
+            if (defaultAnimator != null) enemyAnimator.runtimeAnimatorController = defaultAnimator;
+        }
+
     }
 
     // Update is called once per frame
@@ -75,9 +89,8 @@ public class Monster : NPC
             CheckAudio();
         }
 
-
         // update sprite direction
-        if ((_priorPosition - transform.position).magnitude > minDiff)  // has moved
+        if (PlayerPrefs.GetInt("DoneTransformAnimation") == 1 && (_priorPosition - transform.position).magnitude > minDiff)  // has moved
         {
             Vector3 pos = (_priorPosition - transform.position);
             Flip(-(pos.x));
@@ -99,7 +112,19 @@ public class Monster : NPC
 
     private void CheckFollowing()
     {
-        if (GetFollowing() || Vector2.Distance(transform.position, player.transform.position) >= 0f)
+        if (SceneManager.GetActiveScene().name == "Attic" && PlayerPrefs.GetInt("DoneTransformAnimation") == 0)
+        {
+            if (enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("MonsterTransformEndCutscene"))
+            {
+                PlayerPrefs.SetInt("DoneTransformAnimation", 1);
+                if (walkableOverride != null) enemyAnimator.runtimeAnimatorController = walkableOverride;
+            }
+            else
+            {
+                enemyAnimator.SetInteger("State", 2);
+            }
+        }
+        else if (GetFollowing() || Vector2.Distance(transform.position, player.transform.position) >= 0f)
         {
             enemyAnimator.SetInteger("State", 1);
         }
