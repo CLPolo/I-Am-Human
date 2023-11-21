@@ -18,6 +18,8 @@ public class Monster : NPC
 
     private LogicScript logic;
     private AudioSource audioSource;
+    public AudioClip clip;
+
     private Animator enemyAnimator;
     private Sprite idleSprite;
     private bool cutscene = false;
@@ -34,6 +36,9 @@ public class Monster : NPC
     private bool stationed = false;
     public bool crawler = true;
     public bool monster = false;
+    public bool playFootfall = false;
+
+    private string monPath = "Sounds/SoundEffects/Entity/Monster/";
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +57,7 @@ public class Monster : NPC
         if (monster)
         {
             speed = monsterDefaultSpeed;
-            // HI COREY !!! HELLO COREY!!!!! HIIIIIII do audio stuff here :D
+            
         }
         enemyAnimator = GetComponent<Animator>();
         SetupNPC(speed, 0f, null, DetectionRange);
@@ -142,13 +147,28 @@ public class Monster : NPC
         }
     }
 
-    private void CheckAudio()
+    public void CheckAudio()
     {   
-        //if patrolling, play walking audio
-        if (enemyAnimator.GetInteger("State") == 1 && !audioSource.isPlaying) audioSource.Play();
+        if (crawler)
+        {
+            //if patrolling, play walking audio
+            if (enemyAnimator.GetInteger("State") == 1 && !audioSource.isPlaying) audioSource.Play();
 
-        //if stopped, stop audio
-        if (enemyAnimator.GetInteger("State") == 0) audioSource.Pause();
+            //if stopped, stop audio
+            if (enemyAnimator.GetInteger("State") == 0) audioSource.Pause();
+        }
+        if (monster)
+        {   
+            //Debug.Log(audioSource.isPlaying);
+            Debug.Log(GetComponent<SpriteRenderer>().sprite.name);
+            if(!audioSource.isPlaying && GetComponent<SpriteRenderer>().sprite.name.IsOneOf("monster_walking_sprites_3", "monster_walking_sprites_8") )
+            {
+                Debug.Log("In monster playFootfall");
+                clip = Resources.Load<AudioClip>(monPath + "Footsteps/monster-step-" + UnityEngine.Random.Range(0,4).ToString());
+                //if (clip.name != null) Debug.Lo
+                audioSource.PlayOneShot(clip);
+            }
+        }
     }
 
     private void DeterminePatrolling()

@@ -197,7 +197,8 @@ public class AudioManager : MonoBehaviour
     {   
         //if coming from the title screen, fade out all audio
         if (fromScene == 0)
-        {
+        {   
+            Debug.Log("Leaving Title Screen");
             inTitle = false;
             Stop(true, true);
         } 
@@ -270,10 +271,11 @@ public class AudioManager : MonoBehaviour
         }
 
         //Set entity audio clips
-        if (woodFloors.Contains(scene)){
+        if (woodFloors.Contains(scene))
+        {
             p.SetFootfalls(pathEntity+"Player/Footfalls/Wood/Walk", pathEntity+"Player/Footfalls/Wood/Run");
         } else {
-            p.SetFootfalls(pathEntity+"Player/Footfalls/Dirt/Walk", pathEntity+"Player/Footfalls/Wood/Run");
+            p.SetFootfalls(pathEntity+"Player/Footfalls/Dirt/Walk", pathEntity+"Player/Footfalls/Dirt/Run");
         }
     }
 
@@ -528,10 +530,15 @@ public class AudioManager : MonoBehaviour
     void PlayerFootfall(PlayerState state)
     {    
         //if running, play a random running footfall
-        if (state == PlayerState.Running) pA.PlayOneShot(p.footstepsRun[UnityEngine.Random.Range(0, p.footstepsRun.Capacity)]);
-            
+        if (state == PlayerState.Running && p.GetAnimationIndex().IsOneOf(2, 7)) 
+        {
+            pA.PlayOneShot(p.footstepsRun[UnityEngine.Random.Range(0, p.footstepsRun.Capacity)]);
+        }   
         //if walking, play a random walking footfall
-         if (state == PlayerState.Walking && p.GetAnimationIndex().IsOneOf(2, 11)) pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.25f);      
+        if (state == PlayerState.Walking && p.GetAnimationIndex().IsOneOf(2, 11)) 
+        {
+            pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.25f);      
+        }
     }  
 
     private float GetTimeRemaining(AudioSource s) 
