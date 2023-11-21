@@ -89,7 +89,7 @@ public class AudioManager : MonoBehaviour
         }
 
         //are we dead?
-        if (PlayerPref.GetInt("Dead") == 1)
+        if (PlayerPrefs.GetInt("Dead") == 1)
         {   
 
         }
