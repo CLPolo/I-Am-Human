@@ -1071,8 +1071,12 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - AH... Lily, there you are!
-  - We should get out of here.
+  - Lily! You're Okay!
+  - ...
+  - Lily?
+  - ...
+  - "I get it, you\u2019re probably scared."
+  - "You\u2019re safe now, okay? Just don\u2019t run off again. "
   TextObject: {fileID: 1575254622}
   TextCanvas: {fileID: 1469968467}
   TextDisplayOnce: 1

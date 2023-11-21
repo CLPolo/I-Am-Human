@@ -84,10 +84,11 @@ public class Sister : NPC
             player.SetState(PlayerState.Frozen);
         }
 
-        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("LilyEndCutscene") && player.GetState() == PlayerState.Frozen && !endCutscene)
+        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("LilyEndCutscene") && !endCutscene)
         {
             player.SetState(PlayerState.Idle);
             endCutscene = true;
+            if (PlayerPrefs.GetInt("LilyHallwayOver") != 2) PlayerPrefs.SetInt("LilyHallwayOver", 1); // for text purposes, messy sorry
         }
 
         LilyFootfall();
