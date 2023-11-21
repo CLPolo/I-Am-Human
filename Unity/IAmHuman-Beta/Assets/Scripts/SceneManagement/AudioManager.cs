@@ -41,6 +41,7 @@ public class AudioManager : MonoBehaviour
     public bool     kitchenTriggered = false;
     public bool crowbarFadeTriggered = false;
     public bool          gameStarted = false;
+    private bool  monsterTransformed = false;
 
     private static AudioManager _instance;
     public  static AudioManager Instance{ get{ return _instance; }}
@@ -89,9 +90,11 @@ public class AudioManager : MonoBehaviour
         }
 
         //are we dead?
-        if (PlayerPref.GetInt("Dead") == 1)
+        if (PlayerPrefs.GetInt("Dead") == 1)
         {   
-
+            monsterTransformed = false;
+            Stop(true, false);
+            //play sound
         }
 
         //check for scene change
@@ -196,6 +199,15 @@ public class AudioManager : MonoBehaviour
                     crowbarFadeTriggered = true;
                 }
             }
+            if (inAttic && !monsterTransformed && scene != 9)
+            {
+                monsterTransformed = true;
+                AudioSource s = srcs["Cutscene"];
+                s.loop = false;
+                s.clip = Resources.Load<AudioClip>(pathEntity + "Monster/monster-transform");
+                s.volume = 0.5f;
+                s.Play();
+            }
         }
     }
 
@@ -258,21 +270,39 @@ public class AudioManager : MonoBehaviour
                 //if (fromScene == 3)
                 {
                     inCabin = false; // set so CheckProgress() doesn't automatically restart bgm
+                    srcs["BGM"].Pause();
                     srcs["BGM3"].Pause();
                     srcs["BGM2"].Pause();
                     srcs["AmbMisc"].clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");
-                    srcs["AmbMisc"].volume = 0;
+                    srcs["AmbMisc"].volume = 0.01f;
                     srcs["AmbMisc"].Play();
-                    StartCoroutine(Start(srcs["AmbMisc"], 0.005f, 3f));
+                    RestartSource(srcs["AmbMisc"], true, 0.005f, 3f);
                 }
                 break;
 
             //Attic
             case 8:
+                inAttic = true;
+                playBGM = true;
+                srcs["BGM"].clip = Resources.Load<AudioClip>(pathBGM + "Monster_Chase_Full");
+                srcs["BGM"].loop = true;
+                srcs["BGM"].volume = 0.01f;
+                RestartSource(srcs["BGM"], true, 0.33f, 1.0f);
+
+
                 break;
 
             //Chase
             case 9:
+                if (srcs["BGM"].clip.name != "Monster_Chase_Full")
+                {
+                    inAttic = true;
+                    playBGM = true;
+                    srcs["BGM"].clip = Resources.Load<AudioClip>(pathBGM + "Monster_Chase_Full");
+                    srcs["BGM"].loop = true;
+                    srcs["BGM"].volume = 0.01f;
+                    RestartSource(srcs["BGM"], true, 0.33f, 1.0f);
+                } else if (!srcs["BGM"].isPlaying) srcs["BGM"].Play();
                 break;
         }
 
@@ -421,7 +451,11 @@ public class AudioManager : MonoBehaviour
                     s.Stop();
                 }
             } else {
-                if (fade) StartCoroutine(Start(s, targetVolume, duration, stop));
+                if (fade) 
+                {
+                    if (!s.isPlaying) s.Play();
+                    StartCoroutine(Start(s, targetVolume, duration, stop));
+                }
                 else {
                     s.volume = targetVolume;
                     s.Play();

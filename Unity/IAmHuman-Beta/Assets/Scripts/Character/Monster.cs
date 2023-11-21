@@ -101,7 +101,7 @@ public class Monster : NPC
         }
 
         // update sprite direction
-        if (PlayerPrefs.GetInt("DoneTransformAnimation") == 1 && (_priorPosition - transform.position).magnitude > minDiff)  // has moved
+        if (SceneManager.GetActiveScene().name == "Attic"? (PlayerPrefs.GetInt("DoneTransformAnimation") == 1) : true && (_priorPosition - transform.position).magnitude > minDiff)        
         {
             Vector3 pos = (_priorPosition - transform.position);
             Flip(-(pos.x));
