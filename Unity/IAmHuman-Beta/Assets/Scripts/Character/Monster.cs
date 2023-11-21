@@ -102,6 +102,7 @@ public class Monster : NPC
         }
 
         // update sprite direction
+
         if (SceneManager.GetActiveScene().name == "Attic"? (PlayerPrefs.GetInt("DoneTransformAnimation") == 1) : true && (_priorPosition - transform.position).magnitude > minDiff)  // has moved (and not in attic for cutscene)
         {
             Vector3 pos = (_priorPosition - transform.position);
