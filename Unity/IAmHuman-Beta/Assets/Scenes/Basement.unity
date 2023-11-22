@@ -4254,10 +4254,9 @@ MonoBehaviour:
   NextSceneIndex: -1
   spawnDelay: 0
   SpawnObject: 0
-  SpawnEntity: 1
+  SpawnEntity: 0
   ObjectsSpawned: []
-  EntitySpawn:
-  - {fileID: 184369891}
+  EntitySpawn: []
   DestroyObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
