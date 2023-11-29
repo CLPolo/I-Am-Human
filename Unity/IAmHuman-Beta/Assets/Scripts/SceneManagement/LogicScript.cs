@@ -161,10 +161,6 @@ public class LogicScript : MonoBehaviour
         {
             DeathScreen.SetActive(val);
         }
-        if (val == false) // for some reason, after I updated the death screen prefab, the deathscreen wouldn't go away cause val was being called w/ false (so never ran above if statement) TEMP FIX
-        {
-            DeathScreen.SetActive(val);
-        }
         //audioSource.PlayOneShot(audioSource.clip, 0.5f)
         //AudioListener.pause = IsPaused;
         player.SetState(PlayerState.Frozen);
