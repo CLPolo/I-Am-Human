@@ -197,7 +197,7 @@ public class InteractableObjectScript : MonoBehaviour
         if (isPickup && PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight", "Crowbar", "AtticKey")) // if one of our pickups, it will set playerprefs of that to 1 (true).
         {
             PlayerPrefs.SetInt(PlayerPrefs.GetString("Pickup"), 1);
-            this.gameObject.SetActive(false);
+            if (PlayerPrefs.GetString("Pickup") != "Crowbar") { this.gameObject.SetActive(false); }  // crowbar handled seperately in handlecrowbar
             AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/item-pickup");
             player.AudioSource.PlayOneShot(clip, 0.5f);
             if (this.tag == "Flashlight")
@@ -352,7 +352,7 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void CheckPickupInteractions()
     {
-        if (PlayerPrefs.GetInt("Crowbar") == 1 && this.name == "KitchenDoor (BOARDS)")  // when have crowbar and using on boarded door
+        if (PlayerPrefs.GetInt("Crowbar") == 1)  // when have crowbar and using on boarded door
         {
             HandleCrowbar();
         }
@@ -371,24 +371,37 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void HandleCrowbar()
     {
-        TextList = null;  // won't display text that was previously on the door
-        if (PlayerPrefs.GetInt("escaped") == 0 && PressedInteract)
+        if (this.name == "KitchenDoor (BOARDS)")
         {
-            PromptCanvas.SetActive(true);
-            PromptTextObject.GetComponent<TextMeshProUGUI>().text = "MASH efg TO PULL OFF BOARDS";
-            logic.trapKills = false;
-            player.SetState(PlayerState.Trapped);
+            TextList = null;  // won't display text that was previously on the door
+            if (PlayerPrefs.GetInt("escaped") == 0 && PressedInteract)
+            {
+                PromptCanvas.SetActive(true);
+                PromptTextObject.GetComponent<TextMeshProUGUI>().text = "MASH efg TO PULL OFF BOARDS";
+                logic.trapKills = false;
+                player.SetState(PlayerState.Trapped);
+            }
+            else if (PlayerPrefs.GetInt("escaped") == 1)
+            {
+                SetObjectActive(ObjectsSpawned[0], true); // turn on other version of kitchen door
+                SetObjectActive(this.gameObject, false);  // turns itself off
+                PlayerPrefs.SetInt("DoorOff", 1);
+            }
+            else if (PlayerPrefs.GetInt("DoorOff") == 1)  // turns off boarded door and on non boarded door on load
+            {
+                SetObjectActive(ObjectsSpawned[0], true);
+                SetObjectActive(this.gameObject, false);  // turns itself off
+            }
         }
-        else if (PlayerPrefs.GetInt("escaped") == 1)
+        else if (this.name == "Crowbar" && PlayerPrefs.GetInt("Crowbar") == 1)
         {
-            SetObjectActive(ObjectsSpawned[0], true); // turn on other version of kitchen door
-            SetObjectActive(this.gameObject, false);  // turns itself off
-            PlayerPrefs.SetInt("DoorOff", 1);
-        }
-        else if (PlayerPrefs.GetInt("DoorOff") == 1)  // turns off boarded door and on non boarded door on load
-        {
-            SetObjectActive(ObjectsSpawned[0], true);
-            SetObjectActive(this.gameObject, false);  // turns itself off
+            GetComponent<SpriteRenderer>().sprite = null;
+            if (TextHasPlayed) 
+            { 
+                this.gameObject.SetActive(false); //turns collider off (must remain on for text to be able to be skipped thru
+                SpawnEntity = true; // allows entity (crawler) to spawn
+                SpawnObjectCheck(); // Spawns crawler
+            }
         }
     }
 

@@ -137,7 +137,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -3246,10 +3246,13 @@ MonoBehaviour:
   PromptCanvas: {fileID: 167505673}
   InteractMessage: PRESS a TO INTERACT
   ShowPromptOnce: 0
-  DialogueTextObject: {fileID: 0}
-  DialogueCanvas: {fileID: 0}
-  TextList: []
-  FreezePlayer: 0
+  DialogueTextObject: {fileID: 39627148}
+  DialogueCanvas: {fileID: 1335879427}
+  TextList:
+  - Maybe this will be useful
+  - ...
+  - What was that?
+  FreezePlayer: 1
   PlaySound: 0
   Sounds: []
   Audio: {fileID: 0}
@@ -3258,11 +3261,10 @@ MonoBehaviour:
   NextSceneIndex: -1
   spawnDelay: 0
   SpawnObject: 0
-  SpawnEntity: 1
+  SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 659195639500718563}
-  - {fileID: 1994615220}
   DestroyObject: 0
   ObjectsToDestroy: []
   monsterComing: 0

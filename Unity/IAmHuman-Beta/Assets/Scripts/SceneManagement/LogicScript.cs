@@ -154,9 +154,14 @@ public class LogicScript : MonoBehaviour
 
     public void Death(bool val = true)
     {   
+        //Debug.Log("Called w/ val == " + val);
         // Activates death screen
         IsPaused = val;  // will prevent player from moving after death
         if (val)
+        {
+            DeathScreen.SetActive(val);
+        }
+        if (val == false) // for some reason, after I updated the death screen prefab, the deathscreen wouldn't go away cause val was being called w/ false (so never ran above if statement) TEMP FIX
         {
             DeathScreen.SetActive(val);
         }

@@ -15,7 +15,7 @@ public static class Controls
     public static readonly KeyCode Hide = KeyCode.F; // hiding is also interacting
     public static readonly KeyCode Push = KeyCode.Space;
     public static readonly KeyCode Mash = KeyCode.Space;
-    public static readonly KeyCode Run = KeyCode.LeftShift;
+    public static readonly List<KeyCode> Run = new List<KeyCode> { KeyCode.LeftShift, KeyCode.RightShift };
     // ui
     public static readonly KeyCode Pause = KeyCode.Escape;
 }
@@ -224,7 +224,7 @@ public class Player : AnimatedEntity
             }
             if (!state.IsOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped, PlayerState.Frozen))
             {
-                if (Input.GetKey(Controls.Run) && logic.currentScene.IsOneOf("Attic", "Forest Chase"))
+                if ((Input.GetKey(Controls.Run[0]) || Input.GetKey(Controls.Run[1])) && logic.currentScene.IsOneOf("Attic", "Forest Chase"))
                 {
                     SetState(PlayerState.Running);
                 }
