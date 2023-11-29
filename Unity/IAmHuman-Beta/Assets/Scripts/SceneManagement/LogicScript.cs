@@ -154,6 +154,7 @@ public class LogicScript : MonoBehaviour
 
     public void Death(bool val = true)
     {   
+        //Debug.Log("Called w/ val == " + val);
         // Activates death screen
         IsPaused = val;  // will prevent player from moving after death
         if (val)
