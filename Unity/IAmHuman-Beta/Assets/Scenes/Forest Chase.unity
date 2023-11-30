@@ -2555,7 +2555,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!1001 &861332132
@@ -11428,7 +11428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1394415195
 Transform:
   m_ObjectHideFlags: 0
@@ -11479,7 +11479,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &1394415197
@@ -11495,7 +11495,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.577221, y: -0.56116855}
+  m_Offset: {x: -5.0261917, y: -1.1909016}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -11506,7 +11506,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.50118256, y: 2.1223373}
+  m_Size: {x: 5.399124, y: 0.86287117}
   m_EdgeRadius: 0
 --- !u!1 &1412797181 stripped
 GameObject:
@@ -13047,7 +13047,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &1870322499
@@ -13375,9 +13375,10 @@ MonoBehaviour:
   spawnDelay: 0
   SpawnObject: 0
   SpawnEntity: 0
-  ObjectsSpawned: []
+  ObjectsSpawned:
+  - {fileID: 1394415194}
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!1 &1911756859

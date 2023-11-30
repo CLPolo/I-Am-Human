@@ -169,6 +169,7 @@ public class LogicScript : MonoBehaviour
             PlayerPrefs.SetInt("Crowbar", 0);  // if you die in the bedroom after grabbing the crowbar, it will respawn on load
         }
         PlayerPrefs.SetInt("Dead", 1);
+        PlayerPrefs.SetInt("MonsterEmerges", 0);
     }
 
     // disable menu is used so certain methods of closing pause menu such as
@@ -239,7 +240,6 @@ public class LogicScript : MonoBehaviour
                 monster.SetActive(true);  // Monster appears at the doorway
                 audioSource.PlayOneShot(monsterEmergesAudio, 0.25f);
                 // START CHASE MUSIC HERE
-                PlayerPrefs.SetInt("MonsterEmerges", 0);  // Reset in case of death
                 player.monsterEmergesCutscene = false;  // The cutscene is over
                 player.SetState(PlayerState.Idle);  // THE PLAYER SHOULD RUN NOW
             }
