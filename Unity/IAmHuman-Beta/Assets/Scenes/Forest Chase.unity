@@ -2555,7 +2555,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!1001 &861332132
@@ -11479,7 +11479,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &1394415197
@@ -13047,7 +13047,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &1870322499
@@ -13377,7 +13377,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!1 &1911756859

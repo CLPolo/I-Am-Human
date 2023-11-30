@@ -326,7 +326,7 @@ MonoBehaviour:
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 0}
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!114 &123445483
@@ -3151,7 +3151,7 @@ MonoBehaviour:
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 387001511}
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!212 &586858252
@@ -3252,6 +3252,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6528947780177944043, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780177944043, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831161, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831161, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 26
+      objectReference: {fileID: 0}
     - target: {fileID: 6528947780182831161, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_fontAsset
@@ -3260,8 +3280,44 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 6528947780182831161, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
+      propertyPath: m_fontSizeBase
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831161, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7596005855785249040, guid: 78793aaca0103fa4fab8afa420c221e9,
+        type: 2}
+    - target: {fileID: 6528947780182831161, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831166, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 356.38684
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831166, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80.95651
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831166, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831166, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -160.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831167, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780196874865, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -3298,10 +3354,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6528947780312275447, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780312275447, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_text
       value: PrEss hi to ContInuE...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -3311,10 +3382,30 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -2791517959012354143, guid: e12427099091559459e0a10cc7b3cd85,
         type: 2}
+    - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320113, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 166.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320113, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -217
+      objectReference: {fileID: 0}
     - target: {fileID: 6528947780633873019, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_Enabled
@@ -3478,6 +3569,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947781856251799, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -137
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 969fc196346bf8e439b03a6f53125632, type: 3}
@@ -4046,7 +4142,7 @@ MonoBehaviour:
   - {fileID: 582977872}
   - {fileID: 184369891}
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &1701560422
@@ -4257,7 +4353,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &1788591183

@@ -53,7 +53,7 @@ public class InteractableObjectScript : MonoBehaviour
     public List<GameObject> EntitySpawn = null;
 
     [Header("Remove Object (or enemy) Post Interact")]
-    public bool DestroyObject = false;
+    public bool DestroyAnObject = false;
     public List<GameObject> ObjectsToDestroy = new List<GameObject>();
 
     // Booleans
@@ -110,7 +110,7 @@ public class InteractableObjectScript : MonoBehaviour
             if (PlaySound && !NoisePlayed)  // used rn for cabin door sounds
             {
                 PlayNoise();
-                NoisePlayed = true;
+                //NoisePlayed = true;
             }
             if (Unlock && !triggered) // triggered prevented a billion calls to level loader during the fade out, which prevented the positioning stuff from working properly
             {
@@ -124,7 +124,7 @@ public class InteractableObjectScript : MonoBehaviour
             RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
             PickupSet();
             if (SpawnObject || SpawnEntity) { SpawnObjectCheck(); } // spawns entity objects
-            if (DestroyObject) { DestroyObjectCheck(); }
+            if (DestroyAnObject) { DestroyObjectCheck(); }
         }
         if (PressedInteract) { CheckAndDisplayInfo(); }  // displays info even if outside of collider, only needed if not frozen
         CheckPickupInteractions();
@@ -135,23 +135,6 @@ public class InteractableObjectScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         PlayerPrefs.SetString("CollisionTagInteractable", col.tag);  // Allows us to prevent the enemy from triggering items (like doors & outlines)
-
-        if (PlayerPrefs.GetString("CollisionTagInteractable") == "Player")
-        {
-            if (Inside = true && !Input.GetKeyDown(Controls.Interact) && !corpseInWay)  // if player in collider and has NOT pressed interact key yet
-            {
-                if (Unlock && this.GetComponent<Door>().IsInteractable == true)
-                {
-                    DisplayInteractPrompt();  // shows the interact prompt
-                }
-                else if (!Unlock)
-                {
-                    DisplayInteractPrompt();
-                }
-            }
-            DisplayOutline();  // when in collider, displays outline on obj
-            PickupCheck();
-        }  
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -175,6 +158,23 @@ public class InteractableObjectScript : MonoBehaviour
         if (col.gameObject.name == "Corpse")
         {
             corpseInWay = true;
+        }
+
+        if (col.tag == "Player")
+        {
+            if (Inside = true && !Input.GetKeyDown(Controls.Interact) && !corpseInWay && !PressedInteract)  // if player in collider and has NOT pressed interact key yet
+            {
+                if (Unlock && this.GetComponent<Door>().IsInteractable == true)
+                {
+                    DisplayInteractPrompt();  // shows the interact prompt
+                }
+                else if (!Unlock)
+                {
+                    DisplayInteractPrompt();
+                }
+            }
+            DisplayOutline();  // when in collider, displays outline on obj
+            PickupCheck();
         }
     }
 
@@ -230,7 +230,7 @@ public class InteractableObjectScript : MonoBehaviour
         Sounds = Resources.LoadAll<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/Locked/").ToList();  // this might make this function not work for any other noises we'd want
         AudioSource audio = GetComponent<AudioSource>();
         int randomNumber = UnityEngine.Random.Range(0, Sounds.Count);
-        audio.PlayOneShot(Sounds.ElementAt(randomNumber));
+        if (!audio.isPlaying) { audio.PlayOneShot(Sounds.ElementAt(randomNumber)); }
     }
 
     private void DisplayInteractPrompt()
@@ -293,7 +293,7 @@ public class InteractableObjectScript : MonoBehaviour
                 }
                 else if (textIndex >= TextList.Count && DialogueTextObject != null)  // if no more messages
                 {
-                    TextHasPlayed = true;
+                    TextHasPlayed = ShowPromptOnce? true : false;
                     DialogueCanvas.SetActive(false);  // turn of canvas (might switch to indiv text on / off w/ one canvas that's always on)
                     textIndex = 0;  // reset to start for re-interactable text prompts
                     DialogueTextObject.GetComponent<TextMeshProUGUI>().text = TextList[0];  // same as above
@@ -301,6 +301,7 @@ public class InteractableObjectScript : MonoBehaviour
                     //play text close sound
                     AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance-close");
                     player.AudioSource.PlayOneShot(clip, 0.25f);
+                    PressedInteract = false;
                 }
             }
         }
@@ -481,7 +482,7 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void DestroyObjectCheck()
     {
-        if (DestroyObject == true && ObjectsToDestroy.Count > 0)
+        if (DestroyAnObject == true && ObjectsToDestroy.Count > 0)
         {
             foreach (GameObject obj in ObjectsToDestroy)
             {
