@@ -368,6 +368,12 @@ public class InteractableObjectScript : MonoBehaviour
             HandleAtticKey();
         }
 
+        if (SceneManager.GetActiveScene().name == "Forest Chase" && this.name == "HideBush" && PlayerPrefs.GetInt("MonsterEmerges") == 2)  // temp implementation of run text (in chase scene it's in spawn object for hide bush)
+        {
+            SpawnObject = true;
+            SpawnObjectCheck();
+        }
+
     }
 
     private void HandleCrowbar()
