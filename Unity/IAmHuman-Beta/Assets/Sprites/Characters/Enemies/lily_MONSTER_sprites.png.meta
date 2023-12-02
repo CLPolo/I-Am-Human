@@ -4,7 +4,7 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 6985421963744631799
-    second: lily_MONSTER_sprites_LILY
+    second: lily_MONSTER_LILY
   - first:
       213: 2555622557348925144
     second: lily_MONSTER_sprites_1
@@ -267,7 +267,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lily_MONSTER_sprites_LILY
+      name: lily_MONSTER_LILY
       rect:
         serializedVersion: 2
         x: 0

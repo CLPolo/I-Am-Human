@@ -1,25 +1,22 @@
 fileFormatVersion: 2
-guid: 51b1b3e1a9241294da5f8d0ed8ab8e7b
+guid: 263277f736bdd6f4899ae3da51a03dc4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5907289305594834174
-    second: options_menu_BASE
+      213: 4161571781314418468
+    second: death_screen_BASE
   - first:
-      213: 609048873195191539
-    second: options_menu_back
+      213: -573521382918252493
+    second: death_screen_retry
   - first:
-      213: 7484534290457339828
-    second: options_menu_credits
+      213: -1484477285110931497
+    second: death_screen_quit
   - first:
-      213: 3403567457102758987
-    second: options_menu_volume
+      213: 8219507316330624743
+    second: death_screen_retry_SELECT
   - first:
-      213: -8617775070111067650
-    second: options_menu_back_SELECT
-  - first:
-      213: 4860169474804098906
-    second: options_menu_credits_SELECT
+      213: 1441433295890835293
+    second: death_screen_quit_SELECT
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -105,7 +102,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: options_menu_BASE
+      name: death_screen_BASE
       rect:
         serializedVersion: 2
         x: 0
@@ -119,17 +116,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efca1754358eaf150800000000000000
-      internalID: 5907289305594834174
+      spriteID: 42719847c7fd0c930800000000000000
+      internalID: 4161571781314418468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: options_menu_back
+      name: death_screen_retry
       rect:
         serializedVersion: 2
-        x: 16
+        x: 48
         y: 48
         width: 64
         height: 16
@@ -140,17 +137,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fcb6a929b6c37800800000000000000
-      internalID: 609048873195191539
+      spriteID: 338111447517a08f0800000000000000
+      internalID: -573521382918252493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: options_menu_credits
+      name: death_screen_quit
       rect:
         serializedVersion: 2
-        x: 96
+        x: 144
         y: 48
         width: 64
         height: 16
@@ -161,38 +158,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b7a0fb48486ed760800000000000000
-      internalID: 7484534290457339828
+      spriteID: 7df93d736c3166be0800000000000000
+      internalID: -1484477285110931497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: options_menu_volume
+      name: death_screen_retry_SELECT
       rect:
         serializedVersion: 2
-        x: 176
-        y: 39
-        width: 64
-        height: 25
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4480b1c196eb3f20800000000000000
-      internalID: 3403567457102758987
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: options_menu_back_SELECT
-      rect:
-        serializedVersion: 2
-        x: 15
+        x: 47
         y: 16
         width: 66
         height: 16
@@ -203,17 +179,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef110df8b33876880800000000000000
-      internalID: -8617775070111067650
+      spriteID: 7e67c9afa5e811270800000000000000
+      internalID: 8219507316330624743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: options_menu_credits_SELECT
+      name: death_screen_quit_SELECT
       rect:
         serializedVersion: 2
-        x: 95
+        x: 143
         y: 16
         width: 66
         height: 16
@@ -224,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5725e5136ac27340800000000000000
-      internalID: 4860169474804098906
+      spriteID: d576ef012fff00410800000000000000
+      internalID: 1441433295890835293
       vertices: []
       indices: 
       edges: []
