@@ -4,34 +4,28 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 8212295408639370039
-    second: kitchen_drawer
+    second: kitchen_gore
   - first:
       213: -7159508859131236110
-    second: kitchen_overhead_cabinet
+    second: kitchen_cupboard
   - first:
       213: 4455061112307439929
-    second: kitchen_drawer_interact
+    second: kitchen_counter
   - first:
       213: -8613576182931230694
-    second: kitchen_lamp
+    second: kitchen_stuff_walllight
   - first:
       213: -3380554736810255674
     second: kitchen_door
   - first:
       213: -102163584654400482
-    second: kitchen_blood_splat
+    second: kitchen_door_INTERACT
   - first:
       213: 7958361717902241626
-    second: kitchen_counter
+    second: kitchen_stuff_note_INTERACT
   - first:
       213: -3897862059077438994
-    second: kitchen_gore_pile
-  - first:
-      213: 8426796914713946112
-    second: kitchen_door_interact
-  - first:
-      213: -4578376867270928684
-    second: kitchen_underfloor_blood
+    second: kitchen_stuff_note
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -117,13 +111,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kitchen_drawer
+      name: kitchen_gore
       rect:
         serializedVersion: 2
-        x: 156
-        y: 177
-        width: 19
-        height: 6
+        x: 9
+        y: 151
+        width: 132
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,11 +132,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitchen_overhead_cabinet
+      name: kitchen_cupboard
       rect:
         serializedVersion: 2
-        x: 87
-        y: 148
+        x: 54
+        y: 117
         width: 45
         height: 26
       alignment: 0
@@ -159,13 +153,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitchen_drawer_interact
+      name: kitchen_counter
       rect:
         serializedVersion: 2
-        x: 155
-        y: 160
-        width: 21
-        height: 8
+        x: 34
+        y: 80
+        width: 68
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,11 +174,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitchen_lamp
+      name: kitchen_stuff_walllight
       rect:
         serializedVersion: 2
-        x: 38
-        y: 148
+        x: 6
+        y: 52
         width: 5
         height: 8
       alignment: 0
@@ -204,10 +198,10 @@ TextureImporter:
       name: kitchen_door
       rect:
         serializedVersion: 2
-        x: 147
-        y: 96
-        width: 29
-        height: 57
+        x: 22
+        y: 10
+        width: 42
+        height: 63
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,13 +216,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitchen_blood_splat
+      name: kitchen_door_INTERACT
       rect:
         serializedVersion: 2
-        x: 30
-        y: 109
-        width: 13
-        height: 16
+        x: 79
+        y: 16
+        width: 29
+        height: 57
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,13 +237,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitchen_counter
+      name: kitchen_stuff_note_INTERACT
       rect:
         serializedVersion: 2
-        x: 66
-        y: 112
-        width: 78
-        height: 32
+        x: 5
+        y: 38
+        width: 9
+        height: 6
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,13 +258,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: kitchen_gore_pile
+      name: kitchen_stuff_note
       rect:
         serializedVersion: 2
-        x: 29
-        y: 80
-        width: 115
-        height: 28
+        x: 5
+        y: 31
+        width: 7
+        height: 4
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,48 +274,6 @@ TextureImporter:
       bones: []
       spriteID: ee17739eb1308e9c0800000000000000
       internalID: -3897862059077438994
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: kitchen_door_interact
-      rect:
-        serializedVersion: 2
-        x: 147
-        y: 32
-        width: 29
-        height: 57
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 008e1e7952ff1f470800000000000000
-      internalID: 8426796914713946112
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: kitchen_underfloor_blood
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
-        width: 144
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d6537a1f765670c0800000000000000
-      internalID: -4578376867270928684
       vertices: []
       indices: 
       edges: []
