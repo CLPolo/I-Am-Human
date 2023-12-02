@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,11 @@ public class PushLogicScript : MonoBehaviour
     public Transform boxHolder;
     public float rayDist;  // distance of raycast (distance between player and obejct where push action is possible)
 
+    [Header("Push Text Prompt")]
+    public GameObject TextCanvas = null;
+    public GameObject TextObject = null;
+    public string Text = null;
+
     [Header("Outline Display")]
     public Sprite Outline;
     public Sprite Default;
@@ -21,6 +27,8 @@ public class PushLogicScript : MonoBehaviour
     private int gracePeriod = 0; // temporary for box push/pull audio
 
     private List<GameObject> spritesToReset = new List<GameObject>();
+    private bool InteractionOver = false;
+    private float HoldFor = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +56,13 @@ public class PushLogicScript : MonoBehaviour
 
             spritesToReset.Add(box);
             box.GetComponent<SpriteRenderer>().sprite = Outline;  // if box in range, shows outline
+            
+            if (!InteractionOver && TextCanvas != null && TextObject != null && Text != null)
+            {
+                DisplayPushText();
+            }
+            
+
             if (Input.GetKey(Controls.Push))  // if player is pressing space (pushing)
             {
                 player.SetState(PlayerState.Pushing);
@@ -105,6 +120,48 @@ public class PushLogicScript : MonoBehaviour
                 obj.GetComponent<AudioSource>().Pause();
             }
             spritesToReset.Clear();
+
+            TurnOffText();
         }
     }
+
+    public void DisplayPushText()
+    {
+        // displays text for X amount of seconds AFTER player has pushed or pulled an object
+        // NOTE: Collider must accomodate area player could move in, player has to push/pull while inside
+
+        if (!(player.GetState() == PlayerState.Pushing || player.GetState() == PlayerState.Pulling) && !InteractionOver)  // if not pushing || pulling && hasn't happened already (no reactivation)
+        {
+            TextCanvas.SetActive(true);  // turn on appropriate canvases
+            TextObject.SetActive(true);
+
+            TextObject.GetComponent<TextMeshProUGUI>().text = Text;  // set prompt text (first string in list)
+        }
+        else  // once pushed or pull
+        {
+            InteractionOver = true;  // interaction has happened (no reactivation)
+            StartCoroutine(RemoveTextAfterWait(HoldFor));  // Will turn text off after FreezeTime Seconds
+        }
+    }
+
+    private void TurnOffText()
+    {
+        if (!InteractionOver && TextCanvas != null && TextObject != null && Text != null)
+        {
+            TextCanvas.SetActive(false);  // turn off appropriate canvases
+            TextObject.SetActive(false);
+        }
+    }
+
+    private IEnumerator RemoveTextAfterWait(float Seconds)
+    {
+        // will turn text off after X amount of seconds (currently useful for push/pull text)
+
+        yield return new WaitForSeconds(Seconds);
+        TextObject.SetActive(false);
+    }
+
+
+
+
 }
