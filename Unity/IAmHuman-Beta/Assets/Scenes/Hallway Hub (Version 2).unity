@@ -1827,6 +1827,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153278, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
+      propertyPath: Text
+      value: PRESS AND HOLD efg TO PUSH OR PULL
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153278, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
       propertyPath: Default
       value: 
       objectReference: {fileID: -7598661315507419886, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
@@ -1842,6 +1847,16 @@ PrefabInstance:
       propertyPath: rayDist
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153278, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: TextCanvas
+      value: 
+      objectReference: {fileID: 906412518}
+    - target: {fileID: 7082313449261153278, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: TextObject
+      value: 
+      objectReference: {fileID: 906412519}
     - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: fadeAnimatedCanvas
@@ -7923,12 +7938,12 @@ PrefabInstance:
     - target: {fileID: 948246213204472776, guid: 18275c16382c20d488778db66826b372,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 948246213204472776, guid: 18275c16382c20d488778db66826b372,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 948246213204472776, guid: 18275c16382c20d488778db66826b372,
         type: 3}

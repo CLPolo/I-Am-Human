@@ -368,6 +368,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &465226518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 465226519}
+  m_Layer: 0
+  m_Name: Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &465226519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465226518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 728.52356, y: 551.5113, z: -222.125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1800017050}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &586887638
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +547,7 @@ MonoBehaviour:
   - {fileID: 2006762649}
   EntitySpawn:
   - {fileID: 0}
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!1 &629600443
@@ -1499,7 +1530,7 @@ MonoBehaviour:
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 0}
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!114 &1589239923
@@ -1516,6 +1547,106 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 1
   IsInteractable: 1
+--- !u!1 &1800017049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1800017050}
+  - component: {fileID: 1800017052}
+  - component: {fileID: 1800017051}
+  m_Layer: 0
+  m_Name: Mash text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1800017050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800017049}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -729.27, y: -551.77, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 465226519}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1800017051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800017049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AffectedObject: {fileID: 0}
+  ActivateTriggerObject: {fileID: 0}
+  DeactivateTriggerObject: {fileID: 0}
+  DoorToBeOpened: {fileID: 0}
+  LayerSwitch: 0
+  SpawnObject: 0
+  TurnOffObject: 0
+  NoiseTrigger: 0
+  TextTrigger: 1
+  HideTimed: 0
+  FreezePlayerObject: 0
+  FreezePlayerText: 0
+  FreezePlayerOnly: 0
+  UnlockDoor: 0
+  NoisePlayOnSpawn: 0
+  SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
+  LayerToSwitchTo: 
+  NoiseToBePlayed: {fileID: 0}
+  TextToDisplay:
+  - MASH efg TO GET THROUGH
+  TextObject: {fileID: 150503878}
+  TextCanvas: {fileID: 958308840}
+  TextDisplayOnce: 0
+  DisplayTimeObject: 0
+  DelayTime: 0
+  HideTime: 0
+  FreezeTime: 0
+  player: {fileID: 0}
+--- !u!61 &1800017052
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800017049}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1844402362
 GameObject:
   m_ObjectHideFlags: 0
@@ -3010,7 +3141,7 @@ MonoBehaviour:
   ObjectsSpawned: []
   EntitySpawn:
   - {fileID: 0}
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &2006762653
