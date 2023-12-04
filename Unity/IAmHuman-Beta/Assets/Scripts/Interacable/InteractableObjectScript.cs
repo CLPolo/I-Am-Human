@@ -114,7 +114,7 @@ public class InteractableObjectScript : MonoBehaviour
             }
             if (Unlock && !triggered) // triggered prevented a billion calls to level loader during the fade out, which prevented the positioning stuff from working properly
             {
-                triggered = true;
+                if (GetComponent<Door>().Blocked == false) triggered = true;  // prevent bug where when pressing E while door was blocked, triggered became true and you could never go thru the door
                 UnlockDoor();
             }
             if (removeSprite)
@@ -155,6 +155,7 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
+
         if (col.gameObject.name == "Corpse")
         {
             corpseInWay = true;
@@ -173,7 +174,8 @@ public class InteractableObjectScript : MonoBehaviour
                     DisplayInteractPrompt();
                 }
             }
-            DisplayOutline();  // when in collider, displays outline on obj
+            if (Unlock && GetComponent<Door>().Blocked == false) DisplayOutline();  // when in collider & not blocked, displays outline on obj
+            else if (!Unlock) DisplayOutline();
             PickupCheck();
         }
     }
@@ -238,8 +240,9 @@ public class InteractableObjectScript : MonoBehaviour
         if (!CurrentlyPlaying && (!HasInteracted || !ShowPromptOnce))  // if they haven't already interacted and they aren't limited to interacting once only, and not currently playing
         {
             // displays interact text
-            if (PromptTextObject != null)
+            if (PromptTextObject != null && PromptCanvas != null)
             {
+                PromptCanvas.SetActive(true);
                 PromptTextObject.SetActive(true);
                 PromptTextObject.GetComponent<TextMeshProUGUI>().text = InteractMessage;
             }
@@ -311,7 +314,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // Upon door interact, as long as it is unlocked and interactable, will freeze player (during fade out anim) and load next scene.
 
-        if (this.GetComponent<Door>().IsInteractable == true)
+        if (this.GetComponent<Door>().IsInteractable == true && !GetComponent<Door>().Blocked)
         {
             if (!this.gameObject.name.IsOneOf("Basement Stairs", "Attic Stairs") && !player.AudioSource.isPlaying) player.AudioSource.PlayOneShot((AudioClip) Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cabin-door-open-0"), 0.25f);  // plays door open sound when opening
             if (NextSceneIndex >= 0) {

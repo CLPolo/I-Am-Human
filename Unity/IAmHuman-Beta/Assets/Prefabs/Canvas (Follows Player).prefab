@@ -534,7 +534,7 @@ MonoBehaviour:
   m_text: PRESS hi TO CONTINUE...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e12427099091559459e0a10cc7b3cd85, type: 2}
-  m_sharedMaterial: {fileID: -4785275578455290244, guid: b748c5a24cb674749b762c4c1385ce2d,
+  m_sharedMaterial: {fileID: -2791517959012354143, guid: e12427099091559459e0a10cc7b3cd85,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
