@@ -3,8 +3,35 @@ guid: 4d7914394b1bc184d9fde813c1926e4a
 TextureImporter:
   internalIDToNameTable:
   - first:
+      213: -3505635604821020982
+    second: text_UI_shift
+  - first:
+      213: -8615455379032326436
+    second: text_UI_enter
+  - first:
+      213: -745023355556632507
+    second: text_UI_space
+  - first:
+      213: -5953937043748815107
+    second: text_UI_E
+  - first:
+      213: 6346615460500223067
+    second: text_UI_S
+  - first:
       213: -1771665404240953600
-    second: Textbox
+    second: text_UI_Box
+  - first:
+      213: -7965599697257308517
+    second: text_UI_Larrow
+  - first:
+      213: 2958277235329922093
+    second: text_UI_Rarrow
+  - first:
+      213: -1253985702338735145
+    second: text_UI_A
+  - first:
+      213: 1900484630070837360
+    second: text_UI_D
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -86,23 +113,116 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Textbox
+      name: text_UI_shift
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 33
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ace6ea6bdfa795fc0800000000000000
+      internalID: -3505635604821020982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: text_UI_enter
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 33
+        width: 32
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdebc8abaf0cf6880800000000000000
+      internalID: -8615455379032326436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: text_UI_space
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 33
+        width: 48
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5486da6943529a5f0800000000000000
+      internalID: -745023355556632507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: text_UI_E
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 33
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfeff44ddcd5f5da0800000000000000
+      internalID: -5953937043748815107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: text_UI_S
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 33
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b543e11b225b31850800000000000000
+      internalID: 6346615460500223067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: text_UI_Box
       rect:
         serializedVersion: 2
         x: 3
@@ -110,7 +230,7 @@ TextureImporter:
         width: 93
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -122,6 +242,91 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: text_UI_Larrow
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 17
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ed4066741847190800000000000000
+      internalID: -7965599697257308517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: text_UI_Rarrow
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 17
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d24f6fec879ed0920800000000000000
+      internalID: 2958277235329922093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: text_UI_A
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d35eaac5a2f89ee0800000000000000
+      internalID: -1253985702338735145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: text_UI_D
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 1
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 070467ca3b0ef5a10800000000000000
+      internalID: 1900484630070837360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+
     outline: []
     physicsShape: []
     bones: []

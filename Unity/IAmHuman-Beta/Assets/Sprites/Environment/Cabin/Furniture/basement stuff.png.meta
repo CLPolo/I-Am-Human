@@ -9,32 +9,23 @@ TextureImporter:
       213: -8331230838356770852
     second: basement_wall_RIGHT
   - first:
-      213: -6455981534079650739
-    second: flashlight
-  - first:
       213: 7716043580317340856
-    second: basement stuff_3
-  - first:
-      213: 9132965570561667338
-    second: flashlight_interact
-  - first:
-      213: 4063785080871689824
     second: basement_drain
   - first:
-      213: -9031860772554589512
-    second: basement_toolbench
+      213: 9132965570561667338
+    second: basement_workbench
   - first:
-      213: 7353455192910715932
+      213: -9031860772554589512
     second: basement_cellar_OPEN
   - first:
-      213: 5640488480480378748
+      213: 5635461667359091187
     second: basement_stairs
   - first:
-      213: 2964583441530538189
+      213: 7353455192910715932
     second: basement_ladder
   - first:
-      213: 3446185997900415647
-    second: basement_cellar_SHUT
+      213: 5640488480480378748
+    second: basement_cellar_CLOSED
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -128,7 +119,7 @@ TextureImporter:
         width: 16
         height: 68
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,7 +140,7 @@ TextureImporter:
         width: 16
         height: 68
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,48 +148,6 @@ TextureImporter:
       bones: []
       spriteID: cdff6f971b5816c80800000000000000
       internalID: -8331230838356770852
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flashlight
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 161
-        width: 6
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4473b0000fb766a0800000000000000
-      internalID: -6455981534079650739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: flashlight_interact
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 144
-        width: 8
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a0173334ccfcebe70800000000000000
-      internalID: 9132965570561667338
       vertices: []
       indices: 
       edges: []
@@ -212,35 +161,35 @@ TextureImporter:
         width: 13
         height: 25
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06e93ec0007756830800000000000000
-      internalID: 4063785080871689824
+      spriteID: 8b49f3441c4e41b60800000000000000
+      internalID: 7716043580317340856
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basement_toolbench
+      name: basement_workbench
       rect:
         serializedVersion: 2
-        x: 129
-        y: 111
-        width: 47
-        height: 58
+        x: 127
+        y: 109
+        width: 48
+        height: 62
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ba391fea7268a280800000000000000
-      internalID: -9031860772554589512
+      spriteID: a0173334ccfcebe70800000000000000
+      internalID: 9132965570561667338
       vertices: []
       indices: 
       edges: []
@@ -254,14 +203,14 @@ TextureImporter:
         width: 35
         height: 17
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1cd135a988bc0660800000000000000
-      internalID: 7353455192910715932
+      spriteID: 8ba391fea7268a280800000000000000
+      internalID: -9031860772554589512
       vertices: []
       indices: 
       edges: []
@@ -275,14 +224,14 @@ TextureImporter:
         width: 86
         height: 63
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7f37be636a074e40800000000000000
-      internalID: 5640488480480378748
+      spriteID: 3f9e44c478e253e40800000000000000
+      internalID: 5635461667359091187
       vertices: []
       indices: 
       edges: []
@@ -296,20 +245,20 @@ TextureImporter:
         width: 23
         height: 45
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc8ce6bdee0542920800000000000000
-      internalID: 2964583441530538189
+      spriteID: c1cd135a988bc0660800000000000000
+      internalID: 7353455192910715932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basement_cellar_SHUT
+      name: basement_cellar_CLOSED
       rect:
         serializedVersion: 2
         x: 40
@@ -317,14 +266,14 @@ TextureImporter:
         width: 35
         height: 17
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9287ca08ef43df20800000000000000
-      internalID: 3446185997900415647
+      spriteID: c7f37be636a074e40800000000000000
+      internalID: 5640488480480378748
       vertices: []
       indices: 
       edges: []
