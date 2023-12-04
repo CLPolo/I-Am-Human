@@ -470,4 +470,12 @@ public class Player : AnimatedEntity
             collision.gameObject.tag = "TrapArmedNoKill";
         }
     }
+
+    public bool GetDirection()
+    {
+        // returns true if facing right, false if facing left
+
+        return facingRight;
+    }
+
 }
