@@ -247,7 +247,7 @@ public class PuzzleTargetScript : MonoBehaviour
     {
         // Displays Text Post Interaction, and freezes the player during that text if desired (SHOULD BE STANDARD ?).
         // Text is click through using enter (currently set up for dialogue, can make version for prompt).
-
+        Debug.Log(textIndex);
         if (FreezePlayerText)
         {
             player.SetState(PlayerState.Frozen);
@@ -418,32 +418,40 @@ public class PuzzleTargetScript : MonoBehaviour
         }
         else if (this.gameObject.name == "EndingCutscene")
         {
-            if (PlayerPrefs.GetInt("FinalDialogue") == 1)
+            if (PlayerPrefs.GetInt("FinalDialogue") == 0)
             {
-                TextTrigger = true;
+                TextPlayed = true;
+            }
+            if (PlayerPrefs.GetInt("FinalDialogue") == 2)
+            {
                 TextToDisplay.Clear();
                 TextToDisplay.Add("Lily... ?");
-                LevelLoader.Instance.loadScene("End Credits");
-                PlayerPrefs.SetInt("FinalDialogue", 0);
+                TextPlayed = false;  // Once this changes, the text should play !!!!!
+                //LevelLoader.Instance.loadScene("End Credits");  UNCOMMENT THIS LINE LATER OR MOVE IT!!
+                PlayerPrefs.SetInt("FinalDialogue", 1);  // Prevents it from playing again
             }
-            else if (PlayerPrefs.GetInt("FinalDialogue") == 2)
+            else if (PlayerPrefs.GetInt("FinalDialogue") == 4)
             {
-                TextTrigger = true;
-                TextToDisplay.Clear();
-                TextToDisplay.Add("Who... What are you?");
-                PlayerPrefs.SetInt("FinalDialogue", 0);
-                TextTrigger = false;
-
+                TextToDisplay[0] = "Who... What are you?";
+                textIndex = 0;
+                TextPlayed = false;  // Once this changes, the text should play !!!!!
+                PlayerPrefs.SetInt("FinalDialogue", 1);  // Prevents it from playing again
             }
-            else if (PlayerPrefs.GetInt("FinalDialogue") == 3)
+            else if (PlayerPrefs.GetInt("FinalDialogue") == 127)
             {
+                TextPlayed = false;
                 TextTrigger = true;
                 TextToDisplay.Clear();
                 TextToDisplay.Add("I AM HUMAN.");
-                PlayerPrefs.SetInt("FinalDialogue", 0);
-                TextTrigger = false;
+                PlayerPrefs.SetInt("FinalDialogue", 0);  // Prevents it from playing again
+                //TextTrigger = false;
             }
         }
+    }
+
+    public bool GetTextPlayed()
+    {
+        return TextPlayed;
     }
 
 }
