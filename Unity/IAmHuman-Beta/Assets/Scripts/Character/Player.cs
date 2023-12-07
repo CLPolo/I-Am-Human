@@ -274,20 +274,19 @@ public class Player : AnimatedEntity
         }
         else if (collision.gameObject.name == "CrawlerRemovalService")
         {
+            PlayerPrefs.SetInt("FinalDialogue", -1);  // Stop text from showing right at the start
             shrinkCamera = true;  // Start shrinking the camera for final cutscene
             for (int i=0; i<3; i++)
             {
-                collision.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);  // DEACTIVATE THE CREATURE
-            
+                collision.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);  // DEACTIVATE THE CREATURES
             }
             
         }
         else if (collision.gameObject.name == "EndingCutscene")
         {
             // This is the final cutscene in the game.
-            SetState(PlayerState.Frozen);
-            cameraCutscene = true;
-            finalCutscene = true;
+            SetState(PlayerState.Frozen);  // So the player cannot move
+            cameraCutscene = true;  // So we can control the camera
         }
     }
 
