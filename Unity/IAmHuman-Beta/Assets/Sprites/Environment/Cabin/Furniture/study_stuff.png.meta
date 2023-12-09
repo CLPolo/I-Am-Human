@@ -4,37 +4,40 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 3369559701356660780
-    second: study_stuff_bookshelf
+    second: study_bookshelf
   - first:
       213: -8246565244877492145
     second: study_vent
   - first:
       213: 7321950870207722796
-    second: study_basement
+    second: study_basement_door
   - first:
       213: 8942417543056275258
-    second: study_basement_INTERACT
+    second: study_basement_door_INTERACT
   - first:
       213: 2524838898622914909
-    second: study_hallway
+    second: study_doo
   - first:
       213: -2685972703711886696
-    second: study_wall_RIGHT
+    second: study_door_OPEN
   - first:
       213: 7058051356984371939
-    second: study_hallway_INTERACT
+    second: study_door_INTERAC
   - first:
       213: 5642658423121637248
-    second: study_shelves
+    second: study_wall_RIGHT
   - first:
       213: 289259406132984910
-    second: study_diary
+    second: study_shelves
   - first:
       213: 5864651397218608464
-    second: study_desk
+    second: study_DaveDiary_INTERACT
   - first:
       213: -3528573703665393209
-    second: study_diary_INTERACT
+    second: study_desk
+  - first:
+      213: -3391150555206074024
+    second: study_DaveDiary
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: study_stuff_bookshelf
+      name: study_bookshelf
       rect:
         serializedVersion: 2
         x: 16
@@ -162,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_basement
+      name: study_basement_door
       rect:
         serializedVersion: 2
         x: 113
@@ -183,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_basement_INTERACT
+      name: study_basement_door_INTERACT
       rect:
         serializedVersion: 2
         x: 160
@@ -204,12 +207,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_hallway
+      name: study_doo
       rect:
         serializedVersion: 2
-        x: 16
+        x: 14
         y: 43
-        width: 16
+        width: 18
         height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -225,12 +228,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_wall_RIGHT
+      name: study_door_OPEN
       rect:
         serializedVersion: 2
-        x: 48
+        x: 38
         y: 43
-        width: 16
+        width: 18
         height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -246,12 +249,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_hallway_INTERACT
+      name: study_door_INTERAC
       rect:
         serializedVersion: 2
-        x: 80
+        x: 62
         y: 43
-        width: 16
+        width: 18
         height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -267,13 +270,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_shelves
+      name: study_wall_RIGHT
       rect:
         serializedVersion: 2
-        x: 128
-        y: 96
-        width: 31
-        height: 16
+        x: 88
+        y: 43
+        width: 18
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,7 +291,28 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_diary
+      name: study_shelves
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 97
+        width: 29
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c3f76b5e7a30400800000000000000
+      internalID: 289259406132984910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: study_DaveDiary_INTERACT
       rect:
         serializedVersion: 2
         x: 177
@@ -302,8 +326,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4c3f76b5e7a30400800000000000000
-      internalID: 289259406132984910
+      spriteID: 055a6be9f5d636150800000000000000
+      internalID: 5864651397218608464
       vertices: []
       indices: 
       edges: []
@@ -323,14 +347,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 055a6be9f5d636150800000000000000
-      internalID: 5864651397218608464
+      spriteID: 7c16d3569ecf70fc0800000000000000
+      internalID: -3528573703665393209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_diary_INTERACT
+      name: study_DaveDiary
       rect:
         serializedVersion: 2
         x: 178
@@ -344,8 +368,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c16d3569ecf70fc0800000000000000
-      internalID: -3528573703665393209
+      spriteID: 851c211898630f0d0800000000000000
+      internalID: -3391150555206074024
       vertices: []
       indices: 
       edges: []

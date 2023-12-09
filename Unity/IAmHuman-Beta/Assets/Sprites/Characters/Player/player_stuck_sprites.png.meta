@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 54a732cfadc8e554591f3d7169cfe2b1
+guid: 86380ee009e464848b90dd8b3f658c7c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7116156009938128683
-    second: forest_push_box_LEFT
+      213: 3542248538078067488
+    second: player_stuck_sprites_0
   - first:
-      213: -5998472470760008496
-    second: forest_push_box_RIGHT
+      213: 4388567703823820616
+    second: player_stuck_sprites_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,13 +93,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: forest_push_box_LEFT
+      name: player_stuck_sprites_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 33
-        width: 40
-        height: 28
+        x: 0
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -107,20 +107,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d0706ddfc55e3d90800000000000000
-      internalID: -7116156009938128683
+      spriteID: 02b3a4a1748982130800000000000000
+      internalID: 3542248538078067488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: forest_push_box_RIGHT
+      name: player_stuck_sprites_1
       rect:
         serializedVersion: 2
-        x: 8
-        y: 1
-        width: 40
-        height: 28
+        x: 32
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d4d361b11521cca0800000000000000
-      internalID: -5998472470760008496
+      spriteID: 847ab23331357ec30800000000000000
+      internalID: 4388567703823820616
       vertices: []
       indices: 
       edges: []

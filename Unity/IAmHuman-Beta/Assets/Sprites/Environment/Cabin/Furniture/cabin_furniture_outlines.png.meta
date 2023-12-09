@@ -1,49 +1,37 @@
 fileFormatVersion: 2
-guid: 86c6adbf31208ed43a7a55c4f9814c59
+guid: 9e03a7cfe3d63fe439112250f3b404bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3499698929041827123
-    second: bedroom_wall_LEFT
+      213: 2460057634390016682
+    second: cabin_bookshelf_PUSHPULL_L
   - first:
-      213: 5143000229877262292
-    second: bedroom_wall_RIGHT
+      213: 4573298704038476541
+    second: cabin_bookshelf_PUSHPULL_R
   - first:
-      213: -7273512444020663930
-    second: bedroom_nightstand
+      213: 872784613582475285
+    second: cabin_box_PUSHPULL_L
   - first:
-      213: 5397265196204495290
-    second: bedroom_bed_and_chest
+      213: 3973653968708305931
+    second: cabin_box_PUSHPULL_R
   - first:
-      213: -2938109346836844292
-    second: bedroom_nightstand_lamp
+      213: -4768457855529073602
+    second: cabin_chest_PUSHPULL_L
   - first:
-      213: -4154316752730976679
-    second: bedroom_chest_HIDE
+      213: 3492280409006696299
+    second: cabin_chest_PUSHPULL_R
   - first:
-      213: 837578413733063214
-    second: bedroom_clock
+      213: -8330817218503528415
+    second: cabin_chair2_PUSHPULL_R
   - first:
-      213: 4081720149567667282
-    second: bedroom_crowbar
+      213: 6146944280150923878
+    second: cabin_chair1_PUSHPULL_L
   - first:
-      213: -4770391560944671363
-    second: bedroom_crowbar_INTERACT
+      213: -7438464218900731242
+    second: cabin_chair1_PUSHPULL_R
   - first:
-      213: -5110676701522690303
-    second: bedroom_door
-  - first:
-      213: -3608295400777256440
-    second: bedroom_door_INTERACT
-  - first:
-      213: 5062151117129270244
-    second: beroom_vent
-  - first:
-      213: -349634838486887500
-    second: bedroom_lamp_INTERACT
-  - first:
-      213: -1575287840882473415
-    second: bedroom_lamp
+      213: -5356541325998607736
+    second: cabin_chair2_PUSHPULL_L
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -129,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bedroom_wall_LEFT
+      name: cabin_bookshelf_PUSHPULL_L
       rect:
         serializedVersion: 2
-        x: 14
-        y: 107
-        width: 18
-        height: 69
+        x: 16
+        y: 129
+        width: 30
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3356a5e32ad619030800000000000000
-      internalID: 3499698929041827123
+      spriteID: aa20ec07261e32220800000000000000
+      internalID: 2460057634390016682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_wall_RIGHT
+      name: cabin_bookshelf_PUSHPULL_R
       rect:
         serializedVersion: 2
-        x: 48
-        y: 107
-        width: 18
-        height: 69
+        x: 51
+        y: 129
+        width: 30
+        height: 53
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d72695d57b9f5740800000000000000
-      internalID: 5143000229877262292
+      spriteID: dfab7f1e0fe977f30800000000000000
+      internalID: 4573298704038476541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_nightstand
+      name: cabin_box_PUSHPULL_L
       rect:
         serializedVersion: 2
-        x: 82
-        y: 145
-        width: 13
-        height: 11
+        x: 16
+        y: 97
+        width: 26
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 689d3c808fa4f0b90800000000000000
-      internalID: -7273512444020663930
+      spriteID: 510920a5bf0cc1c00800000000000000
+      internalID: 872784613582475285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_bed_and_chest
+      name: cabin_box_PUSHPULL_R
       rect:
         serializedVersion: 2
-        x: 96
-        y: 139
-        width: 45
-        height: 30
+        x: 49
+        y: 97
+        width: 26
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,19 +194,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab1195a9910f6ea40800000000000000
-      internalID: 5397265196204495290
+      spriteID: b040e213b31452730800000000000000
+      internalID: 3973653968708305931
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_nightstand_lamp
+      name: cabin_chest_PUSHPULL_L
       rect:
         serializedVersion: 2
-        x: 142
-        y: 145
-        width: 13
+        x: 18
+        y: 65
+        width: 44
         height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -227,83 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf0f886ad1db937d0800000000000000
-      internalID: -2938109346836844292
+      spriteID: e34c4c248d803ddb0800000000000000
+      internalID: -4768457855529073602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_chest_HIDE
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 112
-        width: 39
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95e04058ce6e856c0800000000000000
-      internalID: -4154316752730976679
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bedroom_clock
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 52
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2a281e212daf9b00800000000000000
-      internalID: 837578413733063214
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bedroom_crowbar
-      rect:
-        serializedVersion: 2
-        x: 57
-        y: 33
-        width: 6
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25cf883a9de25a830800000000000000
-      internalID: 4081720149567667282
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bedroom_crowbar_INTERACT
+      name: cabin_chest_PUSHPULL_R
       rect:
         serializedVersion: 2
         x: 72
-        y: 32
-        width: 8
-        height: 26
+        y: 65
+        width: 44
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -311,20 +236,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d752f52662a2ccdb0800000000000000
-      internalID: -4770391560944671363
+      spriteID: b6766e27782177030800000000000000
+      internalID: 3492280409006696299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_door
+      name: cabin_chair2_PUSHPULL_R
       rect:
         serializedVersion: 2
-        x: 98
-        y: 16
-        width: 29
-        height: 57
+        x: 126
+        y: 54
+        width: 43
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -332,83 +257,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10fffd31e9a3319b0800000000000000
-      internalID: -5110676701522690303
+      spriteID: 120b36ad0edf26c80800000000000000
+      internalID: -8330817218503528415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_door_INTERACT
+      name: cabin_chair1_PUSHPULL_L
       rect:
         serializedVersion: 2
-        x: 145
-        y: 16
-        width: 31
-        height: 58
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 802fef75372ccedc0800000000000000
-      internalID: -3608295400777256440
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: beroom_vent
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 20
-        width: 15
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e346dfde9f504640800000000000000
-      internalID: 5062151117129270244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bedroom_lamp_INTERACT
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 16
-        width: 7
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b353e287f8d52bf0800000000000000
-      internalID: -349634838486887500
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bedroom_lamp
-      rect:
-        serializedVersion: 2
-        x: 70
+        x: 16
         y: 17
-        width: 5
-        height: 12
+        width: 42
+        height: 39
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -416,8 +278,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93645311e04732ae0800000000000000
-      internalID: -1575287840882473415
+      spriteID: 66ad38041455e4550800000000000000
+      internalID: 6146944280150923878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cabin_chair1_PUSHPULL_R
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 17
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69ae7fd143445c890800000000000000
+      internalID: -7438464218900731242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cabin_chair2_PUSHPULL_L
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 16
+        width: 43
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 882372f4b0eb9a5b0800000000000000
+      internalID: -5356541325998607736
       vertices: []
       indices: 
       edges: []

@@ -1,13 +1,7 @@
 fileFormatVersion: 2
-guid: 54a732cfadc8e554591f3d7169cfe2b1
+guid: 183112bc67836cf4da64f7b1614fc6ad
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -7116156009938128683
-    second: forest_push_box_LEFT
-  - first:
-      213: -5998472470760008496
-    second: forest_push_box_RIGHT
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -46,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -91,49 +85,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: forest_push_box_LEFT
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 33
-        width: 40
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5d0706ddfc55e3d90800000000000000
-      internalID: -7116156009938128683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: forest_push_box_RIGHT
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 1
-        width: 40
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d4d361b11521cca0800000000000000
-      internalID: -5998472470760008496
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
