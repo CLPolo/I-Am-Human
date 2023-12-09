@@ -43,7 +43,7 @@ TextureImporter:
     second: hallway_attic_door_INTERACT
   - first:
       213: -8760731882412330440
-    second: hallway_stuff_13
+    second: hallway_stuff_bedroom_interact
   - first:
       213: -7598661315507419886
     second: hallway_kitchen_door_INTERACT
@@ -408,7 +408,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_13
+      name: hallway_stuff_bedroom_interact
       rect:
         serializedVersion: 2
         x: 272

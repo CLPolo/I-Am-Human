@@ -27,6 +27,9 @@ public class CameraMovement : MonoBehaviour
     [Header("Camera Control")]
     private int pans = 0;  // The number of camera pans completed
 
+    private float StartSize;
+    private float noSmallerThan;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,9 @@ public class CameraMovement : MonoBehaviour
      
         offset.Set(0f, cameraYOffset, -10f);
         CheckBounds();
+
+        StartSize = this.GetComponent<Camera>().orthographicSize;
+        noSmallerThan = StartSize / 1.25f;
     }
 
     private void CheckBounds()
@@ -77,16 +83,7 @@ public class CameraMovement : MonoBehaviour
                 StartCoroutine(threeCrashes(0.3f, monsterFootstepsCurve, playerAccess.monsterFootsteps[0]));
                 PlayerPrefs.SetInt("MonsterEmerges", 1);
             }
-            //if (playerAccess != null && playerAccess.GetState() == PlayerState.Hiding && !shaking)
-            //{
-            //    shaking = true;
-            //    StartCoroutine(Shaking());
-            //}  ?? for some reason the player.instance isn't working ??
-            if (Input.GetKeyDown(KeyCode.K))  // just for test purposes until the above is figured out
-            {
-                shaking = true;
-                StartCoroutine(Shaking(1f, hideCurve));
-            }
+            HandleHiding();
         }
         else
         {
@@ -133,6 +130,31 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
+    private void HandleHiding()
+    {
+        // if player is hiding, mildly zooms cam and once at 'full' zoom (noSmallerThan % of the canvas has been zoomed in on) it has a mild camera shake (as dictated by hideCurve on camera's inspector)
+        CheckBounds();
+        if (playerAccess.GetState() == PlayerState.Hiding)  // if the player is currently hiding
+        {
+            if (this.GetComponent<Camera>().orthographicSize <= noSmallerThan)  // if it's zoomed to max
+            {
+                this.GetComponent<Camera>().orthographicSize = this.GetComponent<Camera>().orthographicSize;  // keep it at this size
+                if (!shaking) { shaking = true; StartCoroutine(Shaking(0.2f, hideCurve)); }  // start the shake process as long as it's not already shaking
+            }
+            else this.GetComponent<Camera>().orthographicSize = this.GetComponent<Camera>().orthographicSize / 1.0002f;  // if not full zoom, slowly zoom (smaller num = slower, must be above 1 tho or else zooms out not in)
+        }
+        else  // not hiding
+        {
+            if (this.GetComponent<Camera>().orthographicSize < StartSize)  // if not back to normal
+            {
+                this.GetComponent<Camera>().orthographicSize = this.GetComponent<Camera>().orthographicSize * 1.009f;  // zooms out faster than zoom in (but not immediately snap to normal)
+            }
+            else if (this.GetComponent<Camera>().orthographicSize >= StartSize)  // if back to normal
+            {
+                this.GetComponent<Camera>().orthographicSize = StartSize;  // resets size to EXACT start size (must do this to prevent slight dif in cam size cause of multiplication / division)
+            }
+        }
+    }
     IEnumerator Shaking(float shakeDuration, AnimationCurve curve)
     {
         float elapsedTime = 0f;

@@ -24,6 +24,7 @@ TagManager:
   - Crowbar
   - AtticKey
   - CrawlerSpawner
+  - StudyKey
   layers:
   - Default
   - TransparentFX
