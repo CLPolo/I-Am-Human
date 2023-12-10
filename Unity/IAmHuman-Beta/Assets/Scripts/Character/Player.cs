@@ -410,7 +410,7 @@ public class Player : AnimatedEntity
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         // Flips the character
 

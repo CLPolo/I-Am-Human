@@ -247,7 +247,7 @@ public class LogicScript : MonoBehaviour
             {
                 // We can continue the animation here
                 monster.SetActive(true);  // Monster appears at the doorway
-                audioSource.PlayOneShot(monsterEmergesAudio, 0.25f);
+                playMonsterRoar();
                 // START CHASE MUSIC HERE
                 player.monsterEmergesCutscene = false;  // The cutscene is over
                 player.SetState(PlayerState.Idle);  // THE PLAYER SHOULD RUN NOW
@@ -272,5 +272,10 @@ public class LogicScript : MonoBehaviour
             }
         }
 
+    }
+
+    public void playMonsterRoar()
+    {
+        audioSource.PlayOneShot(monsterEmergesAudio, 0.25f);
     }
 }
