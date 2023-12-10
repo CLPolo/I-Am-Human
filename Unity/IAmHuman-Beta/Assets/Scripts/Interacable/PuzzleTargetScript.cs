@@ -202,7 +202,7 @@ public class PuzzleTargetScript : MonoBehaviour
         }
     }
 
-    private void UpdateObjectLayer(string Layer)
+    private void UpdateObjectLayer(string Layer)  // CAN PROBABLY REMOVE THIS NOW THAT WE HAVE THE BLOCKED DOOR STUFF, WAS ONLY USED FOR CELLAR DOOR BOX
     {
         // changes an objects layer to the one passed through by the string Layer.
         // For example, used to change box's layer to Interactable, allowing the player to NOT be blocked by the box.
@@ -247,7 +247,7 @@ public class PuzzleTargetScript : MonoBehaviour
     {
         // Displays Text Post Interaction, and freezes the player during that text if desired (SHOULD BE STANDARD ?).
         // Text is click through using enter (currently set up for dialogue, can make version for prompt).
-        Debug.Log(textIndex);
+        
         if (FreezePlayerText)
         {
             player.SetState(PlayerState.Frozen);
