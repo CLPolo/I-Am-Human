@@ -152,9 +152,9 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             if (!TextDisplayOnce)  // if text will reactivate (want to show sound more than once)
             {
-                if (this.GetComponent<AudioSource>() != null)
+                if (this.TryGetComponent<AudioSource>(out var source) && !source.isPlaying)
                 {
-                    if (!this.GetComponent<AudioSource>().isPlaying) PlayNoise(NoiseToBePlayed);
+                    PlayNoise(NoiseToBePlayed);
                 }
             }
             else if (!NoiseTriggered)  // else, as long as it hasn't already played
@@ -247,7 +247,6 @@ public class PuzzleTargetScript : MonoBehaviour
     {
         // Displays Text Post Interaction, and freezes the player during that text if desired (SHOULD BE STANDARD ?).
         // Text is click through using enter (currently set up for dialogue, can make version for prompt).
-        Debug.Log(textIndex);
         if (FreezePlayerText)
         {
             player.SetState(PlayerState.Frozen);

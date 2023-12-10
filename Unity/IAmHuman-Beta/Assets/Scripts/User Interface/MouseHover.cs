@@ -10,7 +10,7 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 {
     public Sprite unselected;
     public Sprite selected;
-    public bool disableParentOnClick = false;
+    public List<GameObject> disableOnClick = new List<GameObject>();
     private AudioClip hoverSound;
     private AudioClip selectSound;
     private AudioSource audioSource;
@@ -33,6 +33,7 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Master").First();
         }
         button.onClick.AddListener(delegate {
+            LogicScript.Instance.allowPauseKey = false;
             button.interactable = false;
             audioSource.PlayOneShot(selectSound, 0.5f);
             if (unselected != null)
@@ -47,9 +48,10 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         yield return new WaitUntil(() => !audioSource.isPlaying);
         button.interactable = true;
-        if (disableParentOnClick)
+        LogicScript.Instance.allowPauseKey = true;
+        foreach (GameObject obj in disableOnClick)
         {
-            transform.parent.gameObject.SetActive(false);
+            obj.SetActive(false);
         }
     }
 

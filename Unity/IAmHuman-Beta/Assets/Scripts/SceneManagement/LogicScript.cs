@@ -28,6 +28,8 @@ public class LogicScript : MonoBehaviour
     }
 
     public bool IsPaused = false;  // true if game is paused
+    // used to prevent escape for unpausing when button logic is still being done
+    public bool allowPauseKey = true;
 
     public Player player;
 
@@ -85,8 +87,9 @@ public class LogicScript : MonoBehaviour
             MashTrap();
         }
 
-        if (Input.GetKeyDown(Controls.Pause) && currentSceneIndex > 0)  // Pauses game when player hits esc
+        if (Input.GetKeyDown(Controls.Pause) && currentSceneIndex > 0 && allowPauseKey)  // Pauses game when player hits esc
         {
+            ResetPauseMenu();
             TogglePause();
         }
         CheckCutscenes();
@@ -160,6 +163,7 @@ public class LogicScript : MonoBehaviour
         if (val)
         {
             DeathScreen.SetActive(val);
+            AudioManager.Instance.StopAllSources();
         }
         //audioSource.PlayOneShot(audioSource.clip, 0.5f)
         //AudioListener.pause = IsPaused;
@@ -172,25 +176,29 @@ public class LogicScript : MonoBehaviour
         PlayerPrefs.SetInt("MonsterEmerges", 0);
     }
 
-    // disable menu is used so certain methods of closing pause menu such as
+    public void ResetPauseMenu()
+    {
+        foreach (Transform child in PauseMenu.transform)
+        {
+            child.gameObject.SetActive(child.name == "Pause");
+        }
+    }
+
+    // disableMenu is used so certain methods of closing pause menu such as
     // clicking the continue button can pass 'false' since THEY will deal with
-    // disabling the menu (i.e. need to play click sound before disabling but
-    // click audio source is on button and cant be played if it gets disabled first
+    // disabling the menu (i.e. need to play click sound before disabling)
     public void TogglePause(bool disableMenu = true)
     {
         // Pauses game
         // Note: When we add enemy script, enemy movement should also be stopped if paused
+        
+        IsPaused = !IsPaused;  // will prevent player from moving while paused
         if (disableMenu)
         {
-            PauseMenu.SetActive(!IsPaused);
+            PauseMenu.SetActive(IsPaused);
         }
-        IsPaused = !IsPaused;  // will prevent player from moving while paused
-        if (IsPaused)
-        {
-            PlayerPrefs.SetInt("Paused", 1);
-        }
-        else { PlayerPrefs.SetInt("Paused", 0); }
-        Time.timeScale = IsPaused?0:1F;
+        PlayerPrefs.SetInt("Paused", IsPaused ? 1 : 0);
+        Time.timeScale = IsPaused ? 0 : 1;
 
         // DONT PAUSE AUDIO LISTENER WHEN PAUSING GAME,
         // NEED TO PROGRAMATICALLY GO THROUGH PLAYING AUDIO SOURCES AND PAUSE THEM INSTEAD

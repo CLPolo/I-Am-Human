@@ -99,6 +99,9 @@ public class Monster : NPC
             else { FollowPlayer(); }
             DeterminePatrolling();
             CheckAudio();
+        } else {
+            audioSource.Stop();
+            monsterAudio.Stop();
         }
 
         // update sprite direction
@@ -206,11 +209,6 @@ public class Monster : NPC
             {
                 monsterAudio.Play();
             }
-        }
-        if (PlayerPrefs.GetInt("Dead") == 1)
-        {
-            audioSource.Stop();
-            monsterAudio.Stop();
         }
     }
 

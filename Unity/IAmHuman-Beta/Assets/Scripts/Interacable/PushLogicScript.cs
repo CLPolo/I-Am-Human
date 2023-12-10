@@ -131,11 +131,11 @@ public class PushLogicScript : MonoBehaviour
         if (obj != null)
         {
             spritesToReset.Add(obj);
-            if (player.GetFacingRight() && LeftOutline != null)
+            if (player.facingRight && LeftOutline != null)
             {
                 obj.GetComponent<SpriteRenderer>().sprite = LeftOutline;
             }
-            else if (!player.GetFacingRight() && RightOutline != null)
+            else if (!player.facingRight && RightOutline != null)
             {
                 obj.GetComponent<SpriteRenderer>().sprite = RightOutline;
             }
