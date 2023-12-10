@@ -244,5 +244,24 @@ public class LogicScript : MonoBehaviour
                 player.SetState(PlayerState.Idle);  // THE PLAYER SHOULD RUN NOW
             }
         }
+
+
+        if (currentScene == "Forest Intro (Lily)")
+        {
+            if (PlayerPrefs.GetInt("Fading") == 2)
+            {
+                player.gameObject.GetComponent<Animator>().SetBool("FadeDone", true);
+                player.SetState(PlayerState.Frozen);
+            }
+            if (player.gameObject.GetComponent<Animator>().GetBool("FadeDone") && player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Woken"))
+            {
+                player.gameObject.GetComponent<Animator>().SetBool("FadeDone", false);  // this reset and check prevents constant playerstate updating (only updates to idle once)
+                player.gameObject.GetComponent<Animator>().enabled = false;
+                player.SetState(PlayerState.Idle);
+                PlayerPrefs.SetInt("Fading", 0);
+                
+            }
+        }
+
     }
 }

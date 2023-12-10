@@ -121,6 +121,108 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &139988367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139988368}
+  - component: {fileID: 139988369}
+  - component: {fileID: 139988370}
+  m_Layer: 0
+  m_Name: GoreReact
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &139988368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139988367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -732.44, y: -551.27, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 465226519}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &139988369
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139988367}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &139988370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139988367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AffectedObject: {fileID: 0}
+  ActivateTriggerObject: {fileID: 0}
+  DeactivateTriggerObject: {fileID: 0}
+  DoorToBeOpened: {fileID: 0}
+  LayerSwitch: 0
+  SpawnObject: 0
+  TurnOffObject: 0
+  NoiseTrigger: 0
+  TextTrigger: 1
+  HideTimed: 0
+  FreezePlayerObject: 0
+  FreezePlayerText: 1
+  FreezePlayerOnly: 0
+  UnlockDoor: 0
+  NoisePlayOnSpawn: 0
+  SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
+  LayerToSwitchTo: 
+  NoiseToBePlayed: {fileID: 0}
+  TextToDisplay:
+  - Ugh, ew...
+  - What is this stuff?
+  - It smells gross.
+  TextObject: {fileID: 1293382118}
+  TextCanvas: {fileID: 1657577298}
+  TextDisplayOnce: 1
+  DisplayTimeObject: 0
+  DelayTime: 0
+  HideTime: 0
+  FreezeTime: 0
+  player: {fileID: 0}
 --- !u!1 &150503878 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6528947781627493617, guid: 969fc196346bf8e439b03a6f53125632,
@@ -396,6 +498,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1800017050}
+  - {fileID: 139988368}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -532,9 +635,10 @@ MonoBehaviour:
   PromptCanvas: {fileID: 958308840}
   InteractMessage: PRESS a TO INTERACT
   ShowPromptOnce: 1
-  DialogueTextObject: {fileID: 0}
-  DialogueCanvas: {fileID: 0}
-  TextList: []
+  DialogueTextObject: {fileID: 1293382118}
+  DialogueCanvas: {fileID: 1657577298}
+  TextList:
+  - Oh my god.
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
@@ -1102,7 +1206,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780213591173, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -3539,14 +3643,16 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 1095141833252711340, guid: 50c02617f89f9d142b18e800f9145004, type: 3}
   Outline: {fileID: 21300000, guid: d8b2cdeaa9c9833478b35b601c92761d, type: 3}
-  removeSprite: 0
+  removeSprite: 1
   PromptTextObject: {fileID: 150503878}
   PromptCanvas: {fileID: 958308840}
   InteractMessage: PRESS a TO INTERACT
   ShowPromptOnce: 0
-  DialogueTextObject: {fileID: 0}
-  DialogueCanvas: {fileID: 0}
-  TextList: []
+  DialogueTextObject: {fileID: 1293382118}
+  DialogueCanvas: {fileID: 1657577298}
+  TextList:
+  - This must be the key to the attic.
+  - I need to get her out of this place.
   FreezePlayer: 0
   PlaySound: 0
   Sounds: []
@@ -3616,7 +3722,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018647517}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.129, y: 0.395, z: -1.7282277}
+  m_LocalPosition: {x: 2.21, y: 0.395, z: -1.7282277}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1571245135}

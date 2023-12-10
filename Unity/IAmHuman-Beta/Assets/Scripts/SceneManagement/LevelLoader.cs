@@ -64,7 +64,7 @@ public class LevelLoader : MonoBehaviour
             yield return new WaitForSeconds(freezeTime);
             player.SetState(PlayerState.Idle);
         }
-        PlayerPrefs.SetInt("Fading", 0);
+        PlayerPrefs.SetInt("Fading", 2);
     }
     public IEnumerator HoldDark()
     {
