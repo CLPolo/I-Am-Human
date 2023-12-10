@@ -197,7 +197,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // checks if object being interacted with is a pickup
 
-        if (this.gameObject.tag.IsOneOf("Flashlight", "Crowbar", "AtticKey", "StudyKey"))  // if one of our pickups, will give us usable string for tag.
+        if (this.gameObject.tag.IsOneOf("Flashlight", "Crowbar", "AtticKey", "StudyKey", "LilyBear", "LilyShoe"))  // if one of our pickups, will give us usable string for tag.
         {
             PlayerPrefs.SetString("Pickup", this.tag);
             isPickup = true;
@@ -208,10 +208,10 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // sets appropriate player pref to reflect that pickup has been grabbed
 
-        if (isPickup && PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight", "Crowbar", "AtticKey", "StudyKey")) // if one of our pickups, it will set playerprefs of that to 1 (true).
+        if (isPickup && PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight", "Crowbar", "AtticKey", "StudyKey", "LilyBear", "LilyShoe")) // if one of our pickups, it will set playerprefs of that to 1 (true).
         {
             PlayerPrefs.SetInt(PlayerPrefs.GetString("Pickup"), 1);
-            if (PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight","AtticKey")) { this.gameObject.SetActive(false); }  // crowbar & Study key handled seperately in their respective handle funcs (have text)
+            if (PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight")) { this.gameObject.SetActive(false); }  // items w/ text (crowbar, keys, lily objs) handled seperately in their respective handle funcs
             AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/item-pickup");
             player.AudioSource.PlayOneShot(clip, 0.5f);
             if (this.tag == "Flashlight")
@@ -228,7 +228,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // ensures they won't spawn on re-entry of a room if they were picked up
 
-        if (this.gameObject.tag.IsOneOf("Flashlight", "Crowbar", "AtticKey", "StudyKey"))
+        if (this.gameObject.tag.IsOneOf("Flashlight", "Crowbar", "AtticKey", "StudyKey", "LilyBear", "LilyShoe"))
         {
             if (PlayerPrefs.GetInt(this.gameObject.tag) == 1)
             {
@@ -321,6 +321,7 @@ public class InteractableObjectScript : MonoBehaviour
                     if (removeSprite)
                     {
                         this.GetComponent<BoxCollider2D>().enabled = false;
+                        this.GetComponent<SpriteRenderer>().sprite = null;
                     }
                 }
             }
@@ -333,7 +334,10 @@ public class InteractableObjectScript : MonoBehaviour
 
         if (this.GetComponent<Door>().IsInteractable == true && !GetComponent<Door>().Blocked)
         {
-            if (!this.gameObject.name.IsOneOf("Basement Stairs", "Attic Stairs") && !player.AudioSource.isPlaying) player.AudioSource.PlayOneShot((AudioClip) Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cabin-door-open-0"), 0.25f);  // plays door open sound when opening
+            if (!this.gameObject.name.IsOneOf("Basement Stairs", "Attic Stairs") && !player.AudioSource.isPlaying)
+            {
+                player.AudioSource.PlayOneShot((AudioClip)Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cabin-door-open-0"), 0.25f);  // plays door open sound when opening
+            }
             if (NextSceneIndex >= 0) {
                 player.SetState(PlayerState.Frozen);
                 LevelLoader.Instance.loadScene(NextSceneIndex);

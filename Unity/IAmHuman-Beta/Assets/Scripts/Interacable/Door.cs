@@ -22,7 +22,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (col.tag == "Hideable")  // basically, if there's a box in the way, you can't go through the door (specific example: bookshelf in hallway, could also apply to forest intro cellar box)
+        if (col.tag == "Hideable" || col.tag == "Box")  // basically, if there's a box in the way, you can't go through the door (specific example: bookshelf in hallway, could also apply to forest intro cellar box)
         {
             IsInteractable = false;
             Blocked = true;
@@ -31,7 +31,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.tag == "Hideable")  // once the box isnt in front of the door, can be opened
+        if (col.tag == "Hideable" || col.tag == "Box")  // once the box isnt in front of the door, can be opened
         {
             IsInteractable = true;
             Blocked = false;
