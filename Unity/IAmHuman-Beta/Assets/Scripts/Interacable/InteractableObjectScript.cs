@@ -155,7 +155,6 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-
         if (col.gameObject.name == "Corpse")
         {
             corpseInWay = true;
@@ -163,20 +162,33 @@ public class InteractableObjectScript : MonoBehaviour
 
         if (col.tag == "Player")
         {
-            if (Inside = true && !Input.GetKeyDown(Controls.Interact) && !corpseInWay && !PressedInteract)  // if player in collider and has NOT pressed interact key yet
+            // this has a door copmponent
+            if (TryGetComponent<Door>(out var door))
             {
-                if (Unlock && this.GetComponent<Door>().IsInteractable == true)
+                if (door.Blocked)
                 {
-                    DisplayInteractPrompt();  // shows the interact prompt
+                    RemoveOutline();
+                } else {
+                    DisplayOutline();
                 }
-                else if (!Unlock && this.GetComponent<Door>() != null ? !this.GetComponent<Door>().Blocked : true)
+
+                // if player in collider and has NOT pressed interact key yet
+                if (Inside && !Input.GetKeyDown(Controls.Interact) && !corpseInWay && !PressedInteract)
                 {
-                    DisplayInteractPrompt();
+                    bool unlockAndIsInteractable = Unlock && door.IsInteractable;
+                    bool notBlockedAndDontUnlock = !Unlock && !door.Blocked;
+                    if (unlockAndIsInteractable || notBlockedAndDontUnlock)
+                    {
+                        DisplayInteractPrompt();
+                    }
                 }
             }
-            if (!Unlock && this.GetComponent<Door>() == null) DisplayOutline();  // if not door
-            else if (this.GetComponent<Door>().Blocked == false) DisplayOutline();  // if door is not blocked
-            else if (this.GetComponent<Door>().Blocked == true) RemoveOutline();  // if door becomes blocked while you're in the collider, remove outline
+            // this does not have a door component
+            else if (!Unlock)
+            {
+                DisplayOutline();
+                DisplayInteractPrompt();
+            }
             PickupCheck();
         }
     }

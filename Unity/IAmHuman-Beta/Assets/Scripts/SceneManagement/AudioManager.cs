@@ -599,4 +599,13 @@ public class AudioManager : MonoBehaviour
             s.Play();
         }
     }
+
+    // used when player dies
+    public void StopAllSources()
+    {
+        foreach (AudioSource src in srcs.Values)
+        {
+            src.Stop();
+        }
+    }
 }

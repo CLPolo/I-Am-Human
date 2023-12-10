@@ -71,7 +71,7 @@ public class Player : AnimatedEntity
     //boolean state based variables
     //private bool isHiding = false;
     private bool moving = false;
-    private bool facingRight = true;
+    public bool facingRight = true;
     private bool movingRight = true;
 
     [Header("State")]
@@ -469,12 +469,4 @@ public class Player : AnimatedEntity
             collision.gameObject.tag = "TrapArmedNoKill";
         }
     }
-
-    public bool GetFacingRight()
-    {
-        // returns true if facing right, false if facing left
-
-        return facingRight;
-    }
-
 }
