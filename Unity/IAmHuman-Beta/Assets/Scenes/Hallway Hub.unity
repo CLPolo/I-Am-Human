@@ -749,7 +749,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &538264220
@@ -769,7 +769,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.58, y: 1.14}
+    oldSize: {x: 0.32, y: 1.38}
     newSize: {x: 0.58, y: 1.14}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -806,6 +806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 1
   IsInteractable: 1
+  Blocked: 0
 --- !u!212 &538264223
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1107,7 +1108,7 @@ SpriteRenderer:
   m_Size: {x: 0.58, y: 1.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &596244649
@@ -1308,7 +1309,7 @@ SpriteRenderer:
   m_Size: {x: 0.58, y: 1.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &638039913
@@ -1612,7 +1613,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.69}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &690171650
@@ -1669,7 +1670,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &690171652
@@ -1842,6 +1843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 1
   IsInteractable: 1
+  Blocked: 0
 --- !u!114 &755448031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,7 +1881,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &755448032
@@ -1899,7 +1901,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.58, y: 1.14}
+    oldSize: {x: 0.32, y: 1.38}
     newSize: {x: 0.58, y: 1.14}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2028,7 +2030,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &775677870
@@ -2105,7 +2107,7 @@ SpriteRenderer:
   m_Size: {x: 0.58, y: 1.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &775677872
@@ -2122,6 +2124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 1
   IsInteractable: 1
+  Blocked: 0
 --- !u!1 &780427998
 GameObject:
   m_ObjectHideFlags: 0
@@ -4816,6 +4819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 1
   IsInteractable: 0
+  Blocked: 0
 --- !u!114 &840854460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4858,7 +4862,7 @@ MonoBehaviour:
   EntitySpawn:
   - {fileID: 1312885029}
   - {fileID: 1828829376}
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &840854461
@@ -4878,7 +4882,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.58, y: 1.14}
+    oldSize: {x: 0.32, y: 1.38}
     newSize: {x: 0.58, y: 1.14}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5043,7 +5047,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -5441,7 +5445,7 @@ SpriteRenderer:
   m_Size: {x: 0.28, y: 0.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1045133455
@@ -5623,7 +5627,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!1 &1074101676
@@ -5674,6 +5678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 1
   IsInteractable: 1
+  Blocked: 0
 --- !u!114 &1074101679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5710,7 +5715,7 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned: []
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &1074101680
@@ -5787,7 +5792,7 @@ SpriteRenderer:
   m_Size: {x: 0.58, y: 1.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1125428973
@@ -6383,7 +6388,7 @@ MonoBehaviour:
   ObjectsSpawned:
   - {fileID: 775677867}
   EntitySpawn: []
-  DestroyObject: 0
+  DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
 --- !u!61 &1829220743
@@ -6460,7 +6465,7 @@ SpriteRenderer:
   m_Size: {x: 0.58, y: 1.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1831801532
@@ -6542,7 +6547,7 @@ SpriteRenderer:
   m_Size: {x: 0.28, y: 0.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1897490108
@@ -6705,12 +6710,12 @@ PrefabInstance:
     - target: {fileID: 948246213204472776, guid: 18275c16382c20d488778db66826b372,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 948246213204472776, guid: 18275c16382c20d488778db66826b372,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 948246213204472776, guid: 18275c16382c20d488778db66826b372,
         type: 3}

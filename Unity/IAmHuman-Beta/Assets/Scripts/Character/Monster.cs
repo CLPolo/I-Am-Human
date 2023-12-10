@@ -100,8 +100,8 @@ public class Monster : NPC
             DeterminePatrolling();
             CheckAudio();
         } else {
-            audioSource.Stop();
-            monsterAudio.Stop();
+            audioSource?.Stop();
+            monsterAudio?.Stop();
         }
 
         // update sprite direction

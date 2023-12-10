@@ -76,23 +76,24 @@ public class LogicScript : MonoBehaviour
         if (player == null)
         {
             player = Player.Instance;
-        }
-        if (playerYStart == 1000f)
-        {
-            playerYStart = player.transform.position.y;
-        }
-        // PUT ALL LOGIC HERE
-        if (player.GetState() == PlayerState.Trapped)
-        {   
-            MashTrap();
-        }
+        } else {
+            if (playerYStart == 1000f)
+            {
+                playerYStart = player.transform.position.y;
+            }
+            // PUT ALL LOGIC HERE
+            if (player.GetState() == PlayerState.Trapped)
+            {
+                MashTrap();
+            }
 
-        if (Input.GetKeyDown(Controls.Pause) && currentSceneIndex > 0 && allowPauseKey)  // Pauses game when player hits esc
-        {
-            ResetPauseMenu();
-            TogglePause();
+            if (Input.GetKeyDown(Controls.Pause) && currentSceneIndex > 0 && allowPauseKey)  // Pauses game when player hits esc
+            {
+                ResetPauseMenu();
+                TogglePause();
+            }
+            CheckCutscenes();
         }
-        CheckCutscenes();
     }
 
     public void MashTrap()
