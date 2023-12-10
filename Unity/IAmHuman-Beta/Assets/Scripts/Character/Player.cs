@@ -470,7 +470,7 @@ public class Player : AnimatedEntity
         }
     }
 
-    public bool GetDirection()
+    public bool GetFacingRight()
     {
         // returns true if facing right, false if facing left
 
