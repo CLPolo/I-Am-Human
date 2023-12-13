@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 4411a04576758ee4f9bb1147cce112af
+guid: 86380ee009e464848b90dd8b3f658c7c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5022902154623271807
-    second: bodies_DAVE_interact
+      213: 3542248538078067488
+    second: player_stuck_sprites_0
+  - first:
+      213: 4388567703823820616
+    second: player_stuck_sprites_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -86,38 +89,47 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bodies_DAVE_interact
+      name: player_stuck_sprites_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 5
-        width: 34
-        height: 23
+        x: 3
+        y: 0
+        width: 17
+        height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18cb2245a111b4ab0800000000000000
-      internalID: -5022902154623271807
+      spriteID: 02b3a4a1748982130800000000000000
+      internalID: 3542248538078067488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_stuck_sprites_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 17
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 847ab23331357ec30800000000000000
+      internalID: 4388567703823820616
       vertices: []
       indices: 
       edges: []

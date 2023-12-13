@@ -1,43 +1,37 @@
 fileFormatVersion: 2
-guid: 6e9a4c5169d86fc459afbcdf25c8caf2
+guid: 9e03a7cfe3d63fe439112250f3b404bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3369559701356660780
-    second: study_bookshelf
+      213: 2460057634390016682
+    second: hallway_bookshelf_pushpull_L
   - first:
-      213: -8246565244877492145
-    second: study_vent
+      213: 4573298704038476541
+    second: hallway_bookshelf_pushpull_R
   - first:
-      213: 7321950870207722796
-    second: study_basement_door
+      213: 872784613582475285
+    second: cabin_box_pushpull_L
   - first:
-      213: 8942417543056275258
-    second: study_basement_door_INTERACT
+      213: 3973653968708305931
+    second: cabin_box_pushpull_R
   - first:
-      213: 2524838898622914909
-    second: study_door
+      213: -4768457855529073602
+    second: cabin_chest_pushpull_L
   - first:
-      213: -2685972703711886696
-    second: study_door_OPEN
+      213: 3492280409006696299
+    second: cabin_furniture_outlines_5
   - first:
-      213: 7058051356984371939
-    second: study_door_INTERACT
+      213: -8330817218503528415
+    second: cabin_chair2_pushpull_R
   - first:
-      213: 5642658423121637248
-    second: study_wall_RIGHT
+      213: 6146944280150923878
+    second: cabin_chair1_pushpull_L
   - first:
-      213: 289259406132984910
-    second: study_ven
+      213: -7438464218900731242
+    second: cabin_chair1_pushpull_R
   - first:
-      213: 5864651397218608464
-    second: study_DaveDiary_INTERACT
-  - first:
-      213: -3528573703665393209
-    second: study_desk
-  - first:
-      213: -3391150555206074024
-    second: study_DaveDiary
+      213: -5356541325998607736
+    second: cabin_chair2_pushpull_L
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,12 +117,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: study_bookshelf
+      name: hallway_bookshelf_pushpull_L
       rect:
         serializedVersion: 2
         x: 16
-        y: 128
-        width: 29
+        y: 129
+        width: 30
         height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -137,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c28c5d812b413ce20800000000000000
-      internalID: 3369559701356660780
+      spriteID: aa20ec07261e32220800000000000000
+      internalID: 2460057634390016682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_vent
+      name: hallway_bookshelf_pushpull_R
       rect:
         serializedVersion: 2
-        x: 64
-        y: 135
-        width: 15
-        height: 8
+        x: 51
+        y: 129
+        width: 30
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,146 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f40bef91a905e8d80800000000000000
-      internalID: -8246565244877492145
+      spriteID: dfab7f1e0fe977f30800000000000000
+      internalID: 4573298704038476541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_basement_door
+      name: cabin_box_pushpull_L
       rect:
         serializedVersion: 2
-        x: 113
-        y: 128
-        width: 29
-        height: 57
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c25f799e58bcc9560800000000000000
-      internalID: 7321950870207722796
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: study_basement_door_INTERACT
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 128
-        width: 31
-        height: 58
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a37371f5069d91c70800000000000000
-      internalID: 8942417543056275258
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: study_door
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 43
-        width: 18
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d51e183e9970a0320800000000000000
-      internalID: 2524838898622914909
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: study_door_OPEN
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 43
-        width: 18
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8928bde8e0289bad0800000000000000
-      internalID: -2685972703711886696
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: study_door_INTERACT
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 43
-        width: 18
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ea6483605c33f160800000000000000
-      internalID: 7058051356984371939
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: study_wall_RIGHT
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 43
-        width: 18
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08fe70390ffbe4e40800000000000000
-      internalID: 5642658423121637248
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: study_ven
-      rect:
-        serializedVersion: 2
-        x: 128
+        x: 16
         y: 97
-        width: 29
-        height: 17
+        width: 26
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4c3f76b5e7a30400800000000000000
-      internalID: 289259406132984910
+      spriteID: 510920a5bf0cc1c00800000000000000
+      internalID: 872784613582475285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_DaveDiary_INTERACT
+      name: cabin_box_pushpull_R
       rect:
         serializedVersion: 2
-        x: 177
-        y: 96
-        width: 14
-        height: 6
+        x: 49
+        y: 97
+        width: 26
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 055a6be9f5d636150800000000000000
-      internalID: 5864651397218608464
+      spriteID: b040e213b31452730800000000000000
+      internalID: 3973653968708305931
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_desk
+      name: cabin_chest_pushpull_L
       rect:
         serializedVersion: 2
-        x: 126
-        y: 48
-        width: 45
-        height: 36
+        x: 18
+        y: 65
+        width: 44
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c16d3569ecf70fc0800000000000000
-      internalID: -3528573703665393209
+      spriteID: e34c4c248d803ddb0800000000000000
+      internalID: -4768457855529073602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_DaveDiary
+      name: cabin_furniture_outlines_5
       rect:
         serializedVersion: 2
-        x: 178
-        y: 81
-        width: 12
-        height: 4
+        x: 72
+        y: 65
+        width: 44
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -368,8 +236,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 851c211898630f0d0800000000000000
-      internalID: -3391150555206074024
+      spriteID: b6766e27782177030800000000000000
+      internalID: 3492280409006696299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cabin_chair2_pushpull_R
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 55
+        width: 43
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 120b36ad0edf26c80800000000000000
+      internalID: -8330817218503528415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cabin_chair1_pushpull_L
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 17
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66ad38041455e4550800000000000000
+      internalID: 6146944280150923878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cabin_chair1_pushpull_R
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 17
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69ae7fd143445c890800000000000000
+      internalID: -7438464218900731242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cabin_chair2_pushpull_L
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 16
+        width: 43
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 882372f4b0eb9a5b0800000000000000
+      internalID: -5356541325998607736
       vertices: []
       indices: 
       edges: []

@@ -19,13 +19,16 @@ TextureImporter:
     second: basement_cellar_OPEN
   - first:
       213: 5635461667359091187
-    second: basement_stairs
+    second: basement_stairwell
   - first:
       213: 7353455192910715932
     second: basement_ladder
   - first:
       213: 5640488480480378748
     second: basement_cellar_CLOSED
+  - first:
+      213: 2964583441530538189
+    second: basement_cellar_closed_INTERACT
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,9 +117,9 @@ TextureImporter:
       name: basement_wall_LEFT
       rect:
         serializedVersion: 2
-        x: 16
+        x: 14
         y: 108
-        width: 16
+        width: 18
         height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -137,7 +140,7 @@ TextureImporter:
         serializedVersion: 2
         x: 48
         y: 108
-        width: 16
+        width: 18
         height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -177,10 +180,10 @@ TextureImporter:
       name: basement_workbench
       rect:
         serializedVersion: 2
-        x: 127
-        y: 109
-        width: 48
-        height: 62
+        x: 129
+        y: 111
+        width: 47
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,7 +219,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basement_stairs
+      name: basement_stairwell
       rect:
         serializedVersion: 2
         x: 90
@@ -274,6 +277,27 @@ TextureImporter:
       bones: []
       spriteID: c7f37be636a074e40800000000000000
       internalID: 5640488480480378748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basement_cellar_closed_INTERACT
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 4
+        width: 37
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc8ce6bdee0542920800000000000000
+      internalID: 2964583441530538189
       vertices: []
       indices: 
       edges: []

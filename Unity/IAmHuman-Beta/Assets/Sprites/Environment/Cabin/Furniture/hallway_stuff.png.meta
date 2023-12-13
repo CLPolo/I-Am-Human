@@ -7,91 +7,82 @@ TextureImporter:
     second: hallway_bookshelf
   - first:
       213: -8983691491164830149
-    second: hallway_bookshelf_INTERACT
-  - first:
-      213: 5084079004392032968
     second: hallway_frontdoor
   - first:
-      213: 921586482642094683
+      213: 5084079004392032968
     second: hallway_frontdoor_INTERACT
   - first:
-      213: 4496142619515052017
-    second: hallway_stuff_4
-  - first:
       213: -7539847215404474597
-    second: hallway_stuff_5
+    second: hallway_atticdoor
   - first:
       213: 2788599236150914000
-    second: hallway_attic_door
+    second: hallway_bedkitch
   - first:
       213: -5288872224278772192
-    second: hallway_bedroom_door
+    second: hallway_kitchen_boarded
   - first:
       213: -9003731896847639491
-    second: hallway_kitchen_door
+    second: hallway_box
   - first:
       213: 2412259655204172220
-    second: hallway_stuff_box
+    second: hallway_box_HIDE
   - first:
       213: -1449192821341521736
-    second: hallway_stuff_box_INTERACT
+    second: hallwaY_mat
   - first:
       213: 1329601668239055561
-    second: hallway_stuff_rug
+    second: hallway_atticdoor_INTERACT
   - first:
       213: -4506900654647834497
-    second: hallway_attic_door_INTERACT
+    second: hallway_bedkitch_INTERACT
   - first:
       213: -8760731882412330440
-    second: hallway_stuff_bedroom_interact
+    second: hallway_kitchen_boarded_INTERACT
   - first:
       213: -7598661315507419886
-    second: hallway_kitchen_door_INTERACT
+    second: hallway_chest
   - first:
       213: -8066552970204862018
-    second: hallway_stuff_chest
+    second: hallway_chest_HIDE
   - first:
       213: 1784061262971884580
-    second: hallway_stuff_chest_INTERACT
+    second: hallway_chair2_HIDE
   - first:
       213: -3146910734358201773
-    second: hallway_stuff_chair2_INTERACT
+    second: hallway_DaveNote_INTERACT
   - first:
       213: 2802472440279210686
-    second: hallway_stuff_note_INTERACT
+    second: hallway_DaveNote
   - first:
       213: 5419475518858724630
-    second: hallway_stuff_note
+    second: hallway_chair1
   - first:
       213: 4301046149532193455
-    second: hallway_stuff_chair1
+    second: hallway_chair1_HIDE
   - first:
       213: 2918268369020848236
-    second: hallway_stuff_chair1_INTERACT
+    second: hallway_chair2
   - first:
       213: 3918501695714631959
-    second: hallway_stuff_chair2
+    second: hallway_lamp
   - first:
       213: -6619628608262685074
-    second: hallway_stuff_lamp
+    second: hallway_radiator
   - first:
       213: -2812569254919593716
-    second: hallway_stuff_radiator
+    second: hallway_walllight
   - first:
       213: -7742367518458122792
-    second: hallway_stuff_walllight
+    second: hallway_boxstack
   - first:
       213: -8319992412190318785
-    second: hallway_stuff_small_box
+    second: hallway_clock
   - first:
       213: 1047535246961328619
-    second: hallway_stuff_clock
+    second: hallway_table
   - first:
       213: -3953501027848826373
-    second: hallway_stuff_table
-  - first:
-      213: 818885891297911164
-    second: hallway_stuff_carpet
+    second: hallway_rug
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -181,11 +172,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 17
-        y: 129
+        y: 128
         width: 29
-        height: 53
+        height: 54
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,15 +189,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_bookshelf_INTERACT
+      name: hallway_frontdoor
       rect:
         serializedVersion: 2
-        x: 50
-        y: 128
-        width: 31
-        height: 55
+        x: 94
+        y: 112
+        width: 18
+        height: 69
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,15 +210,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_frontdoor
+      name: hallway_frontdoor_INTERACT
       rect:
         serializedVersion: 2
-        x: 96
+        x: 126
         y: 112
-        width: 16
+        width: 18
         height: 69
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,28 +231,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_frontdoor_INTERACT
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 112
-        width: 16
-        height: 69
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5a0fafe5022acc00800000000000000
-      internalID: 921586482642094683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hallway_attic_door
+      name: hallway_atticdoor
       rect:
         serializedVersion: 2
         x: 240
@@ -269,7 +239,28 @@ TextureImporter:
         width: 29
         height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1f1919c7e41d5790800000000000000
+      internalID: -7539847215404474597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hallway_bedkitch
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 128
+        width: 29
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -282,15 +273,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_bedroom_door
+      name: hallway_kitchen_boarded
       rect:
         serializedVersion: 2
-        x: 272
+        x: 309
         y: 128
-        width: 29
+        width: 37
         height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -303,15 +294,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_kitchen_door
+      name: hallway_box
       rect:
         serializedVersion: 2
-        x: 309
-        y: 128
-        width: 37
-        height: 57
+        x: 17
+        y: 96
+        width: 25
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -324,15 +315,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_box
+      name: hallway_box_HIDE
       rect:
         serializedVersion: 2
-        x: 17
+        x: 48
         y: 96
-        width: 25
-        height: 23
+        width: 27
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -345,15 +336,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_box_INTERACT
+      name: hallwaY_mat
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
-        width: 27
-        height: 24
+        x: 137
+        y: 100
+        width: 28
+        height: 6
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -366,15 +357,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_rug
+      name: hallway_atticdoor_INTERACT
       rect:
         serializedVersion: 2
-        x: 137
-        y: 100
-        width: 28
-        height: 6
+        x: 240
+        y: 64
+        width: 29
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -387,15 +378,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_attic_door_INTERACT
+      name: hallway_bedkitch_INTERACT
       rect:
         serializedVersion: 2
-        x: 240
+        x: 272
         y: 64
         width: 29
         height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -408,15 +399,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_bedroom_interact
+      name: hallway_kitchen_boarded_INTERACT
       rect:
         serializedVersion: 2
-        x: 272
+        x: 308
         y: 64
-        width: 29
+        width: 39
         height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -429,15 +420,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_kitchen_door_INTERACT
+      name: hallway_chest
       rect:
         serializedVersion: 2
-        x: 308
-        y: 64
-        width: 39
-        height: 57
+        x: 19
+        y: 65
+        width: 43
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -450,15 +441,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_chest
+      name: hallway_chest_HIDE
       rect:
         serializedVersion: 2
-        x: 19
-        y: 65
-        width: 43
-        height: 23
+        x: 71
+        y: 64
+        width: 45
+        height: 25
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -471,15 +462,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_chest_INTERACT
+      name: hallway_chair2_HIDE
       rect:
         serializedVersion: 2
-        x: 71
-        y: 64
-        width: 45
-        height: 25
+        x: 126
+        y: 54
+        width: 44
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -492,15 +483,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_chair2_INTERACT
+      name: hallway_DaveNote_INTERACT
       rect:
         serializedVersion: 2
-        x: 126
-        y: 54
-        width: 44
-        height: 36
+        x: 180
+        y: 73
+        width: 9
+        height: 6
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -513,15 +504,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_note_INTERACT
+      name: hallway_DaveNote
       rect:
         serializedVersion: 2
         x: 180
-        y: 73
-        width: 9
-        height: 6
+        y: 66
+        width: 7
+        height: 4
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -534,15 +525,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_note
+      name: hallway_chair1
       rect:
         serializedVersion: 2
-        x: 180
-        y: 66
-        width: 7
-        height: 4
+        x: 17
+        y: 17
+        width: 41
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -555,15 +546,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_chair1
+      name: hallway_chair1_HIDE
       rect:
         serializedVersion: 2
-        x: 17
-        y: 17
-        width: 41
-        height: 39
+        x: 64
+        y: 16
+        width: 43
+        height: 41
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -576,15 +567,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_chair1_INTERACT
+      name: hallway_chair2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 125
         y: 16
-        width: 43
-        height: 41
+        width: 42
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -597,15 +588,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_chair2
+      name: hallway_lamp
       rect:
         serializedVersion: 2
-        x: 125
-        y: 16
-        width: 42
-        height: 34
+        x: 213
+        y: 33
+        width: 5
+        height: 12
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -618,15 +609,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_lamp
+      name: hallway_radiator
       rect:
         serializedVersion: 2
-        x: 213
+        x: 224
         y: 33
-        width: 5
-        height: 12
+        width: 29
+        height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -639,15 +630,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_radiator
+      name: hallway_walllight
       rect:
         serializedVersion: 2
-        x: 224
-        y: 33
-        width: 29
-        height: 22
+        x: 263
+        y: 37
+        width: 5
+        height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -660,15 +651,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_walllight
+      name: hallway_boxstack
       rect:
         serializedVersion: 2
-        x: 263
-        y: 37
-        width: 5
-        height: 8
+        x: 289
+        y: 32
+        width: 15
+        height: 19
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -681,15 +672,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_small_box
+      name: hallway_clock
       rect:
         serializedVersion: 2
-        x: 289
-        y: 32
+        x: 321
+        y: 2
         width: 15
-        height: 19
+        height: 52
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -702,15 +693,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_clock
+      name: hallway_table
       rect:
         serializedVersion: 2
-        x: 321
-        y: 2
-        width: 15
-        height: 52
+        x: 214
+        y: 3
+        width: 24
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -723,28 +714,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hallway_stuff_table
-      rect:
-        serializedVersion: 2
-        x: 214
-        y: 3
-        width: 24
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bf1ddeff2c75229c0800000000000000
-      internalID: -3953501027848826373
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hallway_stuff_carpet
+      name: hallway_rug
       rect:
         serializedVersion: 2
         x: 249
@@ -752,14 +722,14 @@ TextureImporter:
         width: 62
         height: 6
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c71246621644d5b00800000000000000
-      internalID: 818885891297911164
+      spriteID: bf1ddeff2c75229c0800000000000000
+      internalID: -3953501027848826373
       vertices: []
       indices: 
       edges: []

@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 66109c9b8a4d5a541aa0de9f86ce818a
+guid: f64740a7c26e49c4d82db5e854b80eca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1743194722132219160
-    second: dave_body_key
+      213: 3714962640481448569
+    second: dave_body_key_INTERACT
   - first:
-      213: -7739112529119816975
-    second: lily_body
+      213: 4362532061692153200
+    second: dave_body_noKey_INTERACT
+  - first:
+      213: -6368478891333996985
+    second: dave_body_noKey
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,13 +96,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dave_body_key
+      name: dave_body_key_INTERACT
       rect:
         serializedVersion: 2
-        x: 29
-        y: 22
-        width: 32
-        height: 21
+        x: 12
+        y: 69
+        width: 34
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -107,20 +110,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ea29f4d2adeec7e0800000000000000
-      internalID: -1743194722132219160
+      spriteID: 9727ebbb6d23e8330800000000000000
+      internalID: 3714962640481448569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lily_body
+      name: dave_body_noKey_INTERACT
       rect:
         serializedVersion: 2
-        x: 2
-        y: 2
-        width: 30
-        height: 10
+        x: 12
+        y: 35
+        width: 34
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f2d9098826299490800000000000000
-      internalID: -7739112529119816975
+      spriteID: 07dc962ebc3da8c30800000000000000
+      internalID: 4362532061692153200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dave_body_noKey
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 5
+        width: 34
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74ea672a03e9e97a0800000000000000
+      internalID: -6368478891333996985
       vertices: []
       indices: 
       edges: []

@@ -10,25 +10,25 @@ TextureImporter:
     second: bedroom_wall_RIGHT
   - first:
       213: -7273512444020663930
-    second: bedroom_stuff_table1
+    second: bedroom_nightstand
   - first:
       213: 5397265196204495290
-    second: bedroom_stuff_bed
+    second: bedroom_bedandchest
   - first:
       213: -2938109346836844292
-    second: bedroom_stuff_table2
+    second: bedroom_nightstand_lamp
   - first:
       213: -4154316752730976679
-    second: bedroom_BOX_HIDE
+    second: bedroom_chest_HIDE
   - first:
       213: 837578413733063214
-    second: bedroom_stuff_clock
+    second: bedroom_clock
   - first:
       213: 4081720149567667282
-    second: bedroom_stuff_crowbar
+    second: crowbar
   - first:
       213: -4770391560944671363
-    second: bedroom_stuff_crowbar_INTERACT
+    second: crowbar_INTERACT
   - first:
       213: -5110676701522690303
     second: bedroom_door
@@ -37,13 +37,13 @@ TextureImporter:
     second: bedroom_door_INTERACT
   - first:
       213: 5062151117129270244
-    second: bedroom_stuff_vent
+    second: bedroom_vent
   - first:
       213: -349634838486887500
-    second: bedroom_stuff_lamp
+    second: bedroom_lamp_INTERACT
   - first:
       213: -1575287840882473415
-    second: bedroom_stuff_lamp_INTERACT
+    second: bedroom_lamp
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -132,12 +132,12 @@ TextureImporter:
       name: bedroom_wall_LEFT
       rect:
         serializedVersion: 2
-        x: 16
+        x: 14
         y: 107
-        width: 16
+        width: 18
         height: 69
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,10 +155,10 @@ TextureImporter:
         serializedVersion: 2
         x: 48
         y: 107
-        width: 16
+        width: 18
         height: 69
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,15 +171,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_stuff_table1
+      name: bedroom_nightstand
       rect:
         serializedVersion: 2
         x: 82
-        y: 146
+        y: 145
         width: 13
-        height: 10
+        height: 11
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -192,7 +192,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_stuff_bed
+      name: bedroom_bedandchest
       rect:
         serializedVersion: 2
         x: 96
@@ -200,7 +200,7 @@ TextureImporter:
         width: 45
         height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,15 +213,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_stuff_table2
+      name: bedroom_nightstand_lamp
       rect:
         serializedVersion: 2
         x: 142
-        y: 146
+        y: 145
         width: 13
-        height: 22
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -234,7 +234,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_BOX_HIDE
+      name: bedroom_chest_HIDE
       rect:
         serializedVersion: 2
         x: 99
@@ -242,7 +242,7 @@ TextureImporter:
         width: 39
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -255,7 +255,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_stuff_clock
+      name: bedroom_clock
       rect:
         serializedVersion: 2
         x: 20
@@ -263,7 +263,7 @@ TextureImporter:
         width: 9
         height: 9
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -276,7 +276,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_stuff_crowbar
+      name: crowbar
       rect:
         serializedVersion: 2
         x: 57
@@ -284,7 +284,7 @@ TextureImporter:
         width: 6
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -297,7 +297,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_stuff_crowbar_INTERACT
+      name: crowbar_INTERACT
       rect:
         serializedVersion: 2
         x: 72
@@ -305,7 +305,7 @@ TextureImporter:
         width: 8
         height: 26
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -326,7 +326,7 @@ TextureImporter:
         width: 29
         height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -347,7 +347,7 @@ TextureImporter:
         width: 31
         height: 58
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -360,7 +360,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_stuff_vent
+      name: bedroom_vent
       rect:
         serializedVersion: 2
         x: 17
@@ -368,7 +368,7 @@ TextureImporter:
         width: 15
         height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -381,7 +381,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_stuff_lamp
+      name: bedroom_lamp_INTERACT
       rect:
         serializedVersion: 2
         x: 54
@@ -389,7 +389,7 @@ TextureImporter:
         width: 7
         height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -402,7 +402,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bedroom_stuff_lamp_INTERACT
+      name: bedroom_lamp
       rect:
         serializedVersion: 2
         x: 70
@@ -410,7 +410,7 @@ TextureImporter:
         width: 5
         height: 12
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

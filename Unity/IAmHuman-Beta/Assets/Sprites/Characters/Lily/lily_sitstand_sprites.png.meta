@@ -1,43 +1,31 @@
 fileFormatVersion: 2
-guid: 6e9a4c5169d86fc459afbcdf25c8caf2
+guid: 61e46db778b48c148804b0a18024d035
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3369559701356660780
-    second: study_bookshelf
+      213: -7424674889905316367
+    second: lily_sitstand_sprites_0
   - first:
-      213: -8246565244877492145
-    second: study_vent
+      213: 541876289072101541
+    second: lily_sitstand_sprites_1
   - first:
-      213: 7321950870207722796
-    second: study_basement_door
+      213: -4742568096524677043
+    second: lily_sitstand_sprites_2
   - first:
-      213: 8942417543056275258
-    second: study_basement_door_INTERACT
+      213: -4086430922745988451
+    second: lily_sitstand_sprites_3
   - first:
-      213: 2524838898622914909
-    second: study_door
+      213: -630533906821314378
+    second: lily_sitstand_sprites_4
   - first:
-      213: -2685972703711886696
-    second: study_door_OPEN
+      213: -4623492330646238882
+    second: lily_sitstand_sprites_5
   - first:
-      213: 7058051356984371939
-    second: study_door_INTERACT
+      213: 2585034019469869122
+    second: lily_sitstand_sprites_6
   - first:
-      213: 5642658423121637248
-    second: study_wall_RIGHT
-  - first:
-      213: 289259406132984910
-    second: study_ven
-  - first:
-      213: 5864651397218608464
-    second: study_DaveDiary_INTERACT
-  - first:
-      213: -3528573703665393209
-    second: study_desk
-  - first:
-      213: -3391150555206074024
-    second: study_DaveDiary
+      213: 142840568097921447
+    second: lily_sitstand_sprites_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,13 +111,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: study_bookshelf
+      name: lily_sitstand_sprites_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 128
-        width: 29
-        height: 53
+        x: 0
+        y: 32
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +125,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c28c5d812b413ce20800000000000000
-      internalID: 3369559701356660780
+      spriteID: 1fd5e66768146f890800000000000000
+      internalID: -7424674889905316367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_vent
+      name: lily_sitstand_sprites_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a8795a2d91258700800000000000000
+      internalID: 541876289072101541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lily_sitstand_sprites_2
       rect:
         serializedVersion: 2
         x: 64
-        y: 135
-        width: 15
-        height: 8
+        y: 32
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +167,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f40bef91a905e8d80800000000000000
-      internalID: -8246565244877492145
+      spriteID: d40db8381730f2eb0800000000000000
+      internalID: -4742568096524677043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_basement_door
+      name: lily_sitstand_sprites_3
       rect:
         serializedVersion: 2
-        x: 113
-        y: 128
-        width: 29
-        height: 57
+        x: 96
+        y: 32
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +188,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c25f799e58bcc9560800000000000000
-      internalID: 7321950870207722796
+      spriteID: d9abd820ab41a47c0800000000000000
+      internalID: -4086430922745988451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_basement_door_INTERACT
+      name: lily_sitstand_sprites_4
       rect:
         serializedVersion: 2
-        x: 160
-        y: 128
-        width: 31
-        height: 58
+        x: 0
+        y: 0
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a37371f5069d91c70800000000000000
-      internalID: 8942417543056275258
+      spriteID: 6b88311a0c4ef37f0800000000000000
+      internalID: -630533906821314378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_door
+      name: lily_sitstand_sprites_5
       rect:
         serializedVersion: 2
-        x: 14
-        y: 43
-        width: 18
-        height: 69
+        x: 32
+        y: 0
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +230,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d51e183e9970a0320800000000000000
-      internalID: 2524838898622914909
+      spriteID: e59861ab83e06dfb0800000000000000
+      internalID: -4623492330646238882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_door_OPEN
+      name: lily_sitstand_sprites_6
       rect:
         serializedVersion: 2
-        x: 38
-        y: 43
-        width: 18
-        height: 69
+        x: 64
+        y: 0
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +251,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8928bde8e0289bad0800000000000000
-      internalID: -2685972703711886696
+      spriteID: 2404dce9eb2efd320800000000000000
+      internalID: 2585034019469869122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: study_door_INTERACT
+      name: lily_sitstand_sprites_7
       rect:
         serializedVersion: 2
-        x: 62
-        y: 43
-        width: 18
-        height: 69
+        x: 96
+        y: 0
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,113 +272,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ea6483605c33f160800000000000000
-      internalID: 7058051356984371939
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: study_wall_RIGHT
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 43
-        width: 18
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 08fe70390ffbe4e40800000000000000
-      internalID: 5642658423121637248
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: study_ven
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 97
-        width: 29
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4c3f76b5e7a30400800000000000000
-      internalID: 289259406132984910
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: study_DaveDiary_INTERACT
-      rect:
-        serializedVersion: 2
-        x: 177
-        y: 96
-        width: 14
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 055a6be9f5d636150800000000000000
-      internalID: 5864651397218608464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: study_desk
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 48
-        width: 45
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7c16d3569ecf70fc0800000000000000
-      internalID: -3528573703665393209
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: study_DaveDiary
-      rect:
-        serializedVersion: 2
-        x: 178
-        y: 81
-        width: 12
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 851c211898630f0d0800000000000000
-      internalID: -3391150555206074024
+      spriteID: 7a9ddf86db87bf100800000000000000
+      internalID: 142840568097921447
       vertices: []
       indices: 
       edges: []
