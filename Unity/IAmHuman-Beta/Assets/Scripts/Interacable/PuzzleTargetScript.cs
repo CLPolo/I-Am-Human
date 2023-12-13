@@ -52,6 +52,7 @@ public class PuzzleTargetScript : MonoBehaviour
     private int textIndex = 0;
     private bool PlayerTriggered = false;
     private bool BoxTriggered = false;
+    private bool playCreditsNext = false;
 
     // misc
     public Player player;
@@ -281,6 +282,10 @@ public class PuzzleTargetScript : MonoBehaviour
                 TextCanvas.SetActive(false);  // turn of canvas (might switch to indiv text on / off w/ one canvas that's always on)
                 AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance-close");
                 player.AudioSource.PlayOneShot(clip, 0.25f);
+                if (playCreditsNext)
+                {
+                    LevelLoader.Instance.loadScene("End Credits");
+                }
             }
         }
     }
@@ -427,7 +432,6 @@ public class PuzzleTargetScript : MonoBehaviour
                 TextToDisplay.Clear();
                 TextToDisplay.Add("Lily... ?");
                 TextPlayed = false;  // Once this changes, the text should play !!!!!
-                //LevelLoader.Instance.loadScene("End Credits");  UNCOMMENT THIS LINE LATER OR MOVE IT!!
                 PlayerPrefs.SetInt("FinalDialogue", 1);  // Prevents it from playing again
             }
             else if (PlayerPrefs.GetInt("FinalDialogue") == 4)
@@ -437,14 +441,27 @@ public class PuzzleTargetScript : MonoBehaviour
                 TextPlayed = false;  // Once this changes, the text should play !!!!!
                 PlayerPrefs.SetInt("FinalDialogue", 1);  // Prevents it from playing again
             }
-            else if (PlayerPrefs.GetInt("FinalDialogue") == 127)
+            else if (PlayerPrefs.GetInt("FinalDialogue") == 5)
             {
-                TextPlayed = false;
-                TextTrigger = true;
-                TextToDisplay.Clear();
-                TextToDisplay.Add("I AM HUMAN.");
-                PlayerPrefs.SetInt("FinalDialogue", 0);  // Prevents it from playing again
-                //TextTrigger = false;
+                TextToDisplay[0] = "\"I...\"";
+                textIndex = 0;
+                TextPlayed = false;  // Once this changes, the text should play !!!!!
+                PlayerPrefs.SetInt("FinalDialogue", 1);  // Prevents it from playing again
+            }
+            else if (PlayerPrefs.GetInt("FinalDialogue") == 6)
+            {
+                TextToDisplay[0] = "\"am...\"";
+                textIndex = 0;
+                TextPlayed = false;  // Once this changes, the text should play !!!!!
+                PlayerPrefs.SetInt("FinalDialogue", 1);  // Prevents it from playing again
+            }
+            else if (PlayerPrefs.GetInt("FinalDialogue") == 7)
+            {
+                TextToDisplay[0] = "\"HUMAN.\"";
+                textIndex = 0;
+                playCreditsNext = true;
+                TextPlayed = false;  // Once this changes, the text should play !!!!!
+                PlayerPrefs.SetInt("FinalDialogue", 1);  // Prevents it from playing again
             }
         }
     }

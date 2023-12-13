@@ -6,7 +6,7 @@ using UnityEngine.Playables;  // https://learn.unity.com/tutorial/starting-timel
 
 public class CameraMovement : MonoBehaviour
 {
-
+    private LogicScript logic;
     public Transform player;
     public Vector3 offset;
     public Player playerAccess = null;
@@ -14,6 +14,7 @@ public class CameraMovement : MonoBehaviour
     [Header("Screen Shake")]
     public AnimationCurve hideCurve;
     public AnimationCurve monsterFootstepsCurve;
+    public AnimationCurve stuckCurve;
     private bool shaking = false;
 
     [Header("Level Bounds")]
@@ -29,10 +30,12 @@ public class CameraMovement : MonoBehaviour
 
     private float StartSize;
     private float noSmallerThan;
+    private bool currentlyShrinking = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        logic = LogicScript.Instance;
         player = GameObject.FindWithTag("Player").transform;
      
         offset.Set(0f, cameraYOffset, -10f);
@@ -83,7 +86,11 @@ public class CameraMovement : MonoBehaviour
                 StartCoroutine(threeCrashes(0.3f, monsterFootstepsCurve, playerAccess.monsterFootsteps[0]));
                 PlayerPrefs.SetInt("MonsterEmerges", 1);
             }
-            HandleHiding();
+            if (!currentlyShrinking)
+            {
+                HandleHiding();
+                HandleStuck();
+            }
         }
         else
         {
@@ -103,28 +110,41 @@ public class CameraMovement : MonoBehaviour
                     case 1:
                         // Move to the right to make space for dialogue box
                         pans = -1;  // This way we cannot advance until coroutine finishes
-                        StartCoroutine(PanCamera(2, 3.56f, 3, 0.2f));
+                        StartCoroutine(PanCamera(2, 3.56f, 2, 0.2f)); // the 0.2 second wait is needed to display the text... don't ask me why
                         break;
                     case 2:
                         // Move to show monster again and flip the character
                         pans = -1;  // This way we cannot advance until coroutine finishes
                         StartCoroutine(PanCamera(3, 9f, 2));
-                        // flip character here
                         break;
                     case 3:
                         // Move to og position
+                        playerAccess.Flip();  // To face the monsert
                         pans = -1;  // This way we cannot advance until coroutine finishes
-                        StartCoroutine(PanCamera(4, 13.5f, 2, 2));
-                        // drop to knees here
+                        StartCoroutine(PanCamera(4, 13.5f, 2, 0.2f));
+                        // playerAccess.SpriteRenderer.sprite = playerAccess.idleHide;  // Character "Falls to knees" FIX IF WE HAVE TIME
                         break;
-                        //case 3:
-                        //    PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
-                        //    StartCoroutine(PanCamera(3, 13.5f));
-                        //    break;
-                        //case 4:
-                        //    PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
-                        //    StartCoroutine(PanCamera(4, 17.6f));
-                        //    break;
+                    case 4:
+                        pans = -1;  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(5, 17.6f, 2, 0.2f));  // Center on the monster "I..."
+                        break;
+                    case 5:
+                        gameObject.GetComponent<Camera>().orthographicSize = 3f;  // Zoom in on monster
+                        transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+                        pans = -1;  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(6, 17.6f, 0.1f, 0.2f));  // Play the next text "am..."
+                        break;
+                    case 6:
+                        gameObject.GetComponent<Camera>().orthographicSize = 2f;
+                        transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+                        pans = -1;  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(7, 17.6f, 0.1f, 0.2f));  // Play the final text "HUMAN"
+                        break;
+                    case 7:
+                        // We are done! Move to end credits
+                        logic.playMonsterRoar();
+                        gameObject.GetComponent<Camera>().orthographicSize = 1f;  // One final zoom
+                        break;
                 }
             }
         }
@@ -155,6 +175,16 @@ public class CameraMovement : MonoBehaviour
             }
         }
     }
+
+    private void HandleStuck()
+    {
+        // if player is stuck, does the same camera shake as the hiding. Most of the code is copied from HandleHiding() with the camera effects removed
+        if (playerAccess.GetState() == PlayerState.Trapped)  // if the player is currently trapped
+        {
+            if (!shaking) { shaking = true; StartCoroutine(Shaking(0.2f, stuckCurve)); }  // start the shake process as long as it's not already shaking
+        }
+    }
+
     IEnumerator Shaking(float shakeDuration, AnimationCurve curve)
     {
         float elapsedTime = 0f;
@@ -197,6 +227,7 @@ public class CameraMovement : MonoBehaviour
 
     IEnumerator ShrinkCamera()
     {
+        currentlyShrinking = true;
         // Shrinks the camera to prepare for the final cutscene
         while (gameObject.GetComponent<Camera>().orthographicSize > 4)
         {
@@ -217,7 +248,7 @@ public class CameraMovement : MonoBehaviour
         /// panTime: float representing how long the pan should take (in seconds)
         /// waitAfterPan: time (in seconds) to wait after panning. Can be left blank for a 0 second wait.
 
-        Debug.Log(GameObject.Find("Cutscene Triggers/EndingCutscene").GetComponent<PuzzleTargetScript>().GetTextPlayed());
+        // Debug.Log(GameObject.Find("Cutscene Triggers/EndingCutscene").GetComponent<PuzzleTargetScript>().GetTextPlayed());
         yield return new WaitUntil( () => GameObject.Find("Cutscene Triggers/EndingCutscene").GetComponent<PuzzleTargetScript>().GetTextPlayed());
         Vector3 originalLoc = gameObject.transform.position;
         if (xCoord > originalLoc.x)
@@ -250,64 +281,5 @@ public class CameraMovement : MonoBehaviour
         }
         // After waiting, we can set the pans variable to the next value to tell the code we are ready to do the next camera pan
         pans = panNum;
-        //switch (panNum)
-        //{
-        //    case 1:
-        //        while (gameObject.transform.position.x > xCoord)
-        //        {
-        //            // We want a slow pan for a slow reveal of the car
-        //            gameObject.transform.position = new Vector3(
-        //                gameObject.transform.position.x - ((originalLoc.x - xCoord)*Time.deltaTime/5f),  // Takes 5 seconds
-        //                originalLoc.y,
-        //                originalLoc.z);
-        //            yield return null;
-        //        }
-        //        yield return new WaitForSeconds(2);
-        //        break;
-        //    case 2:
-        //        // Move to the right to make space for dialogue box
-        //        while (gameObject.transform.position.x < xCoord)
-        //        {
-        //            gameObject.transform.position = new Vector3(
-        //                gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / 3f),  // Takes 3 seconds
-        //                originalLoc.y,
-        //                originalLoc.z);
-        //            yield return null;
-        //        }
-        //        PlayerPrefs.SetInt("FinalDialogue", 1);
-        //        //yield return new WaitUntil(()=>PlayerPrefs.GetInt("FinalDialogue") == 0);
-        //        break;
-        // DROP TO KNEES HERE FOR FUTURE REFERENCE
-        //case 3:
-        //    while (gameObject.transform.position.x < xCoord)
-        //    {
-        //        gameObject.transform.position = new Vector3(
-        //            gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / 3f),  // Takes 2 seconds
-        //            originalLoc.y,
-        //            originalLoc.z);
-        //        yield return null;
-        //    }
-        //    PlayerPrefs.SetInt("FinalDialogue", 2);
-        //    yield return new WaitUntil(() => PlayerPrefs.GetInt("FinalDialogue") == 0);
-        //    break;
-        //case 4:
-        //    while (gameObject.transform.position.x < xCoord)
-        //    {
-        //        gameObject.transform.position = new Vector3(
-        //            gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / 3f),  // Takes 2 seconds
-        //            originalLoc.y,
-        //            originalLoc.z);
-        //        yield return null;
-        //    }
-        //    while (gameObject.GetComponent<Camera>().orthographicSize > 3)
-        //    {
-        //        gameObject.GetComponent<Camera>().orthographicSize -= 0.1f;
-        //        yield return new WaitForSeconds(0.05f);
-        //    }
-        //    PlayerPrefs.SetInt("FinalDialogue", 3);
-        //    yield return new WaitUntil(() => PlayerPrefs.GetInt("FinalDialogue") == 0);
-        //    break;
-        //}
-        //PlayerPrefs.SetInt("NumPans", panNum);
     }
 }
