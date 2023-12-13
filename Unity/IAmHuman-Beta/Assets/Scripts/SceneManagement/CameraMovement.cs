@@ -12,7 +12,6 @@ public class CameraMovement : MonoBehaviour
     public Player playerAccess = null;
 
     [Header("Screen Shake")]
-    public AnimationCurve hideCurve;
     public AnimationCurve monsterFootstepsCurve;
     public AnimationCurve stuckCurve;
     private bool shaking = false;
@@ -105,7 +104,7 @@ public class CameraMovement : MonoBehaviour
                     case 0:
                         // We want a slow pan for a slow reveal of the car
                         pans = -1;  // This way we cannot advance until coroutine finishes
-                        StartCoroutine(PanCamera(1, -0.66f, 5, 2));  
+                        StartCoroutine(PanCamera(1, -0.66f, 5, 4));  
                         break;
                     case 1:
                         // Move to the right to make space for dialogue box
@@ -129,21 +128,20 @@ public class CameraMovement : MonoBehaviour
                         StartCoroutine(PanCamera(5, 17.6f, 2, 0.2f));  // Center on the monster "I..."
                         break;
                     case 5:
-                        gameObject.GetComponent<Camera>().orthographicSize = 3f;  // Zoom in on monster
-                        transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+                        gameObject.GetComponent<Camera>().orthographicSize = 3.5f;  // Zoom in on monster
                         pans = -1;  // This way we cannot advance until coroutine finishes
-                        StartCoroutine(PanCamera(6, 17.6f, 0.1f, 0.2f));  // Play the next text "am..."
+                        StartCoroutine(PanCamera(6, 17.6f, 0.2f, 0.2f));  // Play the next text "am..."
                         break;
                     case 6:
-                        gameObject.GetComponent<Camera>().orthographicSize = 2f;
-                        transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+                        gameObject.GetComponent<Camera>().orthographicSize = 3f;
                         pans = -1;  // This way we cannot advance until coroutine finishes
-                        StartCoroutine(PanCamera(7, 17.6f, 0.1f, 0.2f));  // Play the final text "HUMAN"
+                        StartCoroutine(PanCamera(7, 17.6f, 0.2f, 0.2f));  // Play the final text "HUMAN"
                         break;
                     case 7:
                         // We are done! Move to end credits
                         logic.playMonsterRoar();
-                        gameObject.GetComponent<Camera>().orthographicSize = 1f;  // One final zoom
+                        gameObject.GetComponent<Camera>().orthographicSize = 2.5f;  // One final zoom
+                        pans = 8;  // Final time so this line doesnt replay
                         break;
                 }
             }
@@ -159,7 +157,6 @@ public class CameraMovement : MonoBehaviour
             if (this.GetComponent<Camera>().orthographicSize <= noSmallerThan)  // if it's zoomed to max
             {
                 this.GetComponent<Camera>().orthographicSize = this.GetComponent<Camera>().orthographicSize;  // keep it at this size
-                if (!shaking) { shaking = true; StartCoroutine(Shaking(0.2f, hideCurve)); }  // start the shake process as long as it's not already shaking
             }
             else this.GetComponent<Camera>().orthographicSize = this.GetComponent<Camera>().orthographicSize / 1.0002f;  // if not full zoom, slowly zoom (smaller num = slower, must be above 1 tho or else zooms out not in)
         }
@@ -167,7 +164,7 @@ public class CameraMovement : MonoBehaviour
         {
             if (this.GetComponent<Camera>().orthographicSize < StartSize)  // if not back to normal
             {
-                this.GetComponent<Camera>().orthographicSize = this.GetComponent<Camera>().orthographicSize * 1.009f;  // zooms out faster than zoom in (but not immediately snap to normal)
+                this.GetComponent<Camera>().orthographicSize = this.GetComponent<Camera>().orthographicSize * 1.004f;  // zooms out faster than zoom in (but not immediately snap to normal)
             }
             else if (this.GetComponent<Camera>().orthographicSize >= StartSize)  // if back to normal
             {

@@ -199,7 +199,6 @@ MonoBehaviour:
   - {fileID: 5840108822926873604, guid: c0ab95059499e5c4d944d6bc4d81da73, type: 3}
   Framerate: 40
   SpriteRenderer: {fileID: 7522277464662625289}
-  speed: 5
   walkCycle:
   - {fileID: -1609057068260125381, guid: c0ab95059499e5c4d944d6bc4d81da73, type: 3}
   - {fileID: -7620782262344925339, guid: c0ab95059499e5c4d944d6bc4d81da73, type: 3}
@@ -275,11 +274,16 @@ MonoBehaviour:
   - {fileID: -8854299386139842953, guid: 1c0b98ceac0788e41be5dfaf2217f339, type: 3}
   - {fileID: 8787753801954849760, guid: 1c0b98ceac0788e41be5dfaf2217f339, type: 3}
   - {fileID: -3534932412291937791, guid: 1c0b98ceac0788e41be5dfaf2217f339, type: 3}
+  stuckCycle:
+  - {fileID: 3542248538078067488, guid: 86380ee009e464848b90dd8b3f658c7c, type: 3}
+  - {fileID: 4388567703823820616, guid: 86380ee009e464848b90dd8b3f658c7c, type: 3}
   idleWalk: {fileID: 5840108822926873604, guid: c0ab95059499e5c4d944d6bc4d81da73,
     type: 3}
   idlePush: {fileID: 1852957545381633880, guid: 1c0b98ceac0788e41be5dfaf2217f339,
     type: 3}
   idleHide: {fileID: 1213842746850433577, guid: 4c48d99e689a822458a0078a9e6ee4a6,
+    type: 3}
+  stuckGuy: {fileID: 3542248538078067488, guid: 86380ee009e464848b90dd8b3f658c7c,
     type: 3}
   AudioSource: {fileID: 4434998664173807893}
   footstepsWalk:
@@ -297,8 +301,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3de624c35a6d2422a949e051aaafb8f0, type: 3}
   - {fileID: 8300000, guid: e7930902734335413acdc95705622952, type: 3}
   - {fileID: 8300000, guid: 550b864836ed71906a06ffa9fc57bee2, type: 3}
+  monsterFootsteps: []
   flashlight: {fileID: 3206768847118457720}
+  facingRight: 1
   hasFlashlight: 0
+  monsterEmergesCutscene: 0
+  cameraCutscene: 0
+  finalCutscene: 0
+  shrinkCamera: 0
 --- !u!50 &7522277464662625291
 Rigidbody2D:
   serializedVersion: 4
@@ -335,7 +345,12 @@ MonoBehaviour:
   grabDetect: {fileID: 7522277465288507347}
   boxHolder: {fileID: 7522277465097846770}
   rayDist: 2
-  Outline: {fileID: 21300000, guid: b3c47e98d59aaac4bb5bb7aa4229300c, type: 3}
+  TextCanvas: {fileID: 0}
+  TextObject: {fileID: 0}
+  Text: 
+  WholeOutline: {fileID: 0}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   Default: {fileID: 21300000, guid: d371a7487d5e5f34a8b9b79eec934bc4, type: 3}
   player: {fileID: 0}
   logic: {fileID: 0}
@@ -351,39 +366,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75aeaa58e111dbc48aed71ce29d01720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.6
-      value: 0.7
-      inSlope: -1.8
-      outSlope: -1.2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  player: {fileID: 0}
+  saveObjectPositions: []
+  saveObjectActive: []
+  fadeAnimatedCanvas: {fileID: 0}
+  fadeAnimator: {fileID: 0}
+  HoldLonger: 0
+  HoldFor: 0
 --- !u!82 &4434998664173807893
 AudioSource:
   m_ObjectHideFlags: 0
