@@ -346,13 +346,14 @@ Transform:
   m_LocalPosition: {x: 9.130871, y: -0.11114618, z: -161.27539}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1864452010}
   - {fileID: 899840934}
   - {fileID: 510155954}
-  - {fileID: 156285965}
   - {fileID: 830816249}
   - {fileID: 287648024}
   - {fileID: 1370652079}
   - {fileID: 735844536}
+  - {fileID: 1446977590}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -582,105 +583,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &156285963
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 156285965}
-  - component: {fileID: 156285964}
-  - component: {fileID: 156285966}
-  m_Layer: 0
-  m_Name: FreezeOnSpawn Trigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!61 &156285964
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156285963}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!4 &156285965
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156285963}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.11, y: -2.2388537, z: 1.1953125}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 108460503}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &156285966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156285963}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AffectedObject: {fileID: 0}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
-  DoorToBeOpened: {fileID: 0}
-  LayerSwitch: 0
-  SpawnObject: 0
-  TurnOffObject: 0
-  NoiseTrigger: 0
-  TextTrigger: 0
-  HideTimed: 0
-  FreezePlayerObject: 0
-  FreezePlayerText: 0
-  FreezePlayerOnly: 1
-  UnlockDoor: 0
-  NoisePlayOnSpawn: 0
-  SpawnDoor: 0
-  TrappedText: 0
-  PushPullText: 0
-  LayerToSwitchTo: 
-  NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: []
-  TextObject: {fileID: 0}
-  TextCanvas: {fileID: 0}
-  TextDisplayOnce: 0
-  DisplayTimeObject: 0
-  DelayTime: 0
-  HideTime: 0
-  FreezeTime: 8
-  player: {fileID: 0}
 --- !u!1 &192598262
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +799,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287648023}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.17, y: -2.08, z: 160.5335}
+  m_LocalPosition: {x: 69.04, y: -2.08, z: 160.5335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 108460503}
@@ -942,8 +844,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AffectedObject: {fileID: 0}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
+  ActivateTriggerObject: []
+  DeactivateTriggerObject: []
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
   SpawnObject: 0
@@ -962,9 +864,14 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - Woah, that kinda looks like the animal from the road.
-  - I don't think I hit it, but it looks hurt.
-  - Weird, I should keep looking for Lily.
+  - Lily!
+  - She got away from me.
+  - How is she so fast?
+  - ...
+  - That kinda looked like the animal from the road.
+  - I don't think I hit it, but it looks hurt. Weird.
+  - ...
+  - I should try to find Lily.
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
@@ -973,6 +880,7 @@ MonoBehaviour:
   HideTime: 0
   FreezeTime: 3
   player: {fileID: 0}
+  standOver: 0
 --- !u!1 &346030812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,8 +1530,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AffectedObject: {fileID: 239101196}
-  ActivateTriggerObject: {fileID: 287648023}
-  DeactivateTriggerObject: {fileID: 1370652078}
+  ActivateTriggerObject:
+  - {fileID: 287648023}
+  - {fileID: 1864452009}
+  DeactivateTriggerObject:
+  - {fileID: 1370652078}
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
   SpawnObject: 1
@@ -1651,6 +1562,7 @@ MonoBehaviour:
   HideTime: 3
   FreezeTime: 4
   player: {fileID: 0}
+  standOver: 0
 --- !u!61 &510155953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1689,7 +1601,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 108460503}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519134324
 GameObject:
@@ -2640,8 +2552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AffectedObject: {fileID: 0}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
+  ActivateTriggerObject: []
+  DeactivateTriggerObject: []
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
   SpawnObject: 0
@@ -2669,6 +2581,7 @@ MonoBehaviour:
   HideTime: 0
   FreezeTime: 0
   player: {fileID: 0}
+  standOver: 0
 --- !u!61 &735844539
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3066,7 +2979,7 @@ MonoBehaviour:
   DialogueCanvas: {fileID: 1162561049}
   TextList:
   - That's her shoe...
-  - She's gotta be around here somewhere.
+  - I guess she tried this way already and got stuck.
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -3348,8 +3261,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AffectedObject: {fileID: 0}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
+  ActivateTriggerObject: []
+  DeactivateTriggerObject: []
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
   SpawnObject: 0
@@ -3378,6 +3291,7 @@ MonoBehaviour:
   HideTime: 0
   FreezeTime: 3
   player: {fileID: 0}
+  standOver: 0
 --- !u!61 &830816251
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3436,11 +3350,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899840933}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -2.04, z: 0}
+  m_LocalPosition: {x: -4.36, y: -2.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 108460503}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &899840935
 BoxCollider2D:
@@ -3481,8 +3395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AffectedObject: {fileID: 1162561049}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 0}
+  ActivateTriggerObject: []
+  DeactivateTriggerObject: []
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
   SpawnObject: 0
@@ -3501,7 +3415,8 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - Lily isn't here, but this is her teddy bear.
+  - Agh
+  - Where's Lily?
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
@@ -3510,6 +3425,7 @@ MonoBehaviour:
   HideTime: 0
   FreezeTime: 3
   player: {fileID: 0}
+  standOver: 0
 --- !u!1 &907597746
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,7 +3839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000773811}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 63.128, y: -2.05, z: 0.18412386}
+  m_LocalPosition: {x: 63.128, y: -2.08, z: 0.18412386}
   m_LocalScale: {x: 10.092114, y: 8.9, z: 1}
   m_Children: []
   m_Father: {fileID: 75586267}
@@ -11788,8 +11704,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AffectedObject: {fileID: 0}
-  ActivateTriggerObject: {fileID: 0}
-  DeactivateTriggerObject: {fileID: 1974312822}
+  ActivateTriggerObject: []
+  DeactivateTriggerObject: []
   DoorToBeOpened: {fileID: 0}
   LayerSwitch: 0
   SpawnObject: 0
@@ -11817,6 +11733,7 @@ MonoBehaviour:
   HideTime: 0
   FreezeTime: 0
   player: {fileID: 0}
+  standOver: 0
 --- !u!61 &1370652081
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12054,6 +11971,108 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1446977589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1446977590}
+  - component: {fileID: 1446977592}
+  - component: {fileID: 1446977591}
+  m_Layer: 0
+  m_Name: Lily Stand Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1446977590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446977589}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.75, y: -2.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 108460503}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1446977591
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446977589}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1446977592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446977589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AffectedObject: {fileID: 1559445197}
+  ActivateTriggerObject: []
+  DeactivateTriggerObject: []
+  DoorToBeOpened: {fileID: 0}
+  LayerSwitch: 0
+  SpawnObject: 0
+  TurnOffObject: 0
+  NoiseTrigger: 0
+  TextTrigger: 1
+  HideTimed: 0
+  FreezePlayerObject: 0
+  FreezePlayerText: 1
+  FreezePlayerOnly: 0
+  UnlockDoor: 0
+  NoisePlayOnSpawn: 0
+  SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
+  LayerToSwitchTo: 
+  NoiseToBePlayed: {fileID: 0}
+  TextToDisplay:
+  - Lily!
+  - Are you okay?
+  TextObject: {fileID: 554301874}
+  TextCanvas: {fileID: 1162561049}
+  TextDisplayOnce: 1
+  DisplayTimeObject: 0
+  DelayTime: 0
+  HideTime: 0
+  FreezeTime: 3
+  player: {fileID: 0}
+  standOver: 0
 --- !u!114 &1468107575 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
@@ -12162,8 +12181,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 948246213204472776, guid: 18275c16382c20d488778db66826b372,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 948246213204472776, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.52
+      value: 19.119999
       objectReference: {fileID: 0}
     - target: {fileID: 948246213204472776, guid: 18275c16382c20d488778db66826b372,
         type: 3}
@@ -12218,15 +12242,54 @@ PrefabInstance:
     - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
         type: 3}
       propertyPath: detectRange
-      value: 5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: cutsceneController
+      value: 
+      objectReference: {fileID: 9100000, guid: d71d8b6d24381a74eb19a62ba5d70c64, type: 2}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: walkableController
+      value: 
+      objectReference: {fileID: 22100000, guid: 30ec58585d636f649ac2ff23dcf62e4c,
+        type: 2}
+    - target: {fileID: 948246213204472779, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 948246213204472779, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 948246213204472780, guid: 18275c16382c20d488778db66826b372,
         type: 3}
       propertyPath: m_Name
       value: Sister
       objectReference: {fileID: 0}
+    - target: {fileID: 948246213204472782, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1839722279949751616, guid: 1dc1317c15ecd6f46aa91315bcac2884,
+        type: 3}
+    - target: {fileID: 2059837128050959846, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 30ec58585d636f649ac2ff23dcf62e4c,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18275c16382c20d488778db66826b372, type: 3}
+--- !u!1 &1559445197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 948246213204472780, guid: 18275c16382c20d488778db66826b372,
+    type: 3}
+  m_PrefabInstance: {fileID: 1503116243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1586296781
 GameObject:
   m_ObjectHideFlags: 0
@@ -12538,7 +12601,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -13444,6 +13507,106 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1864452009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1864452010}
+  - component: {fileID: 1864452011}
+  - component: {fileID: 1864452012}
+  m_Layer: 0
+  m_Name: Lily Run Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1864452010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864452009}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 54.16, y: -2.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 108460503}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1864452011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864452009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AffectedObject: {fileID: 1559445197}
+  ActivateTriggerObject: []
+  DeactivateTriggerObject: []
+  DoorToBeOpened: {fileID: 0}
+  LayerSwitch: 0
+  SpawnObject: 0
+  TurnOffObject: 0
+  NoiseTrigger: 0
+  TextTrigger: 0
+  HideTimed: 0
+  FreezePlayerObject: 0
+  FreezePlayerText: 1
+  FreezePlayerOnly: 0
+  UnlockDoor: 0
+  NoisePlayOnSpawn: 0
+  SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
+  LayerToSwitchTo: 
+  NoiseToBePlayed: {fileID: 0}
+  TextToDisplay: []
+  TextObject: {fileID: 554301874}
+  TextCanvas: {fileID: 1162561049}
+  TextDisplayOnce: 1
+  DisplayTimeObject: 0
+  DelayTime: 0
+  HideTime: 0
+  FreezeTime: 0
+  player: {fileID: 0}
+  standOver: 0
+--- !u!61 &1864452012
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864452009}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03730774, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.222534, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1870322497
 GameObject:
   m_ObjectHideFlags: 0
@@ -13488,10 +13651,9 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
   TextList:
-  - This is my sister's teddy bear. She was playing with it in the car.
+  - This is Lily's teddy bear. She was playing with it in the car.
   - We must have crashed...
-  - If her bear is here, then so is she.
-  - I'd better find her and make sure she's okay.
+  - We've gotta find a way out of here.
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -13593,7 +13755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870322497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.67, y: -1.006, z: -1.4477856}
+  m_LocalPosition: {x: -22.12, y: -1.006, z: -1.4477856}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 738061608}
@@ -14445,7 +14607,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}

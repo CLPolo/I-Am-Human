@@ -102,6 +102,7 @@ public class InteractableObjectScript : MonoBehaviour
         }
 
         if (Audio == null) Audio = GetComponent<AudioSource>();
+
         if (Inside && Input.GetKey(Controls.Interact) && PlayerPrefs.GetString("CollisionTagInteractable") == "Player" && !corpseInWay) // if player is inside the interactable object's box collider
         {
             PressedInteract = true;
@@ -162,6 +163,8 @@ public class InteractableObjectScript : MonoBehaviour
 
         if (col.tag == "Player")
         {
+            Inside = true;  // player is inside obj's collider
+
             // this has a door copmponent
             if (TryGetComponent<Door>(out var door))
             {
@@ -201,6 +204,11 @@ public class InteractableObjectScript : MonoBehaviour
         {
             PlayerPrefs.SetString("Pickup", this.tag);
             isPickup = true;
+        }
+        if (this.gameObject.tag == "Flashlight")
+        {
+            PickupSet();
+            SpawnObjectCheck();
         }
     }
 

@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class PuzzleTargetScript : MonoBehaviour
 {
     public GameObject AffectedObject = null;  // object to be affected by trigger actions (if desired)
-    public GameObject ActivateTriggerObject = null;  // trigger to be deleted / deactivated if player performs this action
-    public GameObject DeactivateTriggerObject = null;
+    public List<GameObject> ActivateTriggerObject = null;  // trigger to be deleted / deactivated if player performs this action
+    public List<GameObject> DeactivateTriggerObject = null;
     public GameObject DoorToBeOpened = null;
 
     [Header("Target Affect Type")]
@@ -53,6 +53,7 @@ public class PuzzleTargetScript : MonoBehaviour
     private bool PlayerTriggered = false;
     private bool BoxTriggered = false;
     private bool playCreditsNext = false;
+    private bool CoroutineRunning = false;
 
     // misc
     public Player player;
@@ -107,11 +108,15 @@ public class PuzzleTargetScript : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        PlayerTriggered = false;
+        if (other.gameObject.tag == "Player") { PlayerTriggered = false; }  // prevents lily leaving the same collider disabling the ability to skip text by turning this off
         BoxTriggered = false;
         if (!TextDisplayOnce)  // if want to retrigger text everytime player walks into collider, resets textplayed after leave
         {
             TextPlayed = false;
+            if (NoiseTrigger)  // if repeated noise triggers w/ text (too far hide bush should be only thing using this) then reset noise triggered so it plays every re-entry.
+            {
+                NoiseTriggered = false;
+            }
         }
     }
 
@@ -153,7 +158,7 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             if (!TextDisplayOnce)  // if text will reactivate (want to show sound more than once)
             {
-                if (this.TryGetComponent<AudioSource>(out var source) && !source.isPlaying)
+                if (this.TryGetComponent<AudioSource>(out var source) && !source.isPlaying && !NoiseTriggered)
                 {
                     PlayNoise(NoiseToBePlayed);
                 }
@@ -313,11 +318,17 @@ public class PuzzleTargetScript : MonoBehaviour
         }
         if (DeactivateTriggerObject != null)
         {
-            ActivateTarget(DeactivateTriggerObject, false);
+            foreach (GameObject deacObj in DeactivateTriggerObject) 
+            {
+                ActivateTarget(deacObj, false);
+            }
         }
         if (ActivateTriggerObject != null)
         {
-            ActivateTarget(ActivateTriggerObject, true);
+            foreach (GameObject actObj in ActivateTriggerObject)
+            {
+                ActivateTarget(actObj, true);
+            }
         }
         
         ObjectDisplaying = false;
@@ -421,6 +432,19 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             PlayerPrefs.SetInt("StartTransform", 1);
         }
+        else if (this.gameObject.name == "Lily Stand Trigger" && TextPlayed)  // Lily standing up by her bear after you go thru the text
+        {
+            if (PlayerPrefs.GetInt("LilyStandDone") != 1) AffectedObject.GetComponent<Animator>().SetInteger("State", 4);
+            PlayerPrefs.SetInt("LilyStandStart", 1);
+        }
+        else if (this.gameObject.name == "Lily Run Trigger" && this.gameObject.activeSelf == true)  // LILY RUNNING AWAY IN FOREST
+        {
+            if (!CoroutineRunning) { StartCoroutine(HandleLilyRun()); CoroutineRunning = true; };  // only calls coroutine once
+            if (TextTrigger && AffectedObject.activeSelf == true)  // once the hide stuff's done, lily starts running. Stops once she's turned off.
+            {
+                LilyRunning();
+            }
+        }
         else if (this.gameObject.name == "EndingCutscene")
         {
             if (PlayerPrefs.GetInt("FinalDialogue") == 0)
@@ -469,6 +493,30 @@ public class PuzzleTargetScript : MonoBehaviour
     public bool GetTextPlayed()
     {
         return TextPlayed;
+    }
+
+    private IEnumerator HandleLilyRun()
+    {
+        AffectedObject.GetComponent<Sister>().SetDetectRange(0);  // this allows us to make it so that she won't be trying to follow us
+        yield return new WaitForSeconds(4f);    // wait until deer gone
+        TextTrigger = true;                     // text will pop up
+        TextToDisplay.Add("Lily, wait!");       // w/ this message
+    }
+
+    private void LilyRunning()
+    {
+        GameObject Lily = AffectedObject;
+        float runSpeed = Lily.GetComponent<Sister>().speed * 2.5f;
+        Transform LilyPos = Lily.transform;
+        Lily.GetComponent<Sister>().Flip(LilyPos.position.x);  // in case lily was facing the wrong way (i.e. she's looking left when you hide)
+
+        Lily.GetComponent<Animator>().SetInteger("State", 1);  // run anim flag
+        LilyPos.transform.position += Vector3.right * Time.deltaTime * runSpeed;  // moves her to the right
+        
+        if (LilyPos.position.x >= 105)  // once she hits this spot, object turned off
+        {
+            ActivateTarget(Lily, false);
+        }
     }
 
 }
