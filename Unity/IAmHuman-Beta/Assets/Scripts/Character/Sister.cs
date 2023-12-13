@@ -28,6 +28,8 @@ public class Sister : NPC
     public float minTimeBetweenBarks = 50;
     public List<AudioClip> barks;
     private AudioSource sisterAudio;
+
+
     private Animator sisterAnimator;
     private float untilDist = 3f;
 
@@ -67,6 +69,15 @@ public class Sister : NPC
                 this.gameObject.SetActive(false);
             } else {
                 sisterAnimator.SetInteger("State", 2);
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == "Forest Intro (Lily)" && PlayerPrefs.GetInt("LilyStandDone") != 1)
+        {
+            if (PlayerPrefs.GetInt("LilyStandStart") != 1) sisterAnimator.SetInteger("State", 3);
+            else if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("StoodUp"))
+            {
+                PlayerPrefs.SetInt("LilyStandDone", 1);
+                SetDetectRange(5);
             }
         }
         else if (GetFollowing())
@@ -121,5 +132,10 @@ public class Sister : NPC
         {
             sisterAudio.PlayOneShot(footstepsWalk[UnityEngine.Random.Range(0, footstepsWalk.Capacity)], 0.25f);
         }
+    }
+
+    public void SetDetectRange(float range)
+    {
+        SetupNPC(speed, 1f, 3f, range);
     }
 }
