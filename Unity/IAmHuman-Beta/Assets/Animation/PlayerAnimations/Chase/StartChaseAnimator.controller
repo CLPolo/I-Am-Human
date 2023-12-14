@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: 2769c224f7b6c194a89be54aa8f74066, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -40,7 +40,7 @@ AnimatorStateMachine:
     m_Position: {x: 310, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2525591721035640126}
-    m_Position: {x: 380, y: 190, z: 0}
+    m_Position: {x: 360, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8354057695352366097}
     m_Position: {x: 540, y: 100, z: 0}
@@ -63,7 +63,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: StartMonsterEmerge
+    m_ConditionEvent: On
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8354057695352366097}
@@ -87,13 +87,7 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: StartChaseAnimator
   serializedVersion: 5
-  m_AnimatorParameters:
-  - m_Name: StartMonsterEmerge
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+  m_AnimatorParameters: []
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
