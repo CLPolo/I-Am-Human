@@ -27,6 +27,7 @@ TagManager:
   - StudyKey
   - LilyBear
   - LilyShoe
+  - Sister
   layers:
   - Default
   - TransparentFX

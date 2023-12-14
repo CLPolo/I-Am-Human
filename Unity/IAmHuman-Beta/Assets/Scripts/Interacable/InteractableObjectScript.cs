@@ -104,11 +104,6 @@ public class InteractableObjectScript : MonoBehaviour
 
         if (Inside && Input.GetKey(Controls.Interact) && PlayerPrefs.GetString("CollisionTagInteractable") == "Player") // if player is inside the interactable object's box collider
         {
-            if (gameObject.name == "Corpse (NO MOVE)")
-            {
-                gameObject.GetComponent<SpriteRenderer>().enabled = false;
-
-            }
             PressedInteract = true;
             PromptCanvas.SetActive(false);  // turns off 'interact' prompt
             CheckAndDisplayInfo();  // checks if there's info to display, if so does that
@@ -139,7 +134,7 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        PlayerPrefs.SetString("CollisionTagInteractable", col.tag);  // Allows us to prevent the enemy from triggering items (like doors & outlines)
+        if (col.tag != "Sister") PlayerPrefs.SetString("CollisionTagInteractable", col.tag);  // Allows us to prevent the enemy (and sister) from triggering items (like doors & outlines)
     }
 
     private void OnTriggerExit2D(Collider2D col)

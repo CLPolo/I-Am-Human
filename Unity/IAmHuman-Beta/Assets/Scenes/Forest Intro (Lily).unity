@@ -2967,7 +2967,7 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: -667970240133171378, guid: 1ade3915d1f455e48909ad079c66672b, type: 3}
   Outline: {fileID: -343669319925169312, guid: b296e76704935a0498993943ea277643, type: 3}
-  removeSprite: 0
+  removeSprite: 1
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: PRESS a TO INTERACT

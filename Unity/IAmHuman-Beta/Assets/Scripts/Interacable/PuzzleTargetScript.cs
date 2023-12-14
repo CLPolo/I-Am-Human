@@ -54,6 +54,7 @@ public class PuzzleTargetScript : MonoBehaviour
     private bool BoxTriggered = false;
     private bool playCreditsNext = false;
     private bool CoroutineRunning = false;
+    private bool triggeredOnce = false;
 
     // misc
     public Player player;
@@ -103,6 +104,7 @@ public class PuzzleTargetScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))  // if player collides with target
         {
             PlayerTriggered = true;
+            triggeredOnce = true;
         }
     }
 
@@ -268,7 +270,7 @@ public class PuzzleTargetScript : MonoBehaviour
             textIndex++;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) && TextObject.name != "PromptText")  // then, if more messages, when interact key is pressed
+        if (Input.GetKeyDown(KeyCode.Return))  // then, if more messages, when interact key is pressed
         {
             if (textIndex < TextToDisplay.Count)  // if more text to go through
             {
@@ -414,21 +416,21 @@ public class PuzzleTargetScript : MonoBehaviour
     private void CheckOneOffTextTriggers()
     {
         // currently used for lily wait text during hallway cutscene
-        if (PlayerPrefs.GetInt("LilyHallwayOver") == 2 && this.gameObject.name == "Lily Wait Trigger")
-        {
-            this.gameObject.SetActive(false);
-        }
-        else if (PlayerPrefs.GetInt("LilyHallwayOver") == 1 && this.gameObject.name == "Lily Wait Trigger" && TextPlayed)
-        {
-            this.gameObject.SetActive(false);
-            player.SetState(PlayerState.Idle);
-            PlayerPrefs.SetInt("LilyHallwayOver", 2);
-        }
-        else if (this.gameObject.name == "Lily Wait Trigger" && this.gameObject.activeSelf == true && PlayerPrefs.GetInt("LilyHallwayOver") != 2)
-        {
-            player.SetState(PlayerState.Frozen);
-        }
-        else if (this.gameObject.name == "Transform Text Trigger" && TextPlayed)
+        //if (PlayerPrefs.GetInt("LilyHallwayOver") == 2 && this.gameObject.name == "Lily Wait Trigger")
+        //{
+        //    this.gameObject.SetActive(false);
+        //}
+        //else if (PlayerPrefs.GetInt("LilyHallwayOver") == 1 && this.gameObject.name == "Lily Wait Trigger" && TextPlayed)
+        //{
+        //    this.gameObject.SetActive(false);
+        //    player.SetState(PlayerState.Idle);
+        //    PlayerPrefs.SetInt("LilyHallwayOver", 2);
+        //}
+        //else if (this.gameObject.name == "Lily Wait Trigger" && this.gameObject.activeSelf == true && PlayerPrefs.GetInt("LilyHallwayOver") != 2)
+        //{
+        //    player.SetState(PlayerState.Frozen);
+        //}
+        if (this.gameObject.name == "Transform Text Trigger" && TextPlayed)
         {
             PlayerPrefs.SetInt("StartTransform", 1);
         }
@@ -437,12 +439,23 @@ public class PuzzleTargetScript : MonoBehaviour
             if (PlayerPrefs.GetInt("LilyStandDone") != 1) AffectedObject.GetComponent<Animator>().SetInteger("State", 4);
             PlayerPrefs.SetInt("LilyStandStart", 1);
         }
+        else if (this.gameObject.name == "Lily Wait Hall Trigger" && triggeredOnce)  // LILY RUNNING AWAY IN hallway
+        {
+            // COREY HELLO!!!! hope ur doing good :) the 1f in the call below is the mini pause after you hit the trigger before lily runs and the text shows up, so adjust that for the sound time!
+            if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(1f, "Lily!", true)); CoroutineRunning = true; };  // only calls coroutine once
+            if (TextTrigger && AffectedObject.activeSelf == true)  // lily starts running. Stops once she's turned off.
+            {
+                LilyRunning(false);
+            }
+        }
         else if (this.gameObject.name == "Lily Run Trigger" && this.gameObject.activeSelf == true)  // LILY RUNNING AWAY IN FOREST
         {
-            if (!CoroutineRunning) { StartCoroutine(HandleLilyRun()); CoroutineRunning = true; };  // only calls coroutine once
+            // COREY HELLO AGAIN!!!! hope ur doing even better than before :) the 4f in the call below is the wait time after you hit the trigger before lily runs and the text shows up
+            // INCLUDING the wait for the deer head to dissapear, so adjust that for the sound time IF you want to add a new sound. Not sure if you do tho.
+            if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(4f, "Lily, wait!", false)); CoroutineRunning = true; };  // only calls coroutine once
             if (TextTrigger && AffectedObject.activeSelf == true)  // once the hide stuff's done, lily starts running. Stops once she's turned off.
             {
-                LilyRunning();
+                LilyRunning(true);
             }
         }
         else if (this.gameObject.name == "EndingCutscene")
@@ -495,27 +508,41 @@ public class PuzzleTargetScript : MonoBehaviour
         return TextPlayed;
     }
 
-    private IEnumerator HandleLilyRun()
+    private IEnumerator HandleLilyRun(float seconds, string text, bool freezeBefore)
     {
         AffectedObject.GetComponent<Sister>().SetDetectRange(0);  // this allows us to make it so that she won't be trying to follow us
-        yield return new WaitForSeconds(4f);    // wait until deer gone
-        TextTrigger = true;                     // text will pop up
-        TextToDisplay.Add("Lily, wait!");       // w/ this message
+        if (freezeBefore) { player.SetState(PlayerState.Frozen); }  // freezes before text pop up (wait for sound) in hallway
+        yield return new WaitForSeconds(seconds);       // wait until deer gone
+        TextTrigger = true;                             // text will pop up
+        TextToDisplay.Add(text);                        // w/ this message
     }
 
-    private void LilyRunning()
+    private void LilyRunning(bool isForest)
     {
         GameObject Lily = AffectedObject;
         float runSpeed = Lily.GetComponent<Sister>().speed * 2.5f;
         Transform LilyPos = Lily.transform;
-        Lily.GetComponent<Sister>().Flip(LilyPos.position.x);  // in case lily was facing the wrong way (i.e. she's looking left when you hide)
 
         Lily.GetComponent<Animator>().SetInteger("State", 1);  // run anim flag
-        LilyPos.transform.position += Vector3.right * Time.deltaTime * runSpeed;  // moves her to the right
         
-        if (LilyPos.position.x >= 105)  // once she hits this spot, object turned off
+        if (isForest)
         {
-            ActivateTarget(Lily, false);
+            Lily.GetComponent<Sister>().Flip(LilyPos.position.x);  // in case lily was facing the wrong way (i.e. she's looking left when you hide)
+            LilyPos.transform.position += Vector3.right * Time.deltaTime * runSpeed;  // moves her to the right
+
+            if (LilyPos.position.x >= 105)  // once she hits this spot, object turned off
+            {
+                ActivateTarget(Lily, false);
+            }
+        }
+        else
+        {
+            LilyPos.transform.position += Vector3.left * Time.deltaTime * (runSpeed / 2.5f) * 1.8f;  // moves her to the right
+
+            if (LilyPos.position.x <= -19.9)  // once she hits this spot, object turned off
+            {
+                ActivateTarget(Lily, false);
+            }
         }
     }
 

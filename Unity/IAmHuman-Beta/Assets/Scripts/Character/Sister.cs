@@ -49,6 +49,11 @@ public class Sister : NPC
         } else {
             SetupNPC(speed, 1f, 3f);
         }
+
+        if (SceneManager.GetActiveScene().name == "Hallway Hub (Version 2)")
+        {
+            SetupNPC(speed, 1f, 1.5f);
+        }
     }
 
     // Update is called once per frame
