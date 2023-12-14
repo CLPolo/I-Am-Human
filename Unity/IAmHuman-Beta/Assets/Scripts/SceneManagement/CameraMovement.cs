@@ -188,9 +188,10 @@ public class CameraMovement : MonoBehaviour
 
         while (elapsedTime < shakeDuration)
         {
+            Vector3 currentCamera = transform.position;
             elapsedTime += Time.deltaTime;
             float strength = curve.Evaluate(elapsedTime / shakeDuration);
-            transform.position = player.position + offset + Random.insideUnitSphere * strength;
+            transform.position = currentCamera + Random.insideUnitSphere * strength;
             yield return null;
         }
 

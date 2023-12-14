@@ -25,7 +25,6 @@ public class InteractableObjectScript : MonoBehaviour
     public GameObject PromptCanvas = null;  // NOTE: need to seperate text object and entire canvas as there are two text object on the canvas
     public String InteractMessage;
     public Boolean ShowPromptOnce;
-    private bool corpseInWay = false;
 
     [Header("Dialogue Display")]
     public GameObject DialogueTextObject = null;  // this is the screen that displays info about object post interaction
@@ -46,7 +45,7 @@ public class InteractableObjectScript : MonoBehaviour
     public int NextSceneIndex = -1;
 
     [Header("Spawn Object (or enemy) Post Interact")]
-    public int spawnDelay = 0;
+    public float spawnDelay = 0;
     public bool SpawnObject = false;
     public bool SpawnEntity = false;
     public List<GameObject> ObjectsSpawned = null;
@@ -103,7 +102,7 @@ public class InteractableObjectScript : MonoBehaviour
 
         if (Audio == null) Audio = GetComponent<AudioSource>();
 
-        if (Inside && Input.GetKey(Controls.Interact) && PlayerPrefs.GetString("CollisionTagInteractable") == "Player" && !corpseInWay) // if player is inside the interactable object's box collider
+        if (Inside && Input.GetKey(Controls.Interact) && PlayerPrefs.GetString("CollisionTagInteractable") == "Player") // if player is inside the interactable object's box collider
         {
             PressedInteract = true;
             PromptCanvas.SetActive(false);  // turns off 'interact' prompt
@@ -141,10 +140,6 @@ public class InteractableObjectScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         // if player is not actively inside collider, turns off interact prompt
-        if (col.gameObject.name == "Corpse")
-        {
-            corpseInWay = false;
-        }
         Inside = false;
         Interactable();
         NoisePlayed = false;
@@ -156,11 +151,6 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.name == "Corpse")
-        {
-            corpseInWay = true;
-        }
-
         if (col.tag == "Player")
         {
             Inside = true;  // player is inside obj's collider
@@ -176,7 +166,7 @@ public class InteractableObjectScript : MonoBehaviour
                 }
 
                 // if player in collider and has NOT pressed interact key yet
-                if (Inside && !Input.GetKeyDown(Controls.Interact) && !corpseInWay && !PressedInteract)
+                if (Inside && !Input.GetKeyDown(Controls.Interact) && !PressedInteract)
                 {
                     bool unlockAndIsInteractable = Unlock && door.IsInteractable;
                     bool notBlockedAndDontUnlock = !Unlock && !door.Blocked;
