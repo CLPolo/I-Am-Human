@@ -103,14 +103,6 @@ public class LogicScript : MonoBehaviour
             trappedText.SetActive(true);
         }
         mashTimer -= Time.deltaTime;
-        if (inGore)
-        {
-            TilemapCollider2D tilemapCollider = GameObject.Find("Tilemap").GetComponent<TilemapCollider2D>();
-            tilemapCollider.enabled = false;  // Disable the collider so the player can fall in the goop
-            player.transform.position = new Vector3(player.transform.position.x,
-                        player.transform.position.y - Time.deltaTime * (1.5f / 2.5f),
-                        player.transform.position.z);
-        }
         if (mashTimer <= 0 && trapKills)
         {
             // If the player does not mash fast enough they die :(
@@ -125,11 +117,6 @@ public class LogicScript : MonoBehaviour
         {
             // The player escapes!
             mashTimer = defaultMashTimer;
-            if (inGore)
-            {
-                TilemapCollider2D tilemapCollider = GameObject.Find("Tilemap").GetComponent<TilemapCollider2D>();
-                tilemapCollider.enabled = true;  // Enable the collider so the player no fall in goop
-            }
             player.SetState(PlayerState.Idle);
             PlayerPrefs.SetInt("escaped", 1);  // Miriam uses this for the kitchen door trapped interaction
             if (trappedText != null)
@@ -144,9 +131,7 @@ public class LogicScript : MonoBehaviour
 
                 if (inGore)
                 {
-                    mashTimer += 3;  // This allows player to insta escape if in gore
-                    player.transform.position = new Vector3(player.transform.position.x,
-                        playerYStart, player.transform.position.z);
+                    mashTimer += 1.5f;  // This allows player to escape faster in gore
                 }
                 else
                 {

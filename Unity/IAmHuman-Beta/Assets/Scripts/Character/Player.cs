@@ -313,6 +313,10 @@ public class Player : AnimatedEntity
         else if (collision.gameObject.CompareTag("TrapArmedNoKill") && !state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling))
         {
             logic.trapKills = false;
+            if (collision.gameObject.name == "Gore Pile")
+            {
+                logic.inGore = true;
+            }
             SetState(PlayerState.Trapped);
             collision.gameObject.tag = "TrapDisarmed";
             StartCoroutine(ResetTrap(collision));
@@ -324,7 +328,14 @@ public class Player : AnimatedEntity
             // Slow the player while they are walking over something goopy i.e. mud or gore
             if (state == PlayerState.Walking)
             {
-                speed = walkSpeed - 2f;
+                if (logic.inGore)
+                {
+                    speed = walkSpeed - 3f;
+                }
+                else
+                {
+                    speed = walkSpeed - 2f;
+                }
             }
             else if (state == PlayerState.Running)
             {
@@ -453,15 +464,8 @@ public class Player : AnimatedEntity
     {
         // After (LESS THAN) 5 seconds the trap resets (i.e. player can fall back into mud)
         yield return new WaitUntil(() => state != PlayerState.Trapped);
-        if (collision.gameObject.name == "Gore Pile")
-        {
-            yield return new WaitForSeconds(0.2f);  // Wait for 0.2 seconds to reset gore
-            logic.inGore = false;
-        }
-        else
-        {
-            yield return new WaitForSeconds(0.5f);  // Wait for 0.5 seconds to reset mud and other traps
-        }
+        yield return new WaitForSeconds(0.5f);  // Wait for 0.5 seconds to reset trap
+        logic.inGore = false;
         if (logic.trapKills)
         {
             collision.gameObject.tag = "TrapArmed";
