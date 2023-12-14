@@ -268,7 +268,7 @@ public class PuzzleTargetScript : MonoBehaviour
             textIndex++;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))  // then, if more messages, when interact key is pressed
+        if (Input.GetKeyDown(KeyCode.Return) && TextObject.name != "PromptText")  // then, if more messages, when interact key is pressed
         {
             if (textIndex < TextToDisplay.Count)  // if more text to go through
             {
