@@ -4,124 +4,124 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 5080525497150260364
-    second: player_death_BACKGROUND
+    second: Death Background
   - first:
       213: 8799743602586295264
-    second: player_death_1
+    second: player_death_31
   - first:
       213: 7062645298493904822
-    second: player_death_2
+    second: player_death_32
   - first:
       213: -1440287764009404396
-    second: player_death_3
+    second: player_death_33
   - first:
       213: 6129151483037699693
-    second: player_death_4
+    second: player_death_34
   - first:
       213: 3953798185892045511
-    second: player_death_5
+    second: player_death_35
   - first:
       213: 4241232142142336541
-    second: player_death_6
+    second: player_death_36
   - first:
       213: 1401537174331165813
-    second: player_death_7
+    second: player_death_37
   - first:
       213: 8935973209246180202
-    second: player_death_8
+    second: player_death_38
   - first:
       213: 6065541560574709342
-    second: player_death_9
+    second: player_death_39
   - first:
       213: -1119192262568519755
-    second: player_death_10
+    second: player_death_25
   - first:
       213: 8379359891366624643
-    second: player_death_11
+    second: player_death_26
   - first:
       213: 4297876066412754502
-    second: player_death_12
+    second: player_death_27
   - first:
       213: 8251028475858583635
-    second: player_death_13
+    second: player_death_28
   - first:
       213: -7557198688667485263
-    second: player_death_14
+    second: player_death_29
   - first:
       213: -3162223335865988917
-    second: player_death_0
+    second: player_death_30
   - first:
       213: 7573537275832854915
-    second: player_death_1
+    second: player_death_31
   - first:
       213: 8596370868721710867
-    second: player_death_2
+    second: player_death_32
   - first:
       213: -5323059625167584096
-    second: player_death_3
+    second: player_death_33
   - first:
       213: -873194681888343328
-    second: player_death_4
+    second: player_death_34
   - first:
       213: 7652750893635998135
-    second: player_death_5
+    second: player_death_35
   - first:
       213: -4860412884777570457
-    second: player_death_6
+    second: player_death_36
   - first:
       213: 977788673735573270
-    second: player_death_7
+    second: player_death_37
   - first:
       213: -5467469893757241218
-    second: player_death_8
+    second: player_death_38
   - first:
       213: 2018718371030692596
-    second: player_death_9
+    second: player_death_39
   - first:
       213: 314365900773200256
-    second: player_death_10
+    second: player_death_25
   - first:
       213: -427507430766718063
-    second: player_death_11
+    second: player_death_26
   - first:
       213: 5433832115376250142
-    second: player_death_12
+    second: player_death_27
   - first:
       213: -396678906667301617
-    second: player_death_13
+    second: player_death_28
   - first:
       213: -7271084445115960628
-    second: player_death_14
+    second: player_death_29
   - first:
       213: 1404175186300208013
-    second: player_death_15
+    second: player_death_30
   - first:
       213: 205987610248256170
-    second: player_death_16
+    second: player_death_31
   - first:
       213: 5745303845828302085
-    second: player_death_17
+    second: player_death_32
   - first:
       213: 8890948652014616110
-    second: player_death_18
+    second: player_death_33
   - first:
       213: -3155177727797320991
-    second: player_death_19
+    second: player_death_34
   - first:
       213: 1110704813151869545
-    second: player_death_20
+    second: player_death_35
   - first:
       213: -5528001685568254834
-    second: player_death_21
+    second: player_death_36
   - first:
       213: 3944214649967339583
-    second: player_death_22
+    second: player_death_37
   - first:
       213: -6435518636053221747
-    second: player_death_23
+    second: player_death_38
   - first:
       213: 7974872849942771233
-    second: player_death_24
+    second: player_death_39
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -207,7 +207,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player_death_BACKGROUND
+      name: Death Background
       rect:
         serializedVersion: 2
         x: 0
@@ -228,15 +228,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_0
+      name: player_death_15
       rect:
         serializedVersion: 2
         x: 0
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,15 +249,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_1
+      name: player_death_16
       rect:
         serializedVersion: 2
         x: 48
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -270,15 +270,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_2
+      name: player_death_17
       rect:
         serializedVersion: 2
         x: 96
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,15 +291,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_3
+      name: player_death_18
       rect:
         serializedVersion: 2
         x: 144
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -312,15 +312,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_4
+      name: player_death_19
       rect:
         serializedVersion: 2
         x: 192
         y: 192
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -333,15 +333,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_5
+      name: player_death_20
       rect:
         serializedVersion: 2
         x: 0
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -354,15 +354,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_6
+      name: player_death_21
       rect:
         serializedVersion: 2
         x: 48
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -375,15 +375,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_7
+      name: player_death_22
       rect:
         serializedVersion: 2
         x: 96
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -396,15 +396,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_8
+      name: player_death_23
       rect:
         serializedVersion: 2
         x: 144
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -417,15 +417,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_9
+      name: player_death_24
       rect:
         serializedVersion: 2
-        x: 193
+        x: 192
         y: 144
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -438,15 +438,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_10
+      name: player_death_25
       rect:
         serializedVersion: 2
         x: 0
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -459,15 +459,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_11
+      name: player_death_26
       rect:
         serializedVersion: 2
         x: 48
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -480,15 +480,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_12
+      name: player_death_27
       rect:
         serializedVersion: 2
         x: 96
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -501,15 +501,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_13
+      name: player_death_28
       rect:
         serializedVersion: 2
         x: 144
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -522,15 +522,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_14
+      name: player_death_29
       rect:
         serializedVersion: 2
         x: 192
         y: 96
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -543,15 +543,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_15
+      name: player_death_30
       rect:
         serializedVersion: 2
         x: 0
-        y: 47
+        y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -564,15 +564,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_16
+      name: player_death_31
       rect:
         serializedVersion: 2
         x: 48
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -585,15 +585,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_17
+      name: player_death_32
       rect:
         serializedVersion: 2
         x: 96
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -606,15 +606,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_18
+      name: player_death_33
       rect:
         serializedVersion: 2
         x: 144
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -627,15 +627,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_19
+      name: player_death_34
       rect:
         serializedVersion: 2
         x: 192
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -648,15 +648,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_20
+      name: player_death_35
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -669,15 +669,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_21
+      name: player_death_36
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -690,15 +690,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_22
+      name: player_death_37
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -711,15 +711,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_23
+      name: player_death_38
       rect:
         serializedVersion: 2
         x: 144
-        y: 1
+        y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -732,15 +732,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_death_24
+      name: player_death_39
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
