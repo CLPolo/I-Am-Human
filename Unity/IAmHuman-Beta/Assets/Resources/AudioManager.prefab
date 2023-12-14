@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 173753914286843707}
   - component: {fileID: -2416170443488346129}
+  - component: {fileID: 1771957105556303696}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: AudioManager
@@ -50,6 +51,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321720aa345a130e7976bc69e47f3df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inTitle: 1
+  inCabin: 0
+  inKitchen: 0
+  inAttic: 0
+  kitchenTriggered: 0
+  crowbarFadeTriggered: 0
+  gameStarted: 0
+--- !u!114 &1771957105556303696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173753914286843704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7adf0348c9e0436339893fae4178796c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diaryChecked: 0
+  inTitle: 1
+  inCabin: 0
+  inKitchen: 0
+  inAttic: 0
+  kitchenTriggered: 0
+  crowbarFadeTriggered: 0
+  gameStarted: 0
 --- !u!1 &632480377872243156
 GameObject:
   m_ObjectHideFlags: 0

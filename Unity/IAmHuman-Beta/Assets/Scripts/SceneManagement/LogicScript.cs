@@ -28,6 +28,8 @@ public class LogicScript : MonoBehaviour
     }
 
     public bool IsPaused = false;  // true if game is paused
+    // used to prevent escape for unpausing when button logic is still being done
+    public bool allowPauseKey = true;
 
     public Player player;
 
@@ -74,22 +76,24 @@ public class LogicScript : MonoBehaviour
         if (player == null)
         {
             player = Player.Instance;
-        }
-        if (playerYStart == 1000f)
-        {
-            playerYStart = player.transform.position.y;
-        }
-        // PUT ALL LOGIC HERE
-        if (player.GetState() == PlayerState.Trapped)
-        {   
-            MashTrap();
-        }
+        } else {
+            if (playerYStart == 1000f)
+            {
+                playerYStart = player.transform.position.y;
+            }
+            // PUT ALL LOGIC HERE
+            if (player.GetState() == PlayerState.Trapped)
+            {
+                MashTrap();
+            }
 
-        if (Input.GetKeyDown(Controls.Pause) && currentSceneIndex > 0)  // Pauses game when player hits esc
-        {
-            TogglePause();
+            if (Input.GetKeyDown(Controls.Pause) && currentSceneIndex > 0 && allowPauseKey)  // Pauses game when player hits esc
+            {
+                ResetPauseMenu();
+                TogglePause();
+            }
+            CheckCutscenes();
         }
-        CheckCutscenes();
     }
 
     public void MashTrap()
@@ -99,14 +103,6 @@ public class LogicScript : MonoBehaviour
             trappedText.SetActive(true);
         }
         mashTimer -= Time.deltaTime;
-        if (inGore)
-        {
-            TilemapCollider2D tilemapCollider = GameObject.Find("Tilemap").GetComponent<TilemapCollider2D>();
-            tilemapCollider.enabled = false;  // Disable the collider so the player can fall in the goop
-            player.transform.position = new Vector3(player.transform.position.x,
-                        player.transform.position.y - Time.deltaTime * (1.5f / 2.5f),
-                        player.transform.position.z);
-        }
         if (mashTimer <= 0 && trapKills)
         {
             // If the player does not mash fast enough they die :(
@@ -121,11 +117,6 @@ public class LogicScript : MonoBehaviour
         {
             // The player escapes!
             mashTimer = defaultMashTimer;
-            if (inGore)
-            {
-                TilemapCollider2D tilemapCollider = GameObject.Find("Tilemap").GetComponent<TilemapCollider2D>();
-                tilemapCollider.enabled = true;  // Enable the collider so the player no fall in goop
-            }
             player.SetState(PlayerState.Idle);
             PlayerPrefs.SetInt("escaped", 1);  // Miriam uses this for the kitchen door trapped interaction
             if (trappedText != null)
@@ -140,9 +131,7 @@ public class LogicScript : MonoBehaviour
 
                 if (inGore)
                 {
-                    mashTimer += 3;  // This allows player to insta escape if in gore
-                    player.transform.position = new Vector3(player.transform.position.x,
-                        playerYStart, player.transform.position.z);
+                    mashTimer += 1.5f;  // This allows player to escape faster in gore
                 }
                 else
                 {
@@ -160,6 +149,7 @@ public class LogicScript : MonoBehaviour
         if (val)
         {
             DeathScreen.SetActive(val);
+            AudioManager.Instance.StopAllSources();
         }
         //audioSource.PlayOneShot(audioSource.clip, 0.5f)
         //AudioListener.pause = IsPaused;
@@ -172,25 +162,29 @@ public class LogicScript : MonoBehaviour
         PlayerPrefs.SetInt("MonsterEmerges", 0);
     }
 
-    // disable menu is used so certain methods of closing pause menu such as
+    public void ResetPauseMenu()
+    {
+        foreach (Transform child in PauseMenu.transform)
+        {
+            child.gameObject.SetActive(child.name == "Pause");
+        }
+    }
+
+    // disableMenu is used so certain methods of closing pause menu such as
     // clicking the continue button can pass 'false' since THEY will deal with
-    // disabling the menu (i.e. need to play click sound before disabling but
-    // click audio source is on button and cant be played if it gets disabled first
+    // disabling the menu (i.e. need to play click sound before disabling)
     public void TogglePause(bool disableMenu = true)
     {
         // Pauses game
         // Note: When we add enemy script, enemy movement should also be stopped if paused
+        
+        IsPaused = !IsPaused;  // will prevent player from moving while paused
         if (disableMenu)
         {
-            PauseMenu.SetActive(!IsPaused);
+            PauseMenu.SetActive(IsPaused);
         }
-        IsPaused = !IsPaused;  // will prevent player from moving while paused
-        if (IsPaused)
-        {
-            PlayerPrefs.SetInt("Paused", 1);
-        }
-        else { PlayerPrefs.SetInt("Paused", 0); }
-        Time.timeScale = IsPaused?0:1F;
+        PlayerPrefs.SetInt("Paused", IsPaused ? 1 : 0);
+        Time.timeScale = IsPaused ? 0 : 1;
 
         // DONT PAUSE AUDIO LISTENER WHEN PAUSING GAME,
         // NEED TO PROGRAMATICALLY GO THROUGH PLAYING AUDIO SOURCES AND PAUSE THEM INSTEAD
@@ -238,11 +232,35 @@ public class LogicScript : MonoBehaviour
             {
                 // We can continue the animation here
                 monster.SetActive(true);  // Monster appears at the doorway
-                audioSource.PlayOneShot(monsterEmergesAudio, 0.25f);
+                playMonsterRoar();
                 // START CHASE MUSIC HERE
                 player.monsterEmergesCutscene = false;  // The cutscene is over
                 player.SetState(PlayerState.Idle);  // THE PLAYER SHOULD RUN NOW
             }
         }
+
+
+        if (currentScene == "Forest Intro (Lily)")
+        {
+            if (PlayerPrefs.GetInt("Fading") == 2)
+            {
+                player.gameObject.GetComponent<Animator>().SetBool("FadeDone", true);
+                player.SetState(PlayerState.Frozen);
+            }
+            if (player.gameObject.GetComponent<Animator>().GetBool("FadeDone") && player.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Woken"))
+            {
+                player.gameObject.GetComponent<Animator>().SetBool("FadeDone", false);  // this reset and check prevents constant playerstate updating (only updates to idle once)
+                player.gameObject.GetComponent<Animator>().enabled = false;
+                player.SetState(PlayerState.Idle);
+                PlayerPrefs.SetInt("Fading", 0);
+                
+            }
+        }
+
+    }
+
+    public void playMonsterRoar()
+    {
+        audioSource.PlayOneShot(monsterEmergesAudio, 0.25f);
     }
 }

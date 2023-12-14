@@ -53,10 +53,12 @@ public class Player : AnimatedEntity
     public List<Sprite> hideCycle;
     public List<Sprite> pushCycle;
     public List<Sprite> pullCycle;
+    public List<Sprite> stuckCycle;
     [Header("Idle Sprites")]
     public Sprite idleWalk;
     public Sprite idlePush;
     public Sprite idleHide;
+    public Sprite stuckGuy;
 
     [Header("Sound")]
     public AudioSource AudioSource;
@@ -71,7 +73,7 @@ public class Player : AnimatedEntity
     //boolean state based variables
     //private bool isHiding = false;
     private bool moving = false;
-    private bool facingRight = true;
+    public bool facingRight = true;
     private bool movingRight = true;
 
     [Header("State")]
@@ -136,7 +138,7 @@ public class Player : AnimatedEntity
         if (moving && !touchingWall && !interruptFlag)
         {
             InterruptAnimation(currentCycle, true);
-        } else if ((!moving || touchingWall) && interruptFlag) {
+        } else if (((!moving && state != PlayerState.Trapped) || touchingWall) && interruptFlag) {
             ResetAnimationCycle();
         }
         if (_state == state || (state == PlayerState.Frozen && _state != PlayerState.Idle))
@@ -185,8 +187,8 @@ public class Player : AnimatedEntity
             case PlayerState.Trapped:
                 speed = 0;  // Player cannot move while trapped
                 rb.velocity = Vector2.zero;
-                // indicate player is trapped somehow:
-                //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y - 0.3f, transform.localScale.z);
+                DefaultAnimationCycle[0] = stuckGuy;
+                currentCycle = stuckCycle;
                 break;
             case PlayerState.Frozen:
                 speed = 0;
@@ -274,20 +276,19 @@ public class Player : AnimatedEntity
         }
         else if (collision.gameObject.name == "CrawlerRemovalService")
         {
+            PlayerPrefs.SetInt("FinalDialogue", -1);  // Stop text from showing right at the start
             shrinkCamera = true;  // Start shrinking the camera for final cutscene
             for (int i=0; i<3; i++)
             {
-                collision.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);  // DEACTIVATE THE CREATURE
-            
+                collision.transform.GetChild(i).GetChild(0).gameObject.SetActive(false);  // DEACTIVATE THE CREATURES
             }
             
         }
         else if (collision.gameObject.name == "EndingCutscene")
         {
             // This is the final cutscene in the game.
-            SetState(PlayerState.Frozen);
-            cameraCutscene = true;
-            finalCutscene = true;
+            SetState(PlayerState.Frozen);  // So the player cannot move
+            cameraCutscene = true;  // So we can control the camera
         }
     }
 
@@ -312,6 +313,10 @@ public class Player : AnimatedEntity
         else if (collision.gameObject.CompareTag("TrapArmedNoKill") && !state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling))
         {
             logic.trapKills = false;
+            if (collision.gameObject.name == "Gore Pile")
+            {
+                logic.inGore = true;
+            }
             SetState(PlayerState.Trapped);
             collision.gameObject.tag = "TrapDisarmed";
             StartCoroutine(ResetTrap(collision));
@@ -323,7 +328,14 @@ public class Player : AnimatedEntity
             // Slow the player while they are walking over something goopy i.e. mud or gore
             if (state == PlayerState.Walking)
             {
-                speed = walkSpeed - 2f;
+                if (logic.inGore)
+                {
+                    speed = walkSpeed - 3f;
+                }
+                else
+                {
+                    speed = walkSpeed - 2f;
+                }
             }
             else if (state == PlayerState.Running)
             {
@@ -411,7 +423,7 @@ public class Player : AnimatedEntity
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         // Flips the character
 
@@ -452,15 +464,8 @@ public class Player : AnimatedEntity
     {
         // After (LESS THAN) 5 seconds the trap resets (i.e. player can fall back into mud)
         yield return new WaitUntil(() => state != PlayerState.Trapped);
-        if (collision.gameObject.name == "Gore Pile")
-        {
-            yield return new WaitForSeconds(0.2f);  // Wait for 0.2 seconds to reset gore
-            logic.inGore = false;
-        }
-        else
-        {
-            yield return new WaitForSeconds(0.5f);  // Wait for 0.5 seconds to reset mud and other traps
-        }
+        yield return new WaitForSeconds(0.5f);  // Wait for 0.5 seconds to reset trap
+        logic.inGore = false;
         if (logic.trapKills)
         {
             collision.gameObject.tag = "TrapArmed";
@@ -470,12 +475,4 @@ public class Player : AnimatedEntity
             collision.gameObject.tag = "TrapArmedNoKill";
         }
     }
-
-    public bool GetDirection()
-    {
-        // returns true if facing right, false if facing left
-
-        return facingRight;
-    }
-
 }

@@ -25,7 +25,6 @@ public class InteractableObjectScript : MonoBehaviour
     public GameObject PromptCanvas = null;  // NOTE: need to seperate text object and entire canvas as there are two text object on the canvas
     public String InteractMessage;
     public Boolean ShowPromptOnce;
-    private bool corpseInWay = false;
 
     [Header("Dialogue Display")]
     public GameObject DialogueTextObject = null;  // this is the screen that displays info about object post interaction
@@ -46,7 +45,7 @@ public class InteractableObjectScript : MonoBehaviour
     public int NextSceneIndex = -1;
 
     [Header("Spawn Object (or enemy) Post Interact")]
-    public int spawnDelay = 0;
+    public float spawnDelay = 0;
     public bool SpawnObject = false;
     public bool SpawnEntity = false;
     public List<GameObject> ObjectsSpawned = null;
@@ -102,7 +101,8 @@ public class InteractableObjectScript : MonoBehaviour
         }
 
         if (Audio == null) Audio = GetComponent<AudioSource>();
-        if (Inside && Input.GetKey(Controls.Interact) && PlayerPrefs.GetString("CollisionTagInteractable") == "Player" && !corpseInWay) // if player is inside the interactable object's box collider
+
+        if (Inside && Input.GetKey(Controls.Interact) && PlayerPrefs.GetString("CollisionTagInteractable") == "Player") // if player is inside the interactable object's box collider
         {
             PressedInteract = true;
             PromptCanvas.SetActive(false);  // turns off 'interact' prompt
@@ -140,10 +140,6 @@ public class InteractableObjectScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         // if player is not actively inside collider, turns off interact prompt
-        if (col.gameObject.name == "Corpse")
-        {
-            corpseInWay = false;
-        }
         Inside = false;
         Interactable();
         NoisePlayed = false;
@@ -155,27 +151,37 @@ public class InteractableObjectScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-
-        if (col.gameObject.name == "Corpse")
-        {
-            corpseInWay = true;
-        }
-
         if (col.tag == "Player")
         {
-            if (Inside = true && !Input.GetKeyDown(Controls.Interact) && !corpseInWay && !PressedInteract)  // if player in collider and has NOT pressed interact key yet
+            Inside = true;  // player is inside obj's collider
+
+            // this has a door copmponent
+            if (TryGetComponent<Door>(out var door))
             {
-                if (Unlock && this.GetComponent<Door>().IsInteractable == true)
+                if (door.Blocked)
                 {
-                    DisplayInteractPrompt();  // shows the interact prompt
+                    RemoveOutline();
+                } else {
+                    DisplayOutline();
                 }
-                else if (!Unlock)
+
+                // if player in collider and has NOT pressed interact key yet
+                if (Inside && !Input.GetKeyDown(Controls.Interact) && !PressedInteract)
                 {
-                    DisplayInteractPrompt();
+                    bool unlockAndIsInteractable = Unlock && door.IsInteractable;
+                    bool notBlockedAndDontUnlock = !Unlock && !door.Blocked;
+                    if (unlockAndIsInteractable || notBlockedAndDontUnlock)
+                    {
+                        DisplayInteractPrompt();
+                    }
                 }
             }
-            if (Unlock && GetComponent<Door>().Blocked == false) DisplayOutline();  // when in collider & not blocked, displays outline on obj
-            else if (!Unlock) DisplayOutline();
+            // this does not have a door component
+            else if (!Unlock)
+            {
+                DisplayOutline();
+                DisplayInteractPrompt();
+            }
             PickupCheck();
         }
     }
@@ -184,11 +190,15 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // checks if object being interacted with is a pickup
 
-        if (this.gameObject.tag.IsOneOf("Flashlight", "Crowbar", "AtticKey"))  // if one of our pickups, will give us usable string for tag.
+        if (this.gameObject.tag.IsOneOf("Flashlight", "Crowbar", "AtticKey", "StudyKey", "LilyBear", "LilyShoe"))  // if one of our pickups, will give us usable string for tag.
         {
             PlayerPrefs.SetString("Pickup", this.tag);
             isPickup = true;
-
+        }
+        if (this.gameObject.tag == "Flashlight")
+        {
+            PickupSet();
+            SpawnObjectCheck();
         }
     }
 
@@ -196,17 +206,17 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // sets appropriate player pref to reflect that pickup has been grabbed
 
-        if (isPickup && PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight", "Crowbar", "AtticKey")) // if one of our pickups, it will set playerprefs of that to 1 (true).
+        if (isPickup && PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight", "Crowbar", "AtticKey", "StudyKey", "LilyBear", "LilyShoe")) // if one of our pickups, it will set playerprefs of that to 1 (true).
         {
             PlayerPrefs.SetInt(PlayerPrefs.GetString("Pickup"), 1);
-            if (PlayerPrefs.GetString("Pickup") != "Crowbar") { this.gameObject.SetActive(false); }  // crowbar handled seperately in handlecrowbar
+            if (PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight")) { this.gameObject.SetActive(false); }  // items w/ text (crowbar, keys, lily objs) handled seperately in their respective handle funcs
             AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/item-pickup");
-            player.AudioSource.PlayOneShot(clip, 0.5f);
+            if (!player.AudioSource.isPlaying) player.AudioSource.PlayOneShot(clip, 0.5f);
             if (this.tag == "Flashlight")
             {
                 clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cellar-door-close-0");
                 player.AudioSource.clip = clip;
-                player.AudioSource.PlayOneShot(clip);
+                if (!player.AudioSource.isPlaying) player.AudioSource.PlayOneShot(clip);
             }
         }
 
@@ -216,7 +226,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // ensures they won't spawn on re-entry of a room if they were picked up
 
-        if (this.gameObject.tag.IsOneOf("Flashlight", "Crowbar", "AtticKey"))
+        if (this.gameObject.tag.IsOneOf("Flashlight", "Crowbar", "AtticKey", "StudyKey", "LilyBear", "LilyShoe"))
         {
             if (PlayerPrefs.GetInt(this.gameObject.tag) == 1)
             {
@@ -271,7 +281,7 @@ public class InteractableObjectScript : MonoBehaviour
         // click through version for text interaction. Will remove auto timed version from script & clean it up after
         // we've confirmed it's not being used and that click thru will be default. I also will rename the variables.
     
-        if (TextList != null)  // if there is a list of text
+        if (TextList != null)  // if there is a list of text & door is not blocked
         {
             if (FreezePlayer) { player.SetState(PlayerState.Frozen); }  // freezes player until they've worked thru dialogue
 
@@ -285,6 +295,7 @@ public class InteractableObjectScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return))  // when interact key (enter) is pressed
             {
+
                 if (textIndex < TextList.Count)  // if more text to go through
                 {   
                     // change the text & increase index
@@ -305,6 +316,11 @@ public class InteractableObjectScript : MonoBehaviour
                     AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance-close");
                     player.AudioSource.PlayOneShot(clip, 0.25f);
                     PressedInteract = false;
+                    if (removeSprite)
+                    {
+                        this.GetComponent<BoxCollider2D>().enabled = false;
+                        this.GetComponent<SpriteRenderer>().sprite = null;
+                    }
                 }
             }
         }
@@ -316,7 +332,10 @@ public class InteractableObjectScript : MonoBehaviour
 
         if (this.GetComponent<Door>().IsInteractable == true && !GetComponent<Door>().Blocked)
         {
-            if (!this.gameObject.name.IsOneOf("Basement Stairs", "Attic Stairs") && !player.AudioSource.isPlaying) player.AudioSource.PlayOneShot((AudioClip) Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cabin-door-open-0"), 0.25f);  // plays door open sound when opening
+            if (!this.gameObject.name.IsOneOf("Basement Stairs", "Attic Stairs") && !player.AudioSource.isPlaying)
+            {
+                player.AudioSource.PlayOneShot((AudioClip)Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cabin-door-open-0"), 0.25f);  // plays door open sound when opening
+            }
             if (NextSceneIndex >= 0) {
                 player.SetState(PlayerState.Frozen);
                 LevelLoader.Instance.loadScene(NextSceneIndex);
@@ -351,7 +370,7 @@ public class InteractableObjectScript : MonoBehaviour
         // removes sprites and turns off puzzle target script (used for drawer in kitchen, goes from closed to open).
 
         this.GetComponent<SpriteRenderer>().sprite = null;
-        this.GetComponent<BoxCollider2D>().enabled = false;
+        if (TextList == null) { this.GetComponent<BoxCollider2D>().enabled = false; }  // if text after interact, will wait to turn off collider once text done
     }
 
     private void CheckPickupInteractions()
@@ -371,6 +390,11 @@ public class InteractableObjectScript : MonoBehaviour
             HandleAtticKey();
         }
 
+        if (PlayerPrefs.GetInt("StudyKey") == 1)
+        {
+            HandleStudyKey();
+        }
+
         if (SceneManager.GetActiveScene().name == "Forest Chase" && this.name == "HideBush" && PlayerPrefs.GetInt("MonsterEmerges") == 2)  // temp implementation of run text (in chase scene it's in spawn object for hide bush)
         {
             SpawnObject = true;
@@ -379,6 +403,25 @@ public class InteractableObjectScript : MonoBehaviour
 
     }
 
+    private void HandleStudyKey()
+    {
+        if (this.name == "Study Door")
+        {
+            TextList = null;
+            if (PressedInteract)
+            {
+                SetObjectActive(this.gameObject, false);  // turns itself off
+            }
+        }
+        else if (this.name == "StudyKey" && PlayerPrefs.GetInt("StudyKey") == 1)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = null;
+            if (TextHasPlayed)
+            {
+                this.gameObject.SetActive(false);
+            }
+        }
+    }
     private void HandleCrowbar()
     {
         if (this.name == "KitchenDoor (BOARDS)")

@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    //self
+    private static AudioManager _instance;
+    public  static AudioManager Instance{get{return _instance;} }
+
     //player
     private Player p;
     private AudioSource pA;
@@ -22,31 +26,34 @@ public class AudioManager : MonoBehaviour
     private string    pathEntity = "Sounds/SoundEffects/Entity/";
     private string  pathInteract = "Sounds/SoundEffects/Entity/Interactable/";
     private string  pathCutscene = "Sounds/SoundEffects/Misc/";
-
-    //BGM management flags
-    private bool      playBGM = true;
-    private bool     playBGM2 = false;
-    private bool     playBGM3 = false;
    
     //other flags
-    private bool  playAmbArea = false;
-    private bool  playAmbMisc = false;
     private bool  trapEntered = false;
+    private bool fading = false;
     
     //progression flags
-    public bool              inTitle = true;
-    public bool              inCabin = false;
+    public bool       deathTriggered = false;
     public bool            inKitchen = false;
-    public bool              inAttic = false;
     public bool     kitchenTriggered = false;
     public bool crowbarFadeTriggered = false;
     public bool          gameStarted = false;
     private bool  monsterTransformed = false;
-
-    private static AudioManager _instance;
-    public  static AudioManager Instance{ get{ return _instance; }}
-
+    
+    //AudioSources
     private Dictionary<string, AudioSource> srcs;
+    private AudioSource ambArea;
+    private AudioSource ambMisc;
+    private AudioSource bgm;
+    private AudioSource bgm2;
+    private AudioSource bgm3;
+    private AudioSource cutscene;
+    private AudioSource miscEntity;
+
+    //Audio Floats
+    public float          bgmVolume = 0.5f;
+    public float areaAmbienceVolume = 0.02f;
+    public float miscAmbienceVolume = 0.02f;
+    public float    defaultFadeTime = 2.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -64,37 +71,26 @@ public class AudioManager : MonoBehaviour
         {  
             srcs = GameObject.FindWithTag("AudioManager")
             .GetComponentsInChildren<AudioSource>().ToDictionary(child => child.gameObject.name);
+            PopulateAudioSources();
         }
 
         //set scene
         scene = SceneManager.GetActiveScene().buildIndex;
-        
-        if (scene == 0) //Title Screen?
+        if (scene == 0) 
         {   
-            if (srcs.TryGetValue("BGM", out AudioSource bgm) && !bgm.isPlaying)
-            {   
-                if (bgm.clip == null) bgm.clip = (AudioClip)Resources.Load("Sounds/Music/title-theme-lofx");
-                RestartSource(bgm, true, 0.25f, 1f);
-            }
-        }
+            ToTitleScreen();
+        } else {
+            ChangeScene(scene);
+        }   
     }
-
     // Update is called once per frame
-    void Update()
-    {   
+    void Update(){   
         //check if player exists
         if (p == null && Player.Instance != null)
         {   
             p = Player.Instance;
             pA = p.gameObject.GetComponent<AudioSource>();
-        }
-
-        //are we dead?
-        if (PlayerPrefs.GetInt("Dead") == 1)
-        {   
-            monsterTransformed = false;
-            Stop(true, false);
-            //play sound
+            SetPlayerFootFalls();
         }
 
         //check for scene change
@@ -106,341 +102,254 @@ public class AudioManager : MonoBehaviour
         }
 
         if (p != null) CheckPlayer();
-        CheckProgress();
+        //are we dead?
+        CheckDeath();
+        CheckProgress(scene);
         CheckScenewide(scene);
     }
-    void CheckScenewide(int scene){   
-
-        //Only resume other audio if cutscene isn't playing
-        if (!srcs.TryGetValue("Cutscene", out AudioSource cutscene) || !cutscene.isPlaying) { //Debug.Log("BGM playing? " + srcs["BGM"].isPlaying + 
-                                                                                                   // " || 2 playing? " + srcs["BGM2"].isPlaying +
-                                                                                                   //eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee  " || 3 playing? " + srcs["BGM3"].isPlaying);
-            //check background music
-            if (srcs.TryGetValue("BGM", out AudioSource bgm))
-            {    
-                // if bgm isn't already playing, has an audio clip, and global is set, then play
-                if (!bgm.isPlaying && bgm.clip != null && playBGM) RestartSource(bgm);
-
-                // if bgm is playing and shouldn't be, stop it
-                if (bgm.isPlaying && !playBGM) bgm.Stop();
-
-                // if bgm is playing and should be, but the volume is too low, restart it.
-                if (bgm.isPlaying && playBGM && bgm.volume < 0.01f) RestartSource(bgm);
-            }        
-            //check area ambience
-            if (srcs.TryGetValue("AmbArea", out AudioSource ambArea))
-            {    
-                // if ambArea isn't already playing, has an audio clip, and global is set, then play
-                if (!ambArea.isPlaying && ambArea.clip != null && playAmbArea) RestartSource(ambArea);
-
-                // if ambArea is playing and shouldn't be, stop it
-                if (ambArea.isPlaying && !playAmbArea) ambArea.Stop();
-
-                // if ambArea is playing and should be, but the volume is too low, restart it.
-                if (ambArea.isPlaying && playAmbArea && ambArea.volume < 0.01f) RestartSource(ambArea);
-            }
-            //check general ambience
-            if (srcs.TryGetValue("AmbMisc", out AudioSource ambMisc))
-            {    
-                // if ambMisc isn't already playing, has an audio clip, and global is set, then play
-                if (!ambMisc.isPlaying && ambMisc.clip != null && playAmbMisc) RestartSource(ambMisc);
-
-                // if ambMisc is playing and shouldn't be, stop it
-                if (ambMisc.isPlaying && !playAmbMisc) ambMisc.Stop();
-
-                // if ambMisc is playing and should be, but the volume is too low, restart it.
-                if (ambMisc.isPlaying && playAmbMisc && ambMisc.volume < 0.001f) RestartSource(ambMisc);
-            }
-        }
-    }
-
-    private void CheckProgress()
-    {
-        if(!inTitle)
-        {
-            if (inCabin)
+    private void CheckProgress(int scene){   
+        //if we're not in the title screen
+        if(scene != 0) 
+        {   
+            //if we are inside the cabin
+            if (scene != 1 && scene != 9)
             {   
-                if (!srcs["BGM2"].isPlaying && playBGM2) srcs["BGM2"].Play();
-                
-                if (fromScene == 7)
-                {   
-                    srcs["BGM3"].volume = 0f;
-                    srcs["BGM3"].Play();
-                    StartCoroutine(Start(srcs["BGM3"], 0.33f, 1f));
-                    
-                } else if (!srcs["BGM3"].isPlaying && playBGM3){ srcs["BGM3"].Play();}
-
                 if (PlayerPrefs.GetInt("Crowbar") == 1)
                 {
                     if(!crowbarFadeTriggered)
                     {   
-                        //Fade into next distortion level
-                        playBGM = false;
-                        playBGM2 = true;
-                        //fade in distorted version
-                        StartCoroutine(Start(srcs["BGM2"], 0.33f, 0.75f));
-                        //fade out currently playing version
-                        StartCoroutine(Start(srcs["BGM"], 0f, 0.75f, true));
+                        //fade in distorted version and fade out currently playing version
+                        StartCoroutine(Start(bgm2, bgmVolume, 0.75f));
+                        StartCoroutine(Start(bgm, 0f, 0.75f, true));
                         crowbarFadeTriggered = true;
-
                     }
+                } else {
+                    crowbarFadeTriggered = false;
                 }
                 //if you have entered the kitchen, play distortion lvl 2
                 if (inKitchen && !kitchenTriggered)
                 {   
                     kitchenTriggered = true;
-                    playBGM2 = false;
-                    playBGM3 = true;
-                    srcs["BGM"].clip = null;
-                    //fade in distorted version
-                    StartCoroutine(Start(srcs["BGM3"], 0.33f, 0.75f));
-                    //fade out currently playing version
-                    StartCoroutine(Start(srcs["BGM2"], 0f, 0.75f, true));
+                    bgm.clip = null;
+                    //fade in distorted version and fade out currently playing version
+                    StartCoroutine(Start(bgm3, bgmVolume, 0.75f));
+                    StartCoroutine(Start(bgm2, 0f, 0.75f, true));
                     crowbarFadeTriggered = true;
                 }
             }
-            if (inAttic && !monsterTransformed && scene != 9 && Input.GetKeyDown(KeyCode.Return))
+            if (scene == 8 && !monsterTransformed && scene != 9 && Input.GetKeyDown(KeyCode.Return))
             {
                 monsterTransformed = true;
-                AudioSource s = srcs["Cutscene"];
-                s.loop = false;
-                s.clip = Resources.Load<AudioClip>(pathEntity + "Monster/monster-transform");
-                s.volume = 0.5f;
-                s.Play();
+                cutscene.loop = false;
+                cutscene.clip = Resources.Load<AudioClip>(pathEntity + "Monster/monster-transform");
+                cutscene.volume = 0.5f;
+                cutscene.Play();
             }
         }
     }
-
-    void ChangeScene(int scene)
-    {   
-        //if coming from the title screen, fade out all audio
-        if (fromScene == 0)
+    void CheckDeath(){
+        if (PlayerPrefs.GetInt("Dead") == 1 && !deathTriggered)
         {   
-            Debug.Log("Leaving Title Screen");
-            inTitle = false;
-            Stop(true, true);
-        } 
+            deathTriggered = true;
+            monsterTransformed = false;
+            Stop(true, false);
+            //play sound
+            bgm.volume = 0f;
+            bgm.clip = Resources.Load<AudioClip>(pathBGM + "death-music");
+            RestartSource(bgm, true, 1.0f, 3f);
+        } else if (PlayerPrefs.GetInt("Dead") == 0) deathTriggered = false;
+    }
+    void CheckScenewide(int scene){   
 
+        //Only resume other audio if cutscene isn't playing, audio isn't already fading in/out, and we're not dead
+        if (!cutscene.isPlaying && !fading && !deathTriggered) { 
+
+            //Check scene-wide audio sources 
+            if (scene == 1) CheckForest();
+            if (scene.IsOneOf(2, 3, 4, 5, 6)) CheckCabin(scene);
+            if (scene == 7) CheckAtticStairwell();
+            if (scene == 8) CheckAttic();
+            if (scene == 9) CheckChase();
+        }
+    }
+    void CheckForest(){
+        if (    bgm.clip == null ||     bgm.clip.name != "forest-theme")        bgm.clip = Resources.Load<AudioClip>(pathBGM + "forest-theme");
+        if (ambArea.clip == null || ambArea.clip.name != "forest_ambience") ambArea.clip = Resources.Load<AudioClip>(pathAmb + "Forest/forest_ambience");
+        if (ambMisc.clip == null || ambMisc.clip.name != "creepyambience")  ambMisc.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");
+
+        if     (!bgm.isPlaying) RestartSource(bgm3,    true, bgmVolume, defaultFadeTime);
+        if (!ambArea.isPlaying) RestartSource(ambArea, true, bgmVolume, defaultFadeTime);
+        if (!ambMisc.isPlaying) RestartSource(ambMisc, true, bgmVolume, defaultFadeTime);
+    }
+    void CheckCabin(int scene){
+        //check for correct clips
+        if ( bgm.clip == null ||  bgm.clip.name != "cabin-theme-A1") bgm.clip = Resources.Load<AudioClip>(pathBGM + "cabin-theme-A1");
+        if (bgm2.clip == null || bgm2.clip.name != "cabin-theme-A2") bgm.clip = Resources.Load<AudioClip>(pathBGM + "cabin-theme-A2");
+        if (bgm3.clip == null || bgm3.clip.name != "cabin-theme-A3") bgm.clip = Resources.Load<AudioClip>(pathBGM + "cabin-theme-A3");
+
+        //check game state -- have we picked up the crowbar?
+        if (PlayerPrefs.GetInt("Crowbar") == 1)
+        {   
+            if (PlayerPrefs.GetInt("AtticKey") == 1 || kitchenTriggered) //have we entered the kitchen?
+            {   
+                //play the extra distorted cabin theme
+                if (!fading) bgm3.volume = bgmVolume;
+                if (bgm.isPlaying)   bgm.Stop();
+                if (bgm2.isPlaying) bgm2.Stop();
+                if (!bgm3.isPlaying) RestartSource(bgm3, true, bgmVolume, defaultFadeTime);
+            } else {
+                //play the distorted cabin theme
+                bgm3.volume = 0;
+                if (bgm.isPlaying)   bgm.Stop();
+                if (!bgm2.isPlaying) RestartSource(bgm2, true, bgmVolume, defaultFadeTime);
+                if (!bgm3.isPlaying) bgm3.Play();
+            } 
+            if (scene == 4){ //are we currently in the kitchen?
+                if (ambArea.clip == null || ambArea.clip.name != "gore-body-push") ambArea.clip = Resources.Load<AudioClip>(pathInteract + "gore-body-push");
+            }
+        } else {
+
+            //play the normal cabin music
+            bgm2.volume = 0;
+            bgm3.volume = 0;
+            if (!bgm.isPlaying) RestartSource(bgm, true, bgmVolume, defaultFadeTime);;
+            if (!bgm2.isPlaying) bgm2.Play();
+            if (!bgm3.isPlaying) bgm3.Play();
+        }
+        if (scene == 3){
+            if (ambMisc.isPlaying) Stop(false, true, ambMisc);
+            if (ambArea.isPlaying) Stop(false, true, ambArea);
+        }
+    }
+    void CheckAtticStairwell(){
+        bgm.Pause();
+        bgm3.Pause();
+        bgm2.Pause();
+
+        if (ambMisc.clip == null || ambMisc.clip.name != "creepyambience") ambMisc.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");
+        if (!ambMisc.isPlaying){
+            ambMisc.volume = 0.001f;
+            RestartSource(ambMisc, true, 0.01f, 3f);
+        }
+    }
+    void CheckAttic(){
+        if (bgm.clip == null || bgm.clip.name != "Monster_Chase_Full") bgm.clip = Resources.Load<AudioClip>(pathBGM + "Monster_Chase_Full");
+        if (!bgm.isPlaying) RestartSource(bgm, true, bgmVolume, defaultFadeTime);
+    }
+    void CheckChase(){
+        if (bgm.clip == null || bgm.clip.name != "Monster_Chase_Full") bgm.clip = Resources.Load<AudioClip>(pathBGM + "Monster_Chase_Full");
+        if (!bgm.isPlaying){
+            bgm.volume = 0.01f;
+            RestartSource(bgm, true, bgmVolume, defaultFadeTime);
+        }
+    }
+    void ChangeScene(int scene){   
+        //if coming from the title screen, fade out all audio
+        if (fromScene == 0) Stop(true, true);
+
+        //Set player footfall samples to correct material
+        SetPlayerFootFalls();
+        
         //Set scene-wide audio sources
         switch (scene){
             //Title Screen
             case 0: 
                 // fade out all other audio when returning to title screen
-                inTitle = true;
                 Stop(true, true);
                 ToTitleScreen();
                 break;
 
             //Forest Intro
             case 1: 
-                inCabin = false;
                 Stop(true, true);
                 ToForestStart();
                 break;
             
             //Basement
             case 2:
-                //can only enter cabin via basement; no need to set to true anywhere else
-                inCabin = true;
+                //Stop music if entering from the forest
                 if(fromScene == 1) Stop(true, true);
                 ToBasement();
                 break;
 
-            //Hallway
-            case 3: 
-                if (fromScene == 7)
-                {
-                    inCabin = true; //set so bgm resumes in CheckProgress()
-                    kitchenTriggered = false;
-                    Stop(false, true, srcs["AmbMisc"]);
-                }
-
-                ToHallway();
-                break;
-
-            //Kitchen
-            case 4:
-                inKitchen = true;
-                //ToKitchen();
-                break;
-
             //Attic Stairwell
             case 7:
-                //if entering from the hall way, pause bgm
-                //if (fromScene == 3)
-                {
-                    inCabin = false; // set so CheckProgress() doesn't automatically restart bgm
-                    srcs["BGM"].Pause();
-                    srcs["BGM3"].Pause();
-                    srcs["BGM2"].Pause();
-                    srcs["AmbMisc"].clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");
-                    srcs["AmbMisc"].volume = 0.01f;
-                    srcs["AmbMisc"].Play();
-                    RestartSource(srcs["AmbMisc"], true, 0.005f, 3f);
-                }
+                ToAtticStairs();
                 break;
 
             //Attic
             case 8:
-                inAttic = true;
-                playBGM = true;
-                srcs["BGM"].clip = Resources.Load<AudioClip>(pathBGM + "Monster_Chase_Full");
-                srcs["BGM"].loop = true;
-                srcs["BGM"].volume = 0.01f;
-                RestartSource(srcs["BGM"], true, 0.33f, 1.0f);
-
-
+                ToAttic();
                 break;
-
-            //Chase
-            case 9:
-                if (srcs["BGM"].clip.name != "Monster_Chase_Full")
-                {
-                    inAttic = true;
-                    playBGM = true;
-                    srcs["BGM"].clip = Resources.Load<AudioClip>(pathBGM + "Monster_Chase_Full");
-                    srcs["BGM"].loop = true;
-                    srcs["BGM"].volume = 0.01f;
-                    RestartSource(srcs["BGM"], true, 0.33f, 1.0f);
-                } else if (!srcs["BGM"].isPlaying) srcs["BGM"].Play();
-                break;
-        }
-
-        //Set entity audio clips
-        if (woodFloors.Contains(scene))
-        {
-            p.SetFootfalls(pathEntity+"Player/Footfalls/Wood/Walk", pathEntity+"Player/Footfalls/Wood/Run");
-        } else {
-            p.SetFootfalls(pathEntity+"Player/Footfalls/Dirt/Walk", pathEntity+"Player/Footfalls/Dirt/Run");
         }
     }
-
-
     void ToTitleScreen(){
-        foreach(KeyValuePair<string, AudioSource> src in srcs){
 
-            string name = src.Key;
-            AudioSource s = src.Value; 
+        bgm.clip = (AudioClip)Resources.Load("Sounds/Music/title-theme-lofx");
+        RestartSource(bgm, true, bgmVolume, defaultFadeTime);
 
-            if (name == "BGM"){
-                playBGM = true;
-                s.clip = (AudioClip)Resources.Load(pathBGM + "title-theme-lofx");
-                RestartSource(s, true, 0.25f, 1.0f);
-            }
-            if (name == "Cutscene") {
-                s.clip = null;
-            } 
-            if (name == "AmbArea"){
-                playAmbArea = false;
-                s.clip = null;
-            }
-            if (name == "AmbMisc") {
-                playAmbMisc = false;
-                s.clip = null;
-            }
-
-        }
+        cutscene.clip = null;
+        ambArea.clip = null;
+        ambMisc.clip = null;
     }
     void ToForestStart(){
-        foreach(KeyValuePair<string, AudioSource> src in srcs){
 
-            string name = src.Key;
-            AudioSource s = src.Value; 
+            bgm.clip = Resources.Load<AudioClip>(pathBGM + "forest-theme");
+        ambArea.clip = Resources.Load<AudioClip>(pathAmb + "Forest/forest_ambience");
+        ambMisc.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");  
 
-            if (name == "BGM") 
-            {   
-                playBGM = true;
-                s.volume = 0;
-                s.clip = Resources.Load<AudioClip>(pathBGM + "forest-theme");
-                RestartSource(s, true, 0.33f, 10f);
-            }
-            if (name == "Cutscene" && !gameStarted)
-            {   
-                gameStarted = true;
-                s.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-update");
-                s.PlayOneShot(s.clip, 0.8f);
-            } 
-            if (name == "AmbArea") 
-            {
-                playAmbArea = true;
-                s.clip = Resources.Load<AudioClip>(pathAmb + "Forest/forest_ambience");
-                RestartSource(s, true, 0.25f, 10f);
-            }
-            if (name == "AmbMisc")
-            {
-                playAmbMisc = true;
-                s.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");     
-                RestartSource(s, true, 0.01f, 10f);        
-            }  
-        }
+        if(!gameStarted && fromScene == 0){
+            gameStarted = true;
+            cutscene.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-update");
+            cutscene.PlayOneShot(cutscene.clip, 0.8f);
+
+            //play background music and ambience, fading in over 10 seconds
+            bgm.volume = 0;
+            RestartSource(bgm, true, bgmVolume, 10f);
+            RestartSource(ambArea, true, 0.25f, 10f);
+            RestartSource(ambMisc, true, miscAmbienceVolume/2f, 10f);       
+        } else{
+
+            RestartSource(bgm, true, bgmVolume, defaultFadeTime);
+            RestartSource(ambArea, true, 0.25f, defaultFadeTime);
+            RestartSource(ambMisc, true, miscAmbienceVolume/2f, defaultFadeTime);  
+        }      
     }
-
     void ToBasement(){
-        inCabin = true;
-        foreach(KeyValuePair<string, AudioSource> src in srcs){
 
-            string name = src.Key;
-            AudioSource s = src.Value; 
-
-            if (name == "BGM") 
-            {
-                playBGM = true;
-                //if coming from the starting forest scene, load correct audio file
-                if(fromScene.IsOneOf(0, 1)){
-                    s.clip = Resources.Load<AudioClip>(pathBGM + "cabin-theme-A1");
-                    srcs["BGM2"].Play();
-                    srcs["BGM3"].Play();
-                    RestartSource(s, true, 0.33f, 1.5f);
-               }
-            }
-            //if we're coming from the forest, cue up the cellar door closing clip         
-            if (name == "MiscEntity" && fromScene == 1) 
-            {
-                s.clip = Resources.Load<AudioClip>(pathInteract + "Door/cabin-door-open-0");
-                s.loop = false;
-                s.volume = 0.5f;
-                s.Play();
-            }
-
-            if (name == "Cutscene" )
-            {
-                s.clip = null;
-            } 
-            
-            if (name == "AmbMisc")
-            {
-                s.clip = null;
-                playAmbMisc = false;
-            }
-
-            if (name == "AmbArea") 
-            {
-                playAmbArea = true;
-                s.clip = Resources.Load<AudioClip>(pathAmb + "Cabin/Basement/basement-drips");
-                RestartSource(s, true, 0.02f, 1.5f);
-            }
+        //if coming from the starting forest scene, load correct audio file
+        if(fromScene.IsOneOf(0, 1)){
+            bgm.clip = Resources.Load<AudioClip>(pathBGM + "cabin-theme-A1");
+            bgm2.Play();
+            bgm3.Play();
+            RestartSource(bgm, true, bgmVolume, defaultFadeTime);
         }
-    }
-    void ToHallway(){
-        foreach(KeyValuePair<string, AudioSource> src in srcs){
-
-            string name = src.Key;
-            AudioSource s = src.Value; 
-
-            if (name == "AmbMisc") {
-                playAmbMisc = false;
-                Stop(false, true, s);
-                s.clip = null;
-            }
-            if (name == "AmbArea") {
-                playAmbArea = false;
-                Stop(false, true, s);
-                s.clip = null;
-            }
+        //if we're coming from the forest, cue up the cellar door closing clip         
+        if (fromScene == 1) 
+        {
+            miscEntity.volume = 0.5f;
+            miscEntity.PlayOneShot(Resources.Load<AudioClip>(pathInteract + "Door/cabin-door-open-0"));
         }
+
+        ambArea.clip = Resources.Load<AudioClip>(pathAmb + "Cabin/Basement/basement-drips");
+        RestartSource(ambArea, true, areaAmbienceVolume, defaultFadeTime);      
+    } 
+    void ToAtticStairs(){
+        bgm.Pause();
+        bgm3.Pause();
+        bgm2.Pause();
+
+        ambMisc.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");
+        ambMisc.volume = 0.001f;
+        ambMisc.Play();
+        RestartSource(ambMisc, true, 0.01f, 3f);
     }
-    void RestartSource(AudioSource s, bool fade = false, float targetVolume = 0.25f, float duration = 0.01f, bool stop = false)
-    {      
+    void ToAttic(){ //Do we want the music to play automatically, or should it happen when the transformation starts?
+        bgm.clip = Resources.Load<AudioClip>(pathBGM + "Monster_Chase_Full");
+        bgm.volume = 0.01f;
+        RestartSource(bgm, true, bgmVolume, defaultFadeTime);
+    }
+    void RestartSource(AudioSource s, bool fade = false, float targetVolume = 0.5f, float duration = 2.5f, bool stop = false){      
             if (stop) 
             {
                 if (fade) 
@@ -453,18 +362,16 @@ public class AudioManager : MonoBehaviour
             } else {
                 if (fade) 
                 {
-                    if (!s.isPlaying) s.Play();
+                    if (!s.isPlaying) miscEntity.Play();
                     StartCoroutine(Start(s, targetVolume, duration, stop));
                 }
                 else {
                     s.volume = targetVolume;
-                    s.Play();
+                    miscEntity.Play();
                 }
             }         
     }
-
-    private static IEnumerator Start(AudioSource audioSource, float targetVolume = 1f, float duration = 3f, bool stop = false)
-    {   //taken from https://johnleonardfrench.com/how-to-fade-audio-in-unity-i-tested-every-method-this-ones-the-best/ 
+    private static IEnumerator Start(AudioSource audioSource, float targetVolume = 1f, float duration = 3f, bool stop = false){   //taken from https://johnleonardfrench.com/how-to-fade-audio-in-unity-i-tested-every-method-this-ones-the-best/ 
         if (audioSource == null)
         {
             yield break;
@@ -473,20 +380,22 @@ public class AudioManager : MonoBehaviour
         float start = audioSource.volume;
         if (!audioSource.isPlaying) audioSource.Play();
         while (currentTime < duration)
-        {
+        {   
+            _instance.fading = true;
+            
             currentTime += Time.deltaTime;
             audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
             yield return null;
 
         }
         if (stop)
-        {
+        {   
             yield return new WaitUntil(() => audioSource.volume >= 0.001f);
             audioSource.Stop();
-        } 
+        }
+        _instance.fading = false;
         yield break;
     }
-
     void Stop(bool all = false, bool fade = false, AudioSource s = null){   
         
         if(all){
@@ -495,80 +404,99 @@ public class AudioManager : MonoBehaviour
                 // if audio source isn't a Cutscene
                 if (src.Key != "Cutscene") 
                 {   
-                    if (fade) { StartCoroutine(Start(s, 0f, 1.5f, true));;
+                    if (fade) { StartCoroutine(Start(s, 0f, defaultFadeTime, true));;
                     } else {src.Value.Stop();}
                        
                 }
             } 
         //single audio source
         } else if (s != null) {
-            if (fade){ StartCoroutine(Start(s, 0f, 1.5f, true));
-            } else {s.Stop();}
+            if (fade){ StartCoroutine(Start(s, 0f, defaultFadeTime, true));
+            } else s.Stop();
         }
-    }
-       
+    }  
     void CheckPlayer(){
+        
+        AudioClip clip;
         PlayerState state = p.GetState();
-        AudioSource s = srcs["MiscEntity"];
-        AudioClip clip = null;
 
         //Does the player have a reason to make a sound?
         if(!pA.isPlaying && !p.touchingWall && state != PlayerState.Idle) {
-            //if walking or running, play appropriate footfall sfx
+           
+           //if walking or running, play appropriate footfall sfx
             if(state.IsOneOf(PlayerState.Walking, PlayerState.Running)) PlayerFootfall(state);
             
             if (state == PlayerState.Trapped){
-                //TO DO: specific scene trapped logic
+
                 // forest: mud trap
                 if (scene == 1 || scene == 8)
-                {   //Debug.Log("In Forest Trap");
-
+                {   
                     if (!trapEntered)
                     {   
                         clip = Resources.Load<AudioClip>(pathInteract + "Traps/Mud/mud-trap-entered-0");
-                        //Debug.Log("Checking trap. Is clip null? " + clip == null);
-                        s.PlayOneShot(clip, 0.3f);
+                        miscEntity.PlayOneShot(clip, 0.3f);
                         trapEntered = true;
-                    } else if (Input.GetKeyDown(Controls.Mash) && !s.isPlaying)
-                    {   print("key pressed");
+                    } else if (Input.GetKeyDown(Controls.Mash) && !miscEntity.isPlaying)
+                    {   
                         clip = Resources.Load<AudioClip>(pathInteract + "Traps/Mud/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString());
-                        //Debug.Log("Checking trap. Is clip null? " + clip == null);
-                        s.PlayOneShot(clip, 0.3f);
+                        miscEntity.PlayOneShot(clip, 0.3f);
                     }
                 
                 // hallway: prying board off the door 
-                } else if (scene == 3)
-                {
+                } else if (scene == 3){
+                
                     if (Input.GetKeyDown(Controls.Mash))
                     {   
                         //if this is the last mash, play the final sound
                         if (PlayerPrefs.GetInt("DoorOff") == 1)
                         {   
                             clip = Resources.Load<AudioClip>(pathInteract + "Traps/Plywood/plywood-pull-end");
-                            //Debug.Log("Checking trap. Is clip null? " + clip == null);
-                            s.PlayOneShot(clip, 0.5f);
+                            miscEntity.PlayOneShot(clip, 0.75f);
                         } 
-                        else if (!s.isPlaying)
+                        else if (!miscEntity.isPlaying)
                         {   
                             clip = Resources.Load<AudioClip>(pathInteract + "Traps/Plywood/plywood-pull-" + UnityEngine.Random.Range(0,8).ToString());
-                            //Debug.Log("Checking trap. Is clip null? " + clip == null);
-                            s.PlayOneShot(clip, 0.5f);
+                            miscEntity.PlayOneShot(clip, 0.75f);
                         }
                     }
-                  //kitchen: walking through the gore  
-                } else if (scene == 4 && !s.isPlaying)
+                //kitchen: walking through the gore  
+                } else if (scene == 4 && !miscEntity.isPlaying)
                 {
                         clip = Resources.Load<AudioClip>(pathInteract + "Traps/Gore/gore-trudge-" + UnityEngine.Random.Range(0,8).ToString());
-                        //Debug.Log("Checking trap. Is clip null? " + clip == null);
-                        s.PlayOneShot(clip, 0.75f);
+                        miscEntity.PlayOneShot(clip, 0.75f);
                 }
             //player is no longer trapped
-            } else { trapEntered = false; }
+            } else trapEntered = false;  
+
+            //is player hiding??
+            if (state == PlayerState.Hiding && !miscEntity.isPlaying){
+                //set appropriate heartbeat intensity according to progression
+                if (PlayerPrefs.GetInt("AtticKey") == 1){ 
+                    clip = Resources.Load<AudioClip>(pathInteract + "heartbeat-fast");
+                } else if (PlayerPrefs.GetInt("CrowBar") == 1){ 
+                    clip = Resources.Load<AudioClip>(pathInteract + "heartbeat-med");
+                } else {
+                    clip = Resources.Load<AudioClip>(pathInteract + "heartbeat-slow");
+                }
+                miscEntity.clip = clip;
+                miscEntity.time = UnityEngine.Random.Range(0, clip.length);
+                miscEntity.PlayOneShot(clip);
+            }
+        }
+        //stop hiding sound if player is no longer hiding
+        if (state != PlayerState.Hiding && miscEntity.isPlaying) {
+            if (miscEntity.clip.name.IsOneOf("heartbeat-fast", "heartbeat-med", "heartbeat-slow")) miscEntity.Stop();
         }
     }
-
-    void PlayerFootfall(PlayerState state)
-    {    
+    void SetPlayerFootFalls(){
+        if (woodFloors.Contains(scene))
+        {
+            p.SetFootfalls(pathEntity+"Player/Footfalls/Wood/Walk", pathEntity+"Player/Footfalls/Wood/Run");
+        } else {
+            p.SetFootfalls(pathEntity+"Player/Footfalls/Dirt/Walk", pathEntity+"Player/Footfalls/Dirt/Run");
+        }
+    }
+    void PlayerFootfall(PlayerState state){    
         //if running, play a random running footfall
         if (state == PlayerState.Running && p.GetAnimationIndex().IsOneOf(2, 7)) 
         {
@@ -580,23 +508,27 @@ public class AudioManager : MonoBehaviour
             pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.25f);      
         }
     }  
-
-    private float GetTimeRemaining(AudioSource s) 
-    {   //get the amount of time left in the currently playing clip
-        float len = s.clip.length;
-        return len - s.time;
-    }
-
-    private IEnumerator DelayedStart(AudioSource s, AudioClip clip, float waitTime, bool oneshot = false)
+    // used when player dies
+    public void StopAllSources()
     {
-        yield return new WaitForSecondsRealtime(waitTime);
-        
-        if(oneshot) {
-            s.PlayOneShot(clip);
-        } else {
-            s.loop = true;
-            s.clip = clip;
-            s.Play();
+        foreach (AudioSource src in srcs.Values)
+        {
+            src.Stop();
+        }
+    }
+    private void PopulateAudioSources(){
+
+        foreach(KeyValuePair<string, AudioSource> src in srcs)
+        {
+            string name = src.Key;
+            AudioSource s = src.Value;
+            if(name == "BGM") bgm = s;
+            if(name == "BGM2") bgm2 = s;
+            if(name == "BGM3") bgm3 = s;
+            if(name == "AmbArea") ambArea = s;
+            if(name == "AmbMisc") ambMisc = s;
+            if(name == "MiscEntity") miscEntity = s;
+            if(name == "Cutscene") cutscene = s;
         }
     }
 }

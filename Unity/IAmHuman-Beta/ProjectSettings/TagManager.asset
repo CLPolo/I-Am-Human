@@ -24,6 +24,9 @@ TagManager:
   - Crowbar
   - AtticKey
   - CrawlerSpawner
+  - StudyKey
+  - LilyBear
+  - LilyShoe
   layers:
   - Default
   - TransparentFX

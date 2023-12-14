@@ -1,37 +1,7 @@
 fileFormatVersion: 2
 guid: 9e03a7cfe3d63fe439112250f3b404bb
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 2460057634390016682
-    second: cabin_bookshelf_PUSHPULL_L
-  - first:
-      213: 4573298704038476541
-    second: cabin_bookshelf_PUSHPULL_R
-  - first:
-      213: 872784613582475285
-    second: cabin_box_PUSHPULL_L
-  - first:
-      213: 3973653968708305931
-    second: cabin_box_PUSHPULL_R
-  - first:
-      213: -4768457855529073602
-    second: cabin_chest_PUSHPULL_L
-  - first:
-      213: 3492280409006696299
-    second: cabin_chest_PUSHPULL_R
-  - first:
-      213: -8330817218503528415
-    second: cabin_chair2_PUSHPULL_R
-  - first:
-      213: 6146944280150923878
-    second: cabin_chair1_PUSHPULL_L
-  - first:
-      213: -7438464218900731242
-    second: cabin_chair1_PUSHPULL_R
-  - first:
-      213: -5356541325998607736
-    second: cabin_chair2_PUSHPULL_L
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -61,7 +31,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -70,12 +40,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,231 +71,9 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: cabin_bookshelf_PUSHPULL_L
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 129
-        width: 30
-        height: 53
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa20ec07261e32220800000000000000
-      internalID: 2460057634390016682
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cabin_bookshelf_PUSHPULL_R
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 129
-        width: 30
-        height: 53
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dfab7f1e0fe977f30800000000000000
-      internalID: 4573298704038476541
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cabin_box_PUSHPULL_L
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 97
-        width: 26
-        height: 22
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 510920a5bf0cc1c00800000000000000
-      internalID: 872784613582475285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cabin_box_PUSHPULL_R
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 97
-        width: 26
-        height: 22
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b040e213b31452730800000000000000
-      internalID: 3973653968708305931
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cabin_chest_PUSHPULL_L
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 65
-        width: 44
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e34c4c248d803ddb0800000000000000
-      internalID: -4768457855529073602
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cabin_chest_PUSHPULL_R
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 65
-        width: 44
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b6766e27782177030800000000000000
-      internalID: 3492280409006696299
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cabin_chair2_PUSHPULL_R
-      rect:
-        serializedVersion: 2
-        x: 126
-        y: 54
-        width: 43
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 120b36ad0edf26c80800000000000000
-      internalID: -8330817218503528415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cabin_chair1_PUSHPULL_L
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 17
-        width: 42
-        height: 39
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 66ad38041455e4550800000000000000
-      internalID: 6146944280150923878
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cabin_chair1_PUSHPULL_R
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 17
-        width: 42
-        height: 39
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 69ae7fd143445c890800000000000000
-      internalID: -7438464218900731242
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cabin_chair2_PUSHPULL_L
-      rect:
-        serializedVersion: 2
-        x: 124
-        y: 16
-        width: 43
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 882372f4b0eb9a5b0800000000000000
-      internalID: -5356541325998607736
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []

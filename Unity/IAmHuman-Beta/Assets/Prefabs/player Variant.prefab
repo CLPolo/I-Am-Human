@@ -95,6 +95,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
+      propertyPath: stuckCycle.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
       propertyPath: runCycle.Array.data[0]
       value: 
       objectReference: {fileID: 5840108822926873604, guid: c0ab95059499e5c4d944d6bc4d81da73,
@@ -109,6 +114,18 @@ PrefabInstance:
       propertyPath: footstepsWalk.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: stuckCycle.Array.data[0]
+      value: 
+      objectReference: {fileID: 3542248538078067488, guid: 86380ee009e464848b90dd8b3f658c7c,
+        type: 3}
+    - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
+        type: 3}
+      propertyPath: stuckCycle.Array.data[1]
+      value: 
+      objectReference: {fileID: 4388567703823820616, guid: 86380ee009e464848b90dd8b3f658c7c,
+        type: 3}
     - target: {fileID: 7522277464662625302, guid: 58a2ae1401824a637aece98bdc2381cd,
         type: 3}
       propertyPath: footstepsWalk.Array.data[0]

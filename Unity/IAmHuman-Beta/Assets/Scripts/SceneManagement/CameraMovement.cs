@@ -6,14 +6,14 @@ using UnityEngine.Playables;  // https://learn.unity.com/tutorial/starting-timel
 
 public class CameraMovement : MonoBehaviour
 {
-
+    private LogicScript logic;
     public Transform player;
     public Vector3 offset;
     public Player playerAccess = null;
 
     [Header("Screen Shake")]
-    public AnimationCurve hideCurve;
     public AnimationCurve monsterFootstepsCurve;
+    public AnimationCurve stuckCurve;
     private bool shaking = false;
 
     [Header("Level Bounds")]
@@ -24,13 +24,24 @@ public class CameraMovement : MonoBehaviour
 
     public static bool checkBoundsAgain = false;
 
+    [Header("Camera Control")]
+    private int pans = 0;  // The number of camera pans completed
+
+    private float StartSize;
+    private float noSmallerThan;
+    private bool currentlyShrinking = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        logic = LogicScript.Instance;
         player = GameObject.FindWithTag("Player").transform;
      
         offset.Set(0f, cameraYOffset, -10f);
         CheckBounds();
+
+        StartSize = this.GetComponent<Camera>().orthographicSize;
+        noSmallerThan = StartSize / 1.25f;
     }
 
     private void CheckBounds()
@@ -57,10 +68,10 @@ public class CameraMovement : MonoBehaviour
             CheckBounds();
             checkBoundsAgain = false;
         }
-        if (playerAccess.shrinkCamera && PlayerPrefs.GetInt("ShrinkCamera") != 1)
+        if (playerAccess.shrinkCamera)
         {
-            PlayerPrefs.SetInt("ShrinkCamera", 1);
             StartCoroutine(ShrinkCamera());
+            playerAccess.shrinkCamera = false;  // Set to false so it does not repeat (only need to call it once)
         }
         if (!playerAccess.cameraCutscene)
         {
@@ -74,45 +85,100 @@ public class CameraMovement : MonoBehaviour
                 StartCoroutine(threeCrashes(0.3f, monsterFootstepsCurve, playerAccess.monsterFootsteps[0]));
                 PlayerPrefs.SetInt("MonsterEmerges", 1);
             }
-            //if (playerAccess != null && playerAccess.GetState() == PlayerState.Hiding && !shaking)
-            //{
-            //    shaking = true;
-            //    StartCoroutine(Shaking());
-            //}  ?? for some reason the player.instance isn't working ??
-            if (Input.GetKeyDown(KeyCode.K))  // just for test purposes until the above is figured out
+            if (!currentlyShrinking)
             {
-                shaking = true;
-                StartCoroutine(Shaking(1f, hideCurve));
+                HandleHiding();
+                HandleStuck();
             }
         }
         else
         {
             // We are in a cutscene involving camera movement, so disable the other camera movement
-            if (playerAccess.finalCutscene && PlayerPrefs.GetInt("ShrinkCamera") == 2  && PlayerPrefs.GetInt("NumPans") != -1)
+            if (playerAccess.finalCutscene)
             {
-                leftBound = -100;
+                leftBound = -100;  // Avoid weird camera snapping issue
                 // After the finalCutscene is started and camera is finished Shrinking we can Animate
                 // We are in the final cutscene and the camera has shrunk enough
-                switch (PlayerPrefs.GetInt("NumPans"))
+                switch (pans)
                 {
                     case 0:
-                        PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
-                        StartCoroutine(PanCamera(1, -0.66f));
+                        // We want a slow pan for a slow reveal of the car
+                        pans = -1;  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(1, -0.66f, 5, 4));  
                         break;
                     case 1:
-                        PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
-                        StartCoroutine(PanCamera(2, 3.56f));
+                        // Move to the right to make space for dialogue box
+                        pans = -1;  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(2, 3.56f, 2, 0.2f)); // the 0.2 second wait is needed to display the text... don't ask me why
                         break;
-                    //case 3:
-                    //    PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
-                    //    StartCoroutine(PanCamera(3, 13.5f));
-                    //    break;
-                    //case 4:
-                    //    PlayerPrefs.SetInt("NumPans", -1);  // This way we cannot advance until coroutine finishes
-                    //    StartCoroutine(PanCamera(4, 17.6f));
-                    //    break;
+                    case 2:
+                        // Move to show monster again and flip the character
+                        pans = -1;  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(3, 9f, 2));
+                        break;
+                    case 3:
+                        // Move to og position
+                        playerAccess.Flip();  // To face the monsert
+                        pans = -1;  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(4, 13.5f, 2, 0.2f));
+                        // playerAccess.SpriteRenderer.sprite = playerAccess.idleHide;  // Character "Falls to knees" FIX IF WE HAVE TIME
+                        break;
+                    case 4:
+                        pans = -1;  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(5, 17.6f, 2, 0.2f));  // Center on the monster "I..."
+                        break;
+                    case 5:
+                        gameObject.GetComponent<Camera>().orthographicSize = 3.5f;  // Zoom in on monster
+                        pans = -1;  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(6, 17.6f, 0.2f, 0.2f));  // Play the next text "am..."
+                        break;
+                    case 6:
+                        gameObject.GetComponent<Camera>().orthographicSize = 3f;
+                        pans = -1;  // This way we cannot advance until coroutine finishes
+                        StartCoroutine(PanCamera(7, 17.6f, 0.2f, 0.2f));  // Play the final text "HUMAN"
+                        break;
+                    case 7:
+                        // We are done! Move to end credits
+                        logic.playMonsterRoar();
+                        gameObject.GetComponent<Camera>().orthographicSize = 2.5f;  // One final zoom
+                        pans = 8;  // Final time so this line doesnt replay
+                        break;
                 }
             }
+        }
+    }
+
+    private void HandleHiding()
+    {
+        // if player is hiding, mildly zooms cam and once at 'full' zoom (noSmallerThan % of the canvas has been zoomed in on) it has a mild camera shake (as dictated by hideCurve on camera's inspector)
+        CheckBounds();
+        if (playerAccess.GetState() == PlayerState.Hiding)  // if the player is currently hiding
+        {
+            if (this.GetComponent<Camera>().orthographicSize <= noSmallerThan)  // if it's zoomed to max
+            {
+                this.GetComponent<Camera>().orthographicSize = this.GetComponent<Camera>().orthographicSize;  // keep it at this size
+            }
+            else this.GetComponent<Camera>().orthographicSize = this.GetComponent<Camera>().orthographicSize / 1.0002f;  // if not full zoom, slowly zoom (smaller num = slower, must be above 1 tho or else zooms out not in)
+        }
+        else  // not hiding
+        {
+            if (this.GetComponent<Camera>().orthographicSize < StartSize)  // if not back to normal
+            {
+                this.GetComponent<Camera>().orthographicSize = this.GetComponent<Camera>().orthographicSize * 1.004f;  // zooms out faster than zoom in (but not immediately snap to normal)
+            }
+            else if (this.GetComponent<Camera>().orthographicSize >= StartSize)  // if back to normal
+            {
+                this.GetComponent<Camera>().orthographicSize = StartSize;  // resets size to EXACT start size (must do this to prevent slight dif in cam size cause of multiplication / division)
+            }
+        }
+    }
+
+    private void HandleStuck()
+    {
+        // if player is stuck, does the same camera shake as the hiding. Most of the code is copied from HandleHiding() with the camera effects removed
+        if (playerAccess.GetState() == PlayerState.Trapped)  // if the player is currently trapped
+        {
+            if (!shaking) { shaking = true; StartCoroutine(Shaking(0.2f, stuckCurve)); }  // start the shake process as long as it's not already shaking
         }
     }
 
@@ -122,9 +188,10 @@ public class CameraMovement : MonoBehaviour
 
         while (elapsedTime < shakeDuration)
         {
+            Vector3 currentCamera = transform.position;
             elapsedTime += Time.deltaTime;
             float strength = curve.Evaluate(elapsedTime / shakeDuration);
-            transform.position = player.position + offset + Random.insideUnitSphere * strength;
+            transform.position = currentCamera + Random.insideUnitSphere * strength;
             yield return null;
         }
 
@@ -158,77 +225,59 @@ public class CameraMovement : MonoBehaviour
 
     IEnumerator ShrinkCamera()
     {
+        currentlyShrinking = true;
         // Shrinks the camera to prepare for the final cutscene
         while (gameObject.GetComponent<Camera>().orthographicSize > 4)
         {
             gameObject.GetComponent<Camera>().orthographicSize -= 0.1f;
             yield return new WaitForSeconds(0.05f);
         }
-        PlayerPrefs.SetInt("ShrinkCamera", 2);  // We are ready to begin camera pans
+        if (gameObject.GetComponent<Camera>().orthographicSize <= 4)
+        {
+            playerAccess.finalCutscene = true;  // We are ready to begin the final cutscene
+        }
     }
 
-    IEnumerator PanCamera(int panNum, float xCoord)
+    IEnumerator PanCamera(int panNum, float xCoord, float panTime, float waitAfterPan = 0)
     {
-        // Pans the camera in a specific direction
+        /// ARGUMENTS:
+        /// panNum: Which camera pan this is (i.e. 1st, 2nd, 3rd pan)
+        /// xCoord: The final x coordinate of the camera position
+        /// panTime: float representing how long the pan should take (in seconds)
+        /// waitAfterPan: time (in seconds) to wait after panning. Can be left blank for a 0 second wait.
+
+        // Debug.Log(GameObject.Find("Cutscene Triggers/EndingCutscene").GetComponent<PuzzleTargetScript>().GetTextPlayed());
+        yield return new WaitUntil( () => GameObject.Find("Cutscene Triggers/EndingCutscene").GetComponent<PuzzleTargetScript>().GetTextPlayed());
         Vector3 originalLoc = gameObject.transform.position;
-        switch (panNum)
+        if (xCoord > originalLoc.x)
         {
-            case 1:
-                while (gameObject.transform.position.x > xCoord)
-                {
-                    // We want a slow pan for a slow reveal of the car
-                    gameObject.transform.position = new Vector3(
-                        gameObject.transform.position.x - ((originalLoc.x - xCoord)*Time.deltaTime/5f),  // Takes 5 seconds
-                        originalLoc.y,
-                        originalLoc.z);
-                    yield return null;
-                }
-                yield return new WaitForSeconds(2);
-                break;
-            case 2:
-                // Move to the right to make space for dialogue box
-                while (gameObject.transform.position.x < xCoord)
-                {
-                    gameObject.transform.position = new Vector3(
-                        gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / 3f),  // Takes 3 seconds
-                        originalLoc.y,
-                        originalLoc.z);
-                    yield return null;
-                }
-                PlayerPrefs.SetInt("FinalDialogue", 1);
-                //yield return new WaitUntil(()=>PlayerPrefs.GetInt("FinalDialogue") == 0);
-                break;
-                // DROP TO KNEES HERE FOR FUTURE REFERENCE
-            //case 3:
-            //    while (gameObject.transform.position.x < xCoord)
-            //    {
-            //        gameObject.transform.position = new Vector3(
-            //            gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / 3f),  // Takes 2 seconds
-            //            originalLoc.y,
-            //            originalLoc.z);
-            //        yield return null;
-            //    }
-            //    PlayerPrefs.SetInt("FinalDialogue", 2);
-            //    yield return new WaitUntil(() => PlayerPrefs.GetInt("FinalDialogue") == 0);
-            //    break;
-            //case 4:
-            //    while (gameObject.transform.position.x < xCoord)
-            //    {
-            //        gameObject.transform.position = new Vector3(
-            //            gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / 3f),  // Takes 2 seconds
-            //            originalLoc.y,
-            //            originalLoc.z);
-            //        yield return null;
-            //    }
-            //    while (gameObject.GetComponent<Camera>().orthographicSize > 3)
-            //    {
-            //        gameObject.GetComponent<Camera>().orthographicSize -= 0.1f;
-            //        yield return new WaitForSeconds(0.05f);
-            //    }
-            //    PlayerPrefs.SetInt("FinalDialogue", 3);
-            //    yield return new WaitUntil(() => PlayerPrefs.GetInt("FinalDialogue") == 0);
-            //    break;
+            while (gameObject.transform.position.x < xCoord)
+            {
+                gameObject.transform.position = new Vector3(
+                    gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / panTime),  // Takes <panTime> seconds
+                    originalLoc.y,
+                    originalLoc.z);
+                yield return null;
+            }
         }
-        PlayerPrefs.SetInt("NumPans", panNum);
+        else
+        {
+            while (gameObject.transform.position.x > xCoord)
+            {
+                gameObject.transform.position = new Vector3(
+                    gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / panTime),  // Takes <panTime> seconds
+                    originalLoc.y,
+                    originalLoc.z);
+                yield return null;
+            }
+        }
+        PlayerPrefs.SetInt("FinalDialogue", panNum);  // This allows for text to properly show
+        // Now that we have panned, we must wait:
+        if (waitAfterPan != 0)
+        {
+            yield return new WaitForSeconds(waitAfterPan);
+        }
+        // After waiting, we can set the pans variable to the next value to tell the code we are ready to do the next camera pan
+        pans = panNum;
     }
 }

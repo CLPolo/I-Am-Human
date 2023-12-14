@@ -1419,6 +1419,7 @@ MonoBehaviour:
   TextList: []
   FreezePlayer: 0
   PlaySound: 0
+  OneShotPerInteract: 1
   Sounds: []
   Audio: {fileID: 0}
   Unlock: 1
@@ -1446,6 +1447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 1
   IsInteractable: 1
+  Blocked: 0
 --- !u!61 &799326116
 BoxCollider2D:
   m_ObjectHideFlags: 0
