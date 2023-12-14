@@ -211,12 +211,12 @@ public class InteractableObjectScript : MonoBehaviour
             PlayerPrefs.SetInt(PlayerPrefs.GetString("Pickup"), 1);
             if (PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight")) { this.gameObject.SetActive(false); }  // items w/ text (crowbar, keys, lily objs) handled seperately in their respective handle funcs
             AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/item-pickup");
-            player.AudioSource.PlayOneShot(clip, 0.5f);
+            if (!player.AudioSource.isPlaying) player.AudioSource.PlayOneShot(clip, 0.5f);
             if (this.tag == "Flashlight")
             {
                 clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cellar-door-close-0");
                 player.AudioSource.clip = clip;
-                player.AudioSource.PlayOneShot(clip);
+                if (!player.AudioSource.isPlaying) player.AudioSource.PlayOneShot(clip);
             }
         }
 
