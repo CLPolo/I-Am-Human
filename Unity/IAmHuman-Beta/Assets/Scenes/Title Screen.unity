@@ -1307,7 +1307,7 @@ MonoBehaviour:
     type: 3}
   selected: {fileID: 4860169474804098906, guid: 51b1b3e1a9241294da5f8d0ed8ab8e7b,
     type: 3}
-  disableParentOnClick: 1
+  disableOnClick: []
 --- !u!114 &1295206993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1491,7 +1491,7 @@ MonoBehaviour:
     type: 3}
   selected: {fileID: 7557056561959464660, guid: e35e3ae6f4db1b042b61453640ac08c3,
     type: 3}
-  disableParentOnClick: 1
+  disableOnClick: []
 --- !u!114 &1340034888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1714,7 +1714,7 @@ MonoBehaviour:
     type: 3}
   selected: {fileID: -8617775070111067650, guid: 51b1b3e1a9241294da5f8d0ed8ab8e7b,
     type: 3}
-  disableParentOnClick: 1
+  disableOnClick: []
 --- !u!114 &1396885450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2506,7 +2506,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Forest Copy (screen fade test)
+          m_StringArgument: Forest Intro
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2057066677
@@ -2563,7 +2563,7 @@ MonoBehaviour:
     type: 3}
   selected: {fileID: 5911925008093746337, guid: e35e3ae6f4db1b042b61453640ac08c3,
     type: 3}
-  disableParentOnClick: 0
+  disableOnClick: []
 --- !u!1 &2105006531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,7 +2619,7 @@ MonoBehaviour:
     type: 3}
   selected: {fileID: -8617775070111067650, guid: 51b1b3e1a9241294da5f8d0ed8ab8e7b,
     type: 3}
-  disableParentOnClick: 1
+  disableOnClick: []
 --- !u!114 &2105006534
 MonoBehaviour:
   m_ObjectHideFlags: 0
