@@ -246,6 +246,7 @@ public class Player : AnimatedEntity
         {
             // This is when the monster sees you and you are not behind the box
             logic.Death();
+            
         }
         else if (collision.gameObject.CompareTag("Key"))
         {

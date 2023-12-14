@@ -20,7 +20,10 @@ public class LevelLoader : MonoBehaviour
     public Animator fadeAnimator = null;
     public bool HoldLonger = false;  // if we want start fade to be delayed
     public float HoldFor = 0.0f;  // how long we want screen to be dark for initially
- 
+
+    private GameObject deathFade = null;
+    private GameObject playerAnimImage = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +51,28 @@ public class LevelLoader : MonoBehaviour
             StartCoroutine(FreezeOnFadeIn());
             if (HoldLonger) { StartCoroutine(HoldDark()); }  // if we are holding on black
             else { fadeAnimator.SetBool("TimeMet", true); }  // if not auto fades in
+
+            deathFade = GameObject.Find("Canvas (Follows Player)/DeathScreenFade"); // finds the deathscreen anim object under canvas, needs to be active to be found
+            playerAnimImage = GameObject.Find("Canvas (Follows Player)/DeathScreenFade/Player");
+            deathFade.SetActive(false);  // so we turn it off immediately
         }
     }
+
+    void Update()
+    {
+        // below handles the player death animation
+        if (PlayerPrefs.GetInt("Dead") == 1)  // if player is dead
+        {
+            deathFade.gameObject.SetActive(true);  // turn on the deathscreen anim object (has the bkgrnd & player image w/ anims)
+            fadeAnimator.SetBool("Death", true);  // starts the animation
+            if (fadeAnimator.GetCurrentAnimatorStateInfo(0).IsName("DeathScreen"))  // once the animation is done (state transitions to 'DeathScreen') 
+            {
+                deathFade.gameObject.SetActive(false);  // turn off deathfade screen / obj so we can see the death screen
+                LogicScript.Instance.ActivateDeathScreen();  // turns on the death screen
+            }
+        }
+    }
+
 
     [RuntimeInitializeOnLoadMethod]
 

@@ -146,11 +146,16 @@ public class LogicScript : MonoBehaviour
         //Debug.Log("Called w/ val == " + val);
         // Activates death screen
         IsPaused = val;  // will prevent player from moving after death
-        if (val)
-        {
-            DeathScreen.SetActive(val);
-            AudioManager.Instance.StopAllSources();
-        }
+
+        // Miriam commented below out entirely. the reson for audio call is beside it, reason for deathscreen is that it is now being activated from a function (ActivateDeathScreen) that's called by levelloader
+        // I left it there in case we find major issues with my implementation.
+        //
+        //if (val)  
+        //{
+        //    //DeathScreen.SetActive(val);
+        //    //AudioManager.Instance.StopAllSources();   // this call wasn't letting the rest of the function be called, and without it the audio all stops anyways...?
+        //}
+
         //audioSource.PlayOneShot(audioSource.clip, 0.5f)
         //AudioListener.pause = IsPaused;
         player.SetState(PlayerState.Frozen);
@@ -257,6 +262,11 @@ public class LogicScript : MonoBehaviour
             }
         }
 
+    }
+
+    public void ActivateDeathScreen()  // allows the death screen to be activated AFTER the death anim on canvas (called from levelloader)
+    {
+        DeathScreen.SetActive(true);
     }
 
     public void playMonsterRoar()
