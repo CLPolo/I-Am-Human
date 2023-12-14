@@ -64,7 +64,7 @@ public class LevelLoader : MonoBehaviour
             yield return new WaitForSeconds(freezeTime);
             player.SetState(PlayerState.Idle);
         }
-        PlayerPrefs.SetInt("Fading", 0);
+        PlayerPrefs.SetInt("Fading", 2);
     }
     public IEnumerator HoldDark()
     {
@@ -150,14 +150,17 @@ public class LevelLoader : MonoBehaviour
         if (PlayerPrefs.HasKey(getSceneName()))
         {
             string key = getSceneName() + "player";
-            Vector3 pos = new Vector3(PlayerPrefs.GetFloat(key+'x'), PlayerPrefs.GetFloat(key+'y'), PlayerPrefs.GetFloat(key+'z'));
-            this.gameObject.transform.position = pos;
+            player.transform.position = new Vector3(PlayerPrefs.GetFloat(key + 'x'), PlayerPrefs.GetFloat(key + 'y'), PlayerPrefs.GetFloat(key + 'z')); ;
             CameraMovement.checkBoundsAgain = true;
 
             foreach (GameObject obj in saveObjectPositions)
             {
                 key = getSceneName() + obj.name;
-                obj.transform.position = new Vector3(PlayerPrefs.GetFloat(key + 'x'), PlayerPrefs.GetFloat(key + 'y'), PlayerPrefs.GetFloat(key + 'z'));
+                Vector3 pos = new Vector3(PlayerPrefs.GetFloat(key + 'x'), PlayerPrefs.GetFloat(key + 'y'), PlayerPrefs.GetFloat(key + 'z'));
+                if (obj.tag != "Enemy" || Math.Abs(player.transform.position.x - pos.x) > 2.5)
+                {
+                    obj.transform.position = pos;
+                }
             }
 
             foreach (GameObject obj in saveObjectActive)

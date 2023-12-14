@@ -26,6 +26,9 @@ TextureImporter:
   - first:
       213: -3897862059077438994
     second: kitchen_stuff_note
+  - first:
+      213: 8426796914713946112
+    second: kitchen_stuff_door_blood
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -198,10 +201,10 @@ TextureImporter:
       name: kitchen_door
       rect:
         serializedVersion: 2
-        x: 22
-        y: 10
-        width: 42
-        height: 63
+        x: 35
+        y: 17
+        width: 29
+        height: 56
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,6 +277,27 @@ TextureImporter:
       bones: []
       spriteID: ee17739eb1308e9c0800000000000000
       internalID: -3897862059077438994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kitchen_stuff_door_blood
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 10
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 008e1e7952ff1f470800000000000000
+      internalID: 8426796914713946112
       vertices: []
       indices: 
       edges: []

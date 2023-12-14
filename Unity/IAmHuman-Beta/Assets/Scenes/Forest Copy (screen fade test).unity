@@ -716,18 +716,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.31899452, y: 0.23004323}
+  m_Offset: {x: -0.638763, y: -0.20976591}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.92, y: 2.56}
+    oldSize: {x: 2.56, y: 3.52}
     newSize: {x: 5, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2820108, y: 1.743061}
+  m_Size: {x: 1.2824739, y: 1.3683023}
   m_EdgeRadius: 0
 --- !u!212 &192598264
 SpriteRenderer:
@@ -768,7 +768,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: d21ccb9c9bbff6e40a2944930d56d6e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24af0e3de95e2624fab8146a13ff2c89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -787,8 +787,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192598262}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -48.445732, y: 1.2300353, z: 0.38330078}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: -48.35, y: 1.118, z: 0.38330078}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1437555303}
   m_RootOrder: 0
@@ -1149,7 +1149,7 @@ SpriteRenderer:
   m_Size: {x: 4.16, y: 3.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &356663069
@@ -1232,6 +1232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 0
   IsInteractable: 0
+  Blocked: 0
 --- !u!61 &374679018
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3627,7 +3628,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: leftBound
-      value: 6
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -12802,7 +12803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1649731624
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13653,7 +13654,7 @@ GameObject:
   - component: {fileID: 1870322498}
   m_Layer: 0
   m_Name: Bear
-  m_TagString: Untagged
+  m_TagString: LilyBear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13675,11 +13676,11 @@ MonoBehaviour:
   Default: {fileID: -5088337885355641681, guid: 1ade3915d1f455e48909ad079c66672b,
     type: 3}
   Outline: {fileID: 1932529899675087231, guid: b296e76704935a0498993943ea277643, type: 3}
-  removeSprite: 0
+  removeSprite: 1
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: PRESS a TO INTERACT
-  ShowPromptOnce: 0
+  ShowPromptOnce: 1
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
   TextList:
@@ -14726,6 +14727,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780196874870, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -6.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780196874870, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 15.57
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}

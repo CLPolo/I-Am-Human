@@ -4,10 +4,10 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -1743194722132219160
-    second: bodies_DAVE
+    second: dave_body_key
   - first:
       213: -7739112529119816975
-    second: bodies_LILY
+    second: lily_body
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,7 +93,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bodies_DAVE
+      name: dave_body_key
       rect:
         serializedVersion: 2
         x: 29
@@ -101,7 +101,7 @@ TextureImporter:
         width: 32
         height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -114,7 +114,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bodies_LILY
+      name: lily_body
       rect:
         serializedVersion: 2
         x: 2
@@ -122,7 +122,7 @@ TextureImporter:
         width: 30
         height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
