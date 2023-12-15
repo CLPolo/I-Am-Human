@@ -448,7 +448,7 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             // COREY HELLO AGAIN!!!! hope ur doing even better than before :) the 4f in the call below is the wait time after you hit the trigger before lily runs and the text shows up
             // INCLUDING the wait for the deer head to dissapear, so adjust that for the sound time IF you want to add a new sound. Not sure if you do tho.
-            if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(4f, "Lily, wait!", false)); CoroutineRunning = true; };  // only calls coroutine once
+            if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(4f, "You need to stay close to me, it can be dangerous!", false)); CoroutineRunning = true; };  // only calls coroutine once
             if (TextTrigger && AffectedObject.activeSelf == true)  // once the hide stuff's done, lily starts running. Stops once she's turned off.
             {
                 LilyRunning(true);
@@ -510,7 +510,7 @@ public class PuzzleTargetScript : MonoBehaviour
         if (freezeBefore) { player.SetState(PlayerState.Frozen); }  // freezes before text pop up (wait for sound) in hallway
         yield return new WaitForSeconds(seconds);       // wait until deer gone
         TextTrigger = true;                             // text will pop up
-        if (TextToDisplay == null) TextToDisplay.Add(text);                        // w/ this message
+        TextToDisplay.Add(text);                        // w/ this message
     }
 
     private void LilyRunning(bool isForest)
