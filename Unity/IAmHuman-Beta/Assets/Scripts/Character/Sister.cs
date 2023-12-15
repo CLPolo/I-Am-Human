@@ -70,7 +70,9 @@ public class Sister : NPC
         }
 
         FollowPlayer();
-        Bark();
+        
+        Bark(); // Do we actually have barks?
+        
         if (SceneManager.GetActiveScene().name == "Hallway Hub")
         {
             if (PlayerPrefs.HasKey("DoneSisterCinematic"))
