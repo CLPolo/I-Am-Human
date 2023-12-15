@@ -1990,9 +1990,10 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
-      propertyPath: stuckCycle.Array.size
-      value: 8
-      objectReference: {fileID: 0}
+      propertyPath: stuckGuy
+      value: 
+      objectReference: {fileID: 3542248538078067488, guid: 86380ee009e464848b90dd8b3f658c7c,
+        type: 3}
     - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: footstepsWalk.Array.size

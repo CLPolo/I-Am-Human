@@ -485,7 +485,10 @@ public class AudioManager : MonoBehaviour
         }
         //stop hiding sound if player is no longer hiding
         if (state != PlayerState.Hiding && miscEntity.isPlaying) {
-            if (miscEntity.clip.name.IsOneOf("heartbeat-fast", "heartbeat-med", "heartbeat-slow")) miscEntity.Stop();
+            if (miscEntity?.clip != null && miscEntity.clip.name.IsOneOf("heartbeat-fast", "heartbeat-med", "heartbeat-slow"))
+            {
+                miscEntity.Stop();
+            }
         }
     }
     void SetPlayerFootFalls(){
