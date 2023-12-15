@@ -137,7 +137,7 @@ public class AudioManager : MonoBehaviour
                     crowbarFadeTriggered = true;
                 }
             }
-            if (scene == 8 && !monsterTransformed && scene != 9 && Input.GetKeyDown(KeyCode.Return))
+            if (scene == 7 && !monsterTransformed && scene != 9 && Input.GetKeyDown(KeyCode.Return))
             {
                 monsterTransformed = true;
                 cutscene.loop = false;
@@ -166,27 +166,36 @@ public class AudioManager : MonoBehaviour
                 bgm.clip = Resources.Load<AudioClip>(pathBGM + "death-music");
                 RestartSource(bgm, true, 1.0f, 12f);
             }
-        } else if (PlayerPrefs.GetInt("Dead") == 0) deathTriggered = false;
+        } else if (PlayerPrefs.GetInt("Dead") == 0) {
+            deathTriggered = false;
+            if (bgm.isPlaying && bgm.clip.name == "death-music") bgm.Stop();
+        }
     }
     void CheckScenewide(int scene){   
 
         //Only resume other audio if cutscene isn't playing, audio isn't already fading in/out, and we're not dead
         if (!cutscene.isPlaying && !fading && !deathTriggered) { 
 
-            //Check scene-wide audio sources 
+            //Check scene-wide audio sources
+            if (scene == 0) CheckTitle(); 
             if (scene == 1) CheckForest();
-            if (scene.IsOneOf(2, 3, 4, 5, 6)) CheckCabin(scene);
-            if (scene == 7) CheckAtticStairwell();
-            if (scene == 8) CheckAttic();
-            if (scene == 9) CheckChase();
+            if (scene.IsOneOf(2, 3, 4, 5)) CheckCabin(scene);
+            if (scene == 6) CheckAtticStairwell();
+            if (scene == 7) CheckAttic();
+            if (scene == 8) CheckChase();
         }
     }
+    void CheckTitle(){
+        if ( bgm.clip == null ||  bgm.clip.name != "title-theme-lofx")  bgm.clip = Resources.Load<AudioClip>(pathBGM + "title-theme-lofx");
+        if (!bgm.isPlaying) RestartSource(bgm, true, bgmVolume, defaultFadeTime);
+        }
+
     void CheckForest(){
         if (    bgm.clip == null ||     bgm.clip.name != "forest-theme")        bgm.clip = Resources.Load<AudioClip>(pathBGM + "forest-theme");
         if (ambArea.clip == null || ambArea.clip.name != "forest_ambience") ambArea.clip = Resources.Load<AudioClip>(pathAmb + "Forest/forest_ambience");
         if (ambMisc.clip == null || ambMisc.clip.name != "creepyambience")  ambMisc.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");
 
-        if     (!bgm.isPlaying) RestartSource(bgm3,    true, bgmVolume, defaultFadeTime);
+        if     (!bgm.isPlaying) RestartSource(bgm,     true, bgmVolume, defaultFadeTime);
         if (!ambArea.isPlaying) RestartSource(ambArea, true, bgmVolume, defaultFadeTime);
         if (!ambMisc.isPlaying) RestartSource(ambMisc, true, bgmVolume, defaultFadeTime);
     }
@@ -198,7 +207,7 @@ public class AudioManager : MonoBehaviour
 
         //check game state -- have we picked up the crowbar?
         if (PlayerPrefs.GetInt("Crowbar") == 1)
-        {   
+        {   print("here~!");
             if (PlayerPrefs.GetInt("AtticKey") == 1 || kitchenTriggered) //have we entered the kitchen?
             {   
                 //play the extra distorted cabin theme
@@ -213,8 +222,16 @@ public class AudioManager : MonoBehaviour
                 if (!bgm2.isPlaying) RestartSource(bgm2, true, bgmVolume, defaultFadeTime);
                 if (!bgm3.isPlaying) bgm3.Play();
             } 
-            if (scene == 4){ //are we currently in the kitchen?
+            if (scene == 4) //are we currently in the kitchen?
+            { 
+                //play the bloop-a-gloop
                 if (ambArea.clip == null || ambArea.clip.name != "gore-body-push") ambArea.clip = Resources.Load<AudioClip>(pathInteract + "gore-body-push");
+                ambArea.time = UnityEngine.Random.Range(0, ambArea.clip.length);
+                ambArea.volume = 0.75f;
+                if (!ambArea.isPlaying){
+                    print("hereio y dudes");
+                    ambArea.Play();
+                } 
             }
         } else {
 
@@ -235,10 +252,12 @@ public class AudioManager : MonoBehaviour
         bgm3.Pause();
         bgm2.Pause();
 
+        ambMisc.volume = 0.03f;
+
         if (ambMisc.clip == null || ambMisc.clip.name != "creepyambience") ambMisc.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");
         if (!ambMisc.isPlaying){
-            ambMisc.volume = 0.001f;
-            RestartSource(ambMisc, true, 0.01f, 3f);
+            
+            RestartSource(ambMisc, true, 0.05f, 3f);
         }
     }
     void CheckAttic(){
@@ -264,7 +283,6 @@ public class AudioManager : MonoBehaviour
             //Title Screen
             case 0: 
                 // fade out all other audio when returning to title screen
-                Stop(true, true);
                 ToTitleScreen();
                 break;
 
@@ -281,6 +299,12 @@ public class AudioManager : MonoBehaviour
                 ToBasement();
                 break;
 
+            //Kitchen
+            case 4:
+
+                //MAKE WAY FOR THE BLOOP-A-GLOOP
+                ambArea.Stop();
+                break;
             //Attic Stairwell
             case 6:
                 ToAtticStairs();
@@ -294,9 +318,11 @@ public class AudioManager : MonoBehaviour
     }
     void ToTitleScreen(){
 
+        StopAllSources();
         bgm.clip = (AudioClip)Resources.Load("Sounds/Music/title-theme-lofx");
         RestartSource(bgm, true, bgmVolume, defaultFadeTime);
 
+        miscEntity.clip = null;
         cutscene.clip = null;
         ambArea.clip = null;
         ambMisc.clip = null;
@@ -372,8 +398,7 @@ public class AudioManager : MonoBehaviour
             } else {
                 if (fade) 
                 {
-                    if (!s.isPlaying) miscEntity.Play();
-                    StartCoroutine(Start(s, targetVolume, duration, stop));
+                    if (!s.isPlaying) StartCoroutine(Start(s, targetVolume, duration, stop));
                 }
                 else {
                     s.volume = targetVolume;
@@ -444,11 +469,13 @@ public class AudioManager : MonoBehaviour
                     if (!trapEntered)
                     {   
                         clip = Resources.Load<AudioClip>(pathInteract + "Traps/Mud/mud-trap-entered-0");
+                        miscEntity.clip = clip;
                         miscEntity.PlayOneShot(clip, 0.3f);
                         trapEntered = true;
                     } else if (Input.GetKeyDown(Controls.Mash) && !miscEntity.isPlaying)
                     {   
                         clip = Resources.Load<AudioClip>(pathInteract + "Traps/Mud/mud-trap-struggle-" + UnityEngine.Random.Range(0,5).ToString());
+                        miscEntity.clip = clip;
                         miscEntity.PlayOneShot(clip, 0.3f);
                     }
                 
@@ -457,23 +484,29 @@ public class AudioManager : MonoBehaviour
                 
                     if (Input.GetKeyDown(Controls.Mash))
                     {   
+
+                        print("doing the thing~!");
                         //if this is the last mash, play the final sound
                         if (PlayerPrefs.GetInt("DoorOff") == 1)
                         {   
                             clip = Resources.Load<AudioClip>(pathInteract + "Traps/Plywood/plywood-pull-end");
-                            miscEntity.PlayOneShot(clip, 0.75f);
+                            miscEntity.clip = clip;
+                            miscEntity.PlayOneShot(clip);
                         } 
                         else if (!miscEntity.isPlaying)
                         {   
+                            print("pressed the button~!");
                             clip = Resources.Load<AudioClip>(pathInteract + "Traps/Plywood/plywood-pull-" + UnityEngine.Random.Range(0,8).ToString());
-                            miscEntity.PlayOneShot(clip, 0.75f);
+                            miscEntity.clip = clip;
+                            miscEntity.PlayOneShot(clip);
                         }
                     }
                 //kitchen: walking through the gore  
                 } else if (scene == 4 && !miscEntity.isPlaying)
                 {
                         clip = Resources.Load<AudioClip>(pathInteract + "Traps/Gore/gore-trudge-" + UnityEngine.Random.Range(0,8).ToString());
-                        miscEntity.PlayOneShot(clip, 0.75f);
+                        miscEntity.clip = clip;
+                        miscEntity.PlayOneShot(clip);
                 }
             //player is no longer trapped
             } else trapEntered = false;  
@@ -483,7 +516,7 @@ public class AudioManager : MonoBehaviour
                 //set appropriate heartbeat intensity according to progression
                 if (PlayerPrefs.GetInt("AtticKey") == 1){ 
                     clip = Resources.Load<AudioClip>(pathInteract + "heartbeat-fast");
-                } else if (PlayerPrefs.GetInt("CrowBar") == 1){ 
+                } else if (PlayerPrefs.GetInt("Crowbar") == 1){ 
                     clip = Resources.Load<AudioClip>(pathInteract + "heartbeat-med");
                 } else {
                     clip = Resources.Load<AudioClip>(pathInteract + "heartbeat-slow");
@@ -518,7 +551,7 @@ public class AudioManager : MonoBehaviour
         //if walking, play a random walking footfall
         if (state == PlayerState.Walking && p.GetAnimationIndex().IsOneOf(2, 11)) 
         {
-            pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.25f);      
+            pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.2f);      
         }
     }  
     // used when player dies
@@ -535,6 +568,7 @@ public class AudioManager : MonoBehaviour
         {
             string name = src.Key;
             AudioSource s = src.Value;
+            
             if(name == "BGM") bgm = s;
             if(name == "BGM2") bgm2 = s;
             if(name == "BGM3") bgm3 = s;

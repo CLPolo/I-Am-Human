@@ -294,6 +294,8 @@ public class InteractableObjectScript : MonoBehaviour
             {
                 DialogueTextObject.GetComponent<TextMeshProUGUI>().text = TextList[0];
                 textIndex++;
+                AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance");
+                player.AudioSource.PlayOneShot(clip, 0.75f);
             }
 
             if (Input.GetKeyDown(KeyCode.Return))  // when interact key (enter) is pressed
