@@ -12797,6 +12797,51 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 22100000, guid: 30ec58585d636f649ac2ff23dcf62e4c,
         type: 2}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ea2e4f4d032f23b3b18fe118348c835, type: 3}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 19dabad626cd657a2a73ddac587c74df, type: 3}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0fc17c07b30897e0484dd5944d7ea990, type: 3}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: adddf2436e97d20d09bbc296c72a9fdd, type: 3}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 70e16fa178ead582cb196e3572973345, type: 3}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 70e16fa178ead582cb196e3572973345, type: 3}
+    - target: {fileID: 948246213204472777, guid: 18275c16382c20d488778db66826b372,
+        type: 3}
+      propertyPath: footstepsWalk.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 948246213204472779, guid: 18275c16382c20d488778db66826b372,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
