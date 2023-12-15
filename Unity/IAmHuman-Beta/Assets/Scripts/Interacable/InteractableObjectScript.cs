@@ -67,6 +67,7 @@ public class InteractableObjectScript : MonoBehaviour
     private bool PressedInteract = false;
     private bool isPickup = false;  // will only handle pickup stuff (like turning off object) if the interaction is happening with a pickup.
     private bool triggered = false;
+    private int objSortOrder = 0;
 
     // Below Should be removed and placed into monster script
     public bool monsterComing = false;  // This is for activating Monster.cs
@@ -92,6 +93,8 @@ public class InteractableObjectScript : MonoBehaviour
         {
             DialogueCanvas.SetActive(false);
         }
+
+        objSortOrder = GetComponent<SpriteRenderer>().sortingOrder;
     }
 
     // Update is called once per frame
@@ -297,6 +300,8 @@ public class InteractableObjectScript : MonoBehaviour
             {
                 DialogueTextObject.GetComponent<TextMeshProUGUI>().text = TextList[0];
                 textIndex++;
+                AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance");
+                player.AudioSource.PlayOneShot(clip, 0.75f);
             }
 
             if (Input.GetKeyDown(KeyCode.Return))  // when interact key (enter) is pressed
