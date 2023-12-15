@@ -1048,6 +1048,8 @@ MonoBehaviour:
   Default: {fileID: 2788599236150914000, guid: 8cfbbe279abc2bf4a90e06463b1a5287, type: 3}
   Outline: {fileID: -4506900654647834497, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
     type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
@@ -1380,6 +1382,10 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 2918268369020848236, guid: 8cfbbe279abc2bf4a90e06463b1a5287, type: 3}
   Outline: {fileID: 1784061262971884580, guid: 8cfbbe279abc2bf4a90e06463b1a5287, type: 3}
+  LeftOutline: {fileID: 6146944280150923878, guid: 9e03a7cfe3d63fe439112250f3b404bb,
+    type: 3}
+  RightOutline: {fileID: -8330817218503528415, guid: 9e03a7cfe3d63fe439112250f3b404bb,
+    type: 3}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
@@ -2272,6 +2278,8 @@ MonoBehaviour:
   Default: {fileID: 2802472440279210686, guid: 8cfbbe279abc2bf4a90e06463b1a5287, type: 3}
   Outline: {fileID: -3146910734358201773, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
     type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
@@ -2571,6 +2579,8 @@ MonoBehaviour:
   Default: {fileID: -8983691491164830149, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
     type: 3}
   Outline: {fileID: 5084079004392032968, guid: 8cfbbe279abc2bf4a90e06463b1a5287, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
@@ -2770,6 +2780,8 @@ MonoBehaviour:
   Default: {fileID: 2788599236150914000, guid: 8cfbbe279abc2bf4a90e06463b1a5287, type: 3}
   Outline: {fileID: -4506900654647834497, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
     type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
@@ -5912,6 +5924,8 @@ MonoBehaviour:
   Default: {fileID: -7539847215404474597, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
     type: 3}
   Outline: {fileID: 1329601668239055561, guid: 8cfbbe279abc2bf4a90e06463b1a5287, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
@@ -6120,6 +6134,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1556588692317559216, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6528947780177944043, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -6441,6 +6460,11 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2356562124795575594, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Box
+      objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Size.x
@@ -6550,12 +6574,12 @@ PrefabInstance:
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Size.y
-      value: 1.1265537
+      value: 1.0807812
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.033276856
+      value: -0.010390639
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -6565,12 +6589,12 @@ PrefabInstance:
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 0.5
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 0.46
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -6580,7 +6604,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.06
+      value: 1.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1ff3be1279bc554d95bd8ddbd7c10fa, type: 3}
@@ -6612,10 +6636,14 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 1476628204956674639, guid: 8cfbbe279abc2bf4a90e06463b1a5287, type: 3}
   Outline: {fileID: 1476628204956674639, guid: 8cfbbe279abc2bf4a90e06463b1a5287, type: 3}
+  LeftOutline: {fileID: 2460057634390016682, guid: 9e03a7cfe3d63fe439112250f3b404bb,
+    type: 3}
+  RightOutline: {fileID: 4573298704038476541, guid: 9e03a7cfe3d63fe439112250f3b404bb,
+    type: 3}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS AND HOLD b TO HIDE
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -7186,6 +7214,8 @@ MonoBehaviour:
   Default: {fileID: -3391150555206074024, guid: 6e9a4c5169d86fc459afbcdf25c8caf2,
     type: 3}
   Outline: {fileID: 5864651397218608464, guid: 6e9a4c5169d86fc459afbcdf25c8caf2, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
@@ -7411,6 +7441,10 @@ MonoBehaviour:
     type: 3}
   Outline: {fileID: -8066552970204862018, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
     type: 3}
+  LeftOutline: {fileID: -4768457855529073602, guid: 9e03a7cfe3d63fe439112250f3b404bb,
+    type: 3}
+  RightOutline: {fileID: 3492280409006696299, guid: 9e03a7cfe3d63fe439112250f3b404bb,
+    type: 3}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
@@ -7499,6 +7533,8 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 7321950870207722796, guid: 6e9a4c5169d86fc459afbcdf25c8caf2, type: 3}
   Outline: {fileID: 8942417543056275258, guid: 6e9a4c5169d86fc459afbcdf25c8caf2, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
@@ -8051,7 +8087,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 6076027253567793797, guid: 84c692f72455ba649b1dcf2c167284d3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -8251,6 +8287,8 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 2524838898622914909, guid: 6e9a4c5169d86fc459afbcdf25c8caf2, type: 3}
   Outline: {fileID: 7058051356984371939, guid: 6e9a4c5169d86fc459afbcdf25c8caf2, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
@@ -8802,6 +8840,10 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 5419475518858724630, guid: 8cfbbe279abc2bf4a90e06463b1a5287, type: 3}
   Outline: {fileID: 4301046149532193455, guid: 8cfbbe279abc2bf4a90e06463b1a5287, type: 3}
+  LeftOutline: {fileID: -2634508447735353638, guid: 9e03a7cfe3d63fe439112250f3b404bb,
+    type: 3}
+  RightOutline: {fileID: -7438464218900731242, guid: 9e03a7cfe3d63fe439112250f3b404bb,
+    type: 3}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
@@ -9111,7 +9153,9 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 1095141833252711340, guid: 50c02617f89f9d142b18e800f9145004, type: 3}
   Outline: {fileID: 21300000, guid: d8b2cdeaa9c9833478b35b601c92761d, type: 3}
-  removeSprite: 0
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
+  removeSprite: 1
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
   InteractMessage: PRESS a TO INTERACT
@@ -9507,6 +9551,8 @@ MonoBehaviour:
     type: 3}
   Outline: {fileID: -8760731882412330440, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
     type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
