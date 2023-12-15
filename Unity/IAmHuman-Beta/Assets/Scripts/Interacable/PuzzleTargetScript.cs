@@ -432,7 +432,7 @@ public class PuzzleTargetScript : MonoBehaviour
             if (triggeredOnce)
             {
                 // COREY HELLO!!!! hope ur doing good :) the 1f in the call below is the mini pause after you hit the trigger before lily runs and the text shows up, so adjust that for the sound time!
-                if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(1f, "Lily!", true)); CoroutineRunning = true; };  // only calls coroutine once
+                if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(1f, "You can't run off like this!", true)); CoroutineRunning = true; };  // only calls coroutine once
                 if (TextTrigger && AffectedObject.activeSelf == true)  // lily starts running. Stops once she's turned off.
                 {
                     LilyRunning(false);

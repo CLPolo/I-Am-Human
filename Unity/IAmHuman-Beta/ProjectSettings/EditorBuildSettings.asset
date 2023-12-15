@@ -11,30 +11,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Forest Intro.unity
     guid: 6a8445186c207fd438ba84b97fb188ee
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Basement.unity
     guid: ef727930d876a284cae974d6da4928ae
   - enabled: 1
     path: Assets/Scenes/Hallway Hub (Version 2).unity
     guid: 150789c415e13f047a2dbc00a8dd328f
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Kitchen.unity
     guid: 483d22ca705d6d14cba8436471281199
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Bed room.unity
     guid: 35f21cf66a0f3c842910b1a65e4cc915

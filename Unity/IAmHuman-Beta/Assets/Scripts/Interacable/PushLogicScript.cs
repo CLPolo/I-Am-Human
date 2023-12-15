@@ -36,12 +36,14 @@ public class PushLogicScript : MonoBehaviour
     private GameObject currentBox = null;
     private GameObject prevBox = null;
     private Sprite prevSpriteDef = null;
+    private int playerSortOrder = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         player = Player.Instance;
         logic = LogicScript.Instance;
+        playerSortOrder = player.GetComponent<SpriteRenderer>().sortingOrder;
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class PushLogicScript : MonoBehaviour
         if (player == null)
         {
             player = Player.Instance;
+            playerSortOrder = player.GetComponent<SpriteRenderer>().sortingOrder;
         }
 
         RaycastHit2D grabCheck = Physics2D.RaycastAll(grabDetect.position, Vector2.right * transform.localScale, rayDist).FirstOrDefault(x => x.collider.CompareTag("Box"));  // uses raycast starting at GrabDetect to get object info
@@ -58,9 +61,6 @@ public class PushLogicScript : MonoBehaviour
 
         if (grabCheck.collider != null && grabCheck.collider.CompareTag("Box"))  // if there is an object colliding AND that object is a box
         {
-
-            if (currentBox != null && prevBox == null) { prevBox = currentBox; prevSpriteDef = Default; }
-            if (currentBox != null && currentBox.name != prevBox.name) { prevBox = currentBox; prevSpriteDef = Default; }
 
             GameObject box = grabCheck.collider.gameObject;
             Rigidbody2D rb = box.GetComponent<Rigidbody2D>();
@@ -81,6 +81,8 @@ public class PushLogicScript : MonoBehaviour
             
             if (Input.GetKey(Controls.Push))  // if player is pressing space (pushing)
             {
+                player.GetComponent<SpriteRenderer>().sortingOrder = box.GetComponent<SpriteRenderer>().sortingOrder + 1;  // allows the appearance of objects being behind / above others
+                
                 player.SetState(PlayerState.Pushing);
                 if (!PlayerPrefs.HasKey("boxlayer"))
                 {
@@ -120,6 +122,7 @@ public class PushLogicScript : MonoBehaviour
             // if push key is not being held down and the player was pushing last frame, now they are not pushing
             else if (player.GetState().IsOneOf(PlayerState.Pulling, PlayerState.Pushing))
             {
+                player.GetComponent<SpriteRenderer>().sortingOrder = playerSortOrder;  // resets to player's original sort order
                 player.SetState(PlayerState.Walking);
                 box.transform.parent = null;  // removes boxHolder as parent
                 box.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

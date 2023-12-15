@@ -107,7 +107,7 @@ public class LevelLoader : MonoBehaviour
         {
             SetScenePositions();
             PlayerPrefs.SetInt("Fading", 1);
-            fadeAnimator.SetInteger("EndScene", 1);  // starts the fade out animation
+            if (fadeAnimator != null) fadeAnimator.SetInteger("EndScene", 1);  // starts the fade out animation
             yield return new WaitForSeconds(1);  // waits one second until it loads other scene so that animation has time to play
             PlayerPrefs.SetInt("Fading", 0);
             if (typeof(T) == typeof(int))
