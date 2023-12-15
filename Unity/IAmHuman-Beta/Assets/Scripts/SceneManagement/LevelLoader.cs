@@ -90,32 +90,43 @@ public class LevelLoader : MonoBehaviour
 
     public void CheckAndUpdateInventoryOverlay()
     {
-        // handles the inventory items appearing on the overlay
-        foreach (string pickup in objTags)
+
+        if (player.finalCutscene)  // turns the whole thing off during the final cutscene
         {
-            if (PlayerPrefs.GetInt(pickup) == 1)
+            GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay");
+            if (invCanvas != null) { invCanvas.SetActive(false); }
+        }
+        else
+        {
+            // handles the inventory items appearing on the overlay
+            foreach (string pickup in objTags)
             {
-                GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/" + pickup + "Inv");
+                if (PlayerPrefs.GetInt(pickup) == 1)
+                {
+                    GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/" + pickup + "Inv");
+                    invCanvas.SetActive(true);
+                }
+            }
+
+            if (PlayerPrefs.GetInt("StudyKey") == 1 && PlayerPrefs.GetInt("StudyDoorOpened") != 1)  // brief window of time where player has study key and hasn't opened the door yet
+            {
+                GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
+                invCanvas.SetActive(true);
+            }
+            else if (PlayerPrefs.GetInt("StudyKey") == 1 && PlayerPrefs.GetInt("StudyDoorOpened") == 1)
+            {
+                GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
+                invCanvas.SetActive(false);
+            }
+
+            if (PlayerPrefs.GetInt("AtticKey") == 1)  // this one can be perma in inv, unless we don't want that, cause the atiic door always appears closed so you'd resuse the key everytime you opened it
+            {
+                GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
                 invCanvas.SetActive(true);
             }
         }
 
-        if (PlayerPrefs.GetInt("StudyKey") == 1 && PlayerPrefs.GetInt("StudyDoorOpened") != 1)  // brief window of time where player has study key and hasn't opened the door yet
-        {
-            GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
-            invCanvas.SetActive(true);
-        }
-        else if (PlayerPrefs.GetInt("StudyKey") == 1 && PlayerPrefs.GetInt("StudyDoorOpened") == 1)
-        {
-            GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
-            invCanvas.SetActive(false);
-        }
 
-        if (PlayerPrefs.GetInt("AtticKey") == 1)  // this one can be perma in inv, unless we don't want that, cause the atiic door always appears closed so you'd resuse the key everytime you opened it
-        {
-            GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
-            invCanvas.SetActive(true);
-        }
     }
     public IEnumerator FreezeOnFadeIn()
     {
