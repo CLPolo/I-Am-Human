@@ -24,6 +24,8 @@ public class LevelLoader : MonoBehaviour
     private GameObject deathFade = null;
     private GameObject playerAnimImage = null;
 
+    private List<string> objTags = new List<string> { "LilyBear", "LilyShoe", "Crowbar" };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,11 +73,41 @@ public class LevelLoader : MonoBehaviour
                 LogicScript.Instance.ActivateDeathScreen();  // turns on the death screen
             }
         }
+        CheckAndUpdateInventoryOverlay();
     }
 
 
     [RuntimeInitializeOnLoadMethod]
 
+    public void CheckAndUpdateInventoryOverlay()
+    {
+        // handles the inventory items appearing on the overlay
+        foreach (string pickup in objTags)
+        {
+            if (PlayerPrefs.GetInt(pickup) == 1)
+            {
+                GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/" + pickup + "Inv");
+                invCanvas.SetActive(true);
+            }
+        }
+
+        if (PlayerPrefs.GetInt("StudyKey") == 1 && PlayerPrefs.GetInt("StudyDoorOpened") != 1)  // brief window of time where player has study key and hasn't opened the door yet
+        {
+            GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
+            invCanvas.SetActive(true);
+        }
+        else if (PlayerPrefs.GetInt("StudyKey") == 1 && PlayerPrefs.GetInt("StudyDoorOpened") == 1)
+        {
+            GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
+            invCanvas.SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("AtticKey") == 1)  // this one can be perma in inv, unless we don't want that, cause the atiic door always appears closed so you'd resuse the key everytime you opened it
+        {
+            GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
+            invCanvas.SetActive(true);
+        }
+    }
     public IEnumerator FreezeOnFadeIn()
     {
         // Freezes the player while the fade in is happening.
