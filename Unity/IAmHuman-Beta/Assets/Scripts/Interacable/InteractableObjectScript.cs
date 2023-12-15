@@ -94,7 +94,7 @@ public class InteractableObjectScript : MonoBehaviour
             DialogueCanvas.SetActive(false);
         }
 
-        objSortOrder = GetComponent<SpriteRenderer>().sortingOrder;
+        if (GetComponent<SpriteRenderer>() != null) objSortOrder = GetComponent<SpriteRenderer>().sortingOrder;
     }
 
     // Update is called once per frame
@@ -360,7 +360,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // sets sprite of object to sprite with outline
 
-        if (Outline != null && Default != null)
+        if (Outline != null) //&& Default != null)
         {
             this.GetComponent<SpriteRenderer>().sprite = Outline;
         }
@@ -370,9 +370,13 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // resets sprite of object to default sprite
 
-        if (Default != null && Outline != null)
+        if (Default != null) //&& Outline != null)
         {
             this.GetComponent<SpriteRenderer>().sprite = Default;
+        }
+        else if (Outline != null)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = null;
         }
     }
 

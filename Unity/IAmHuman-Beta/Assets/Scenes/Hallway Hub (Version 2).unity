@@ -136,12 +136,12 @@ PrefabInstance:
     - target: {fileID: 8214629693895832312, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.14
+      value: -18.327
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832312, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.02
+      value: -1.17
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832312, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
@@ -186,32 +186,32 @@ PrefabInstance:
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: patrol.Array.data[0].location.x
-      value: -3.3
+      value: -1.86
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: patrol.Array.data[0].location.y
-      value: -1.200004
+      value: -1.342685
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: patrol.Array.data[1].location.x
-      value: -11.64
+      value: -14.64
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: patrol.Array.data[1].location.y
-      value: -1.200004
+      value: -1.342685
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832315, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.29
+      value: 0.24169959
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832315, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: 0.024150185
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832315, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
@@ -1225,7 +1225,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -1389,7 +1389,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS AND HOLD b TO HIDE
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -1563,7 +1563,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -1653,7 +1653,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.74683875
+      value: 0.7117286
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -1663,7 +1663,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.07415578
+      value: 0.091710865
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -2412,6 +2412,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: player Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153253, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153273, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_RootOrder
@@ -2425,7 +2435,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3750143
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -6234,7 +6244,7 @@ PrefabInstance:
     - target: {fileID: 1556588692317559216, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780177944043, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -6311,7 +6321,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780312275447, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -7545,7 +7555,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS AND HOLD b TO HIDE
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -8021,12 +8031,12 @@ PrefabInstance:
     - target: {fileID: 8214629693895832312, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.75
+      value: 6.34
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832312, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.23
+      value: 1.93
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832312, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
@@ -8071,12 +8081,12 @@ PrefabInstance:
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: patrol.Array.data[0].location.x
-      value: 12.701
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: patrol.Array.data[0].location.y
-      value: -1.200004
+      value: -1.340514
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
@@ -8086,17 +8096,17 @@ PrefabInstance:
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: patrol.Array.data[1].location.y
-      value: -1.200004
+      value: -1.340514
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832315, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.29
+      value: 0.24182075
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832315, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: 0.022751272
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832315, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
@@ -8126,7 +8136,7 @@ PrefabInstance:
     - target: {fileID: 8214629693895832318, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8124123ed1221654b8757dee44fb5ff8, type: 3}
@@ -8864,7 +8874,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -9028,7 +9038,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS AND HOLD b TO HIDE
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -9631,7 +9641,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: 0
   m_Sprite: {fileID: -8319992412190318785, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

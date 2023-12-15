@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PushLogicScript : MonoBehaviour
@@ -34,8 +35,6 @@ public class PushLogicScript : MonoBehaviour
     private float HoldFor = 1f;
 
     private GameObject currentBox = null;
-    private GameObject prevBox = null;
-    private Sprite prevSpriteDef = null;
     private int playerSortOrder = 1;
 
     // Start is called before the first frame update
@@ -43,7 +42,6 @@ public class PushLogicScript : MonoBehaviour
     {
         player = Player.Instance;
         logic = LogicScript.Instance;
-        playerSortOrder = player.GetComponent<SpriteRenderer>().sortingOrder;
     }
 
     // Update is called once per frame
@@ -74,7 +72,7 @@ public class PushLogicScript : MonoBehaviour
 
             DisplayOutline(box);
 
-            if (!InteractionOver && TextCanvas != null && TextObject != null && Text != null)
+            if (SceneManager.GetActiveScene().name == "Forest Intro" && !InteractionOver && TextCanvas != null && TextObject != null && Text != null)
             {
                 DisplayPushText();
             }
