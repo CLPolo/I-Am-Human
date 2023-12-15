@@ -1483,7 +1483,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: saveObjectPositions.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}

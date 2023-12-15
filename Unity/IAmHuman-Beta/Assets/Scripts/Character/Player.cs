@@ -53,12 +53,10 @@ public class Player : AnimatedEntity
     public List<Sprite> hideCycle;
     public List<Sprite> pushCycle;
     public List<Sprite> pullCycle;
-    public List<Sprite> stuckCycle;
     [Header("Idle Sprites")]
     public Sprite idleWalk;
     public Sprite idlePush;
     public Sprite idleHide;
-    public Sprite stuckGuy;
 
     [Header("Sound")]
     public AudioSource AudioSource;
@@ -138,7 +136,7 @@ public class Player : AnimatedEntity
         if (moving && !touchingWall && !interruptFlag)
         {
             InterruptAnimation(currentCycle, true);
-        } else if (((!moving && state != PlayerState.Trapped) || touchingWall) && interruptFlag) {
+        } else if ((!moving || touchingWall) && interruptFlag) {
             ResetAnimationCycle();
         }
         if (_state == state || (state == PlayerState.Frozen && _state != PlayerState.Idle))
@@ -187,8 +185,8 @@ public class Player : AnimatedEntity
             case PlayerState.Trapped:
                 speed = 0;  // Player cannot move while trapped
                 rb.velocity = Vector2.zero;
-                DefaultAnimationCycle[0] = stuckGuy;
-                currentCycle = stuckCycle;
+                // indicate player is trapped somehow:
+                //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y - 0.3f, transform.localScale.z);
                 break;
             case PlayerState.Frozen:
                 speed = 0;
