@@ -1,16 +1,7 @@
 fileFormatVersion: 2
-guid: f21a83b7a259931438f83bb10b1fa1f2
+guid: 0a77673e22d023c41b1a4c59b810ae45
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -8267941871758274152
-    second: study_window
-  - first:
-      213: -6965673459567539648
-    second: basement_window
-  - first:
-      213: -2235271872018582317
-    second: attic_window
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -94,70 +85,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: study_window
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 50
-        width: 12
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 891154e4cae524d80800000000000000
-      internalID: -8267941871758274152
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: basement_window
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 39
-        width: 12
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 04a4c1de4e4f45f90800000000000000
-      internalID: -6965673459567539648
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: attic_window
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 7
-        width: 25
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d4f8eb4318baf0e0800000000000000
-      internalID: -2235271872018582317
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
