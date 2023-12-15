@@ -41,6 +41,7 @@ public class Monster : NPC
     public bool crawler = true;
     public bool monster = false;
     public bool playFootfall = false;
+    private bool alertTriggered = false;
 
     private string monPath = "Sounds/SoundEffects/Entity/Monster/";
 
@@ -187,27 +188,44 @@ public class Monster : NPC
 
     public void CheckAudio()
     {   
-        if (crawler)
+        if (PlayerPrefs.GetInt("Paused") == 1 || PlayerPrefs.GetInt("Dead") == 1)
         {
-            //if patrolling, play walking audio
-            if (enemyAnimator.GetInteger("State") == 1 && !audioSource.isPlaying) audioSource.Play();
-
-            //if stopped, stop audio
-            if (enemyAnimator.GetInteger("State") == 0) audioSource.Pause();
+            audioSource.Pause();
+            monsterAudio.Pause();
         }
-        if (monster)
-        {   
-            //Debug.Log(audioSource.isPlaying);
-            //Debug.Log(GetComponent<SpriteRenderer>().sprite.name);
-            if(!audioSource.isPlaying && GetComponent<SpriteRenderer>().sprite.name.IsOneOf("monster_walking_sprites_3", "monster_walking_sprites_8") )
+        else
+        {
+            if (crawler)
             {
-                //Debug.Log("In monster playFootfall");
-                clip = Resources.Load<AudioClip>(monPath + "Footsteps/monster-step-" + UnityEngine.Random.Range(0,4).ToString());
-                audioSource.PlayOneShot(clip);
+                //if patrolling, play walking audio
+                if (enemyAnimator.GetInteger("State") == 1 && !audioSource.isPlaying) audioSource.Play();
+
+                //if stopped, stop audio
+                if (enemyAnimator.GetInteger("State") == 0) audioSource.Pause();
+
+                //if not patrolling and alert not triggered -> play alert and set flag
+                if (!patrolling && !alertTriggered)
+                {
+                    audioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/alert"));
+                    alertTriggered = true;
+                } 
+                //if patrolling and flag not reset -> reset flag.
+                if (patrolling && alertTriggered) alertTriggered = false;
             }
-            if(PlayerPrefs.GetInt("MonsterEnabled") == 2)
-            {
-                monsterAudio.Play();
+            if (monster)
+            {   
+                //Debug.Log(audioSource.isPlaying);
+                //Debug.Log(GetComponent<SpriteRenderer>().sprite.name);
+                if(!audioSource.isPlaying && GetComponent<SpriteRenderer>().sprite.name.IsOneOf("monster_walking_sprites_3", "monster_walking_sprites_8") )
+                {
+                    //Debug.Log("In monster playFootfall");
+                    clip = Resources.Load<AudioClip>(monPath + "Footsteps/monster-step-" + UnityEngine.Random.Range(0,4).ToString());
+                    audioSource.PlayOneShot(clip);
+                }
+                if(PlayerPrefs.GetInt("MonsterEnabled") == 2)
+                {
+                    monsterAudio.Play();
+                }
             }
         }
     }
@@ -225,6 +243,7 @@ public class Monster : NPC
             else if ((transform.position - player.transform.position).magnitude < DetectionRange && player.GetState() != PlayerState.Hiding)  // if player within range & not hiding
             {
                 patrolling = false;  // not patrolling
+
             }
             else if (!patrolling && player.GetState() == PlayerState.Hiding)  // if following & player hides
             {
