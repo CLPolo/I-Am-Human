@@ -291,7 +291,7 @@ public class PuzzleTargetScript : MonoBehaviour
                 player.AudioSource.PlayOneShot(clip, 0.25f);
                 if (playCreditsNext)
                 {
-                    LevelLoader.Instance.loadScene("End Credits");
+                    LevelLoader.Instance.loadScene("End Credits (scroll)");
                 }
             }
         }

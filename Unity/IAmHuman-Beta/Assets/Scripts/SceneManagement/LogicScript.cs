@@ -209,7 +209,7 @@ public class LogicScript : MonoBehaviour
     {
         PlayerPrefs.SetString("StartScene", currentScene);
         TogglePause(false);
-        LevelLoader.Instance.loadScene(0);
+        LevelLoader.Instance.loadScene("Title Screen");
     }
 
     public void OnApplicationQuit()

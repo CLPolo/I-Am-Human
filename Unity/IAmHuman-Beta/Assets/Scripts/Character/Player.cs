@@ -224,8 +224,9 @@ public class Player : AnimatedEntity
             }
             if (!state.IsOneOf(PlayerState.Hiding, PlayerState.Pushing, PlayerState.Pulling, PlayerState.Trapped, PlayerState.Frozen))
             {
-                if ((Input.GetKey(Controls.Run[0]) || Input.GetKey(Controls.Run[1])) && logic.currentScene.IsOneOf("Attic", "Forest Chase"))
+                if ((Input.GetKey(Controls.Run[0]) || Input.GetKey(Controls.Run[1])) && logic.currentScene.IsOneOf("Forest Chase"))
                 {
+                    // I removed "Attic" from the scenes the player can run in - Jon
                     SetState(PlayerState.Running);
                 }
                 else
