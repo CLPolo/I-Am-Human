@@ -352,6 +352,7 @@ public class PuzzleTargetScript : MonoBehaviour
         if (NoisePlayOnSpawn)  // need to rework, this is used for specific instance of deer head and bush rustle.
         {
             PlayNoise(NoiseToBePlayed);
+            if(AffectedObject.name == "DeerHead") player.AudioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/alert"));
         }
     }
     private IEnumerator Freeze()
@@ -505,9 +506,14 @@ public class PuzzleTargetScript : MonoBehaviour
     }
 
     private IEnumerator HandleLilyRun(float seconds, string text, bool freezeBefore)
-    {
+    {   
         AffectedObject.GetComponent<Sister>().SetDetectRange(0);  // this allows us to make it so that she won't be trying to follow us
         if (freezeBefore) { player.SetState(PlayerState.Frozen); }  // freezes before text pop up (wait for sound) in hallway
+        if (!NoiseTriggered)
+        {
+            player.AudioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/alert"));
+            NoiseTriggered = true;
+        }
         yield return new WaitForSeconds(seconds);       // wait until deer gone
         TextTrigger = true;                             // text will pop up
         TextToDisplay.Add(text);                        // w/ this message
@@ -518,6 +524,12 @@ public class PuzzleTargetScript : MonoBehaviour
         GameObject Lily = AffectedObject;
         float runSpeed = Lily.GetComponent<Sister>().speed * 2.5f;
         Transform LilyPos = Lily.transform;
+
+        if (!NoiseTriggered)
+        {
+            player.AudioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/alert"));
+            NoiseTriggered = true;
+        }
 
         Lily.GetComponent<Animator>().SetInteger("State", 1);  // run anim flag
         

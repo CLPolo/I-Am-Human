@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour
     private SceneManager SceneManager;
     private int scene;
     private int fromScene; 
-    private int[] woodFloors = {2, 3, 4, 5, 6, 7, 8};
+    private int[] woodFloors = {2, 3, 4, 5, 7};
 
     //resource paths
     private string       pathBGM = "Sounds/Music/";
@@ -148,15 +148,24 @@ public class AudioManager : MonoBehaviour
         }
     }
     void CheckDeath(){
-        if (PlayerPrefs.GetInt("Dead") == 1 && !deathTriggered)
+        if (PlayerPrefs.GetInt("Dead") == 1)
         {   
-            deathTriggered = true;
+
+            if (!deathTriggered)
+            {   
+                Stop(true, false);
+                deathTriggered = true;
+            }
+            
             monsterTransformed = false;
-            Stop(true, false);
-            //play sound
-            bgm.volume = 0f;
-            bgm.clip = Resources.Load<AudioClip>(pathBGM + "death-music");
-            RestartSource(bgm, true, 1.0f, 3f);
+            
+            //play death screen music if not already
+            if (!bgm.isPlaying || bgm.clip == null || bgm.clip.name != "death-music")
+            {
+                bgm.volume = 0f;
+                bgm.clip = Resources.Load<AudioClip>(pathBGM + "death-music");
+                RestartSource(bgm, true, 1.0f, 12f);
+            }
         } else if (PlayerPrefs.GetInt("Dead") == 0) deathTriggered = false;
     }
     void CheckScenewide(int scene){   
@@ -273,12 +282,12 @@ public class AudioManager : MonoBehaviour
                 break;
 
             //Attic Stairwell
-            case 7:
+            case 6:
                 ToAtticStairs();
                 break;
 
             //Attic
-            case 8:
+            case 7:
                 ToAttic();
                 break;
         }
@@ -298,6 +307,7 @@ public class AudioManager : MonoBehaviour
         ambArea.clip = Resources.Load<AudioClip>(pathAmb + "Forest/forest_ambience");
         ambMisc.clip = Resources.Load<AudioClip>(pathAmb + "creepyambience");  
 
+        //have we played the intro cutscene?
         if(!gameStarted && fromScene == 0){
             gameStarted = true;
             cutscene.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-update");

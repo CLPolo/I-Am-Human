@@ -209,9 +209,12 @@ public class InteractableObjectScript : MonoBehaviour
         if (isPickup && PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight", "Crowbar", "AtticKey", "StudyKey", "LilyBear", "LilyShoe")) // if one of our pickups, it will set playerprefs of that to 1 (true).
         {
             PlayerPrefs.SetInt(PlayerPrefs.GetString("Pickup"), 1);
+
             if (PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight")) { this.gameObject.SetActive(false); }  // items w/ text (crowbar, keys, lily objs) handled seperately in their respective handle funcs
+
             AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/item-pickup");
-            if (!player.AudioSource.isPlaying) player.AudioSource.PlayOneShot(clip, 0.5f);
+
+            if (Input.GetKeyDown(Controls.Interact)) player.AudioSource.PlayOneShot(clip, 0.5f);
             if (this.tag == "Flashlight")
             {
                 clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cellar-door-close-0");
@@ -303,7 +306,7 @@ public class InteractableObjectScript : MonoBehaviour
                     textIndex++;
                     // play text advance sound
                     AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance");
-                    player.AudioSource.PlayOneShot(clip, 0.25f);
+                    player.AudioSource.PlayOneShot(clip, 0.75f);
                 }
                 else if (textIndex >= TextList.Count && DialogueTextObject != null)  // if no more messages
                 {
@@ -314,7 +317,7 @@ public class InteractableObjectScript : MonoBehaviour
                     if (FreezePlayer) { player.SetState(PlayerState.Idle); }  // unfreezes player if they were frozen
                     //play text close sound
                     AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance-close");
-                    player.AudioSource.PlayOneShot(clip, 0.25f);
+                    player.AudioSource.PlayOneShot(clip, 0.75f);
                     PressedInteract = false;
                     if (removeSprite)
                     {
