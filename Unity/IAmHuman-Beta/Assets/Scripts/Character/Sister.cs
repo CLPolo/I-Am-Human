@@ -76,7 +76,7 @@ public class Sister : NPC
                 sisterAnimator.SetInteger("State", 2);
             }
         }
-        else if (SceneManager.GetActiveScene().name == "Forest Intro (Lily)" && PlayerPrefs.GetInt("LilyStandDone") != 1)
+        else if (SceneManager.GetActiveScene().name == "Forest Intro" && PlayerPrefs.GetInt("LilyStandDone") != 1)
         {
             if (PlayerPrefs.GetInt("LilyStandStart") != 1) sisterAnimator.SetInteger("State", 3);
             else if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("StoodUp"))
