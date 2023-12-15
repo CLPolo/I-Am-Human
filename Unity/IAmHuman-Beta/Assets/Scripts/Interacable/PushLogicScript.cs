@@ -35,6 +35,7 @@ public class PushLogicScript : MonoBehaviour
     private float HoldFor = 1f;
 
     private GameObject currentBox = null;
+    private GameObject boxBeingPushed = null;
     private int playerSortOrder = -10;
 
     // Start is called before the first frame update
@@ -80,12 +81,20 @@ public class PushLogicScript : MonoBehaviour
             
             if (Input.GetKey(Controls.Push))  // if player is pressing space (pushing)
             {
+                // this cant go in the above if statement because of the else, trust me, i tried
+                if (boxBeingPushed != null && box.name != boxBeingPushed.name)
+                {
+                    // something else is being pushed, dont do this logic for box, its already being done for boxBeingPushed
+                    return;
+                }
+
                 player.GetComponent<SpriteRenderer>().sortingOrder = box.GetComponent<SpriteRenderer>().sortingOrder + 1;  // allows the appearance of objects being behind / above others
                 
                 player.SetState(PlayerState.Pushing);
                 if (!PlayerPrefs.HasKey("boxlayer"))
                 {
                     // ALL CODE IN HERE WILL ONLY RUN AT START OF PUSH/PULL INSTEAD OF EVERY FRAME
+                    boxBeingPushed = box;
                     box.transform.position = new Vector3(boxHolder.position.x, box.transform.position.y, box.transform.position.z);  // moves object being pushed to boxHolder (by center)
                     rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                     string boxlayer = LayerMask.LayerToName(box.layer);
@@ -121,6 +130,7 @@ public class PushLogicScript : MonoBehaviour
             // if push key is not being held down and the player was pushing last frame, now they are not pushing
             else if (player.GetState().IsOneOf(PlayerState.Pulling, PlayerState.Pushing))
             {
+                boxBeingPushed = null;
                 player.GetComponent<SpriteRenderer>().sortingOrder = playerSortOrder;  // resets to player's original sort order
                 player.SetState(PlayerState.Walking);
                 box.transform.parent = null;  // removes boxHolder as parent
