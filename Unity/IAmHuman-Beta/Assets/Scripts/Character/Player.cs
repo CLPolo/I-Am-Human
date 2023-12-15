@@ -53,10 +53,12 @@ public class Player : AnimatedEntity
     public List<Sprite> hideCycle;
     public List<Sprite> pushCycle;
     public List<Sprite> pullCycle;
+    public List<Sprite> stuckCycle;
     [Header("Idle Sprites")]
     public Sprite idleWalk;
     public Sprite idlePush;
     public Sprite idleHide;
+    public Sprite idleStuck;
 
     [Header("Sound")]
     public AudioSource AudioSource;
@@ -131,12 +133,16 @@ public class Player : AnimatedEntity
         if (_state == PlayerState.Pushing && movingRight != facingRight)
         {
             _state = PlayerState.Pulling;
+        } else if (_state == PlayerState.Trapped) {
+            interruptFlag = false;
         }
 
-        if (moving && !touchingWall && !interruptFlag)
+        bool consideredIdle = !moving && (_state != PlayerState.Trapped || logic.doorBoards);
+
+        if (!consideredIdle && !touchingWall && !interruptFlag)
         {
             InterruptAnimation(currentCycle, true);
-        } else if ((!moving || touchingWall) && interruptFlag) {
+        } else if ((consideredIdle || touchingWall) && interruptFlag) {
             ResetAnimationCycle();
         }
         if (_state == state || (state == PlayerState.Frozen && _state != PlayerState.Idle))
@@ -187,10 +193,29 @@ public class Player : AnimatedEntity
                 rb.velocity = Vector2.zero;
                 // indicate player is trapped somehow:
                 //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y - 0.3f, transform.localScale.z);
+                if (!logic.doorBoards)
+                {
+                    DefaultAnimationCycle[0] = idleStuck;
+                    currentCycle = stuckCycle;
+                }
                 break;
             case PlayerState.Frozen:
                 speed = 0;
                 break;
+        }
+
+        // THIS IS A SCUFFED FIX
+        // When player gets set to trapped, it doesnt go through idle first which breaks animation since interruptFlag is still true from last cycle
+        if (_state == PlayerState.Trapped)
+        {
+            if (!consideredIdle && !touchingWall && !interruptFlag)
+            {
+                InterruptAnimation(currentCycle, true);
+            }
+            else if ((consideredIdle || touchingWall) && interruptFlag)
+            {
+                ResetAnimationCycle();
+            }
         }
 
         if (allowStateChange)
