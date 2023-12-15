@@ -2186,6 +2186,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
+      propertyPath: wakeup
+      value: 
+      objectReference: {fileID: -8653527231931039158, guid: 1c22aaf478dc8d64398cb2f09856c677,
+        type: 3}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
       propertyPath: stuckGuy
       value: 
       objectReference: {fileID: 3542248538078067488, guid: 86380ee009e464848b90dd8b3f658c7c,

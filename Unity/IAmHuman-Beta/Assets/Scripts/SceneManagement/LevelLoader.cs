@@ -44,6 +44,15 @@ public class LevelLoader : MonoBehaviour
         if (getSceneIndex() == 1 && PlayerPrefs.HasKey("DoneIntroFade"))
         {
             HoldFor = 0;
+            if (player.TryGetComponent<Animator>(out var playerAnimator))
+            {
+                playerAnimator.SetBool("AlreadyPlayed", true);
+                playerAnimator.enabled = false;
+            }
+            if (player.TryGetComponent<SpriteRenderer>(out var spriteRenderer))
+            {
+                spriteRenderer.sprite = player.idleWalk;
+            }
         }
 
         if (fadeAnimatedCanvas != null)
@@ -205,8 +214,11 @@ public class LevelLoader : MonoBehaviour
         if (PlayerPrefs.HasKey(getSceneName()))
         {
             string key = getSceneName() + "player";
-            player.transform.position = new Vector3(PlayerPrefs.GetFloat(key + 'x'), PlayerPrefs.GetFloat(key + 'y'), PlayerPrefs.GetFloat(key + 'z')); ;
-            CameraMovement.checkBoundsAgain = true;
+            if (PlayerPrefs.HasKey(key+'x'))
+            {
+                player.transform.position = new Vector3(PlayerPrefs.GetFloat(key + 'x'), PlayerPrefs.GetFloat(key + 'y'), PlayerPrefs.GetFloat(key + 'z')); ;
+                CameraMovement.checkBoundsAgain = true;
+            }
 
             foreach (GameObject obj in saveObjectPositions)
             {
