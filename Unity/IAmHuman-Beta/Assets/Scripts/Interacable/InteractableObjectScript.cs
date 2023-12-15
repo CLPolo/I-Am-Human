@@ -18,6 +18,8 @@ public class InteractableObjectScript : MonoBehaviour
     [Header("Sprites")]
     public Sprite Default = null;
     public Sprite Outline = null;
+    public Sprite LeftOutline = null;
+    public Sprite RightOutline = null;
     public bool removeSprite = false;  // used for kitchen drawer
 
     [Header("Interaction")]
@@ -128,6 +130,7 @@ public class InteractableObjectScript : MonoBehaviour
         }
         if (PressedInteract) { CheckAndDisplayInfo(); }  // displays info even if outside of collider, only needed if not frozen
         CheckPickupInteractions();
+        CheckCorrectSprite();
     }
 
     // if they press InteractKey to interact & haven't already interacted with object and we only want the interact prompt to appear once
@@ -276,7 +279,7 @@ public class InteractableObjectScript : MonoBehaviour
     private void Interactable()
     {
         // turns interact prompt on or off depending on whether player is inside
-        PromptCanvas.SetActive(Inside);
+        if (PromptCanvas != null) PromptCanvas.SetActive(Inside);
     }
 
     private void DisplayText()
@@ -498,7 +501,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         if (this.gameObject.name == "Attic Door")
         {
-            if (SceneManager.GetActiveScene().name == "Hallway Hub")
+            if (SceneManager.GetActiveScene().name == "Hallway Hub (Version 2)")
             {
                 SpawnEntity = true;
                 SpawnObjectCheck();
@@ -550,4 +553,16 @@ public class InteractableObjectScript : MonoBehaviour
             }
         }
     }
+
+    public void CheckCorrectSprite()  // fixes a bug with raycast & pushlogic and removing sprites where if there was a side highlight and you moved into another raycasted obj it wouldn't remove it. This was the only way it could work that I could find.
+    {
+        if (this.name != player.GetComponent<PushLogicScript>().NameOfObjInCast() && !Inside && (this.tag == "Box" || this.tag == "Hideable"))
+        {
+            if (GetComponent<SpriteRenderer>().sprite != Default)
+            {
+                GetComponent<SpriteRenderer>().sprite = Default;
+            }
+        }
+    }
+
 }
