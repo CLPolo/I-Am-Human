@@ -245,7 +245,7 @@ public class LogicScript : MonoBehaviour
         }
 
 
-        if (currentScene == "Forest Intro (Lily)")
+        if (currentScene == "Forest Intro")
         {
             if (PlayerPrefs.GetInt("Fading") == 2)
             {
