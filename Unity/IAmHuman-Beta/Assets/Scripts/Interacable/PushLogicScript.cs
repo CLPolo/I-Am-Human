@@ -33,6 +33,10 @@ public class PushLogicScript : MonoBehaviour
     private bool TextRemoved = false;  // prevents updates from constantly turning off prompt
     private float HoldFor = 1f;
 
+    private GameObject currentBox = null;
+    private GameObject prevBox = null;
+    private Sprite prevSpriteDef = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,11 +58,22 @@ public class PushLogicScript : MonoBehaviour
 
         if (grabCheck.collider != null && grabCheck.collider.CompareTag("Box"))  // if there is an object colliding AND that object is a box
         {
+
+            if (currentBox != null && prevBox == null) { prevBox = currentBox; prevSpriteDef = Default; }
+            if (currentBox != null && currentBox.name != prevBox.name) { prevBox = currentBox; prevSpriteDef = Default; }
+
             GameObject box = grabCheck.collider.gameObject;
             Rigidbody2D rb = box.GetComponent<Rigidbody2D>();
 
+            LeftOutline = box.GetComponent<InteractableObjectScript>().LeftOutline;
+            RightOutline = box.GetComponent<InteractableObjectScript>().RightOutline;
+            Default = box.GetComponent<InteractableObjectScript>().Default;
+            WholeOutline = box.GetComponent<InteractableObjectScript>().Outline;
+
+            currentBox = box;
+
             DisplayOutline(box);
-            
+
             if (!InteractionOver && TextCanvas != null && TextObject != null && Text != null)
             {
                 DisplayPushText();
@@ -117,13 +132,18 @@ public class PushLogicScript : MonoBehaviour
         else
         {
             foreach (GameObject obj in spritesToReset) {
-                if (obj.name == "MoveAndHideBox") obj.GetComponent<SpriteRenderer>().sprite = Default;  // if box out of range, does not show outline
-                obj.GetComponent<AudioSource>().Pause();
+                if (currentBox.name == obj.name)
+                {
+                    obj.GetComponent<SpriteRenderer>().sprite = Default;  // if box out of range, does not show outline
+                    obj.GetComponent<AudioSource>().Pause();
+                }
             }
             spritesToReset.Clear();
 
             if (!TextRemoved) { TurnOffText(); }
         }
+
+
     }
 
     private void DisplayOutline(GameObject obj)
@@ -141,7 +161,7 @@ public class PushLogicScript : MonoBehaviour
             }
             else
             {
-                if (obj.name == "MoveAndHideBox") obj.GetComponent<SpriteRenderer>().sprite = WholeOutline;
+                obj.GetComponent<SpriteRenderer>().sprite = WholeOutline;
             }
         }
     }
@@ -182,5 +202,10 @@ public class PushLogicScript : MonoBehaviour
         yield return new WaitForSeconds(Seconds);
         TextObject.SetActive(false);
         TextRemoved = true;
+    }
+
+    public string NameOfObjInCast()
+    {
+        return currentBox == null? "null": currentBox.name;
     }
 }

@@ -295,7 +295,7 @@ public class Player : AnimatedEntity
     private void OnTriggerStay2D(Collider2D collision)
     {
         var Hideable = collision.gameObject;
-        if (collision.gameObject.CompareTag("Hideable") || collision.gameObject.CompareTag("Box"))
+        if (collision.gameObject.CompareTag("Hideable"))   // || collision.gameObject.CompareTag("Box"))  took these out to allow non-hideable but moveable objects, pretty sure it works fine but left just in case
         {
             CheckHiding(Hideable);
         }
@@ -346,7 +346,7 @@ public class Player : AnimatedEntity
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Hideable") || collision.gameObject.CompareTag("Box"))
+        if (collision.gameObject.CompareTag("Hideable")) // || collision.gameObject.CompareTag("Box")) took these out to allow non-hideable but moveable objects, pretty sure it works fine but left just in case
         {
             var hideable = collision.gameObject;
             if (state == PlayerState.Hiding)

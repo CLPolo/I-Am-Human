@@ -435,7 +435,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &145987915
@@ -594,6 +594,8 @@ GameObject:
   - component: {fileID: 192598265}
   - component: {fileID: 192598264}
   - component: {fileID: 192598263}
+  - component: {fileID: 192598266}
+  - component: {fileID: 192598267}
   m_Layer: 0
   m_Name: LeftLevelCliffside
   m_TagString: Untagged
@@ -691,6 +693,75 @@ Transform:
   m_Father: {fileID: 1437555303}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &192598266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192598262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logic: {fileID: 0}
+  player: {fileID: 0}
+  Default: {fileID: 21300000, guid: 24af0e3de95e2624fab8146a13ff2c89, type: 3}
+  Outline: {fileID: 21300000, guid: 9997b528bb4fdca4d91dd7d816a60dd5, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
+  removeSprite: 0
+  PromptTextObject: {fileID: 1261286780}
+  PromptCanvas: {fileID: 660751624}
+  InteractMessage: PRESS a TO INTERACT
+  ShowPromptOnce: 0
+  DialogueTextObject: {fileID: 554301874}
+  DialogueCanvas: {fileID: 1162561049}
+  TextList:
+  - There was something on the road...
+  - I just reacted.
+  FreezePlayer: 1
+  PlaySound: 0
+  Sounds: []
+  Audio: {fileID: 0}
+  Unlock: 0
+  NextScene: 
+  NextSceneIndex: -1
+  spawnDelay: 0
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn: []
+  DestroyAnObject: 0
+  ObjectsToDestroy: []
+  monsterComing: 0
+--- !u!61 &192598267
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192598262}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.5478955, y: -0.20174718}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 3.52}
+    newSize: {x: 5, y: 5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.464209, y: 1.4119415}
+  m_EdgeRadius: 0
 --- !u!1 &239101196
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +962,8 @@ GameObject:
   - component: {fileID: 346030815}
   - component: {fileID: 346030814}
   - component: {fileID: 346030813}
+  - component: {fileID: 346030816}
+  - component: {fileID: 346030817}
   m_Layer: 8
   m_Name: RightLevelCliff
   m_TagString: Wall
@@ -911,18 +984,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.32250315, y: 0.21843171}
+  m_Offset: {x: 0.32027245, y: 0.18728828}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.92, y: 2.56}
+    oldSize: {x: 2.56, y: 3.84}
     newSize: {x: 5, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2749935, y: 1.723702}
+  m_Size: {x: 1.92033, y: 1.7859888}
   m_EdgeRadius: 0
 --- !u!212 &346030814
 SpriteRenderer:
@@ -963,7 +1036,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -4
-  m_Sprite: {fileID: 21300000, guid: d21ccb9c9bbff6e40a2944930d56d6e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3fdd52f4b5051de4db1fe96d77e34033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -982,12 +1055,81 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346030812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 79.01427, y: 3.4700353, z: 1.3833008}
-  m_LocalScale: {x: -7, y: 8, z: 1}
+  m_LocalPosition: {x: 79.01427, y: 1.27, z: 1.3833008}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 1437555303}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &346030816
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346030812}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.23465121, y: -0.34427297}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 3.84}
+    newSize: {x: 5, y: 5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.0906975, y: 0.6814282}
+  m_EdgeRadius: 0
+--- !u!114 &346030817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346030812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logic: {fileID: 0}
+  player: {fileID: 0}
+  Default: {fileID: 21300000, guid: 3fdd52f4b5051de4db1fe96d77e34033, type: 3}
+  Outline: {fileID: 21300000, guid: 3fdd52f4b5051de4db1fe96d77e34033, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
+  removeSprite: 0
+  PromptTextObject: {fileID: 1261286780}
+  PromptCanvas: {fileID: 660751624}
+  InteractMessage: PRESS a TO INTERACT
+  ShowPromptOnce: 0
+  DialogueTextObject: {fileID: 554301874}
+  DialogueCanvas: {fileID: 1162561049}
+  TextList:
+  - It would be too hard to crawl through this.
+  - She couldn't have gone this way.
+  FreezePlayer: 1
+  PlaySound: 0
+  Sounds: []
+  Audio: {fileID: 0}
+  Unlock: 0
+  NextScene: 
+  NextSceneIndex: -1
+  spawnDelay: 0
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn: []
+  DestroyAnObject: 0
+  ObjectsToDestroy: []
+  monsterComing: 0
 --- !u!1 &356663067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,6 +1321,8 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 0}
   Outline: {fileID: 6211333693060703309, guid: 01382ac80a94cbf428c4403a76c3a0c7, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
@@ -1762,7 +1906,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &534600046
@@ -1915,7 +2059,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &567988486
@@ -2080,7 +2224,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153274, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -2131,7 +2275,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 5840108822926873604, guid: c0ab95059499e5c4d944d6bc4d81da73,
+      objectReference: {fileID: -8653527231931039158, guid: 1c22aaf478dc8d64398cb2f09856c677,
         type: 3}
     - target: {fileID: 7082313449261153278, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -2426,7 +2570,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &721665126
@@ -2743,6 +2887,8 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 0}
   Outline: {fileID: 0}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
@@ -3022,6 +3168,8 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: -667970240133171378, guid: 1ade3915d1f455e48909ad079c66672b, type: 3}
   Outline: {fileID: -343669319925169312, guid: b296e76704935a0498993943ea277643, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 1
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
@@ -3030,8 +3178,8 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
   TextList:
-  - That's her shoe...
-  - I guess she tried this way already and got stuck.
+  - Lily, your shoe...
+  - Did you already walk this way and get stuck?
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -3126,7 +3274,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &804830686
@@ -3392,7 +3540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &899840934
 Transform:
   m_ObjectHideFlags: 0
@@ -3643,7 +3791,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: rightBound
-      value: 108
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -11704,7 +11852,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1370652078
@@ -12585,7 +12733,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1643031426
@@ -12603,7 +12751,7 @@ PrefabInstance:
     - target: {fileID: 2356562124795575588, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.3105595
+      value: 0.22447607
       objectReference: {fileID: 0}
     - target: {fileID: 2356562124795575588, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -12613,12 +12761,12 @@ PrefabInstance:
     - target: {fileID: 2356562124795575588, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.08724822
+      value: -0.044206485
       objectReference: {fileID: 0}
     - target: {fileID: 2356562124795575594, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Box
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -12628,13 +12776,13 @@ PrefabInstance:
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.48
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e08dc188ec233a14db9d42ae744489b0,
+      objectReference: {fileID: 674306701537259960, guid: e08dc188ec233a14db9d42ae744489b0,
         type: 3}
     - target: {fileID: 2356562125316671544, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -12674,7 +12822,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.073
+      value: -0.61
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -12744,7 +12892,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.31055954
+      value: 0.2233725
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -12754,7 +12902,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.08724822
+      value: -0.043654718
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -12764,7 +12912,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 0.48
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
@@ -12774,7 +12922,7 @@ PrefabInstance:
     - target: {fileID: 2356562125316671551, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.48
+      value: 0.31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1ff3be1279bc554d95bd8ddbd7c10fa, type: 3}
@@ -12881,6 +13029,49 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1643031429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643031427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535b44c58d7798c48a865a9ada2fb826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logic: {fileID: 0}
+  player: {fileID: 0}
+  Default: {fileID: 674306701537259960, guid: e08dc188ec233a14db9d42ae744489b0, type: 3}
+  Outline: {fileID: 674306701537259960, guid: e08dc188ec233a14db9d42ae744489b0, type: 3}
+  LeftOutline: {fileID: -7116156009938128683, guid: 54a732cfadc8e554591f3d7169cfe2b1,
+    type: 3}
+  RightOutline: {fileID: -5998472470760008496, guid: 54a732cfadc8e554591f3d7169cfe2b1,
+    type: 3}
+  removeSprite: 0
+  PromptTextObject: {fileID: 0}
+  PromptCanvas: {fileID: 0}
+  InteractMessage: 
+  ShowPromptOnce: 0
+  DialogueTextObject: {fileID: 0}
+  DialogueCanvas: {fileID: 0}
+  TextList: []
+  FreezePlayer: 0
+  PlaySound: 0
+  Sounds: []
+  Audio: {fileID: 0}
+  Unlock: 0
+  NextScene: 
+  NextSceneIndex: -1
+  spawnDelay: 0
+  SpawnObject: 0
+  SpawnEntity: 0
+  ObjectsSpawned: []
+  EntitySpawn: []
+  DestroyAnObject: 0
+  ObjectsToDestroy: []
+  monsterComing: 0
 --- !u!4 &1643031431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2356562125316671546, guid: a1ff3be1279bc554d95bd8ddbd7c10fa,
@@ -13066,7 +13257,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1726099817
@@ -13230,7 +13421,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1760994128
@@ -13311,7 +13502,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1765077134
@@ -13475,7 +13666,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1821548631
@@ -13696,6 +13887,8 @@ MonoBehaviour:
   Default: {fileID: -5088337885355641681, guid: 1ade3915d1f455e48909ad079c66672b,
     type: 3}
   Outline: {fileID: 1932529899675087231, guid: b296e76704935a0498993943ea277643, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 1
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
@@ -13989,12 +14182,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: fbdcb1ef879bd1a47a6d15fd6a429ad7, type: 3}
+  m_Sprite: {fileID: 6098965414309642640, guid: fbdcb1ef879bd1a47a6d15fd6a429ad7,
+    type: 3}
   m_Color: {r: 0.9245283, g: 0.8678355, b: 0.8678355, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.29, y: 0.21}
+  m_Size: {x: 1.27, y: 0.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -14008,7 +14202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883155022}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.354267, y: 0.27, z: 0.38330078}
+  m_LocalPosition: {x: 20.354267, y: 0.22, z: 0.38330078}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 738061608}
@@ -14028,8 +14222,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
   player: {fileID: 0}
-  Default: {fileID: 0}
-  Outline: {fileID: 0}
+  Default: {fileID: 6098965414309642640, guid: fbdcb1ef879bd1a47a6d15fd6a429ad7, type: 3}
+  Outline: {fileID: -8488124418243697241, guid: 183112bc67836cf4da64f7b1614fc6ad,
+    type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
@@ -14248,7 +14445,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1974312822
@@ -14387,7 +14584,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2015098269
@@ -14571,7 +14768,7 @@ SpriteRenderer:
   m_Size: {x: 0.60014653, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &2117047772
@@ -14596,6 +14793,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1556588692317559216, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6528947780182831161, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_text
