@@ -417,7 +417,12 @@ public class InteractableObjectScript : MonoBehaviour
             HandleStudyKey();
         }
 
-        if (PlayerPrefs.GetInt("LilyBear") == 1 || PlayerPrefs.GetInt("LilyShoe") == 1)  // add any other pickups here
+        if (PlayerPrefs.GetInt("LilyBear") == 1 && this.tag == "LilyBear")
+        {
+            HandleOtherPickups();
+        }
+
+        if (PlayerPrefs.GetInt("LilyShoe") == 1 && this.tag == "LilyShoe")
         {
             HandleOtherPickups();
         }
@@ -495,8 +500,8 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // deals w/ other pickups. turns them off after text is over.
 
-        string currentTag = this.tag; 
-        if (currentTag.IsOneOf("LilyBear", "LilyShoe") && PlayerPrefs.GetInt(currentTag) == 1 && TextHasPlayed)
+        string currentTag = this.tag;
+        if (PlayerPrefs.GetInt(currentTag) == 1 && TextHasPlayed)
         {
             this.gameObject.SetActive(false); //turns collider off (must remain on for text to be able to be skipped thru
         }
@@ -535,6 +540,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         if (this.gameObject.name == "Attic Door")
         {
+
             if (SceneManager.GetActiveScene().name == "Hallway Hub (Version 2)")
             {
                 SpawnEntity = true;

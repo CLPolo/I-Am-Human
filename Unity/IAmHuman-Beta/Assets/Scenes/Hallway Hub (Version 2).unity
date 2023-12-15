@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: patrol.Array.data[0].location.x
-      value: -1.86
+      value: -4.13
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
@@ -196,7 +196,7 @@ PrefabInstance:
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
       propertyPath: patrol.Array.data[1].location.x
-      value: -14.64
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 8214629693895832313, guid: 8124123ed1221654b8757dee44fb5ff8,
         type: 3}
@@ -270,6 +270,106 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8124123ed1221654b8757dee44fb5ff8, type: 3}
+--- !u!1 &71573147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 71573148}
+  - component: {fileID: 71573150}
+  - component: {fileID: 71573149}
+  m_Layer: 0
+  m_Name: CrawlerReact Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &71573148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71573147}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.882, y: 0.05, z: 0.7910156}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1487599776}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &71573149
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71573147}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.1050047, y: -0.34684658}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.185714, y: 0.30630684}
+  m_EdgeRadius: 0
+--- !u!114 &71573150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71573147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325c933df60b28a4c8294da0bc26fa93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AffectedObject: {fileID: 2045366291}
+  ActivateTriggerObject: []
+  DeactivateTriggerObject: []
+  DoorToBeOpened: {fileID: 0}
+  LayerSwitch: 0
+  SpawnObject: 0
+  TurnOffObject: 0
+  NoiseTrigger: 0
+  TextTrigger: 1
+  HideTimed: 0
+  FreezePlayerObject: 0
+  FreezePlayerText: 1
+  FreezePlayerOnly: 0
+  UnlockDoor: 0
+  NoisePlayOnSpawn: 0
+  SpawnDoor: 0
+  TrappedText: 0
+  PushPullText: 0
+  LayerToSwitchTo: 
+  NoiseToBePlayed: {fileID: 0}
+  TextToDisplay:
+  - More of these weird animals. I need to be quiet.
+  TextObject: {fileID: 1919345850}
+  TextCanvas: {fileID: 546873928}
+  TextDisplayOnce: 1
+  DisplayTimeObject: 0
+  DelayTime: 0
+  HideTime: 0
+  FreezeTime: 0
+  player: {fileID: 0}
 --- !u!1 &107260029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,7 +2112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632501010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.955, y: -0.13999999, z: 0.56347656}
+  m_LocalPosition: {x: 5.95, y: -0.193, z: 0.56347656}
   m_LocalScale: {x: -3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1429597894}
@@ -6058,6 +6158,7 @@ MonoBehaviour:
   EntitySpawn:
   - {fileID: 1312885029}
   - {fileID: 1828829376}
+  - {fileID: 71573147}
   DestroyAnObject: 0
   ObjectsToDestroy: []
   monsterComing: 0
@@ -6483,7 +6584,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: e12427099091559459e0a10cc7b3cd85,
+      objectReference: {fileID: 11400000, guid: 9c4c2a258ed64504aa22305d6022d02f,
         type: 2}
     - target: {fileID: 6528947781856251796, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -8334,7 +8435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241556409}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.873, y: -0.36, z: -1.6746043}
+  m_LocalPosition: {x: 1.873, y: -0.328, z: -1.6746043}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 596244650}
@@ -8820,7 +8921,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1429597893}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.93, y: 0.417, z: -0.3515625}
+  m_LocalPosition: {x: 2.93, y: 0.547, z: -0.3515625}
   m_LocalScale: {x: -1.21871, y: 1.0324513, z: 1}
   m_Children:
   - {fileID: 632501011}
@@ -9183,6 +9284,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1107293481}
+  - {fileID: 71573148}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9350,7 +9452,7 @@ MonoBehaviour:
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
   InteractMessage: PRESS a TO INTERACT
-  ShowPromptOnce: 0
+  ShowPromptOnce: 1
   DialogueTextObject: {fileID: 1919345850}
   DialogueCanvas: {fileID: 546873928}
   TextList:

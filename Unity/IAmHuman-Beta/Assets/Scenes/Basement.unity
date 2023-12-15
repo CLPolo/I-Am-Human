@@ -3557,7 +3557,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: e12427099091559459e0a10cc7b3cd85,
+      objectReference: {fileID: 11400000, guid: 9c4c2a258ed64504aa22305d6022d02f,
         type: 2}
     - target: {fileID: 6528947781627493619, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}

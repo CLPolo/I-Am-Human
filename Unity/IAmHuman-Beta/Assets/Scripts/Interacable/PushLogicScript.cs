@@ -35,7 +35,7 @@ public class PushLogicScript : MonoBehaviour
     private float HoldFor = 1f;
 
     private GameObject currentBox = null;
-    private int playerSortOrder = 1;
+    private int playerSortOrder = -10;
 
     // Start is called before the first frame update
     void Start()
@@ -50,8 +50,9 @@ public class PushLogicScript : MonoBehaviour
         if (player == null)
         {
             player = Player.Instance;
-            playerSortOrder = player.GetComponent<SpriteRenderer>().sortingOrder;
         }
+
+        if (playerSortOrder == -10) playerSortOrder = player.GetComponent<SpriteRenderer>().sortingOrder;  // only gets it the first time
 
         RaycastHit2D grabCheck = Physics2D.RaycastAll(grabDetect.position, Vector2.right * transform.localScale, rayDist).FirstOrDefault(x => x.collider.CompareTag("Box"));  // uses raycast starting at GrabDetect to get object info
 
