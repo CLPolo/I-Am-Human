@@ -498,7 +498,7 @@ public class InteractableObjectScript : MonoBehaviour
     {
         if (this.gameObject.name == "Attic Door")
         {
-            if (SceneManager.GetActiveScene().name == "Hallway Hub")
+            if (SceneManager.GetActiveScene().name == "Hallway Hub (Version 2)")
             {
                 SpawnEntity = true;
                 SpawnObjectCheck();
