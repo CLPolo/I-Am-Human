@@ -317,6 +317,10 @@ public class Player : AnimatedEntity
             {
                 logic.inGore = true;
             }
+            else if (collision.gameObject.name == "KitchenDoor (BOARDS)")
+            {
+                logic.doorBoards = true;
+            }
             SetState(PlayerState.Trapped);
             collision.gameObject.tag = "TrapDisarmed";
             StartCoroutine(ResetTrap(collision));
@@ -466,6 +470,7 @@ public class Player : AnimatedEntity
         yield return new WaitUntil(() => state != PlayerState.Trapped);
         yield return new WaitForSeconds(0.5f);  // Wait for 0.5 seconds to reset trap
         logic.inGore = false;
+        logic.doorBoards = false;
         if (logic.trapKills)
         {
             collision.gameObject.tag = "TrapArmed";

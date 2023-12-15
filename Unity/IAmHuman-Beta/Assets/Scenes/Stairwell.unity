@@ -183,6 +183,8 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 0}
   Outline: {fileID: 0}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 1439253120}
   PromptCanvas: {fileID: 1913697973}
@@ -688,7 +690,9 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: -1210504103482768873, guid: 136b6de4f56681e4c8be524704202064,
     type: 3}
-  Outline: {fileID: 21300000, guid: 898d9dca9e39c9146894f2ce9346e37a, type: 3}
+  Outline: {fileID: 4136635374800628472, guid: 898d9dca9e39c9146894f2ce9346e37a, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 1439253120}
   PromptCanvas: {fileID: 1913697973}
