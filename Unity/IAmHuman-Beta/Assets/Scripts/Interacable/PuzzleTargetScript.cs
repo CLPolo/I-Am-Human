@@ -498,6 +498,18 @@ public class PuzzleTargetScript : MonoBehaviour
                 PlayerPrefs.SetInt("FinalDialogue", 1);  // Prevents it from playing again
             }
         }
+        else if (this.name == "CrawlerReact Text")  // the text reaction to the crawler's will not re-appear after it has been played thru on re-entry to the hallway
+        {
+            if (PlayerPrefs.GetInt("CrawlerReactAlreadyTriggered") == 1)
+            {
+                TextTrigger = false;
+            }
+            else if (TextTrigger)
+            {
+                if (TextPlayed) PlayerPrefs.SetInt("CrawlerReactAlreadyTriggered", 1);
+            }
+            
+        }
     }
 
     public bool GetTextPlayed()

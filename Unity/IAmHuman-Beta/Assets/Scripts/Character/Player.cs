@@ -8,11 +8,11 @@ using UnityEngine.UIElements;
 public static class Controls
 {
     // movement
-    public static readonly KeyCode Left = KeyCode.A;
-    public static readonly KeyCode Right = KeyCode.D;
+    public static readonly List<KeyCode> Left = new List<KeyCode> { KeyCode.A, KeyCode.LeftArrow };
+    public static readonly List<KeyCode> Right = new List<KeyCode> { KeyCode.D, KeyCode.RightArrow };
     // actions
     public static readonly KeyCode Interact = KeyCode.E; // hiding is also interacting
-    public static readonly KeyCode Hide = KeyCode.F; // hiding is also interacting
+    public static readonly KeyCode Hide = KeyCode.S; // hiding is also interacting
     public static readonly KeyCode Push = KeyCode.Space;
     public static readonly KeyCode Mash = KeyCode.Space;
     public static readonly List<KeyCode> Run = new List<KeyCode> { KeyCode.LeftShift, KeyCode.RightShift };
@@ -201,7 +201,7 @@ public class Player : AnimatedEntity
 
     void checkMovement()
     {
-        if (!Input.GetKey(Controls.Right) && !Input.GetKey(Controls.Left))
+        if (!(Input.GetKey(Controls.Right[0]) || Input.GetKey(Controls.Right[1])) && !(Input.GetKey(Controls.Left[0]) || Input.GetKey(Controls.Left[1])))
         {
             if (state.IsOneOf(PlayerState.Walking, PlayerState.Running))
             {
@@ -210,14 +210,14 @@ public class Player : AnimatedEntity
             rb.velocity = Vector2.zero;
             moving = false;
         } else {
-            if (Input.GetKey(Controls.Left) &&
+            if ((Input.GetKey(Controls.Left[0]) || (Input.GetKey(Controls.Left[1]))) &&
                 !(logic.currentScene == "Kitchen" && state.IsOneOf(PlayerState.Pushing, PlayerState.Pulling)))
             {
                 // Jon note - I added some stuff to the if statement so the player cannot pull the body left in the Kitchen
                 rb.velocity = Vector2.left * speed;
                 movingRight = false;
             }
-            else if (Input.GetKey(Controls.Right))
+            else if (Input.GetKey(Controls.Right[0]) || Input.GetKey(Controls.Right[1]))
             {
                 rb.velocity = Vector2.right * speed;
                 movingRight = true;
