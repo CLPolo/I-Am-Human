@@ -30,7 +30,6 @@ public class Sister : NPC
 
 
     private Animator sisterAnimator;
-    private float untilDist = 3f;
 
     private bool endCutscene = false;
 
