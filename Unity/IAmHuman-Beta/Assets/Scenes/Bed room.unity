@@ -134,6 +134,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1556588692317559216, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6528947780177944043, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -193,7 +198,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780312275447, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -2255,7 +2260,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: -2700287416417763280, guid: 84c692f72455ba649b1dcf2c167284d3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
