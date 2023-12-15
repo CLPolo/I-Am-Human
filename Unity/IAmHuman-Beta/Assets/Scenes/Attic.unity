@@ -1503,6 +1503,8 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 2483352866808470647, guid: bec42af7be22a374c94fc29c47f2cbe2, type: 3}
   Outline: {fileID: 9191514911897471680, guid: bec42af7be22a374c94fc29c47f2cbe2, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 645747662}
   PromptCanvas: {fileID: 645747663}
@@ -1793,7 +1795,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -2235271872018582317, guid: 3d3010baede95d444b623c6752e36c16,
+  m_Sprite: {fileID: -2235271872018582317, guid: f21a83b7a259931438f83bb10b1fa1f2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
