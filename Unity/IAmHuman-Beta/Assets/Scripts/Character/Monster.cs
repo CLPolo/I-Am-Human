@@ -119,6 +119,10 @@ public class Monster : NPC
     {
         if (collision.gameObject.name == "CrawlerRemovalService")
         {
+            if (gameObject.name == "Crawler")
+            {
+                gameObject.SetActive(false);
+            }
             cutscene = true;  // Removes patrolling (Similar to freezing player)
             monsterDefaultSpeed = 2f;  // Slow down the monster for the big reveal
             speed = monsterDefaultSpeed;
