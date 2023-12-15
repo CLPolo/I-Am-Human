@@ -42,10 +42,11 @@ public class LogicScript : MonoBehaviour
 
     [Header("Traps")]
     public GameObject trappedText;
-    public float defaultMashTimer = 1.5f;  // If you don't mash for 1 seconds you die
+    public float defaultMashTimer = 1f;  // If you don't mash for 1 seconds you die
     private float mashTimer;
     public bool trapKills;
     public bool inGore = false;
+    public bool doorBoards = false;
     private float playerYStart = 1000f;
 
 
@@ -132,6 +133,10 @@ public class LogicScript : MonoBehaviour
                 if (inGore)
                 {
                     mashTimer += 1.5f;  // This allows player to escape faster in gore
+                }
+                else if (doorBoards)
+                {
+                    mashTimer += 0.4f;  // The door boards are the hardest thing to pull
                 }
                 else
                 {

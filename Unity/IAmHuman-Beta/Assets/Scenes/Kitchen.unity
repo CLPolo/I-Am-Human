@@ -323,9 +323,8 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - Ugh, ew...
+  - Uhg! What is that smell?
   - What is this stuff?
-  - It smells gross.
   TextObject: {fileID: 1293382118}
   TextCanvas: {fileID: 1657577298}
   TextDisplayOnce: 1
@@ -750,7 +749,9 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 1293382118}
   DialogueCanvas: {fileID: 1657577298}
   TextList:
-  - Oh my god.
+  - "I\u2019m sorry for whatever happened to you."
+  - ...
+  - But I need to get that key.
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -1110,7 +1111,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -1
   m_Sprite: {fileID: 4455061112307439929, guid: 7db36e24ff2ce5e418e68af9d70bef59,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1934,7 +1935,7 @@ MonoBehaviour:
   UnlockDoor: 0
   NoisePlayOnSpawn: 0
   SpawnDoor: 0
-  TrappedText: 0
+  TrappedText: 1
   PushPullText: 0
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}

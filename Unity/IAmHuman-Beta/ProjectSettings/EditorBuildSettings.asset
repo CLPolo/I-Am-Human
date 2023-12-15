@@ -33,6 +33,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Forest Chase.unity
     guid: fd6ea4e00fc9f6043af9d19d614829b5
   - enabled: 1
-    path: Assets/Scenes/End Credits.unity
-    guid: a486b5750bc670e4387c5ab538df0cae
+    path: Assets/Scenes/End Credits (scroll).unity
+    guid: 636e700b7489d7146b86a56c16300dd2
   m_configObjects: {}
