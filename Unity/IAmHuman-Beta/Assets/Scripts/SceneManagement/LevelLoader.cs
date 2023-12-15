@@ -52,7 +52,6 @@ public class LevelLoader : MonoBehaviour
             if (player.TryGetComponent<SpriteRenderer>(out var spriteRenderer))
             {
                 spriteRenderer.sprite = player.idleWalk;
-                Debug.Log("it shouldve set already fr");
             }
         }
 
