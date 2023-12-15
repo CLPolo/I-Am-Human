@@ -1990,9 +1990,62 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
+      propertyPath: stuckCycle.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
       propertyPath: footstepsWalk.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: stuckCycle.Array.data[0]
+      value: 
+      objectReference: {fileID: 3542248538078067488, guid: 86380ee009e464848b90dd8b3f658c7c,
+        type: 3}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: stuckCycle.Array.data[1]
+      value: 
+      objectReference: {fileID: 3542248538078067488, guid: 86380ee009e464848b90dd8b3f658c7c,
+        type: 3}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: stuckCycle.Array.data[2]
+      value: 
+      objectReference: {fileID: 3542248538078067488, guid: 86380ee009e464848b90dd8b3f658c7c,
+        type: 3}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: stuckCycle.Array.data[3]
+      value: 
+      objectReference: {fileID: 3542248538078067488, guid: 86380ee009e464848b90dd8b3f658c7c,
+        type: 3}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: stuckCycle.Array.data[4]
+      value: 
+      objectReference: {fileID: 4388567703823820616, guid: 86380ee009e464848b90dd8b3f658c7c,
+        type: 3}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: stuckCycle.Array.data[5]
+      value: 
+      objectReference: {fileID: 4388567703823820616, guid: 86380ee009e464848b90dd8b3f658c7c,
+        type: 3}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: stuckCycle.Array.data[6]
+      value: 
+      objectReference: {fileID: 4388567703823820616, guid: 86380ee009e464848b90dd8b3f658c7c,
+        type: 3}
+    - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: stuckCycle.Array.data[7]
+      value: 
+      objectReference: {fileID: 4388567703823820616, guid: 86380ee009e464848b90dd8b3f658c7c,
+        type: 3}
     - target: {fileID: 7082313449261153252, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: footstepsWalk.Array.data[0]
@@ -2077,7 +2130,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -8653527231931039158, guid: 1c22aaf478dc8d64398cb2f09856c677,
+      objectReference: {fileID: 5840108822926873604, guid: c0ab95059499e5c4d944d6bc4d81da73,
         type: 3}
     - target: {fileID: 7082313449261153278, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -2697,7 +2750,8 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
   TextList:
-  - The door won't budge.
+  - The door is locked.
+  - Maybe there's another way in?
   FreezePlayer: 1
   PlaySound: 1
   Sounds:
@@ -3278,8 +3332,8 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - Looks like no one's been here for years.
-  - Maybe Lily went in there...
+  - She ran this way.
+  - Hopefully she just got scared and is hiding inside.
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
@@ -3411,8 +3465,8 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - Agh
-  - Where's Lily?
+  - There was something on the road...
+  - I just reacted.
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
@@ -12058,6 +12112,11 @@ MonoBehaviour:
   TextToDisplay:
   - Lily!
   - Are you okay?
+  - ...
+  - Lily?
+  - I know this is scary.
+  - I'm so sorry this happened.
+  - I promise I'll get us out of here.
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
@@ -13564,7 +13623,9 @@ MonoBehaviour:
   PushPullText: 0
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
-  TextToDisplay: []
+  TextToDisplay:
+  - Lily come back!
+  - You need to stay close to me, it can be dangerous!
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
@@ -13643,9 +13704,9 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 554301874}
   DialogueCanvas: {fileID: 1162561049}
   TextList:
-  - This is Lily's teddy bear. She was playing with it in the car.
-  - We must have crashed...
-  - We've gotta find a way out of here.
+  - This is your teddy bear!
+  - It's okay if you don't want it right now.
+  - I'll hold on to it.
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []

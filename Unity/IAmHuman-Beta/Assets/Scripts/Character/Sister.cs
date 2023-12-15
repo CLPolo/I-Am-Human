@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -65,6 +64,11 @@ public class Sister : NPC
             player = Player.Instance;
         }
 
+        if (SceneManager.GetActiveScene().name == "Hallway Hub (Version 2)" && PlayerPrefs.GetInt("LilyLeftHallway") == 1)  // turn lily off in hallway on re-entry after her run cutscene
+        {
+            this.gameObject.SetActive(false);
+        }
+
         FollowPlayer();
         Bark();
         if (SceneManager.GetActiveScene().name == "Hallway Hub")
@@ -94,13 +98,13 @@ public class Sister : NPC
             sisterAnimator.SetInteger("State", 0);
         }
 
-        if (SceneManager.GetActiveScene().name == "Hallway Hub" && sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && !sisterAudio.isPlaying)
+        if (SceneManager.GetActiveScene().name == "Hallway Hub" && sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && !sisterAudio.isPlaying)  // can prob be edited / added to puzzle target script (ask miriam)
         {
             sisterAudio.PlayOneShot((AudioClip)Resources.Load("Sounds/SoundEffects/Environment/Cabin/Misc/scare-lily-away"), 0.25f);
             player.SetState(PlayerState.Frozen);
         }
 
-        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("LilyEndCutscene") && !endCutscene)
+        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("LilyEndCutscene") && !endCutscene)  // can prob be removed
         {
             player.SetState(PlayerState.Idle);
             endCutscene = true;

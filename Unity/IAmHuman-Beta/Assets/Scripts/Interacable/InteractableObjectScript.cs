@@ -411,6 +411,11 @@ public class InteractableObjectScript : MonoBehaviour
             if (PressedInteract)
             {
                 SetObjectActive(this.gameObject, false);  // turns itself off
+                PlayerPrefs.SetInt("StudyDoorOpened", 1);
+            }
+            else if (PlayerPrefs.GetInt("StudyDoorOpened") == 1)  // keep perma opened after opening it once
+            {
+                SetObjectActive(this.gameObject, false);
             }
         }
         else if (this.name == "StudyKey" && PlayerPrefs.GetInt("StudyKey") == 1)

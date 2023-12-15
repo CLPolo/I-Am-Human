@@ -420,19 +420,29 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             PlayerPrefs.SetInt("StartTransform", 1);
         }
-        else if (this.gameObject.name == "Lily Stand Trigger" && TextPlayed)  // Lily standing up by her bear after you go thru the text
+        // in the below line, with && playertriggered she stands up immediately, but with and textplayed she stands up after text is done. Left it for design feedback before decision.
+        else if (this.gameObject.name == "Lily Stand Trigger" && this.PlayerTriggered) // && TextPlayed)  // Lily standing up by her bear after you go thru the text
         {
             if (PlayerPrefs.GetInt("LilyStandDone") != 1) AffectedObject.GetComponent<Animator>().SetInteger("State", 4);
             PlayerPrefs.SetInt("LilyStandStart", 1);
         }
-        else if (this.gameObject.name == "Lily Wait Hall Trigger" && triggeredOnce)  // LILY RUNNING AWAY IN hallway
+        else if (this.gameObject.name == "Lily Wait Hall Trigger")  // LILY RUNNING AWAY IN hallway
         {
-            // COREY HELLO!!!! hope ur doing good :) the 1f in the call below is the mini pause after you hit the trigger before lily runs and the text shows up, so adjust that for the sound time!
-            if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(1f, "Lily!", true)); CoroutineRunning = true; };  // only calls coroutine once
-            if (TextTrigger && AffectedObject.activeSelf == true)  // lily starts running. Stops once she's turned off.
+            if (triggeredOnce)
             {
-                LilyRunning(false);
+                // COREY HELLO!!!! hope ur doing good :) the 1f in the call below is the mini pause after you hit the trigger before lily runs and the text shows up, so adjust that for the sound time!
+                if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(1f, "Lily!", true)); CoroutineRunning = true; };  // only calls coroutine once
+                if (TextTrigger && AffectedObject.activeSelf == true)  // lily starts running. Stops once she's turned off.
+                {
+                    LilyRunning(false);
+                }
+                else if (AffectedObject.activeSelf != true) { PlayerPrefs.SetInt("LilyLeftHallway", 1); } // once lily's done running away from hallway, lets us make sure when we re-enter she's gone
             }
+            else if (PlayerPrefs.GetInt("LilyLeftHallway") == 1)  // turns off the puzzle target on re-entry to hallway after lily cutscene done 
+            {
+                this.gameObject.SetActive(false);
+            }
+
         }
         else if (this.gameObject.name == "Lily Run Trigger" && this.gameObject.activeSelf == true)  // LILY RUNNING AWAY IN FOREST
         {
@@ -500,7 +510,7 @@ public class PuzzleTargetScript : MonoBehaviour
         if (freezeBefore) { player.SetState(PlayerState.Frozen); }  // freezes before text pop up (wait for sound) in hallway
         yield return new WaitForSeconds(seconds);       // wait until deer gone
         TextTrigger = true;                             // text will pop up
-        TextToDisplay.Add(text);                        // w/ this message
+        if (TextToDisplay == null) TextToDisplay.Add(text);                        // w/ this message
     }
 
     private void LilyRunning(bool isForest)
