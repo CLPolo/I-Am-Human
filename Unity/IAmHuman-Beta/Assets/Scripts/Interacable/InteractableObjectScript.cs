@@ -469,8 +469,7 @@ public class InteractableObjectScript : MonoBehaviour
             {
                 PromptCanvas.SetActive(true);
                 PromptTextObject.GetComponent<TextMeshProUGUI>().text = "MASH efg TO PULL OFF BOARDS";
-                logic.trapKills = false;
-                player.SetState(PlayerState.Trapped);
+                gameObject.tag = "TrapArmedNoKill";
             }
             else if (PlayerPrefs.GetInt("escaped") == 1)
             {
