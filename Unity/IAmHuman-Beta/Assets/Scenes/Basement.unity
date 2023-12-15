@@ -627,7 +627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &163018753
 GameObject:
@@ -1076,12 +1076,9 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - Lily! You're Okay!
-  - ...
-  - Lily?
-  - ...
-  - "I get it, you\u2019re probably scared."
-  - "You\u2019re safe now, okay? Just don\u2019t run off again. "
+  - I'm glad I found you!
+  - It's okay to be scared.
+  - I'm here now.
   TextObject: {fileID: 1575254622}
   TextCanvas: {fileID: 1469968467}
   TextDisplayOnce: 1
@@ -3623,6 +3620,7 @@ Transform:
   - {fileID: 23825186}
   - {fileID: 1997812649}
   - {fileID: 446954582}
+  - {fileID: 993866116}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3701,12 +3699,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993866114}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.5735, y: 1.612, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.898937, y: 1.5008943, z: 3.194336}
   m_LocalScale: {x: 3.9047096, y: 2.8077955, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 856827792}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1360556188
 GameObject:
@@ -3802,6 +3800,88 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 651734526}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1495790365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1495790367}
+  - component: {fileID: 1495790366}
+  m_Layer: 0
+  m_Name: basement_lighting_closed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!212 &1495790366
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495790365}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+  m_Sprite: {fileID: -2935113857564476052, guid: 0a77673e22d023c41b1a4c59b810ae45,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 6.52, y: 2.04}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1495790367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495790365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.66, y: -0.37, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1498201183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3882,7 +3962,7 @@ PrefabInstance:
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
       propertyPath: rightBound
-      value: 9.2
+      value: 9.93
       objectReference: {fileID: 0}
     - target: {fileID: 3072271084244057682, guid: 7fa3c384785e55a4e89cdabe549750e4,
         type: 3}
@@ -4213,13 +4293,13 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: -6455981534079650739, guid: ed83356179f3041489b1b3dbdd48339b,
     type: 3}
-  Outline: {fileID: 9132965570561667338, guid: ed83356179f3041489b1b3dbdd48339b, type: 3}
+  Outline: {fileID: 0}
   LeftOutline: {fileID: 0}
   RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 1676686121}
   PromptCanvas: {fileID: 1684466412}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -4236,11 +4316,12 @@ MonoBehaviour:
   SpawnEntity: 0
   ObjectsSpawned:
   - {fileID: 1788591179}
-  - {fileID: 582977872}
   - {fileID: 184369891}
   EntitySpawn: []
   DestroyAnObject: 0
-  ObjectsToDestroy: []
+  ObjectsToDestroy:
+  - {fileID: 1495790365}
+  - {fileID: 1892088176}
   monsterComing: 0
 --- !u!61 &1701560422
 BoxCollider2D:
@@ -4436,8 +4517,9 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 1575254622}
   DialogueCanvas: {fileID: 1469968467}
   TextList:
-  - It's shut solid, I can't move it.
-  - I guess we've got to find another way out...
+  - It's jammed somehow.
+  - That was our way out.
+  - We will need to find another way.
   FreezePlayer: 1
   PlaySound: 1
   Sounds:
@@ -4589,7 +4671,7 @@ GameObject:
   - component: {fileID: 1892088178}
   - component: {fileID: 1892088177}
   m_Layer: 0
-  m_Name: basement_lighting
+  m_Name: basement_lighting_open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

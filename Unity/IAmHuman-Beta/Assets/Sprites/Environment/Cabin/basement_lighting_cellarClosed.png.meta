@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 0a77673e22d023c41b1a4c59b810ae45
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2935113857564476052
+    second: basement_lighting_cellarClosed_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -85,7 +88,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: basement_lighting_cellarClosed_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 13
+        width: 326
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6dfa885f716447d0800000000000000
+      internalID: -2935113857564476052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

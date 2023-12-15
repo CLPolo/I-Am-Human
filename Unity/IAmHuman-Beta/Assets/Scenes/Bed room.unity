@@ -142,7 +142,7 @@ PrefabInstance:
     - target: {fileID: 6528947780177944043, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.4
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780177944043, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -203,7 +203,7 @@ PrefabInstance:
     - target: {fileID: 6528947780312275447, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.4
+      value: 2.48
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780312275447, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -2487,6 +2487,8 @@ MonoBehaviour:
   Default: {fileID: 7346688409351873552, guid: e2c66ab6cd5d1684d95db348fb9d3d18, type: 3}
   Outline: {fileID: -4154316752730976679, guid: 86c6adbf31208ed43a7a55c4f9814c59,
     type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
@@ -2620,6 +2622,8 @@ MonoBehaviour:
     type: 3}
   Outline: {fileID: -3608295400777256440, guid: 86c6adbf31208ed43a7a55c4f9814c59,
     type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
@@ -3064,6 +3068,8 @@ MonoBehaviour:
   Default: {fileID: -1575287840882473415, guid: 86c6adbf31208ed43a7a55c4f9814c59,
     type: 3}
   Outline: {fileID: -349634838486887500, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
@@ -3073,7 +3079,8 @@ MonoBehaviour:
   DialogueCanvas: {fileID: 1335879427}
   TextList:
   - The lamp is on.
-  - Maybe whoever lives here can help us.
+  - Someone really lives here.
+  - Why haven't we seen them yet?
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -3299,6 +3306,8 @@ MonoBehaviour:
   Default: {fileID: 4081720149567667282, guid: 86c6adbf31208ed43a7a55c4f9814c59, type: 3}
   Outline: {fileID: -4770391560944671363, guid: 86c6adbf31208ed43a7a55c4f9814c59,
     type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
@@ -3307,7 +3316,8 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 39627148}
   DialogueCanvas: {fileID: 1335879427}
   TextList:
-  - Maybe this will be useful
+  - It's a good idea to take this just in case.
+  - I need to make sure Lily is safe.
   - ...
   - What was that?
   FreezePlayer: 1

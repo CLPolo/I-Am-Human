@@ -68,6 +68,7 @@ public class InteractableObjectScript : MonoBehaviour
     private bool isPickup = false;  // will only handle pickup stuff (like turning off object) if the interaction is happening with a pickup.
     private bool triggered = false;
     private int objSortOrder = 0;
+    private bool spriteGone = false;
 
     // Below Should be removed and placed into monster script
     public bool monsterComing = false;  // This is for activating Monster.cs
@@ -117,7 +118,7 @@ public class InteractableObjectScript : MonoBehaviour
                 PlayNoise();
                 //NoisePlayed = true;
             }
-            if (Unlock && !triggered) // triggered prevented a billion calls to level loader during the fade out, which prevented the positioning stuff from working properly
+            if (Unlock && !triggered && player.GetState() != PlayerState.Pushing && player.GetState() != PlayerState.Pulling) // triggered prevented a billion calls to level loader during the fade out, which prevented the positioning stuff from working properly
             {
                 if (GetComponent<Door>().Blocked == false) triggered = true;  // prevent bug where when pressing E while door was blocked, triggered became true and you could never go thru the door
                 UnlockDoor();
@@ -126,9 +127,9 @@ public class InteractableObjectScript : MonoBehaviour
             {
                 RemoveSprite();
             }
-            RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
+            //RemoveOutline(); // removes outline when player has interacted before they exit collider again to remove confusion
             PickupSet();
-            if (SpawnObject || SpawnEntity) { SpawnObjectCheck(); } // spawns entity objects
+            if ((SpawnObject || SpawnEntity)) { SpawnObjectCheck(); } // spawns entity objects
             if (DestroyAnObject) { DestroyObjectCheck(); }
         }
         if (PressedInteract) { CheckAndDisplayInfo(); }  // displays info even if outside of collider, only needed if not frozen
@@ -183,7 +184,7 @@ public class InteractableObjectScript : MonoBehaviour
                 }
             }
             // this does not have a door component
-            else if (!Unlock)
+            else if (!Unlock && !spriteGone)
             {
                 DisplayOutline();
                 DisplayInteractPrompt();
@@ -201,11 +202,23 @@ public class InteractableObjectScript : MonoBehaviour
             PlayerPrefs.SetString("Pickup", this.tag);
             isPickup = true;
         }
-        if (this.gameObject.tag == "Flashlight")
+        if (this.gameObject.tag == "Flashlight")  // new handling of 'flashlight' for basement (NON INTERACT)
         {
             PickupSet();
             SpawnObjectCheck();
+            StartCoroutine(RemoveLightingAfterSound());
         }
+    }
+
+    private IEnumerator RemoveLightingAfterSound()
+    {
+        // this is specific to the basement. Too eepy to refactor below code when this worked & deadlines, sorry :/
+        // NOTE: THIS IS WHERE FLASHLIGHT OBJECT IS TURNED OFF
+
+        yield return new WaitForSeconds(1.7f);  // waits til sound is done before switching the lighting
+        ObjectsToDestroy[0].SetActive(true);  // turns on closed lighting (should be first obj in this list in inspector under interactable, then Remove Object ... post interact, then Objects to destroy) keep the checkbox for destroy an object off tho
+        ObjectsToDestroy[1].SetActive(false); // turns off open lighting (should be second obj in this list in inspector under interactable, then Remove Object ... post interact, then Objects to destroy) keep the checkbox for destroy an object off tho
+        this.gameObject.SetActive(false);  // turns flashlight off once it's complete
     }
 
     private void PickupSet()
@@ -215,8 +228,6 @@ public class InteractableObjectScript : MonoBehaviour
         if (isPickup && PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight", "Crowbar", "AtticKey", "StudyKey", "LilyBear", "LilyShoe")) // if one of our pickups, it will set playerprefs of that to 1 (true).
         {
             PlayerPrefs.SetInt(PlayerPrefs.GetString("Pickup"), 1);
-
-            if (PlayerPrefs.GetString("Pickup").IsOneOf("Flashlight")) { this.gameObject.SetActive(false); }  // items w/ text (crowbar, keys, lily objs) handled seperately in their respective handle funcs
 
             AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/item-pickup");
 
@@ -327,11 +338,7 @@ public class InteractableObjectScript : MonoBehaviour
                     AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance-close");
                     player.AudioSource.PlayOneShot(clip, 0.75f);
                     PressedInteract = false;
-                    if (removeSprite)
-                    {
-                        this.GetComponent<BoxCollider2D>().enabled = false;
-                        this.GetComponent<SpriteRenderer>().sprite = null;
-                    }
+                    if (removeSprite) { SetObjectActive(this.gameObject, false); }  // if text after interact, will wait to turn off collider once text done
                 }
             }
         }
@@ -374,7 +381,7 @@ public class InteractableObjectScript : MonoBehaviour
         {
             this.GetComponent<SpriteRenderer>().sprite = Default;
         }
-        else if (Outline != null)
+        else if (Outline != null)  // allows us to have a couple sprites that didn't have non outline version reset to null (i.e. the cellar door in forest intro)
         {
             this.GetComponent<SpriteRenderer>().sprite = null;
         }
@@ -384,8 +391,8 @@ public class InteractableObjectScript : MonoBehaviour
     {
         // removes sprites and turns off puzzle target script (used for drawer in kitchen, goes from closed to open).
 
+        spriteGone = true;
         this.GetComponent<SpriteRenderer>().sprite = null;
-        if (TextList == null) { this.GetComponent<BoxCollider2D>().enabled = false; }  // if text after interact, will wait to turn off collider once text done
     }
 
     private void CheckPickupInteractions()
@@ -408,6 +415,11 @@ public class InteractableObjectScript : MonoBehaviour
         if (PlayerPrefs.GetInt("StudyKey") == 1)
         {
             HandleStudyKey();
+        }
+
+        if (PlayerPrefs.GetInt("LilyBear") == 1 || PlayerPrefs.GetInt("LilyShoe") == 1)  // add any other pickups here
+        {
+            HandleOtherPickups();
         }
 
         if (SceneManager.GetActiveScene().name == "Forest Chase" && this.name == "HideBush" && PlayerPrefs.GetInt("MonsterEmerges") == 2)  // temp implementation of run text (in chase scene it's in spawn object for hide bush)
@@ -433,7 +445,8 @@ public class InteractableObjectScript : MonoBehaviour
                 SetObjectActive(this.gameObject, false);
             }
         }
-        else if (this.name == "StudyKey" && PlayerPrefs.GetInt("StudyKey") == 1)
+        
+        if (this.name == "StudyKey" && PlayerPrefs.GetInt("StudyKey") == 1)
         {
             this.GetComponent<SpriteRenderer>().sprite = null;
             if (TextHasPlayed)
@@ -476,6 +489,18 @@ public class InteractableObjectScript : MonoBehaviour
                 SpawnObjectCheck(); // Spawns crawler
             }
         }
+    }
+
+    private void HandleOtherPickups()
+    {
+        // deals w/ other pickups. turns them off after text is over.
+
+        string currentTag = this.tag; 
+        if (currentTag.IsOneOf("LilyBear", "LilyShoe") && PlayerPrefs.GetInt(currentTag) == 1 && TextHasPlayed)
+        {
+            this.gameObject.SetActive(false); //turns collider off (must remain on for text to be able to be skipped thru
+        }
+
     }
 
     private void HandleFlashlight()
