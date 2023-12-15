@@ -464,13 +464,13 @@ public class PuzzleTargetScript : MonoBehaviour
             if (PlayerPrefs.GetInt("FinalDialogue") == 2)
             {
                 TextToDisplay.Clear();
-                TextToDisplay.Add("Lily... ?");
+                TextToDisplay.Add("Lily... ? My baby sister Lily...");
                 TextPlayed = false;  // Once this changes, the text should play !!!!!
                 PlayerPrefs.SetInt("FinalDialogue", 1);  // Prevents it from playing again
             }
             else if (PlayerPrefs.GetInt("FinalDialogue") == 4)
             {
-                TextToDisplay[0] = "Who... What are you?";
+                TextToDisplay[0] = "But... you're... What are you?";
                 textIndex = 0;
                 TextPlayed = false;  // Once this changes, the text should play !!!!!
                 PlayerPrefs.SetInt("FinalDialogue", 1);  // Prevents it from playing again

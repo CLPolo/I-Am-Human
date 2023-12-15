@@ -596,9 +596,9 @@ GameObject:
   - component: {fileID: 192598263}
   - component: {fileID: 192598266}
   - component: {fileID: 192598267}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftLevelCliffside
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3108,7 +3108,7 @@ GameObject:
   - component: {fileID: 754919939}
   m_Layer: 0
   m_Name: Lily's Shoe
-  m_TagString: Untagged
+  m_TagString: LilyShoe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3222,7 +3222,7 @@ MonoBehaviour:
   Outline: {fileID: -343669319925169312, guid: b296e76704935a0498993943ea277643, type: 3}
   LeftOutline: {fileID: 0}
   RightOutline: {fileID: 0}
-  removeSprite: 1
+  removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: PRESS a TO INTERACT
@@ -13941,7 +13941,7 @@ MonoBehaviour:
   Outline: {fileID: 1932529899675087231, guid: b296e76704935a0498993943ea277643, type: 3}
   LeftOutline: {fileID: 0}
   RightOutline: {fileID: 0}
-  removeSprite: 1
+  removeSprite: 0
   PromptTextObject: {fileID: 1261286780}
   PromptCanvas: {fileID: 660751624}
   InteractMessage: PRESS a TO INTERACT

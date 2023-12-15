@@ -1238,15 +1238,100 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6528947780177944043, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780177944043, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831161, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831161, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831161, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831166, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 486.20023
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831166, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 109.01659
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831166, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.03999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780182831166, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -163
+      objectReference: {fileID: 0}
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6528947780213591172, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 86
+      objectReference: {fileID: 0}
     - target: {fileID: 6528947780213591173, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780312275447, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780312275447, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320112, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320113, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 133.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6528947780428320113, guid: 969fc196346bf8e439b03a6f53125632,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -219.3
       objectReference: {fileID: 0}
     - target: {fileID: 6528947781139820947, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -3696,7 +3781,7 @@ Transform:
   m_GameObject: {fileID: 2006762649}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.615, y: -1.339, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1571245135}
   m_RootOrder: 3
@@ -3882,8 +3967,17 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 1293382118}
   DialogueCanvas: {fileID: 1657577298}
   TextList:
-  - PUT KITCHEN NOTE DIALOGUE HERE
-  - :)
+  - "It\u2019s been weeks, whatever I locked in the bedroom isn\u2019t dead yet."
+  - How is that possible?
+  - "I\u2019ve started to see more of these disfigured animals around the woods,"
+  - Crawling along the trees and through the bushes.
+  - "They are already in the house, those noises weren\u2019t really in my mind."
+  - "I swear I\u2019m not crazy."
+  - Alice keeps on visiting me, always just out of sight, watching me.
+  - I had a dream one night that one of those infected animals was wearing her skin,
+  - "All red and sickly\u2026"
+  - I miss Alice.
+  - Maybe this all means I get to see her soon.
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -3937,7 +4031,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -1
   m_Sprite: {fileID: -3897862059077438994, guid: 7db36e24ff2ce5e418e68af9d70bef59,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

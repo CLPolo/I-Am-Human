@@ -6244,7 +6244,7 @@ PrefabInstance:
     - target: {fileID: 1556588692317559216, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780177944043, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -6321,7 +6321,7 @@ PrefabInstance:
     - target: {fileID: 6528947780196874871, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6528947780312275447, guid: 969fc196346bf8e439b03a6f53125632,
         type: 3}
@@ -9346,7 +9346,7 @@ MonoBehaviour:
   Outline: {fileID: 21300000, guid: d8b2cdeaa9c9833478b35b601c92761d, type: 3}
   LeftOutline: {fileID: 0}
   RightOutline: {fileID: 0}
-  removeSprite: 1
+  removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
   InteractMessage: PRESS a TO INTERACT
@@ -9641,7 +9641,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -8319992412190318785, guid: 8cfbbe279abc2bf4a90e06463b1a5287,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
