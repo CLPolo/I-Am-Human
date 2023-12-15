@@ -207,7 +207,7 @@ public class AudioManager : MonoBehaviour
 
         //check game state -- have we picked up the crowbar?
         if (PlayerPrefs.GetInt("Crowbar") == 1)
-        {   print("here~!");
+        {   
             if (PlayerPrefs.GetInt("AtticKey") == 1 || kitchenTriggered) //have we entered the kitchen?
             {   
                 //play the extra distorted cabin theme
@@ -229,7 +229,6 @@ public class AudioManager : MonoBehaviour
                 ambArea.time = UnityEngine.Random.Range(0, ambArea.clip.length);
                 ambArea.volume = 0.75f;
                 if (!ambArea.isPlaying){
-                    print("hereio y dudes");
                     ambArea.Play();
                 } 
             }
@@ -416,8 +415,11 @@ public class AudioManager : MonoBehaviour
         if (!audioSource.isPlaying) audioSource.Play();
         while (currentTime < duration)
         {   
-            _instance.fading = true;
-            
+            if (PlayerPrefs.GetInt("Dead") == 1){    //janky workaround to get the gameover fade in the stop if the 
+                if (PlayerPrefs.GetInt("Dead") == 0) //player resumes the game before the fade is done 
+                    yield break;
+            }
+
             currentTime += Time.deltaTime;
             audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
             yield return null;
@@ -428,7 +430,6 @@ public class AudioManager : MonoBehaviour
             yield return new WaitUntil(() => audioSource.volume >= 0.001f);
             audioSource.Stop();
         }
-        _instance.fading = false;
         yield break;
     }
     void Stop(bool all = false, bool fade = false, AudioSource s = null){   
@@ -484,8 +485,6 @@ public class AudioManager : MonoBehaviour
                 
                     if (Input.GetKeyDown(Controls.Mash))
                     {   
-
-                        print("doing the thing~!");
                         //if this is the last mash, play the final sound
                         if (PlayerPrefs.GetInt("DoorOff") == 1)
                         {   
@@ -495,7 +494,6 @@ public class AudioManager : MonoBehaviour
                         } 
                         else if (!miscEntity.isPlaying)
                         {   
-                            print("pressed the button~!");
                             clip = Resources.Load<AudioClip>(pathInteract + "Traps/Plywood/plywood-pull-" + UnityEngine.Random.Range(0,8).ToString());
                             miscEntity.clip = clip;
                             miscEntity.PlayOneShot(clip);
