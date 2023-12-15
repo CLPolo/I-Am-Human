@@ -29,7 +29,8 @@ public class AudioManager : MonoBehaviour
    
     //other flags
     private bool  trapEntered = false;
-    private bool fading = false;
+    private bool       fading = false;
+    private bool       paused = false;
     
     //progression flags
     public bool       deathTriggered = false;
@@ -56,8 +57,7 @@ public class AudioManager : MonoBehaviour
     public float    defaultFadeTime = 2.5f;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -102,11 +102,16 @@ public class AudioManager : MonoBehaviour
         }
 
         if (p != null) CheckPlayer();
+        
         //are we dead?
         CheckDeath();
+
         CheckProgress(scene);
         CheckScenewide(scene);
     }
+    
+
+    //Per-frame update checks
     private void CheckProgress(int scene){   
         //if we're not in the title screen
         if(scene != 0) 
@@ -137,12 +142,12 @@ public class AudioManager : MonoBehaviour
                     crowbarFadeTriggered = true;
                 }
             }
-            if (scene == 7 && !monsterTransformed && scene != 9 && Input.GetKeyDown(KeyCode.Return))
+            if (scene == 7 && !monsterTransformed && PlayerPrefs.GetInt("StartTransform") == 1)
             {
                 monsterTransformed = true;
                 cutscene.loop = false;
                 cutscene.clip = Resources.Load<AudioClip>(pathEntity + "Monster/monster-transform");
-                cutscene.volume = 0.5f;
+                cutscene.volume = 0.75f;
                 cutscene.Play();
             }
         }
@@ -183,13 +188,19 @@ public class AudioManager : MonoBehaviour
             if (scene == 6) CheckAtticStairwell();
             if (scene == 7) CheckAttic();
             if (scene == 8) CheckChase();
+        } else {
+
+            //if car crash is playing and player pauses the game, pause the cutscene
+            if (PlayerPrefs.GetInt("Paused") == 1 && cutscene.isPlaying) cutscene.Pause();
+
+            //if they unpause it is isn't finished, resume
+            else if (PlayerPrefs.GetInt("Paused") == 0 && cutscene.time < cutscene.clip.length) cutscene.Play();
         }
     }
     void CheckTitle(){
         if ( bgm.clip == null ||  bgm.clip.name != "title-theme-lofx")  bgm.clip = Resources.Load<AudioClip>(pathBGM + "title-theme-lofx");
         if (!bgm.isPlaying) RestartSource(bgm, true, bgmVolume, defaultFadeTime);
-        }
-
+    }
     void CheckForest(){
         if (    bgm.clip == null ||     bgm.clip.name != "forest-theme")        bgm.clip = Resources.Load<AudioClip>(pathBGM + "forest-theme");
         if (ambArea.clip == null || ambArea.clip.name != "forest_ambience") ambArea.clip = Resources.Load<AudioClip>(pathAmb + "Forest/forest_ambience");
@@ -198,6 +209,7 @@ public class AudioManager : MonoBehaviour
         if     (!bgm.isPlaying) RestartSource(bgm,     true, bgmVolume, defaultFadeTime);
         if (!ambArea.isPlaying) RestartSource(ambArea, true, bgmVolume, defaultFadeTime);
         if (!ambMisc.isPlaying) RestartSource(ambMisc, true, bgmVolume, defaultFadeTime);
+
     }
     void CheckCabin(int scene){
         //check for correct clips
@@ -270,6 +282,9 @@ public class AudioManager : MonoBehaviour
             RestartSource(bgm, true, bgmVolume, defaultFadeTime);
         }
     }
+
+
+    //Scene transition handling
     void ChangeScene(int scene){   
         //if coming from the title screen, fade out all audio
         if (fromScene == 0) Stop(true, true);
@@ -384,6 +399,9 @@ public class AudioManager : MonoBehaviour
         bgm.volume = 0.01f;
         RestartSource(bgm, true, bgmVolume, defaultFadeTime);
     }
+
+
+
     void RestartSource(AudioSource s, bool fade = false, float targetVolume = 0.5f, float duration = 2.5f, bool stop = false){      
             if (stop) 
             {
@@ -415,6 +433,7 @@ public class AudioManager : MonoBehaviour
         if (!audioSource.isPlaying) audioSource.Play();
         while (currentTime < duration)
         {   
+            _instance.fading = true;
             if (PlayerPrefs.GetInt("Dead") == 1){    //janky workaround to get the gameover fade in the stop if the 
                 if (PlayerPrefs.GetInt("Dead") == 0) //player resumes the game before the fade is done 
                     yield break;
@@ -430,6 +449,7 @@ public class AudioManager : MonoBehaviour
             yield return new WaitUntil(() => audioSource.volume >= 0.001f);
             audioSource.Stop();
         }
+        _instance.fading = false;
         yield break;
     }
     void Stop(bool all = false, bool fade = false, AudioSource s = null){   
@@ -451,6 +471,9 @@ public class AudioManager : MonoBehaviour
             } else s.Stop();
         }
     }  
+
+
+
     void CheckPlayer(){
         
         AudioClip clip;
@@ -552,7 +575,6 @@ public class AudioManager : MonoBehaviour
             pA.PlayOneShot(p.footstepsWalk[UnityEngine.Random.Range(0, p.footstepsWalk.Capacity)], 0.2f);      
         }
     }  
-    // used when player dies
     public void StopAllSources()
     {
         foreach (AudioSource src in srcs.Values)

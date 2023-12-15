@@ -231,7 +231,7 @@ public class InteractableObjectScript : MonoBehaviour
 
             AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/item-pickup");
 
-            if (Input.GetKeyDown(Controls.Interact)) player.AudioSource.PlayOneShot(clip, 0.5f);
+            if (Input.GetKeyDown(Controls.Interact)) player.AudioSource.PlayOneShot(clip, 0.4f);
             if (this.tag == "Flashlight")
             {
                 clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cellar-door-close-0");
@@ -336,6 +336,7 @@ public class InteractableObjectScript : MonoBehaviour
                     if (FreezePlayer) { player.SetState(PlayerState.Idle); }  // unfreezes player if they were frozen
                     //play text close sound
                     AudioClip clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/TextUI/text-advance-close");
+                    player.AudioSource.clip = clip;
                     player.AudioSource.PlayOneShot(clip, 0.75f);
                     PressedInteract = false;
                     if (removeSprite) { SetObjectActive(this.gameObject, false); }  // if text after interact, will wait to turn off collider once text done
@@ -441,7 +442,9 @@ public class InteractableObjectScript : MonoBehaviour
         {
             TextList = null;
             if (PressedInteract)
-            {
+            {   
+                player.AudioSource.PlayOneShot((AudioClip)Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/Locked/locked_door_01"), 0.25f);
+                player.AudioSource.PlayOneShot((AudioClip)Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Interactable/Door/cabin-door-open-0"), 0.25f);
                 SetObjectActive(this.gameObject, false);  // turns itself off
                 PlayerPrefs.SetInt("StudyDoorOpened", 1);
             }
