@@ -54,7 +54,7 @@ public class LevelLoader : MonoBehaviour
 
             deathFade = GameObject.Find("Canvas (Follows Player)/DeathScreenFade"); // finds the deathscreen anim object under canvas, needs to be active to be found
             playerAnimImage = GameObject.Find("Canvas (Follows Player)/DeathScreenFade/Player");
-            deathFade.SetActive(false);  // so we turn it off immediately
+            deathFade?.SetActive(false);  // so we turn it off immediately
         }
     }
 
