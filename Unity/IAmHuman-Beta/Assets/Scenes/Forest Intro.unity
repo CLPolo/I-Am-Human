@@ -13625,7 +13625,6 @@ MonoBehaviour:
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
   - Lily come back!
-  - You need to stay close to me, it can be dangerous!
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
