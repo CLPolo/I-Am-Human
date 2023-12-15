@@ -304,6 +304,8 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 0}
   Outline: {fileID: 0}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 1676686121}
   PromptCanvas: {fileID: 1684466412}
@@ -3133,6 +3135,8 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 0}
   Outline: {fileID: 0}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 1676686121}
   PromptCanvas: {fileID: 1684466412}
@@ -3678,7 +3682,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -6965673459567539648, guid: 3d3010baede95d444b623c6752e36c16,
+  m_Sprite: {fileID: -6965673459567539648, guid: f21a83b7a259931438f83bb10b1fa1f2,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4210,6 +4214,8 @@ MonoBehaviour:
   Default: {fileID: -6455981534079650739, guid: ed83356179f3041489b1b3dbdd48339b,
     type: 3}
   Outline: {fileID: 9132965570561667338, guid: ed83356179f3041489b1b3dbdd48339b, type: 3}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 1676686121}
   PromptCanvas: {fileID: 1684466412}
@@ -4420,6 +4426,8 @@ MonoBehaviour:
   player: {fileID: 0}
   Default: {fileID: 0}
   Outline: {fileID: 0}
+  LeftOutline: {fileID: 0}
+  RightOutline: {fileID: 0}
   removeSprite: 0
   PromptTextObject: {fileID: 1676686121}
   PromptCanvas: {fileID: 1684466412}
