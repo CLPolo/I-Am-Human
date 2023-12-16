@@ -170,6 +170,11 @@ public class AudioManager : MonoBehaviour
                 bgm.volume = 0f;
                 bgm.clip = Resources.Load<AudioClip>(pathBGM + "death-music");
                 RestartSource(bgm, true, 1.0f, 12f);
+
+                int chance = UnityEngine.Random.Range(0, 257);
+
+                //Wilhelm Scream easter egg
+                if (chance == 1) pA.PlayOneShot(Resources.Load<AudioClip>(pathEntity + "Player/scream"));
             }
         } else if (PlayerPrefs.GetInt("Dead") == 0) {
             deathTriggered = false;
