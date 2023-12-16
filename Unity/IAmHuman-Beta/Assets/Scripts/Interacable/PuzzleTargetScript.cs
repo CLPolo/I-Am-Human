@@ -105,6 +105,11 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             PlayerTriggered = true;
             triggeredOnce = true;
+
+            if (this.name == "EndingCutscene")
+            {
+                LogicScript.Instance.allowPauseKey = false;
+            }
         }
     }
 
@@ -455,7 +460,7 @@ public class PuzzleTargetScript : MonoBehaviour
                 LilyRunning(true);
             }
         }
-        else if (this.gameObject.name == "EndingCutscene")
+        else if (this.gameObject.name == "EndingCutscene" && PlayerPrefs.GetInt("FinalDialogue") != -1)
         {
             if (PlayerPrefs.GetInt("FinalDialogue") == 0)
             {
