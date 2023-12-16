@@ -54,7 +54,7 @@ public class Monster : NPC
 
         if (crawler)
         {
-            audioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Crabs/crab-walk-loop-0");
+            audioSource.clip = Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/Crabs/crab-walk-loop-" + UnityEngine.Random.Range(0,2).ToString());
             audioSource.time = Random.Range(0, audioSource.clip.length/1);
             audioSource.loop = true;
             audioSource.volume = 0.5f;
