@@ -176,7 +176,7 @@ public class CameraMovement : MonoBehaviour
     private void HandleStuck()
     {
         // if player is stuck, does the same camera shake as the hiding. Most of the code is copied from HandleHiding() with the camera effects removed
-        if (playerAccess.GetState() == PlayerState.Trapped)  // if the player is currently trapped
+        if (playerAccess.GetState() == PlayerState.Trapped && Input.GetKeyDown(Controls.Mash))  // if the player is currently trapped
         {
             if (!shaking) { shaking = true; StartCoroutine(Shaking(0.2f, stuckCurve)); }  // start the shake process as long as it's not already shaking
         }
