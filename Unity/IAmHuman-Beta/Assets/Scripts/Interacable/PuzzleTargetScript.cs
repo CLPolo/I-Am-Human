@@ -436,8 +436,13 @@ public class PuzzleTargetScript : MonoBehaviour
         {
             if (triggeredOnce)
             {
+                if (!NoiseTriggered)
+                {
+                    player.AudioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/alert"));
+                    NoiseTriggered = true;
+                }
                 // COREY HELLO!!!! hope ur doing good :) the 1f in the call below is the mini pause after you hit the trigger before lily runs and the text shows up, so adjust that for the sound time!
-                if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(1f, "You can't run off like this!", true)); CoroutineRunning = true; };  // only calls coroutine once
+                if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(0.35f, "You can't run off like this!", true)); CoroutineRunning = true; };  // only calls coroutine once
                 if (TextTrigger && AffectedObject.activeSelf == true)  // lily starts running. Stops once she's turned off.
                 {
                     LilyRunning(false);
@@ -451,10 +456,15 @@ public class PuzzleTargetScript : MonoBehaviour
 
         }
         else if (this.gameObject.name == "Lily Run Trigger" && this.gameObject.activeSelf == true)  // LILY RUNNING AWAY IN FOREST
+        {   
+        if (!NoiseTriggered)
         {
+            player.AudioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/alert"));
+            NoiseTriggered = true;
+        }
             // COREY HELLO AGAIN!!!! hope ur doing even better than before :) the 4f in the call below is the wait time after you hit the trigger before lily runs and the text shows up
             // INCLUDING the wait for the deer head to dissapear, so adjust that for the sound time IF you want to add a new sound. Not sure if you do tho.
-            if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(4f, "Lily wait! Come back!", false)); CoroutineRunning = true; };  // only calls coroutine once
+            if (!CoroutineRunning) { StartCoroutine(HandleLilyRun(.75f, "Lily wait! Come back!", false)); CoroutineRunning = true; };  // only calls coroutine once
             if (TextTrigger && AffectedObject.activeSelf == true)  // once the hide stuff's done, lily starts running. Stops once she's turned off.
             {
                 LilyRunning(true);
@@ -526,11 +536,6 @@ public class PuzzleTargetScript : MonoBehaviour
     {   
         AffectedObject.GetComponent<Sister>().SetDetectRange(0);  // this allows us to make it so that she won't be trying to follow us
         if (freezeBefore) { player.SetState(PlayerState.Frozen); }  // freezes before text pop up (wait for sound) in hallway
-        if (!NoiseTriggered)
-        {
-            player.AudioSource.PlayOneShot(Resources.Load<AudioClip>("Sounds/SoundEffects/Entity/alert"));
-            NoiseTriggered = true;
-        }
         yield return new WaitForSeconds(seconds);       // wait until deer gone
         TextTrigger = true;                             // text will pop up
         TextToDisplay.Add(text);                        // w/ this message
