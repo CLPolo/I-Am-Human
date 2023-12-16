@@ -52,6 +52,11 @@ public class Sister : NPC
         {
             SetupNPC(speed, 1f, 1.5f);
         }
+
+        if (SceneManager.GetActiveScene().name == "Forest Intro") {
+            sisterAnimator.SetInteger("State", 3);
+            PlayerPrefs.SetInt("LilyStandDone", 0);
+        }
     }
 
     // Update is called once per frame
@@ -83,8 +88,7 @@ public class Sister : NPC
         }
         else if (SceneManager.GetActiveScene().name == "Forest Intro" && PlayerPrefs.GetInt("LilyStandDone") != 1)
         {
-            if (PlayerPrefs.GetInt("LilyStandStart") != 1) sisterAnimator.SetInteger("State", 3);
-            else if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("StoodUp"))
+            if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("StoodUp"))
             {
                 PlayerPrefs.SetInt("LilyStandDone", 1);
                 SetDetectRange(5);

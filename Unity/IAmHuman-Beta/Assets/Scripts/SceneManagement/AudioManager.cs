@@ -181,25 +181,28 @@ public class AudioManager : MonoBehaviour
             if (bgm.isPlaying && bgm.clip.name == "death-music") bgm.Stop();
         }
     }
-    void CheckScenewide(int scene){   
+    void CheckScenewide(int scene){
 
         //Only resume other audio if cutscene isn't playing, audio isn't already fading in/out, and we're not dead
-        if (!cutscene.isPlaying && !fading && !deathTriggered) { 
+        if (!cutscene.isPlaying && !fading && !deathTriggered) {
 
             //Check scene-wide audio sources
-            if (scene == 0) CheckTitle(); 
+            if (scene == 0) CheckTitle();
             if (scene == 1) CheckForest();
             if (scene.IsOneOf(2, 3, 4, 5)) CheckCabin(scene);
             if (scene == 6) CheckAtticStairwell();
             if (scene == 7) CheckAttic();
             if (scene == 8) CheckChase();
         } else {
-
             //if car crash is playing and player pauses the game, pause the cutscene
-            if (PlayerPrefs.GetInt("Paused") == 1 && cutscene.isPlaying) cutscene.Pause();
-
+            if (PlayerPrefs.GetInt("Paused") == 1 && cutscene.isPlaying) {
+                cutscene.Pause();
+            }
             //if they unpause it is isn't finished, resume
-            else if (PlayerPrefs.GetInt("Paused") == 0 && cutscene.time < cutscene.clip.length) cutscene.Play();
+            else if (PlayerPrefs.HasKey("Paused") && PlayerPrefs.GetInt("Paused") == 0 && cutscene.clip != null && cutscene.time < cutscene.clip.length)
+            {
+                cutscene.Play();
+            }
         }
     }
     void CheckTitle(){

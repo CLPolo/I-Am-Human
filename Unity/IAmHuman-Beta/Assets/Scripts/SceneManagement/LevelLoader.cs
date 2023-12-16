@@ -74,9 +74,9 @@ public class LevelLoader : MonoBehaviour
         // below handles the player death animation
         if (PlayerPrefs.GetInt("Dead") == 1)  // if player is dead
         {
-            deathFade.gameObject.SetActive(true);  // turn on the deathscreen anim object (has the bkgrnd & player image w/ anims)
-            fadeAnimator.SetBool("Death", true);  // starts the animation
-            if (fadeAnimator.GetCurrentAnimatorStateInfo(0).IsName("DeathScreen"))  // once the animation is done (state transitions to 'DeathScreen') 
+            deathFade?.gameObject.SetActive(true);  // turn on the deathscreen anim object (has the bkgrnd & player image w/ anims)
+            fadeAnimator?.SetBool("Death", true);  // starts the animation
+            if (fadeAnimator != null && fadeAnimator.GetCurrentAnimatorStateInfo(0).IsName("DeathScreen"))  // once the animation is done (state transitions to 'DeathScreen') 
             {
                 deathFade.gameObject.SetActive(false);  // turn off deathfade screen / obj so we can see the death screen
                 LogicScript.Instance.ActivateDeathScreen();  // turns on the death screen
@@ -91,7 +91,7 @@ public class LevelLoader : MonoBehaviour
     public void CheckAndUpdateInventoryOverlay()
     {
 
-        if (player.finalCutscene)  // turns the whole thing off during the final cutscene
+        if (player != null && player.finalCutscene)  // turns the whole thing off during the final cutscene
         {
             GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay");
             if (invCanvas != null) { invCanvas.SetActive(false); }
@@ -104,25 +104,25 @@ public class LevelLoader : MonoBehaviour
                 if (PlayerPrefs.GetInt(pickup) == 1)
                 {
                     GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/" + pickup + "Inv");
-                    invCanvas.SetActive(true);
+                    invCanvas?.SetActive(true);
                 }
             }
 
             if (PlayerPrefs.GetInt("StudyKey") == 1 && PlayerPrefs.GetInt("StudyDoorOpened") != 1)  // brief window of time where player has study key and hasn't opened the door yet
             {
                 GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
-                invCanvas.SetActive(true);
+                invCanvas?.SetActive(true);
             }
             else if (PlayerPrefs.GetInt("StudyKey") == 1 && PlayerPrefs.GetInt("StudyDoorOpened") == 1)
             {
                 GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
-                invCanvas.SetActive(false);
+                invCanvas?.SetActive(false);
             }
 
             if (PlayerPrefs.GetInt("AtticKey") == 1)  // this one can be perma in inv, unless we don't want that, cause the atiic door always appears closed so you'd resuse the key everytime you opened it
             {
                 GameObject invCanvas = GameObject.Find("Canvas (Follows Player)/Inventory Overlay/KeyInv");
-                invCanvas.SetActive(true);
+                invCanvas?.SetActive(true);
             }
         }
 
@@ -146,39 +146,38 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(HoldFor);  // waits
         fadeAnimator.SetBool("TimeMet", true);  // updates animator parameter so that fade in happens
     }
-    public IEnumerator finishLoadScene<T>(T scene)
+    public IEnumerator finishLoadScene<T>(T scene, bool saveStates)
     {
         // new fade finish function
 
         if (PlayerPrefs.GetInt("Dead") == 1)  // prevents fading on player death screen restart
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            PlayerPrefs.SetInt("Dead", 0);
             fadeAnimator.SetBool("Death", true);
         }
         else
         {
-            SetScenePositions();
+            SetScenePositions(saveStates);
             PlayerPrefs.SetInt("Fading", 1);
             if (fadeAnimator != null) fadeAnimator.SetInteger("EndScene", 1);  // starts the fade out animation
             yield return new WaitForSeconds(1);  // waits one second until it loads other scene so that animation has time to play
             PlayerPrefs.SetInt("Fading", 0);
-            if (typeof(T) == typeof(int))
-            {
-                SceneManager.LoadScene(Convert.ToInt32(scene));
-            }
-            else if (typeof(T) == typeof(string))
-            {
-                SceneManager.LoadScene(scene as string);
-            }
-            
+            Debug.Log("loading scene " + scene);
         }
-
+        if (typeof(T) == typeof(int))
+        {
+            SceneManager.LoadScene(Convert.ToInt32(scene));
+        }
+        else if (typeof(T) == typeof(string))
+        {
+            SceneManager.LoadScene(scene as string);
+        }
     }
 
     // this is a wrapper around SceneManager.LoadScene to standardize scene change effects
-    public void loadScene<T>(T scene)
+    public void loadScene<T>(T scene, bool saveStates = true)
     {
-        StartCoroutine(finishLoadScene<T>(scene));
+        StartCoroutine(finishLoadScene<T>(scene, saveStates));
     }
 
     public string getSceneName()
@@ -189,7 +188,7 @@ public class LevelLoader : MonoBehaviour
 
     public int getSceneIndex() => SceneManager.GetActiveScene().buildIndex;
 
-    private void SetScenePositions()
+    private void SetScenePositions(bool saveStates)
     {
         if (getSceneName() == "Hallway Hub")
         {
@@ -202,6 +201,8 @@ public class LevelLoader : MonoBehaviour
         } else if (getSceneIndex() == 1) {
             PlayerPrefs.SetInt("DoneIntroFade", 1);
         }
+
+        if (!saveStates) { return; }
         // sets playerprefs for player's position and scene. 
         PlayerPrefs.SetInt(getSceneName(), 1);
         PlayerPrefs.SetFloat(getSceneName() + "playerx", transform.position.x);
@@ -225,7 +226,7 @@ public class LevelLoader : MonoBehaviour
         if (PlayerPrefs.HasKey(getSceneName()))
         {
             string key = getSceneName() + "player";
-            if (PlayerPrefs.HasKey(key+'x'))
+            if (PlayerPrefs.HasKey(key+'x') && player != null)
             {
                 player.transform.position = new Vector3(PlayerPrefs.GetFloat(key + 'x'), PlayerPrefs.GetFloat(key + 'y'), PlayerPrefs.GetFloat(key + 'z')); ;
                 CameraMovement.checkBoundsAgain = true;
