@@ -42,6 +42,9 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             }
             StartCoroutine(FinishClick());
         });
+
+        CheckToEnable();
+
     }
 
     private IEnumerator FinishClick()
@@ -74,4 +77,13 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             button.image.sprite = unselected;
         }
     }
+
+    public void CheckToEnable()
+    {
+        if (PlayerPrefs.HasKey("DoneIntroFade") && this.name == "Continue Button")
+        {
+            this.button.interactable = true;
+        }
+    }
+
 }

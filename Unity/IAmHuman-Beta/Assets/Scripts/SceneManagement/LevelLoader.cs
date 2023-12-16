@@ -264,8 +264,9 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    public void QuitGame()
+    public void NewGame()
     {
-        Application.Quit();
+        PlayerPrefs.DeleteAll();
+        StartGame("Forest Intro");
     }
 }
