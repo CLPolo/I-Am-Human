@@ -44,6 +44,7 @@ public class Monster : NPC
     private bool alertTriggered = false;
 
     private string monPath = "Sounds/SoundEffects/Entity/Monster/";
+    private float OriginalHeight = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +83,8 @@ public class Monster : NPC
             if (defaultAnimator != null) enemyAnimator.runtimeAnimatorController = defaultAnimator;
             PlayerPrefs.SetInt("StartTransform", 0);
         }
+
+        OriginalHeight = this.gameObject.transform.position.y;
 
     }
 
@@ -140,6 +143,7 @@ public class Monster : NPC
                 player.SetState(PlayerState.Idle);
                 PlayerPrefs.SetInt("DoneTransformAnimation", 1);
                 if (walkableOverride != null) enemyAnimator.runtimeAnimatorController = walkableOverride;
+                this.gameObject.transform.position = new Vector3(transform.position.x, OriginalHeight + 1, transform.position.z);
             }
             else if (PlayerPrefs.GetInt("StartTransform") == 1)
             {
