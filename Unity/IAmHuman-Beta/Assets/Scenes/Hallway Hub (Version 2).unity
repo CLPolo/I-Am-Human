@@ -361,7 +361,7 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - More of these weird animals. I need to be quiet.
+  - More of these weird creatures?! I need to be quiet.
   TextObject: {fileID: 1919345850}
   TextCanvas: {fileID: 546873928}
   TextDisplayOnce: 1
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -2388,21 +2388,21 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 1919345850}
   DialogueCanvas: {fileID: 546873928}
   TextList:
-  - More strange things have been happening.
-  - "I swear I\u2019m not crazy."
-  - "I\u2019ve seen things, but things that don't make sense to me."
-  - I thought I saw Alice from the attic window when I was out in the yard.
-  - I looked up, and there she was, but she's been gone for so many years.
-  - "I swear I\u2019m not crazy. I\u2019m just too tired. I locked something in my
-    bedroom."
-  - It must be some infected animal, it was like nothing I have ever seen.
-  - It looked like something slipped into some type of dead animal.
-  - It has no fur, only skin.
-  - With blood leaking out of places and has multiple appendages.
-  - I didn't know what else to do besides block it in so it can't get out.
-  - It must just be a sick animal and will die soon.
-  - "It\u2019ll all be okay once I can sleep well again."
-  - I swear I'm not crazy.
+  - It's a note. Maybe from whoever lives here?
+  - '"More strange things have been happening."'
+  - "\"I swear I\u2019m not crazy.\""
+  - '"I just can''t make sense of any of it."'
+  - '"When I was out in the yard, I thought I saw Alice in the attic window."'
+  - '"I know it wasn''t her. She''s been gone for months."'
+  - '"I''m just tired. Haven''t been sleeping."'
+  - '"There''s some animal crawling around my bedroom."'
+  - '"It must be sick, poor thing, it doesn''t look very good."'
+  - '"I can''t get close to it without getting all scratched up."'
+  - '"I didn''t know what else to do, besides blocking it in."'
+  - '"Then at least it can''t get into the rest of the house."'
+  - '"Hopefully it''ll die soon."'
+  - '"All will be okay once I can actually sleep."'
+  - '"... I''m not going crazy."'
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -2804,7 +2804,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 1919345850}
   DialogueCanvas: {fileID: 546873928}
@@ -3005,7 +3005,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -6149,15 +6149,14 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 1919345850}
   DialogueCanvas: {fileID: 546873928}
   TextList:
-  - It's locked.
-  - I think I hear Lily moving around in here.
-  - This must be where she's hiding.
-  - There has to be a key around here somewhere.
+  - It's locked, but I can hear someone in there.
+  - Lily??
+  - There's gotta be a key.
   FreezePlayer: 1
   PlaySound: 1
   Sounds:
@@ -7442,26 +7441,27 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 1919345850}
   DialogueCanvas: {fileID: 546873928}
   TextList:
-  - The forest has been watching me.
-  - I keep telling myself,
-  - "\u201Cyou\u2019re getting old Dave, your mind\u2019s playing tricks on you,\u201D"
-  - But I hear them at night.
-  - "Sometimes it sounds like something\u2019s crawling along the walls,"
-  - Sometimes groaning.
-  - Sometimes noises like another human.
-  - Crying from the basement, weeping from the attic.
-  - When I go and check, there's nothing and no one there.
-  - "I don\u2019t know what to think anymore."
-  - What is real and what is in my mind?
-  - I started sleeping with a crowbar beside the bed, just in case.
-  - "Is that how I know I\u2019ve really lost my mind?"
-  - "I\u2019m sure it\u2019s just some strange animal."
-  - What else would it be?
+  - 'Looks like a diary. There''s something written:'
+  - '"The forest has been watching me."'
+  - '"I keep telling myself,"'
+  - "\"'you\u2019re getting old Dave, your mind\u2019s playing tricks on you,'\u201D"
+  - '"But I hear them at night."'
+  - '"Something in the walls... Rats, maybe?"'
+  - '"But there''s this awful groaning sound..."'
+  - '"Sometimes it sounds like someone''s there,"'
+  - '"Crying in the basement, screams in the attic."'
+  - '"But when I go and check, there''s nothing."'
+  - "\"I don\u2019t know what to think anymore.\""
+  - '"Is it all in my head?"'
+  - '"I started sleeping with a crowbar beside the bed, just in case."'
+  - "\"Is that how I know I\u2019ve lost my mind?\""
+  - "\"I\u2019m sure it\u2019s just some strange animal...\""
+  - '"What else would it be?"'
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -7761,7 +7761,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -8599,7 +8599,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 1919345850}
   DialogueCanvas: {fileID: 546873928}
@@ -9466,12 +9466,12 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 1
   DialogueTextObject: {fileID: 1919345850}
   DialogueCanvas: {fileID: 546873928}
   TextList:
-  - Looks like this fell from between the pages
+  - Looks like this fell from between the pages.
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -9865,13 +9865,13 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 906412519}
   PromptCanvas: {fileID: 906412518}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 1919345850}
   DialogueCanvas: {fileID: 546873928}
   TextList:
-  - Hmm, these boards are really stuck
-  - I'll need something to help pry them off
+  - Hmm, these boards are really stuck...
+  - I'll need something to help pry them off.
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []

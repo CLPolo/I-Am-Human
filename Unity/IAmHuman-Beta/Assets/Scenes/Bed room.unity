@@ -2710,7 +2710,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -3156,7 +3156,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 39627148}
   DialogueCanvas: {fileID: 1335879427}
@@ -3394,13 +3394,13 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 167505674}
   PromptCanvas: {fileID: 167505673}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 1
   DialogueTextObject: {fileID: 39627148}
   DialogueCanvas: {fileID: 1335879427}
   TextList:
-  - It's a good idea to take this just in case.
-  - I need to make sure Lily is safe.
+  - A crowbar?
+  - Maybe I can use this on those boards.
   - ...
   - What was that?
   FreezePlayer: 1

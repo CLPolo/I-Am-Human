@@ -795,11 +795,12 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - Lily, something is strange here.
-  - You can't keep running off.
-  - I'm so glad you're alright.
+  - Okay, I finally found you.
+  - You can't keep running away like that!
+  - Something bad is going on in this house.
+  - It's not safe here. We need to leave.
   - ...
-  - Lily?
+  - ...Lily?
   - ...
   - What's wrong?
   TextObject: {fileID: 950267779}

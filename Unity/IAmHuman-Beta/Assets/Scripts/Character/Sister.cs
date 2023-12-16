@@ -52,6 +52,11 @@ public class Sister : NPC
         {
             SetupNPC(speed, 1f, 1.5f);
         }
+
+        if (SceneManager.GetActiveScene().name == "Forest Intro") {
+            sisterAnimator.SetInteger("State", 3);
+            PlayerPrefs.SetInt("LilyStandDone", 0);
+        }
     }
 
     // Update is called once per frame
@@ -72,19 +77,9 @@ public class Sister : NPC
         
         Bark(); // Do we actually have barks?
         
-        if (SceneManager.GetActiveScene().name == "Hallway Hub")
+        if (SceneManager.GetActiveScene().name == "Forest Intro" && PlayerPrefs.GetInt("LilyStandDone") != 1)
         {
-            if (PlayerPrefs.HasKey("DoneSisterCinematic"))
-            {
-                this.gameObject.SetActive(false);
-            } else {
-                sisterAnimator.SetInteger("State", 2);
-            }
-        }
-        else if (SceneManager.GetActiveScene().name == "Forest Intro" && PlayerPrefs.GetInt("LilyStandDone") != 1)
-        {
-            if (PlayerPrefs.GetInt("LilyStandStart") != 1) sisterAnimator.SetInteger("State", 3);
-            else if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("StoodUp"))
+            if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("StoodUp"))
             {
                 PlayerPrefs.SetInt("LilyStandDone", 1);
                 SetDetectRange(5);
@@ -97,19 +92,6 @@ public class Sister : NPC
         else
         {
             sisterAnimator.SetInteger("State", 0);
-        }
-
-        if (SceneManager.GetActiveScene().name == "Hallway Hub" && sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && !sisterAudio.isPlaying)  // can prob be edited / added to puzzle target script (ask miriam)
-        {
-            sisterAudio.PlayOneShot((AudioClip)Resources.Load("Sounds/SoundEffects/Environment/Cabin/Misc/scare-lily-away"), 0.25f);
-            player.SetState(PlayerState.Frozen);
-        }
-
-        if (sisterAnimator.GetCurrentAnimatorStateInfo(0).IsName("LilyEndCutscene") && !endCutscene)  // can prob be removed
-        {
-            player.SetState(PlayerState.Idle);
-            endCutscene = true;
-            if (PlayerPrefs.GetInt("LilyHallwayOver") != 2) PlayerPrefs.SetInt("LilyHallwayOver", 1); // for text purposes, messy sorry
         }
 
         LilyFootfall();
