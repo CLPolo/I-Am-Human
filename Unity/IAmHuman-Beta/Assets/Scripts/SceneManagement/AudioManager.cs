@@ -102,7 +102,7 @@ public class AudioManager : MonoBehaviour
         }
 
         if (p != null) CheckPlayer();
-        
+
         //are we dead?
         CheckDeath();
 
@@ -142,7 +142,7 @@ public class AudioManager : MonoBehaviour
                     crowbarFadeTriggered = true;
                 }
             }
-            if (scene == 7 && !monsterTransformed && PlayerPrefs.GetInt("StartTransform") == 1)
+            if (scene == 7 && !monsterTransformed && PlayerPrefs.GetInt("StartTransform") == 1 && PlayerPrefs.GetInt("Dead") == 0)
             {
                 monsterTransformed = true;
                 cutscene.loop = false;
@@ -153,12 +153,10 @@ public class AudioManager : MonoBehaviour
         }
     }
     void CheckDeath(){
-        if (PlayerPrefs.GetInt("Dead") == 1)
-        {   
-
+        if (PlayerPrefs.GetInt("Dead") == 1){
             if (!deathTriggered)
             {   
-                Stop(true, false);
+                Stop(true, true, 1.0f);
                 deathTriggered = true;
             }
             
@@ -187,18 +185,18 @@ public class AudioManager : MonoBehaviour
         if (!cutscene.isPlaying && !fading && !deathTriggered) {
 
             //Check scene-wide audio sources
-            if (scene == 0) CheckTitle();
-            if (scene == 1) CheckForest();
+            if (scene               == 0)  CheckTitle();
+            if (scene               == 1)  CheckForest();
             if (scene.IsOneOf(2, 3, 4, 5)) CheckCabin(scene);
-            if (scene == 6) CheckAtticStairwell();
-            if (scene == 7) CheckAttic();
-            if (scene == 8) CheckChase();
+            if (scene               == 6)  CheckAtticStairwell();
+            if (scene               == 7)  CheckAttic();
+            if (scene               == 8)  CheckChase();
         } else if (scene != 0 && PlayerPrefs.GetInt("Dead") == 0){
             //if car crash is playing and player pauses the game, pause the cutscene
             if (PlayerPrefs.GetInt("Paused") == 1 && cutscene.isPlaying) {
                 cutscene.Pause();
             }
-            //if they unpause it is isn't finished, resume
+            //if they unpause and it is isn't finished, resume
             else if (PlayerPrefs.HasKey("Paused") && PlayerPrefs.GetInt("Paused") == 0 && cutscene.clip != null && cutscene.time < cutscene.clip.length)
             {
                 cutscene.Play();
@@ -255,8 +253,8 @@ public class AudioManager : MonoBehaviour
             if (!bgm3.isPlaying) bgm3.Play();
         }
         if (scene == 3){
-            if (ambMisc.isPlaying) Stop(false, true, ambMisc);
-            if (ambArea.isPlaying) Stop(false, true, ambArea);
+            if (ambMisc.isPlaying) Stop(false, true, defaultFadeTime, ambMisc);
+            if (ambArea.isPlaying) Stop(false, true, defaultFadeTime, ambArea);
         }
         if (scene == 4 && !ambArea.isPlaying) ambArea.Play();
     }
@@ -460,7 +458,7 @@ public class AudioManager : MonoBehaviour
         _instance.fading = false;
         yield break;
     }
-    void Stop(bool all = false, bool fade = false, AudioSource s = null){   
+    void Stop(bool all = false, bool fade = false, float duration = 3.0f, AudioSource s = null){   
         
         if(all){
             foreach(KeyValuePair<string, AudioSource>  src in srcs) 
@@ -468,7 +466,7 @@ public class AudioManager : MonoBehaviour
                 // if audio source isn't a Cutscene
                 if (src.Key != "Cutscene") 
                 {   
-                    if (fade) { StartCoroutine(Start(s, 0f, defaultFadeTime, true));;
+                    if (fade) { StartCoroutine(Start(s, 0f, duration, true));;
                     } else {src.Value.Stop();}
                        
                 }
