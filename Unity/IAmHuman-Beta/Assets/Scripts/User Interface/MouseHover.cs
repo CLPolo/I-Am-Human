@@ -52,6 +52,10 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         yield return new WaitUntil(() => !audioSource.isPlaying);
         button.interactable = true;
         LogicScript.Instance.allowPauseKey = true;
+        if (this.name == "Credits Quit")
+        {
+            LevelLoader.Instance.PostCreditsRestart();
+        }
         foreach (GameObject obj in disableOnClick)
         {
             obj.SetActive(false);
