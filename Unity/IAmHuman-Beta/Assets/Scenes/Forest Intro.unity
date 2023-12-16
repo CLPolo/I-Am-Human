@@ -2453,7 +2453,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: HoldFor
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
