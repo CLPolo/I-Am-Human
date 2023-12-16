@@ -136,7 +136,7 @@ public class LogicScript : MonoBehaviour
                 }
                 else if (doorBoards)
                 {
-                    mashTimer += 0.4f;  // The door boards are the hardest thing to pull
+                    mashTimer += 0.3f;  // The door boards are the hardest thing to pull
                 }
                 else
                 {
