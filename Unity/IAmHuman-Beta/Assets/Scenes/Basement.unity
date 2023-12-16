@@ -1162,7 +1162,7 @@ PrefabInstance:
     - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
       propertyPath: saveObjectActive.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
         type: 3}
@@ -1178,7 +1178,12 @@ PrefabInstance:
         type: 3}
       propertyPath: saveObjectActive.Array.data[2]
       value: 
-      objectReference: {fileID: 582977872}
+      objectReference: {fileID: 1495790365}
+    - target: {fileID: 7082313449261153279, guid: aba456c54d27d059e9a59a6bc319bc05,
+        type: 3}
+      propertyPath: saveObjectActive.Array.data[3]
+      value: 
+      objectReference: {fileID: 1892088176}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aba456c54d27d059e9a59a6bc319bc05, type: 3}
 --- !u!1 &419648475 stripped
@@ -3130,8 +3135,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
   player: {fileID: 0}
-  Default: {fileID: 0}
-  Outline: {fileID: 0}
+  Default: {fileID: -9031860772554589512, guid: ed83356179f3041489b1b3dbdd48339b,
+    type: 3}
+  Outline: {fileID: 21300000, guid: 188145b67c424be49b548736f4ad4e9b, type: 3}
   LeftOutline: {fileID: 0}
   RightOutline: {fileID: 0}
   removeSprite: 0
@@ -3196,7 +3202,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: -9031860772554589512, guid: ed83356179f3041489b1b3dbdd48339b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4505,8 +4511,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
   player: {fileID: 0}
-  Default: {fileID: 0}
-  Outline: {fileID: 0}
+  Default: {fileID: 5640488480480378748, guid: ed83356179f3041489b1b3dbdd48339b, type: 3}
+  Outline: {fileID: 21300000, guid: d371eecf28d98794e81dd3ab2fcf27fe, type: 3}
   LeftOutline: {fileID: 0}
   RightOutline: {fileID: 0}
   removeSprite: 0
