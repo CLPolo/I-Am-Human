@@ -172,6 +172,9 @@ MonoBehaviour:
   SpriteRenderer: {fileID: 8214629693895832318}
   speed: 1.5
   DetectionRange: 3
+  clip: {fileID: 0}
+  walkableOverride: {fileID: 0}
+  defaultAnimator: {fileID: 0}
   patrolling: 1
   patrol:
   - location: {x: -4, y: -1.500001, z: -1.347168}
@@ -181,6 +184,8 @@ MonoBehaviour:
     statement: 
     timeAtLocation: 2
   crawler: 1
+  monster: 0
+  playFootfall: 0
 --- !u!95 &8873732691631885713
 Animator:
   serializedVersion: 3
@@ -209,7 +214,8 @@ AudioSource:
   m_GameObject: {fileID: 8214629693895832316}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3d85109d31b1ec64792ac493cd64dda3,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
