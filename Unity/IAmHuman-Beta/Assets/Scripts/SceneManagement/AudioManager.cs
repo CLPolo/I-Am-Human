@@ -102,7 +102,7 @@ public class AudioManager : MonoBehaviour
         }
 
         if (p != null) CheckPlayer();
-        print("cutscene playing: " + cutscene.isPlaying + " Dead: " + PlayerPrefs.GetInt("Dead"));
+
         //are we dead?
         CheckDeath();
 
