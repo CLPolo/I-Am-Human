@@ -193,7 +193,7 @@ public class AudioManager : MonoBehaviour
             if (scene == 6) CheckAtticStairwell();
             if (scene == 7) CheckAttic();
             if (scene == 8) CheckChase();
-        } else {
+        } else if (scene != 0 && PlayerPrefs.GetInt("Dead") == 0){
 
             //if car crash is playing and player pauses the game, pause the cutscene
             if (PlayerPrefs.GetInt("Paused") == 1 && cutscene.isPlaying) cutscene.Pause();
@@ -232,23 +232,16 @@ public class AudioManager : MonoBehaviour
                 if (bgm.isPlaying)   bgm.Stop();
                 if (bgm2.isPlaying) bgm2.Stop();
                 if (!bgm3.isPlaying) RestartSource(bgm3, true, bgmVolume, defaultFadeTime);
+
             } else {
+
                 //play the distorted cabin theme
                 bgm3.volume = 0;
                 if (bgm.isPlaying)   bgm.Stop();
                 if (!bgm2.isPlaying) RestartSource(bgm2, true, bgmVolume, defaultFadeTime);
                 if (!bgm3.isPlaying) bgm3.Play();
             } 
-            if (scene == 4) //are we currently in the kitchen?
-            { 
-                //play the bloop-a-gloop
-                if (ambArea.clip == null || ambArea.clip.name != "gore-body-push") ambArea.clip = Resources.Load<AudioClip>(pathInteract + "gore-body-push");
-                ambArea.time = UnityEngine.Random.Range(0, ambArea.clip.length);
-                ambArea.volume = 0.75f;
-                if (!ambArea.isPlaying){
-                    ambArea.Play();
-                } 
-            }
+            
         } else {
 
             //play the normal cabin music
@@ -262,6 +255,7 @@ public class AudioManager : MonoBehaviour
             if (ambMisc.isPlaying) Stop(false, true, ambMisc);
             if (ambArea.isPlaying) Stop(false, true, ambArea);
         }
+        if (scene == 4 && !ambArea.isPlaying) ambArea.Play();
     }
     void CheckAtticStairwell(){
         bgm.Pause();
@@ -323,6 +317,12 @@ public class AudioManager : MonoBehaviour
 
                 //MAKE WAY FOR THE BLOOP-A-GLOOP
                 ambArea.Stop();
+                if (ambArea.clip == null || ambArea.clip.name != "gore-body-push") 
+                    ambArea.clip = Resources.Load<AudioClip>(pathInteract + "gore-body-push");
+                
+                ambArea.time = UnityEngine.Random.Range(0, ambArea.clip.length);
+                ambArea.volume = 0.75f;
+                ambArea.Play();
                 break;
             //Attic Stairwell
             case 6:
