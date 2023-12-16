@@ -188,7 +188,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 1439253120}
   PromptCanvas: {fileID: 1913697973}
-  InteractMessage: PRESS a TO GO UPSTAIRS
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
