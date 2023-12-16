@@ -54,7 +54,7 @@ public class MouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         LogicScript.Instance.allowPauseKey = true;
         if (this.name == "Credits Quit")
         {
-            LevelLoader.Instance.NewGame();
+            LevelLoader.Instance.PostCreditsRestart();
         }
         foreach (GameObject obj in disableOnClick)
         {

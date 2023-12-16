@@ -268,4 +268,10 @@ public class LevelLoader : MonoBehaviour
         PlayerPrefs.DeleteAll();
         StartGame("Forest Intro");
     }
+
+    public void PostCreditsRestart()
+    {
+        PlayerPrefs.DeleteAll();
+        StartGame("Title Screen");
+    }
 }
