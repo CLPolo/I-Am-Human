@@ -350,7 +350,7 @@ public class AudioManager : MonoBehaviour
         //have we played the intro cutscene?
         if(!gameStarted && fromScene == 0){
             gameStarted = true;
-            cutscene.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-update");
+            cutscene.clip = Resources.Load<AudioClip>(pathCutscene + "car-crash-no-takesies-backsies");
             cutscene.PlayOneShot(cutscene.clip, 0.8f);
 
             //play background music and ambience, fading in over 10 seconds
