@@ -313,8 +313,7 @@ MonoBehaviour:
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 1575254622}
   DialogueCanvas: {fileID: 1469968467}
-  TextList:
-  - It's too dark
+  TextList: []
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -1076,9 +1075,10 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - I'm glad I found you!
-  - It's okay to be scared.
-  - I'm here now.
+  - Lily! Why did you run off like that?
+  - ...
+  - Sorry. It's okay to be scared.
+  - 'I''ll get us out of here. '
   TextObject: {fileID: 1575254622}
   TextCanvas: {fileID: 1469968467}
   TextDisplayOnce: 1
@@ -3137,7 +3137,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 1676686121}
   PromptCanvas: {fileID: 1684466412}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -4512,14 +4512,13 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 1676686121}
   PromptCanvas: {fileID: 1684466412}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 1575254622}
   DialogueCanvas: {fileID: 1469968467}
   TextList:
   - It's jammed somehow.
-  - That was our way out.
-  - We will need to find another way.
+  - I guess we'll have to find another way.
   FreezePlayer: 1
   PlaySound: 1
   Sounds:

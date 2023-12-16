@@ -323,8 +323,9 @@ MonoBehaviour:
   LayerToSwitchTo: 
   NoiseToBePlayed: {fileID: 0}
   TextToDisplay:
-  - Uhg! What is that smell?
-  - What is this stuff?
+  - Ugh, that smell!
+  - ...
+  - What is this stuff...
   TextObject: {fileID: 1293382118}
   TextCanvas: {fileID: 1657577298}
   TextDisplayOnce: 1
@@ -744,12 +745,12 @@ MonoBehaviour:
   removeSprite: 1
   PromptTextObject: {fileID: 150503878}
   PromptCanvas: {fileID: 958308840}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 1
   DialogueTextObject: {fileID: 1293382118}
   DialogueCanvas: {fileID: 1657577298}
   TextList:
-  - "I\u2019m sorry for whatever happened to you."
+  - "Oh god... I\u2019m sorry for whatever happened to you."
   - ...
   - But I need to get that key.
   FreezePlayer: 1
@@ -1921,7 +1922,7 @@ MonoBehaviour:
   removeSprite: 0
   PromptTextObject: {fileID: 150503878}
   PromptCanvas: {fileID: 958308840}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 0}
   DialogueCanvas: {fileID: 0}
@@ -3863,13 +3864,13 @@ MonoBehaviour:
   removeSprite: 1
   PromptTextObject: {fileID: 150503878}
   PromptCanvas: {fileID: 958308840}
-  InteractMessage: PRESS a TO INTERACT
+  InteractMessage: 
   ShowPromptOnce: 0
   DialogueTextObject: {fileID: 1293382118}
   DialogueCanvas: {fileID: 1657577298}
   TextList:
-  - This must be the key to the attic.
-  - I need to get her out of this place.
+  - This must unlock the attic.
+  - I need to get Lily out of here.
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
@@ -3972,7 +3973,7 @@ MonoBehaviour:
   DialogueTextObject: {fileID: 1293382118}
   DialogueCanvas: {fileID: 1657577298}
   TextList:
-  - "It\u2019s been weeks, whatever I locked in the bedroom isn\u2019t dead yet."
+  - "\"It\u2019s been weeks, whatever I locked in the bedroom isn\u2019t dead yet."
   - How is that possible?
   - "I\u2019ve started to see more of these disfigured animals around the woods,"
   - Crawling along the trees and through the bushes.
@@ -3982,7 +3983,9 @@ MonoBehaviour:
   - I had a dream one night that one of those infected animals was wearing her skin,
   - "All red and sickly\u2026"
   - I miss Alice.
-  - Maybe this all means I get to see her soon.
+  - Maybe this all means I get to see her soon."
+  - ...
+  - Poor guy.
   FreezePlayer: 1
   PlaySound: 0
   Sounds: []
