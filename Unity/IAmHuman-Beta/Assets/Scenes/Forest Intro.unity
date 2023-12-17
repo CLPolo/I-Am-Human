@@ -1745,7 +1745,7 @@ MonoBehaviour:
   TextObject: {fileID: 554301874}
   TextCanvas: {fileID: 1162561049}
   TextDisplayOnce: 1
-  DisplayTimeObject: 3
+  DisplayTimeObject: 2
   DelayTime: 0
   HideTime: 3
   FreezeTime: 4
