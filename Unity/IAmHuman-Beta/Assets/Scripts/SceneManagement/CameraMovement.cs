@@ -125,17 +125,17 @@ public class CameraMovement : MonoBehaviour
                         break;
                     case 4:
                         pans = -1;  // This way we cannot advance until coroutine finishes
-                        StartCoroutine(PanCamera(5, 17.6f, 2, 0.2f));  // Center on the monster "I..."
+                        StartCoroutine(PanCamera(5, 17.6f, 2, 0.3f));  // Center on the monster "I..."
                         break;
                     case 5:
                         gameObject.GetComponent<Camera>().orthographicSize = 3.5f;  // Zoom in on monster
                         pans = -1;  // This way we cannot advance until coroutine finishes
-                        StartCoroutine(PanCamera(6, 17.6f, 0.2f, 0.2f));  // Play the next text "am..."
+                        StartCoroutine(PanCamera(6, 17.6f, 0.2f, 0.3f));  // Play the next text "am..."
                         break;
                     case 6:
                         gameObject.GetComponent<Camera>().orthographicSize = 3f;
                         pans = -1;  // This way we cannot advance until coroutine finishes
-                        StartCoroutine(PanCamera(7, 17.6f, 0.2f, 0.2f));  // Play the final text "HUMAN"
+                        StartCoroutine(PanCamera(7, 17.6f, 0.2f, 0.3f));  // Play the final text "HUMAN"
                         break;
                     case 7:
                         // We are done! Move to end credits
@@ -146,6 +146,7 @@ public class CameraMovement : MonoBehaviour
                 }
             }
         }
+        //Debug.Log("tp = " + GameObject.Find("Cutscene Triggers/EndingCutscene").GetComponent<PuzzleTargetScript>().GetTextPlayed());
     }
 
     private void HandleHiding()
@@ -249,28 +250,32 @@ public class CameraMovement : MonoBehaviour
         // Debug.Log(GameObject.Find("Cutscene Triggers/EndingCutscene").GetComponent<PuzzleTargetScript>().GetTextPlayed());
         yield return new WaitUntil( () => GameObject.Find("Cutscene Triggers/EndingCutscene").GetComponent<PuzzleTargetScript>().GetTextPlayed());
         Vector3 originalLoc = gameObject.transform.position;
-        if (xCoord > originalLoc.x)
+        if (panNum <= 5)  // only messes with the camera when NOT zooming, or else confused the code ig????
         {
-            while (gameObject.transform.position.x < xCoord)
-            {
-                gameObject.transform.position = new Vector3(
-                    gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / panTime),  // Takes <panTime> seconds
-                    originalLoc.y,
-                    originalLoc.z);
-                yield return null;
-            }
+            if (xCoord > originalLoc.x)
+                {
+                    while (gameObject.transform.position.x < xCoord)
+                    {
+                        gameObject.transform.position = new Vector3(
+                            gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / panTime),  // Takes <panTime> seconds
+                            originalLoc.y,
+                            originalLoc.z);
+                        yield return null;
+                    }
+                }
+            else
+                {
+                    while (gameObject.transform.position.x > xCoord)
+                    {
+                        gameObject.transform.position = new Vector3(
+                            gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / panTime),  // Takes <panTime> seconds
+                            originalLoc.y,
+                            originalLoc.z);
+                        yield return null;
+                    }
+                }
         }
-        else
-        {
-            while (gameObject.transform.position.x > xCoord)
-            {
-                gameObject.transform.position = new Vector3(
-                    gameObject.transform.position.x - ((originalLoc.x - xCoord) * Time.deltaTime / panTime),  // Takes <panTime> seconds
-                    originalLoc.y,
-                    originalLoc.z);
-                yield return null;
-            }
-        }
+            
         PlayerPrefs.SetInt("FinalDialogue", panNum);  // This allows for text to properly show
         // Now that we have panned, we must wait:
         if (waitAfterPan != 0)

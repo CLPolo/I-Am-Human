@@ -55,6 +55,7 @@ public class PuzzleTargetScript : MonoBehaviour
     private bool playCreditsNext = false;
     private bool CoroutineRunning = false;
     private bool triggeredOnce = false;
+    private bool playedOnce = false;
 
     // misc
     public Player player;
