@@ -3,7 +3,7 @@
 https://github.com/CLPolo/I-Am-Human/assets/122239525/61357948-5812-488a-8508-1f480e03b21b
 
 ## Overview
-I Am Human is a psychological thriller which follows the player and their sibling trying to escape the forest after a horrible accident. The game was the result of team Misery Loves Co.'s work over the course of the CMPUT 250: Computers and Games course Fall 2023 term at the University of Alberta. 
+I Am Human is a psychological thriller which follows the player and their sibling trying to escape the forest after a horrible accident. The game was the result of team Misery Loves Co.'s work during the Fall 2023 iteration of CMPUT 250: Computers and Games at the University of Alberta. 
 
 ## The Team
 
